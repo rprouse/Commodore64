@@ -1,0 +1,4 @@
+RM_BINARY=rm
+RM_FLAGS=-rf
+MKDIR_BINARY=mkdir
+MKDIR_FLAGS=-p
