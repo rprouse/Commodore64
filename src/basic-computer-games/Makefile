@@ -1,3 +1,5 @@
+.DEFAULT_GOAL := default
+
 RM_BINARY=rm
 RM_FLAGS=-rf
 MKDIR_BINARY=mkdir
@@ -20,6 +22,8 @@ $(BUILD_FOLDER):
 
 $(INPUTS) : $(BUILD_FOLDER)
 	petcat -v -w2 -f -o $(patsubst $(DIR)/%.bas,$(BUILD_FOLDER)/%.prg,$(@)) -- $@
+
+default: clean all
 
 all: $(INPUTS)
 

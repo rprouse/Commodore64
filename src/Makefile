@@ -1,7 +1,9 @@
-all:
-	$(MAKE) -C basic-computer-games all
-	$(MAKE) -C more-basic-computer-games all
+TOPTARGETS := all clean
 
-clean:
-	$(MAKE) -C basic-computer-games clean
-	$(MAKE) -C more-basic-computer-games clean
+SUBDIRS := $(wildcard */.)
+
+$(TOPTARGETS): $(SUBDIRS)
+$(SUBDIRS):
+	$(MAKE) -C $@ $(MAKECMDGOALS)
+
+.PHONY: $(TOPTARGETS) $(SUBDIRS)
