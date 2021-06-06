@@ -14,6 +14,7 @@ will also run on the [Vice Emulator](https://vice-emu.sourceforge.io/)
 - [Vice Emulator](https://vice-emu.sourceforge.io/)
 - GNU `make`
 - [cc65](https://cc65.github.io/) 6502 compiler and assembler
+- If you are running on Windows, your shell must be **PowerShell**
 
 ## Building
 
