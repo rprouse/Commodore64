@@ -8,3 +8,12 @@ Or read it here, [Basic Computer Games (1978)](https://www.atariarchives.org/bas
 
 Downloaded from [Vintage Basic](http://www.vintage-basic.net/games.html)
 
+## Building
+
+Requires that the [Vice Emulator](https://vice-emu.sourceforge.io/) and a version
+of `make` be installed and in your path. Then CD into the source directory and
+run,
+
+```sh
+make clean all
+```
