@@ -4,6 +4,9 @@ include ../binaries.mk
 .DEFAULT_GOAL := default
 
 BUILD_FOLDER=$(abspath ../../bin/$(NAME))
+ifeq ($(OS),Windows_NT)
+	BUILD_FOLDER := $(subst /,\,$(BUILD_FOLDER))
+endif
 
 DIR = $(abspath .)
 INPUTS = $(wildcard $(DIR)/*.bas)

@@ -1,5 +1,5 @@
-# These assume you are running in PowerShell on Windows
-RM_BINARY=Remove-Item
-RM_FLAGS=-Recurse -Force
-MKDIR_BINARY=New-Item
-MKDIR_FLAGS=-Type Directory
+# Windows specific binaries
+RM_BINARY=rmdir
+RM_FLAGS=/S /Q
+MKDIR_BINARY=mkdir
+MKDIR_FLAGS=

@@ -15,5 +15,6 @@ of `make` be installed and in your path. Then CD into the source directory and
 run,
 
 ```sh
-make clean all
+make clean
+make all
 ```
