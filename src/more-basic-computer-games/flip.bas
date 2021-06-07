@@ -1,91 +1,91 @@
-10 PRINT TAB(25);"FLIP"
-20 PRINT TAB(18);"CREATIVE COMPUTING"
-30 PRINT TAB(16);"MORRISTOWN NEW JERSEY":PRINT:PRINT:PRINT
-31 B1=50
-32 PRINT "EXPLANATION (Y OR N)";
-34 INPUT T$
-36 IF LEFT$(T$,1) <> "Y" THEN 180
-50 PRINT "ON EACH TURN, YOU GUESS YES <'Y'> OR NO <'N'>."
-60 PRINT "ONLY ONE IS CORRECT, AND THE PROGRAM HAS DECIDED"
-70 PRINT "WHICH ONE, BEFORE YOU MAKE YOUR GUESS. AT FIRST"
-80 PRINT "YOUR ODDS ARE 50%, PURE CHANCE. BUT LATER THE"
-90 PRINT "PROGRAM WILL TRY TO TAKE ADVANTAGE OF PATTERNS"
-100 PRINT "IN YOUR GUESSING."
-110 PRINT
-120 PRINT "GAME ENDS AFTER ";B1;" TURNS; A SCORE OF ";
-125 PRINT INT(B1/2-1);" OR MORE"
-130 PRINT "IS GOOD. PROGRAM TELLS WHEN YOU WIN A TURN,"
-140 PRINT "BY TYPING AN ASTERISK ('*') AS THE FIRST"
-150 PRINT "CHARACTER OF THE FOLLOWING LINE."
-160 PRINT
-170 REM
-180 REM INIALIZE: 16 PROBABILITIES, 4 RESPONSES (X),
-190 REM OLD-MEMORY FACTOR (F1), RANDOMNESS FACTOR (F2),
-200 REM SCORES (S1,S2) AND RIGHT-ANSWER FLAG.
-210 PRINT
-220 PRINT
-230 DIM P(16),X(4)
-240 PRINT "BEGIN."
-250 FOR I=1 TO 16
-260 P(I)=.5
-270 NEXT I
-280 FOR I=1 TO 4
-290 X(I)=0
-300 IF RND(1) < .5 THEN 320
-310 X(I)=1
-320 NEXT I
-330 F1=.8
-340 F2=.3
-350 S1=0
-360 S2=0
-370 A$=" "
-380 REM
-390 REM TAKE THE ESTIMATED PROBABILITY (Z1)
-400 REM OF THE PERSON GUESSING YES.
-410 REM USE AN ADJUSTED PROBABILITY <Z2>.
-420 I9=8*X(4)+4*X(3)+2*X(2)+X(1)+1
-430 Z1=P(I9)
-440 Z2=Z1
-450 IF Z2 <> .5 THEN 480
-460 Z2=RND(1)
-470 GOTO 520
-480 IF Z2 > .5 THEN 510
-490 Z2=Z2*F2+0*(1-F2)
-500 GOTO 520
-510 Z2=Z2*F2+1*(1-F2)
-520 Z5=0
-530 IF RND(1) < Z2 THEN 560
-540 Z5=1
-550 REM
-560 REM INTERACT WITH PERSON. GET HIS RESPONSE (Z3).
-570 REM UPDATE RESPONSE HISTORY (X), APPROPRIATE PROB. (P(I9)).
-580 PRINT A$;
-590 Z3=0
-600 INPUT H$
-610 IF LEFT$(H$,1) = "Y" THEN 650
-620 IF LEFT$(H$,1) ="N" THEN 660
-630 PRINT "ERROR, MUST BE  Y  OR  N  ."
-640 GOTO 600
-650 Z3=1
-660 A$=" "
-670 S2=S2+1
-680 IF Z3 <> Z5 THEN 710
-690 A$="*"
-700 S1=S1+1
-710 REM UPDATE X - THE LAST 4 CHOISES.
-720 X(1)=X(3)
-730 X(2)=X(4)
-740 X(3)=Z3
-750 X(4)=Z5
-760 REM UPDATE THE PROBABILITY USING OLD 19.
-770 P(I9)=F1*P(I9)*(1-F1)*X(3)
-780 IF S2 < B1 THEN 380
-790 PRINT A$;
-800 PRINT
-810 PRINT "END OF GAME."
-820 PRINT "YOU GOT ";S1;" OUT OF ";S2;" CORRECT."
-830 PRINT:PRINT
-840 PRINT "PLAY AGAIN (Y OR N)";
-850 INPUT T$
-860 IF LEFT$(T$,1)="Y" THEN 240
-870 END
+10 print tab(25);"flip"
+20 print tab(18);"creative computing"
+30 print tab(16);"morristown new jersey":print:print:print
+31 b1=50
+32 print "explanation (y or n)";
+34 input t$
+36 if left$(t$,1) <> "y" then 180
+50 print "on each turn, you guess yes <'y'> or no <'n'>."
+60 print "only one is correct, and the program has decided"
+70 print "which one, before you make your guess. at first"
+80 print "your odds are 50%, pure chance. but later the"
+90 print "program will try to take advantage of patterns"
+100 print "in your guessing."
+110 print
+120 print "game ends after ";b1;" turns; a score of ";
+125 print int(b1/2-1);" or more"
+130 print "is good. program tells when you win a turn,"
+140 print "by typing an asterisk ('*') as the first"
+150 print "character of the following line."
+160 print
+170 rem
+180 rem inialize: 16 probabilities, 4 responses (x),
+190 rem old-memory factor (f1), randomness factor (f2),
+200 rem scores (s1,s2) and right-answer flag.
+210 print
+220 print
+230 dim p(16),x(4)
+240 print "begin."
+250 for i=1 to 16
+260 p(i)=.5
+270 next i
+280 for i=1 to 4
+290 x(i)=0
+300 if rnd(1) < .5 then 320
+310 x(i)=1
+320 next i
+330 f1=.8
+340 f2=.3
+350 s1=0
+360 s2=0
+370 a$=" "
+380 rem
+390 rem take the estimated probability (z1)
+400 rem of the person guessing yes.
+410 rem use an adjusted probability <z2>.
+420 i9=8*x(4)+4*x(3)+2*x(2)+x(1)+1
+430 z1=p(i9)
+440 z2=z1
+450 if z2 <> .5 then 480
+460 z2=rnd(1)
+470 goto 520
+480 if z2 > .5 then 510
+490 z2=z2*f2+0*(1-f2)
+500 goto 520
+510 z2=z2*f2+1*(1-f2)
+520 z5=0
+530 if rnd(1) < z2 then 560
+540 z5=1
+550 rem
+560 rem interact with person. get his response (z3).
+570 rem update response history (x), appropriate prob. (p(i9)).
+580 print a$;
+590 z3=0
+600 input h$
+610 if left$(h$,1) = "y" then 650
+620 if left$(h$,1) ="n" then 660
+630 print "error, must be  y  or  n  ."
+640 goto 600
+650 z3=1
+660 a$=" "
+670 s2=s2+1
+680 if z3 <> z5 then 710
+690 a$="*"
+700 s1=s1+1
+710 rem update x - the last 4 choises.
+720 x(1)=x(3)
+730 x(2)=x(4)
+740 x(3)=z3
+750 x(4)=z5
+760 rem update the probability using old 19.
+770 p(i9)=f1*p(i9)*(1-f1)*x(3)
+780 if s2 < b1 then 380
+790 print a$;
+800 print
+810 print "end of game."
+820 print "you got ";s1;" out of ";s2;" correct."
+830 print:print
+840 print "play again (y or n)";
+850 input t$
+860 if left$(t$,1)="y" then 240
+870 end

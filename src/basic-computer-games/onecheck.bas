@@ -1,86 +1,86 @@
-2 PRINT TAB(30);"ONE CHECK"
-4 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-6 PRINT: PRINT: PRINT
-8 DIM A(64)
-10 PRINT "SOLITAIRE CHECKER PUZZLE BY DAVID AHL"
-15 PRINT
-20 PRINT "48 CHECKERS ARE PLACED ON THE 2 OUTSIDE SPACES OF A"
-25 PRINT "STANDARD 64-SQUARE CHECKERBOARD.  THE OBJECT IS TO"
-30 PRINT "REMOVE AS MANY CHECKERS AS POSSIBLE BY DIAGONAL JUMPS"
-35 PRINT "(AS IN STANDARD CHECKERS).  USE THE NUMBERED BOARD TO"
-40 PRINT "INDICATE THE SQUARE YOU WISH TO JUMP FROM AND TO.  ON"
-45 PRINT "THE BOARD PRINTED OUT ON EACH TURN '1' INDICATES A"
-50 PRINT "CHECKER AND '0' AN EMPTY SQUARE.  WHEN YOU HAVE NO"
-55 PRINT "POSSIBLE JUMPS REMAINING, INPUT A '0' IN RESPONSE TO"
-60 PRINT "QUESTION 'JUMP FROM ?'"
-62 PRINT
-63 PRINT "HERE IS THE NUMERICAL BOARD:"
-66 PRINT
-70 FOR J=1 TO 57 STEP 8
-74 PRINT J;TAB(4);J+1;TAB(8);J+2;TAB(12);J+3;TAB(16);J+4;TAB(20);J+5;
-75 PRINT TAB(24);J+6;TAB(28);J+7
-76 NEXT J
-77 PRINT
-78 PRINT "AND HERE IS THE OPENING POSITION OF THE CHECKERS."
-79 PRINT
-80 FOR J=1 TO 64
-82 A(J)=1
-84 NEXT J
-86 FOR J=19 TO 43 STEP 8
-88 FOR I=J TO J+3
-90 A(I)=0
-92 NEXT I
-94 NEXT J
-96 M=0
-98 GOTO 340
-100 INPUT "JUMP FROM";F
-105 IF F=0 THEN 500
-110 INPUT "TO";T
-112 PRINT
-118 REM *** CHECK LEGALITY OF MOVE
-120 F1=INT((F-1)/8)
-130 F2=F-8*F1
-140 T1=INT((T-1)/8)
-150 T2=T-8*T1
-160 IF F1>7 THEN 230
-170 IF T1>7 THEN 230
-180 IF F2>8 THEN 230
-190 IF T2>8 THEN 230
-200 IF ABS(F1-T1)<>2 THEN 230
-210 IF ABS(F2-T2)<>2 THEN 230
-212 IF A((T+F)/2)=0 THEN 230
-215 IF A(F)=0 THEN 230
-220 IF A(T)=1 THEN 230
-225 GOTO 250
-230 PRINT "ILLEGAL MOVE.  TRY AGAIN..."
-240 GOTO 100
-245 REM *** UPDATE BOARD
-250 A(T)=1
-260 A(F)=0
-270 A((T+F)/2)=0
-290 M=M+1
-310 REM *** PRINT BOARD
-340 FOR J=1 TO 57 STEP 8
-350 FOR I=J TO J+7
-360 PRINT A(I);
-370 NEXT I
-380 PRINT
-390 NEXT J
-400 PRINT
-410 GOTO 100
-490 REM *** END GAME SUMMARY
-500 S=0
-510 FOR I=1 TO 64
-520 S=S+A(I)
-530 NEXT I
-540 PRINT:PRINT "YOU MADE";M;"JUMPS AND HAD";S;"PIECES"
-550 PRINT "REMAINING ON THE BOARD."
-560 PRINT
-562 INPUT "TRY AGAIN";A$
-570 IF A$="YES" THEN 70
-575 IF A$="NO" THEN 600
-580 PRINT "PLEASE ANSWER 'YES' OR 'NO'."
-590 GOTO 562
-600 PRINT
-610 PRINT "O.K.  HOPE YOU HAD FUN!!"
-999 END
+2 print tab(30);"one check"
+4 print tab(15);"creative computing  morristown, new jersey"
+6 print: print: print
+8 dim a(64)
+10 print "solitaire checker puzzle by david ahl"
+15 print
+20 print "48 checkers are placed on the 2 outside spaces of a"
+25 print "standard 64-square checkerboard.  the object is to"
+30 print "remove as many checkers as possible by diagonal jumps"
+35 print "(as in standard checkers).  use the numbered board to"
+40 print "indicate the square you wish to jump from and to.  on"
+45 print "the board printed out on each turn '1' indicates a"
+50 print "checker and '0' an empty square.  when you have no"
+55 print "possible jumps remaining, input a '0' in response to"
+60 print "question 'jump from ?'"
+62 print
+63 print "here is the numerical board:"
+66 print
+70 for j=1 to 57 step 8
+74 print j;tab(4);j+1;tab(8);j+2;tab(12);j+3;tab(16);j+4;tab(20);j+5;
+75 print tab(24);j+6;tab(28);j+7
+76 next j
+77 print
+78 print "and here is the opening position of the checkers."
+79 print
+80 for j=1 to 64
+82 a(j)=1
+84 next j
+86 for j=19 to 43 step 8
+88 for i=j to j+3
+90 a(i)=0
+92 next i
+94 next j
+96 m=0
+98 goto 340
+100 input "jump from";f
+105 if f=0 then 500
+110 input "to";t
+112 print
+118 rem *** check legality of move
+120 f1=int((f-1)/8)
+130 f2=f-8*f1
+140 t1=int((t-1)/8)
+150 t2=t-8*t1
+160 if f1>7 then 230
+170 if t1>7 then 230
+180 if f2>8 then 230
+190 if t2>8 then 230
+200 if abs(f1-t1)<>2 then 230
+210 if abs(f2-t2)<>2 then 230
+212 if a((t+f)/2)=0 then 230
+215 if a(f)=0 then 230
+220 if a(t)=1 then 230
+225 goto 250
+230 print "illegal move.  try again..."
+240 goto 100
+245 rem *** update board
+250 a(t)=1
+260 a(f)=0
+270 a((t+f)/2)=0
+290 m=m+1
+310 rem *** print board
+340 for j=1 to 57 step 8
+350 for i=j to j+7
+360 print a(i);
+370 next i
+380 print
+390 next j
+400 print
+410 goto 100
+490 rem *** end game summary
+500 s=0
+510 for i=1 to 64
+520 s=s+a(i)
+530 next i
+540 print:print "you made";m;"jumps and had";s;"pieces"
+550 print "remaining on the board."
+560 print
+562 input "try again";a$
+570 if a$="yes" then 70
+575 if a$="no" then 600
+580 print "please answer 'yes' or 'no'."
+590 goto 562
+600 print
+610 print "o.k.  hope you had fun!!"
+999 end

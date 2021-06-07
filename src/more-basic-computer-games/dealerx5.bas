@@ -1,186 +1,186 @@
-100 PRINT TAB(21);"DEALER'S CHOICE"
-110 PRINT TAB(20);"CREATIVE COMPUTING"
-120 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-130 PRINT:PRINT:PRINT
-140 PRINT "THIS PROGRAM WILL SIMULATE THE T.V. SHOW, DEALER'S CHOICE."
-150 PRINT "YOU HAVE $100 TO START WITH. ENJOY THE GAME.":PRINT
-160 O=100
-170 PRINT "FOR THE FIRST GAME, WE WILL PLAY ON THE WHEEL OF CHANCE."
-180 PRINT "THE OBJECT IS SIMPLE. GUESS WHAT SUITE WILL APPEAR ON THE"
-190 PRINT "WHEEL AND YOU WILL GET PAID AT THOSE ODDS IF YOU ARE RIGHT."
-200 PRINT "THEY ARE AS FOLLOWS:":PRINT
-210 PRINT "1=DIAMONDS AT 11 TO 1 ODDS          2=SPADES AT 1 TO 1 ODDS."
-220 PRINT "3=HEARTS AT 3 TO 1 ODDS             4=CLUBS AT 3 TO 1 ODDS."
-230 PRINT "YOU MAY BET UP TO $25. GOOD LUCK!":PRINT
-240 PRINT "WHAT SUITE DO YOU WANT";:INPUT A
-250 IF A > 4 OR A < 1 THEN 270
-260 IF A <=4 THEN 280
-270 PRINT "***YOU PICKED A WRONG SUITE***":GOTO 240
-280 PRINT "WHAT IS THE BET";:INPUT B8
-290 IF B8 > 25 OR B8 <= 0 THEN 310
-300 IF B8 <= 25 THEN 320
-310 PRINT "***YOU BET OVER THE HOUSE LIMIT***":GOTO 280
-320 PRINT "O.K. NOW THAT YOUR BET IS IN, WE WILL SPIN"
-330 PRINT "THE WHEEL, GOOD LUCK!":FOR B1=1 TO 10*570:NEXT B1
-340 PRINT "THE WHEEL IS SLOWING DOWN."
-350 FOR B1=1 TO 7*570:NEXT B1:PRINT "THE WHEEL IS STOPPING."
-360 FOR B1=1 TO 4*570:NEXT B1
-370 PRINT "THE SUITE IS ":FOR B1=1 TO 4*570
-380 NEXT B1
-390 Z=INT(4*RND(1)+1):PRINT "****";Z;"****"
-400 IF Z=A THEN 420
-410 IF Z <> A THEN 470
-420 ON Z GOTO 430,440,450,460
-430 O=O+(11*B8):PRINT "YOU WIN ON DIAMONDS":GOTO 480
-440 O=O+(1*B8):PRINT "YOU WIN ON SPADES":GOTO 480
-450 O=O+(3*B8):PRINT "YOU WIN ON HEARTS":GOTO 480
-460 O=O+(3*B8):PRINT "YOU WIN ON CLUBS":GOTO 480
-470 O=O-(1*B8):PRINT "YOU LOSE.":GOTO 480
-480 PRINT "AT THE END OF PART 1, YOU HAVE $";O
-490 FOR P=1 TO 5:PRINT:NEXT P
-500 PRINT "THIS IS THE GAME OF IN BETWEEN. THE OBJECT IS: 5 CARDS WILL"
-510 PRINT "BE DEALT OUT. IF ANY CARD IS LESS THAN A 3 OR GREATER THAN A"
-520 PRINT "10, THE GAME IS OVER. YOU MAY BET UP TO $30. YOUR MONEY"
-530 PRINT "WILL BE DOUBLED EACH TIME YOU ARE RIGHT. GOOD LUCK!":PRINT
-540 PRINT "WHAT IS THE BET";:INPUT A
-550 IF A > 30 THEN PRINT "***YOU BET OVER THE HOUSE LIMIT ***":GOTO 540
-560 T=T+1:Z=INT(12*RND(1)+1)
-570 PRINT "CARD NUMBER ";T;" IS A ";Z:B=B+(2*A)
-580 IF Z < 3 OR Z > 10 THEN 630
-590 IF T=5 THEN 650
-600 PRINT "YOU ARE STILL IN THE GAME. YOU HAVE ";B
-610 PRINT "STOP OR GO";:INPUT A$:IF A$="GO" THEN 560
-620 IF A$="STOP" THEN 650
-630 O=O-A
-640 PRINT "YOU LOST. AT THE END OF PART 2, YOU HAVE $";O:GOTO 660
-650 PRINT "YOU WIN. AT THE END OF PART 2, YOU HAVE $";B+O:B=B+O
-660 FOR P=1 TO 5:PRINT:NEXT P
-670 PRINT "THIS IS THE GAME OF BLACKJACK <DEALER'S CHOICE STYLE>"
-680 PRINT "THE OBJECT IS TO BEAT THE DEALER WITH OVER 17 OR 21 OR"
-690 PRINT "UNDER. YOU MAY BET UP TO $50. YOU MAY STOP WHEN YOU WISH."
-700 PRINT "IF YOU MAKE BLACKJACK, YOUR MONEY IS DOUBLED."
-710 PRINT "IF THE HOUSE DEALS OUT LESS THAN A TOTAL OF 17 IN 6 TRIES,"
-720 PRINT "YOU WILL KEEP THE MONEY YOU BET. GOOD LUCK!":PRINT
-730 Z5=0:Z1=0:PRINT "THE DEALER WILL GET HIS CARDS FIRST":PRINT
-740 C=0:C3=0
-750 PRINT "HERE I GO"
-760 Q=INT(12*RND(1)+1)
-770 Z5=Q+Z5
-780 PRINT "THE CARD IS A ";Q:C=C+1
-790 PRINT "SO FAR:";Z5:IF C=6 THEN 850
-800 IF Z5<17 THEN 760
-810 IF Z5 > 21 THEN 910
-820 IF Z5=21 THEN 880
-830 IF Z5 < 21 THEN 870
-840 IF Z5 >= 17 THEN 870
-850 IF Z5 < 17 THEN 890
-860 IF Z5 >= 17 THEN 800
-870 PRINT "I STOP. THE TOTAL FOR ME IS ";Z5:PRINT "NOW YOU GO":PRINT:GOTO930
-880 PRINT "I GOT BLACKJACK":PRINT:GOTO 930
-890 PRINT "THE HOUSE DELT OUT LESS THAN 17. NOW YOU MUST TRY TO"
-900 PRINT "BEAT ME";:PRINT:GOTO 930
-910 PRINT "I BLEW IT. YOU WIN THE GREATEST AMOUNT ALLOWED TO BE"
-920 PRINT "BET BY THE HOUSE.":GOTO 1160
-930 PRINT "WHAT IS THE BET";:INPUT A
-940 IF A > O THEN 980
-950 IF A > 50 OR A <= 0 THEN 970
-960 IF A <= 50 THEN 990
-970 PRINT "***YOU BET OVER THE HOUSE LIMIT***":GOTO 930
-980 PRINT "***YOU BET OVER WHAT YOU HAVE***":GOTO 930
-990 Q1=INT(12*RND(1)+1):PRINT "YOUR CARD IS A ";Q1:C3=C3+1
-1000 Z1=Q1+Z1:PRINT "SO FAR THE TOTAL FOR YOU IS ";Z1:IF C3=6 THEN 1090
-1010 IF Z1 > 21 THEN 1120
-1020 PRINT "STOP OR GO";:INPUT A$
-1030 IF A$="STOP" THEN 1050
-1040 IF A$="GO" THEN 990
-1050 IF Z1=Z5 THEN 1100
-1060 IF Z1 < Z5 THEN 1120
-1070 IF Z1=21 THEN 1110
-1080 IF Z5 <Z1 THEN 1130
-1090 IF Z1 < 17 THEN 1140
-1100 PRINT "WE ARE THE SAME SO WE WILL PLAY AGAIN":GOTO 730
-1110 O=O+(2*A):PRINT "YOU BEAT THE DEALER WITH BLACKJACK!!":GOTO 1170
-1120 O=O-(1*A):PRINT "THE DEALER BEAT YOU. YOU LOSE":GOTO 1170
-1130 O=O+(1*A):PRINT "THE DEALER LOST. YOU WIN":GOTO 1170
-1140 O=O+(1*A):PRINT "THE HOUSE DELT OUT LESS THAN 17 IN"
-1150 PRINT "6 TRIES. YOU GET THE MONEY YOU BET":GOTO 1170
-1160 O=O+50:PRINT "YOU KEEP IT WITH OUR BEST WISHES.":GOTO 1170
-1170 PRINT "AT THE END OF PART 3, YOU HAVE $";O
-1180 IF O<=0 THEN 1580
-1190 FOR P=1 TO 5:PRINT:NEXT P
-1200 PRINT "NOW WE ENTER THE LAST CHANCE ROUND. IF YOU MAKE UP TO"
-1210 PRINT "$300 YOU WILL BE ABLE TO GO INTO THE BONUS ROUND. THE"
-1220 PRINT "OBJECT IS TO GUESS INTO WHICH CATEGORY THE TOTAL OF 5 CARDS"
-1230 PRINT "WILL ADD UP TO. THESE ARE THE CATEGORIES:":PRINT
-1240 PRINT "1=31-40 AT 1 TO 1 ODDS     2=41-50 AT 3 TO 1 ODDS"
-1250 PRINT "3=21-31 AT 3 TO 1 ODDS     4=6-20 AT 20 TO 1 ODDS"
-1260 PRINT "GOOD LUCK!!":PRINT
-1270 PRINT "AT THIS POINT IN THE GAME YOU HAVE $";O
-1280 PRINT "WHAT CATEGORY DO YOU WANT";:INPUT A
-1290 IF A <= 4 THEN 1320
-1300 IF A > 4 THEN 1310
-1310 PRINT "***YOU BET ON A WRONG CATEGORY***":GOTO 1280
-1320 PRINT "WHAT IS THE BET";:INPUT B
-1330 IF B <= O THEN 1360
-1340 IF B > O THEN 1350
-1350 PRINT "***YOU BET OVER WHAT YOU HAVE***":GOTO 1320
-1360 PRINT "THE CARDS ARE NOW BEING ADDED UP":PRINT "GOOD LUCK!"
-1370 Q=INT(12*RND(1)+1):C1=C1+1
-1380 PRINT "CARD NUMBER ";C1;" IS A ";Q
-1390 Z=Z+Q:PRINT "SO FAR: ";Z
-1400 IF C1=5 THEN 1420
-1410 GOTO 1370
-1420 ON A GOTO 1430,1460,1490,1520
-1430 IF Z < 31 THEN 1540
-1440 IF Z < 40 THEN 1550
-1450 IF Z > 40 THEN 1540
-1460 IF Z < 41 THEN 1540
-1470 IF Z < 50 THEN 1560
-1480 IF Z > 50 THEN 1540
-1490 IF Z < 21 THEN 1540
-1500 IF Z < 31 THEN 1560
-1510 IF Z > 31 THEN 1540
-1520 IF Z < 6 THEN 1540
-1530 IF Z < 20 THEN 1570
-1540 O=O-(1*B):PRINT "YOU LOSE":GOTO 1580
-1550 O=O+(1*B):PRINT "YOU WIN":GOTO 1580
-1560 O=O+(3*B):GOTO 1580
-1570 O=O+(20*B):PRINT "YOU WIN":GOTO 1580
-1580 PRINT "AT THE END OF THE GAME YOU HAVE A GRAND TOTAL OF $";O
-1590 IF O < 300 THEN 1940
-1600 FOR X=1 TO 6:PRINT CHR$(7);:FOR B1=1 TO 570:NEXT B1:NEXT X
-1610 PRINT "YOU ARE ELIGIBLE FOR THE BONUS ROUND."
-1620 PRINT "DO YOU WANT TO PLAY IT";:INPUT A$
-1630 IF A$="NO" THEN 1940
-1640 PRINT "THIS IS THE BONUS ROUND. IF YOU GET A TOTAL OF 1,000"
-1650 PRINT "WITHOUT GETTING A SPADE IN THE ROLLS, YOU WILL GET"
-1660 PRINT "A GRAND PRIZE OF $10,000.00. YOU MAY STOP AT ANY POINT"
-1670 PRINT "DURING THE GAME. YOU WILL KEEP WHAT YOU MADE. GOOD LUCK!"
-1680 PRINT
-1690 DIM A(5),B(4):A9$="SPADES"
-1700 PRINT "THE DICE ARE ROLLING":PRINT "GOOD LUCK."
-1710 PRINT "THE DICE ARE"
-1720 FOR B1=1 TO 570*5:NEXT B1
-1730 X=INT(5*RND(1)+1)
-1740 A(1)=50:A(2)=100:A(3)=150:A(4)=200:A(5)=0
-1750 Y=INT(4*RND(1)+1)
-1760 B(1)=50:B(2)=100:B(3)=150:B(4)=200
-1770 IF A(X)=0 THEN 1790
-1780 PRINT "****";A(X);B(Y);"****":PRINT "TOTAL ";A(X)+B(Y):GOTO 1810
-1790 PRINT "****";A9$;B(Y);"****"
-1800 PRINT "TOTAL ";B(Y):GOTO 1870
-1810 B7=B7+(A(X)+B(Y)):PRINT "YOU NOW HAVE ";B7:IF B7 >= 1000 THEN 1890
-1820 PRINT "STOP OR GO":INPUT B$
-1830 IF B$="GO" THEN 1700
-1840 PRINT "SMART MOVE. YOU GET THE MONEY FROM THE BEGINNING OF"
-1850 PRINT "THE GAME PLUS THE BONUS ROUND. AT THE END OF THE GAME"
-1860 PRINT "YOU HAVE THE GRAND TOTAL OF $";B7+O:GOTO 1940
-1870 PRINT "YOU LOSE THE MONEY FROM THE LAST CHANCE"
-1880 PRINT "ROUND BUT YOU STILL HAVE A GRAND TOTAL OF $";O:GOTO 1940
-1890 FOR T=1 TO 3:PRINT CHR$(7);:FOR B1=1 TO 570:NEXT B1:NEXT T
-1900 B7=O+10000:PRINT TAB(15);"****CONGRATULATIONS****"
-1910 PRINT "YOU WON THE GRAND PRIZE. AT THE END OF THE GAME, YOU HAVE"
-1920 FOR P=1 TO 3:PRINT:NEXT P
-1930 PRINT TAB(18);"*******";B7;"******"
-1940 PRINT "THIS IS THE END OF THE GAME. I HOPE YOU ENJOYED IT."
-1950 END
+100 print tab(21);"dealer's choice"
+110 print tab(20);"creative computing"
+120 print tab(18);"morristown, new jersey"
+130 print:print:print
+140 print "this program will simulate the t.v. show, dealer's choice."
+150 print "you have $100 to start with. enjoy the game.":print
+160 o=100
+170 print "for the first game, we will play on the wheel of chance."
+180 print "the object is simple. guess what suite will appear on the"
+190 print "wheel and you will get paid at those odds if you are right."
+200 print "they are as follows:":print
+210 print "1=diamonds at 11 to 1 odds          2=spades at 1 to 1 odds."
+220 print "3=hearts at 3 to 1 odds             4=clubs at 3 to 1 odds."
+230 print "you may bet up to $25. good luck!":print
+240 print "what suite do you want";:input a
+250 if a > 4 or a < 1 then 270
+260 if a <=4 then 280
+270 print "***you picked a wrong suite***":goto 240
+280 print "what is the bet";:input b8
+290 if b8 > 25 or b8 <= 0 then 310
+300 if b8 <= 25 then 320
+310 print "***you bet over the house limit***":goto 280
+320 print "o.k. now that your bet is in, we will spin"
+330 print "the wheel, good luck!":for b1=1 to 10*570:next b1
+340 print "the wheel is slowing down."
+350 for b1=1 to 7*570:next b1:print "the wheel is stopping."
+360 for b1=1 to 4*570:next b1
+370 print "the suite is ":for b1=1 to 4*570
+380 next b1
+390 z=int(4*rnd(1)+1):print "****";z;"****"
+400 if z=a then 420
+410 if z <> a then 470
+420 on z goto 430,440,450,460
+430 o=o+(11*b8):print "you win on diamonds":goto 480
+440 o=o+(1*b8):print "you win on spades":goto 480
+450 o=o+(3*b8):print "you win on hearts":goto 480
+460 o=o+(3*b8):print "you win on clubs":goto 480
+470 o=o-(1*b8):print "you lose.":goto 480
+480 print "at the end of part 1, you have $";o
+490 for p=1 to 5:print:next p
+500 print "this is the game of in between. the object is: 5 cards will"
+510 print "be dealt out. if any card is less than a 3 or greater than a"
+520 print "10, the game is over. you may bet up to $30. your money"
+530 print "will be doubled each time you are right. good luck!":print
+540 print "what is the bet";:input a
+550 if a > 30 then print "***you bet over the house limit ***":goto 540
+560 t=t+1:z=int(12*rnd(1)+1)
+570 print "card number ";t;" is a ";z:b=b+(2*a)
+580 if z < 3 or z > 10 then 630
+590 if t=5 then 650
+600 print "you are still in the game. you have ";b
+610 print "stop or go";:input a$:if a$="go" then 560
+620 if a$="stop" then 650
+630 o=o-a
+640 print "you lost. at the end of part 2, you have $";o:goto 660
+650 print "you win. at the end of part 2, you have $";b+o:b=b+o
+660 for p=1 to 5:print:next p
+670 print "this is the game of blackjack <dealer's choice style>"
+680 print "the object is to beat the dealer with over 17 or 21 or"
+690 print "under. you may bet up to $50. you may stop when you wish."
+700 print "if you make blackjack, your money is doubled."
+710 print "if the house deals out less than a total of 17 in 6 tries,"
+720 print "you will keep the money you bet. good luck!":print
+730 z5=0:z1=0:print "the dealer will get his cards first":print
+740 c=0:c3=0
+750 print "here i go"
+760 q=int(12*rnd(1)+1)
+770 z5=q+z5
+780 print "the card is a ";q:c=c+1
+790 print "so far:";z5:if c=6 then 850
+800 if z5<17 then 760
+810 if z5 > 21 then 910
+820 if z5=21 then 880
+830 if z5 < 21 then 870
+840 if z5 >= 17 then 870
+850 if z5 < 17 then 890
+860 if z5 >= 17 then 800
+870 print "i stop. the total for me is ";z5:print "now you go":print:goto930
+880 print "i got blackjack":print:goto 930
+890 print "the house delt out less than 17. now you must try to"
+900 print "beat me";:print:goto 930
+910 print "i blew it. you win the greatest amount allowed to be"
+920 print "bet by the house.":goto 1160
+930 print "what is the bet";:input a
+940 if a > o then 980
+950 if a > 50 or a <= 0 then 970
+960 if a <= 50 then 990
+970 print "***you bet over the house limit***":goto 930
+980 print "***you bet over what you have***":goto 930
+990 q1=int(12*rnd(1)+1):print "your card is a ";q1:c3=c3+1
+1000 z1=q1+z1:print "so far the total for you is ";z1:if c3=6 then 1090
+1010 if z1 > 21 then 1120
+1020 print "stop or go";:input a$
+1030 if a$="stop" then 1050
+1040 if a$="go" then 990
+1050 if z1=z5 then 1100
+1060 if z1 < z5 then 1120
+1070 if z1=21 then 1110
+1080 if z5 <z1 then 1130
+1090 if z1 < 17 then 1140
+1100 print "we are the same so we will play again":goto 730
+1110 o=o+(2*a):print "you beat the dealer with blackjack!!":goto 1170
+1120 o=o-(1*a):print "the dealer beat you. you lose":goto 1170
+1130 o=o+(1*a):print "the dealer lost. you win":goto 1170
+1140 o=o+(1*a):print "the house delt out less than 17 in"
+1150 print "6 tries. you get the money you bet":goto 1170
+1160 o=o+50:print "you keep it with our best wishes.":goto 1170
+1170 print "at the end of part 3, you have $";o
+1180 if o<=0 then 1580
+1190 for p=1 to 5:print:next p
+1200 print "now we enter the last chance round. if you make up to"
+1210 print "$300 you will be able to go into the bonus round. the"
+1220 print "object is to guess into which category the total of 5 cards"
+1230 print "will add up to. these are the categories:":print
+1240 print "1=31-40 at 1 to 1 odds     2=41-50 at 3 to 1 odds"
+1250 print "3=21-31 at 3 to 1 odds     4=6-20 at 20 to 1 odds"
+1260 print "good luck!!":print
+1270 print "at this point in the game you have $";o
+1280 print "what category do you want";:input a
+1290 if a <= 4 then 1320
+1300 if a > 4 then 1310
+1310 print "***you bet on a wrong category***":goto 1280
+1320 print "what is the bet";:input b
+1330 if b <= o then 1360
+1340 if b > o then 1350
+1350 print "***you bet over what you have***":goto 1320
+1360 print "the cards are now being added up":print "good luck!"
+1370 q=int(12*rnd(1)+1):c1=c1+1
+1380 print "card number ";c1;" is a ";q
+1390 z=z+q:print "so far: ";z
+1400 if c1=5 then 1420
+1410 goto 1370
+1420 on a goto 1430,1460,1490,1520
+1430 if z < 31 then 1540
+1440 if z < 40 then 1550
+1450 if z > 40 then 1540
+1460 if z < 41 then 1540
+1470 if z < 50 then 1560
+1480 if z > 50 then 1540
+1490 if z < 21 then 1540
+1500 if z < 31 then 1560
+1510 if z > 31 then 1540
+1520 if z < 6 then 1540
+1530 if z < 20 then 1570
+1540 o=o-(1*b):print "you lose":goto 1580
+1550 o=o+(1*b):print "you win":goto 1580
+1560 o=o+(3*b):goto 1580
+1570 o=o+(20*b):print "you win":goto 1580
+1580 print "at the end of the game you have a grand total of $";o
+1590 if o < 300 then 1940
+1600 for x=1 to 6:print chr$(7);:for b1=1 to 570:next b1:next x
+1610 print "you are eligible for the bonus round."
+1620 print "do you want to play it";:input a$
+1630 if a$="no" then 1940
+1640 print "this is the bonus round. if you get a total of 1,000"
+1650 print "without getting a spade in the rolls, you will get"
+1660 print "a grand prize of $10,000.00. you may stop at any point"
+1670 print "during the game. you will keep what you made. good luck!"
+1680 print
+1690 dim a(5),b(4):a9$="spades"
+1700 print "the dice are rolling":print "good luck."
+1710 print "the dice are"
+1720 for b1=1 to 570*5:next b1
+1730 x=int(5*rnd(1)+1)
+1740 a(1)=50:a(2)=100:a(3)=150:a(4)=200:a(5)=0
+1750 y=int(4*rnd(1)+1)
+1760 b(1)=50:b(2)=100:b(3)=150:b(4)=200
+1770 if a(x)=0 then 1790
+1780 print "****";a(x);b(y);"****":print "total ";a(x)+b(y):goto 1810
+1790 print "****";a9$;b(y);"****"
+1800 print "total ";b(y):goto 1870
+1810 b7=b7+(a(x)+b(y)):print "you now have ";b7:if b7 >= 1000 then 1890
+1820 print "stop or go":input b$
+1830 if b$="go" then 1700
+1840 print "smart move. you get the money from the beginning of"
+1850 print "the game plus the bonus round. at the end of the game"
+1860 print "you have the grand total of $";b7+o:goto 1940
+1870 print "you lose the money from the last chance"
+1880 print "round but you still have a grand total of $";o:goto 1940
+1890 for t=1 to 3:print chr$(7);:for b1=1 to 570:next b1:next t
+1900 b7=o+10000:print tab(15);"****congratulations****"
+1910 print "you won the grand prize. at the end of the game, you have"
+1920 for p=1 to 3:print:next p
+1930 print tab(18);"*******";b7;"******"
+1940 print "this is the end of the game. i hope you enjoyed it."
+1950 end

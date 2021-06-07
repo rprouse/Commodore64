@@ -1,37 +1,37 @@
-1 PRINT TAB(33);"NUMBER"
-2 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-3 PRINT:PRINT:PRINT
-4 PRINT "YOU HAVE 100 POINTS.  BY GUESSING NUMBERS FROM 1 TO 5, YOU"
-5 PRINT "CAN GAIN OR LOSE POINTS DEPENDING UPON HOW CLOSE YOU GET TO"
-6 PRINT "A RANDOM NUMBER SELECTED BY THE COMPUTER.": PRINT
-7 PRINT "YOU OCCASIONALLY WILL GET A JACKPOT WHICH WILL DOUBLE(!)"
-8 PRINT "YOUR POINT COUNT.  YOU WIN WHEN YOU GET 500 POINTS."
-9 PRINT: P=100
-10 DEF FNR(X)=INT(5*RND(1)+1)
-12 INPUT "GUESS A NUMBER FROM 1 TO 5";G
-15 R=FNR(1)
-16 S=FNR(1)
-17 T=FNR(1)
-18 U=FNR(1)
-19 V=FNR(1)
-20 IF G=R THEN 30
-21 IF G=S THEN 40
-22 IF G=T THEN 50
-23 IF G=U THEN 60
-24 IF G=V THEN 70
-25 IF G>5 THEN 12
-30 P=P-5
-35 GOTO 80
-40 P=P+5
-45 GOTO 80
-50 P=P+P
-53 PRINT "YOU HIT THE JACKPOT!!!"
-55 GOTO 80
-60 P=P+1
-65 GOTO 80
-70 P=P-(P*.5)
-80 IF P>500 THEN 90
-82 PRINT "YOU HAVE";P;"POINTS.":PRINT
-85 GOTO 12
-90 PRINT "!!!!YOU WIN!!!! WITH ";P;"POINTS."
-99 END
+1 print tab(33);"number"
+2 print tab(15);"creative computing  morristown, new jersey"
+3 print:print:print
+4 print "you have 100 points.  by guessing numbers from 1 to 5, you"
+5 print "can gain or lose points depending upon how close you get to"
+6 print "a random number selected by the computer.": print
+7 print "you occasionally will get a jackpot which will double(!)"
+8 print "your point count.  you win when you get 500 points."
+9 print: p=100
+10 def fnr(x)=int(5*rnd(1)+1)
+12 input "guess a number from 1 to 5";g
+15 r=fnr(1)
+16 s=fnr(1)
+17 t=fnr(1)
+18 u=fnr(1)
+19 v=fnr(1)
+20 if g=r then 30
+21 if g=s then 40
+22 if g=t then 50
+23 if g=u then 60
+24 if g=v then 70
+25 if g>5 then 12
+30 p=p-5
+35 goto 80
+40 p=p+5
+45 goto 80
+50 p=p+p
+53 print "you hit the jackpot!!!"
+55 goto 80
+60 p=p+1
+65 goto 80
+70 p=p-(p*.5)
+80 if p>500 then 90
+82 print "you have";p;"points.":print
+85 goto 12
+90 print "!!!!you win!!!! with ";p;"points."
+99 end

@@ -1,62 +1,62 @@
-10 PRINT TAB(32);"REVERSE"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-100 PRINT "REVERSE -- A GAME OF SKILL": PRINT
-130 DIM A(20)
-140 REM *** N=NUMBER OF NUMBERS
-150 N=9
-160 PRINT "DO YOU WANT THE RULES";
-170 INPUT A$
-180 IF A$="NO" THEN 210
-190 GOSUB 710
-200 REM *** MAKE A RANDOM LIST A(1) TO A(N)
-210 A(1)=INT((N-1)*RND(1)+2)
-220 FOR K=2 TO N
-230 A(K)=INT(N*RND(1)+1)
-240 FOR J=1 TO K-1
-250 IF A(K)=A(J) THEN 230
-260 NEXT J:NEXT K
-280 REM *** PRINT ORIGINAL LIST AND START GAME
-290 PRINT: PRINT "HERE WE GO ... THE LIST IS:"
-310 T=0
-320 GOSUB 610
-330 PRINT "HOW MANY SHALL I REVERSE";
-340 INPUT R
-350 IF R=0 THEN 520
-360 IF R<=N THEN 390
-370 PRINT "OOPS! TOO MANY! I CAN REVERSE AT MOST";N:GOTO 330
-390 T=T+1
-400 REM *** REVERSE R NUMBERS AND PRINT NEW LIST
-410 FOR K=1 TO INT(R/2)
-420 Z=A(K)
-430 A(K)=A(R-K+1)
-440 A(R-K+1)=Z
-450 NEXT K
-460 GOSUB 610
-470 REM *** CHECK FOR A WIN
-480 FOR K=1 TO N
-490 IF A(K)<>K THEN 330
-500 NEXT K
-510 PRINT "YOU WON IT IN";T;"MOVES!!!":PRINT
-520 PRINT
-530 PRINT "TRY AGAIN (YES OR NO)";
-540 INPUT A$
-550 IF A$="YES" THEN 210
-560 PRINT: PRINT "O.K. HOPE YOU HAD FUN!!":GOTO 999
-600 REM *** SUBROUTINE TO PRINT LIST
-610 PRINT:FOR K=1 TO N:PRINT A(K);:NEXT K
-650 PRINT:PRINT:RETURN
-700 REM *** SUBROUTINE TO PRINT THE RULES
-710 PRINT:PRINT "THIS IS THE GAME OF 'REVERSE'.  TO WIN, ALL YOU HAVE"
-720 PRINT "TO DO IS ARRANGE A LIST OF NUMBERS (1 THROUGH";N;")"
-730 PRINT "IN NUMERICAL ORDER FROM LEFT TO RIGHT.  TO MOVE, YOU"
-740 PRINT "TELL ME HOW MANY NUMBERS (COUNTING FROM THE LEFT) TO"
-750 PRINT "REVERSE.  FOR EXAMPLE, IF THE CURRENT LIST IS:"
-760 PRINT:PRINT "2 3 4 5 1 6 7 8 9"
-770 PRINT:PRINT "AND YOU REVERSE 4, THE RESULT WILL BE:"
-780 PRINT:PRINT "5 4 3 2 1 6 7 8 9"
-790 PRINT:PRINT "NOW IF YOU REVERSE 5, YOU WIN!"
-800 PRINT:PRINT "1 2 3 4 5 6 7 8 9":PRINT
-810 PRINT "NO DOUBT YOU WILL LIKE THIS GAME, BUT"
-820 PRINT "IF YOU WANT TO QUIT, REVERSE 0 (ZERO).":PRINT: RETURN
-999 END
+10 print tab(32);"reverse"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+100 print "reverse -- a game of skill": print
+130 dim a(20)
+140 rem *** n=number of numbers
+150 n=9
+160 print "do you want the rules";
+170 input a$
+180 if a$="no" then 210
+190 gosub 710
+200 rem *** make a random list a(1) to a(n)
+210 a(1)=int((n-1)*rnd(1)+2)
+220 for k=2 to n
+230 a(k)=int(n*rnd(1)+1)
+240 for j=1 to k-1
+250 if a(k)=a(j) then 230
+260 next j:next k
+280 rem *** print original list and start game
+290 print: print "here we go ... the list is:"
+310 t=0
+320 gosub 610
+330 print "how many shall i reverse";
+340 input r
+350 if r=0 then 520
+360 if r<=n then 390
+370 print "oops! too many! i can reverse at most";n:goto 330
+390 t=t+1
+400 rem *** reverse r numbers and print new list
+410 for k=1 to int(r/2)
+420 z=a(k)
+430 a(k)=a(r-k+1)
+440 a(r-k+1)=z
+450 next k
+460 gosub 610
+470 rem *** check for a win
+480 for k=1 to n
+490 if a(k)<>k then 330
+500 next k
+510 print "you won it in";t;"moves!!!":print
+520 print
+530 print "try again (yes or no)";
+540 input a$
+550 if a$="yes" then 210
+560 print: print "o.k. hope you had fun!!":goto 999
+600 rem *** subroutine to print list
+610 print:for k=1 to n:print a(k);:next k
+650 print:print:return
+700 rem *** subroutine to print the rules
+710 print:print "this is the game of 'reverse'.  to win, all you have"
+720 print "to do is arrange a list of numbers (1 through";n;")"
+730 print "in numerical order from left to right.  to move, you"
+740 print "tell me how many numbers (counting from the left) to"
+750 print "reverse.  for example, if the current list is:"
+760 print:print "2 3 4 5 1 6 7 8 9"
+770 print:print "and you reverse 4, the result will be:"
+780 print:print "5 4 3 2 1 6 7 8 9"
+790 print:print "now if you reverse 5, you win!"
+800 print:print "1 2 3 4 5 6 7 8 9":print
+810 print "no doubt you will like this game, but"
+820 print "if you want to quit, reverse 0 (zero).":print: return
+999 end

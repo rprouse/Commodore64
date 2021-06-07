@@ -1,138 +1,138 @@
-10 PRINT TAB(26);"CHASE"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-40 PRINT:PRINT:PRINT
-41 PRINT "YOU ARE WITHIN THE WALLS OF A HIGH VOLTAGE MAZE"
-42 PRINT "THERE ARE FIVE SECURITY MACHINES TRYING TO DESTROY YOU"
-60 PRINT "YOU ARE THE '*'  THE INTERCEPTORS ARE THE '+'"
-70 PRINT "THE AREAS MARKED 'X' ARE HIGH VOLTAGE"
-80 PRINT "YOUR ONLY CHANCE FOR SURVIVAL IS TO MANEUVER EACH"
-90 PRINT "INTERCEPTOR INTO AN 'X'.-----GOOD LUCK-----"
-100 PRINT "MOVES ARE   7.8.9"
-110 PRINT "            4.*.6"
-120 PRINT "            1.2.3"
-130 PRINT
-140 PRINT "10 = NO MOVE FOR THE REST OF THE GAME"
-150 PRINT "-1 = GAVE UP, SITUATION HOPELESS."
-160 PRINT " 0 = A TREMENDOUS (BUT UNFORTUNATELY RANDOM) LEAP"
-170 PRINT
-180 DIM A(10,20),A1(10,20),N(12),L(5),M(5),L1(5),M1(5)
-190 REM
-210 FOR B=1 TO 10
-220 FOR C=1 TO 20
-230 X=INT(10*RND(1))
-240 IF X=5 THEN 270
-250 A(B,C)=ASC(" ")
-260 GOTO 280
-270 A(B,C)=ASC("X")
-280 NEXT C
-290 NEXT B
-300 FOR D=1 TO 10
-310 A(D,1)=ASC("X"):A(D,20)=ASC("X")
-320 NEXT D
-330 FOR F=1 TO 20
-340 A(1,F)=ASC("X"):A(10,F)=ASC("X")
-350 NEXT F
-360 GOTO 410
-370 H=INT(2+8*RND(1))
-380 I=INT(2+18*RND(1))
-390 IF A(H,I)<>ASC(" ") THEN 370
-400 RETURN
-410 GOSUB 370
-420 A(H,I)=ASC("*")
-430 J=H:K=I
-440 FOR N9=1 TO 5
-450 GOSUB 370
-460 A(H,I)=ASC("+")
-470 L(N9)=H:M(N9)=I
-480 NEXT N9
-490 FOR B1=1 TO 10:FOR B2=1 TO 20:A1(B1,B2)=A(B1,B2):NEXT B2:NEXT B1
-500 FOR B1=1 TO 5:L1(B1)=L(B1):M1(B1)=M(B1):NEXT B1
-520 J1=J:K1=K
-530 Y9=0
-540 FOR D2=1 TO 10
-550 FOR B2=1 TO 20
-560 N$=CHR$(A(D2,B2))
-570 PRINT N$;
-580 NEXT B2
-590 PRINT
-600 NEXT D2
-610 IF Y9 <> 10 THEN 640
-620 PRINT
-630 GOTO 890
-640 INPUT Y9
-650 J2=J:K2=K
-660 IF Y9=0 THEN 860
-670 IF Y9 < 0 THEN 1230
-680 IF Y9=10 THEN 1070
-690 ON Y9 GOTO 820,800,780,840,890,760,700,720,740
-700 J=J-1:K=K-1
-710 GOTO 890
-720 J=J-1
-730 GOTO 890
-740 J=J-1:K=K+1
-750 GOTO 890
-760 K=K+1
-770 GOTO 890
-780 J=J+1:K=K+1
-790 GOTO 890
-800 J=J+1
-810 GOTO 890
-820 J=J+1:K=K-1
-830 GOTO 890
-840 K=K-1
-850 GOTO 890
-860 PRINT "$6,000,000 JUMP!!!"
-870 J=INT(2+8*RND(1))
-880 K=INT(2+18*RND(1))
-890 IF A(J,K)=ASC("X") THEN 1260
-900 A(J2,K2)=ASC(" ")
-910 A(J,K)=ASC("*")
-920 GOTO 1070
-930 REM INTERCEPTOR MOVEMENT
-940 IF A(X,Y)=ASC("X") THEN 1040
-950 X2=X:Y2=Y
-960 X=SGN(J-X):Y=SGN(K-Y)
-970 X=X+X2:Y=Y+Y2
-980 IF A(X,Y)=ASC("*") THEN 1050
-990 IF A(X,Y)=ASC(" ") THEN 1020
-1000 A(X2,Y2)=ASC(" ")
-1010 RETURN
-1020 A(X,Y)=ASC("+")
-1030 A(X2,Y2)=ASC(" ")
-1040 RETURN
-1050 G9=99
-1060 RETURN
-1070 FOR N9=1 TO 5
-1080 X=L(N9):Y=M(N9)
-1090 G9=0
-1100 GOSUB 940
-1110 IF G9 <> 0 THEN 1240
-1120 L(N9)=X:M(N9)=Y
-1130 NEXT N9
-1140 FOR N9=1 TO 5
-1150 IF A(L(N9),M(N9)) <> ASC(" ") THEN 1170
-1160 A(L(N9),M(N9))=ASC("+")
-1170 NEXT N9
-1180 FOR N9=1 TO 5
-1190 IF A(L(N9),M(N9)) <> ASC("X") THEN 540
-1200 NEXT N9
-1210 PRINT "YOU HAVE DESTROYED ALL YOUR OPPONENTS - THE GAME IS YOURS"
-1220 GOTO 1290
-1230 PRINT "GIVE UP, EH."
-1240 PRINT "*** YOU HAVE BEEN DESTROYED BY A LUCKY COMPUTER ***"
-1250 GOTO 1290
-1260 PRINT "HIGH VOLTAGE!!!!!!!!!!"
-1270 PRINT "***** ZAP *****  YOU'RE DEAD!!!"
-1280 PRINT
-1290 PRINT "ANOTHER GAME (Y/N)";
-1300 INPUT N9$
-1310 IF N9$ <> "Y" THEN 1400
-1320 PRINT "SAME SETUP (Y/N)";
-1330 INPUT N9$
-1340 IF N9$ <> "Y" THEN 190
-1350 FOR B1=1 TO 10:FOR B2=1 TO 20:A(B1,B2)=A1(B1,B2):NEXT B2:NEXT B1
-1360 FOR B1=1 TO 5:L(B1)=L1(B1):H(B1)=M1(B1):NEXT B1
-1380 J=J1:K=K1
-1390 GOTO 530
-1400 END
+10 print tab(26);"chase"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey"
+40 print:print:print
+41 print "you are within the walls of a high voltage maze"
+42 print "there are five security machines trying to destroy you"
+60 print "you are the '*'  the interceptors are the '+'"
+70 print "the areas marked 'x' are high voltage"
+80 print "your only chance for survival is to maneuver each"
+90 print "interceptor into an 'x'.-----good luck-----"
+100 print "moves are   7.8.9"
+110 print "            4.*.6"
+120 print "            1.2.3"
+130 print
+140 print "10 = no move for the rest of the game"
+150 print "-1 = gave up, situation hopeless."
+160 print " 0 = a tremendous (but unfortunately random) leap"
+170 print
+180 dim a(10,20),a1(10,20),n(12),l(5),m(5),l1(5),m1(5)
+190 rem
+210 for b=1 to 10
+220 for c=1 to 20
+230 x=int(10*rnd(1))
+240 if x=5 then 270
+250 a(b,c)=asc(" ")
+260 goto 280
+270 a(b,c)=asc("x")
+280 next c
+290 next b
+300 for d=1 to 10
+310 a(d,1)=asc("x"):a(d,20)=asc("x")
+320 next d
+330 for f=1 to 20
+340 a(1,f)=asc("x"):a(10,f)=asc("x")
+350 next f
+360 goto 410
+370 h=int(2+8*rnd(1))
+380 i=int(2+18*rnd(1))
+390 if a(h,i)<>asc(" ") then 370
+400 return
+410 gosub 370
+420 a(h,i)=asc("*")
+430 j=h:k=i
+440 for n9=1 to 5
+450 gosub 370
+460 a(h,i)=asc("+")
+470 l(n9)=h:m(n9)=i
+480 next n9
+490 for b1=1 to 10:for b2=1 to 20:a1(b1,b2)=a(b1,b2):next b2:next b1
+500 for b1=1 to 5:l1(b1)=l(b1):m1(b1)=m(b1):next b1
+520 j1=j:k1=k
+530 y9=0
+540 for d2=1 to 10
+550 for b2=1 to 20
+560 n$=chr$(a(d2,b2))
+570 print n$;
+580 next b2
+590 print
+600 next d2
+610 if y9 <> 10 then 640
+620 print
+630 goto 890
+640 input y9
+650 j2=j:k2=k
+660 if y9=0 then 860
+670 if y9 < 0 then 1230
+680 if y9=10 then 1070
+690 on y9 goto 820,800,780,840,890,760,700,720,740
+700 j=j-1:k=k-1
+710 goto 890
+720 j=j-1
+730 goto 890
+740 j=j-1:k=k+1
+750 goto 890
+760 k=k+1
+770 goto 890
+780 j=j+1:k=k+1
+790 goto 890
+800 j=j+1
+810 goto 890
+820 j=j+1:k=k-1
+830 goto 890
+840 k=k-1
+850 goto 890
+860 print "$6,000,000 jump!!!"
+870 j=int(2+8*rnd(1))
+880 k=int(2+18*rnd(1))
+890 if a(j,k)=asc("x") then 1260
+900 a(j2,k2)=asc(" ")
+910 a(j,k)=asc("*")
+920 goto 1070
+930 rem interceptor movement
+940 if a(x,y)=asc("x") then 1040
+950 x2=x:y2=y
+960 x=sgn(j-x):y=sgn(k-y)
+970 x=x+x2:y=y+y2
+980 if a(x,y)=asc("*") then 1050
+990 if a(x,y)=asc(" ") then 1020
+1000 a(x2,y2)=asc(" ")
+1010 return
+1020 a(x,y)=asc("+")
+1030 a(x2,y2)=asc(" ")
+1040 return
+1050 g9=99
+1060 return
+1070 for n9=1 to 5
+1080 x=l(n9):y=m(n9)
+1090 g9=0
+1100 gosub 940
+1110 if g9 <> 0 then 1240
+1120 l(n9)=x:m(n9)=y
+1130 next n9
+1140 for n9=1 to 5
+1150 if a(l(n9),m(n9)) <> asc(" ") then 1170
+1160 a(l(n9),m(n9))=asc("+")
+1170 next n9
+1180 for n9=1 to 5
+1190 if a(l(n9),m(n9)) <> asc("x") then 540
+1200 next n9
+1210 print "you have destroyed all your opponents - the game is yours"
+1220 goto 1290
+1230 print "give up, eh."
+1240 print "*** you have been destroyed by a lucky computer ***"
+1250 goto 1290
+1260 print "high voltage!!!!!!!!!!"
+1270 print "***** zap *****  you're dead!!!"
+1280 print
+1290 print "another game (y/n)";
+1300 input n9$
+1310 if n9$ <> "y" then 1400
+1320 print "same setup (y/n)";
+1330 input n9$
+1340 if n9$ <> "y" then 190
+1350 for b1=1 to 10:for b2=1 to 20:a(b1,b2)=a1(b1,b2):next b2:next b1
+1360 for b1=1 to 5:l(b1)=l1(b1):h(b1)=m1(b1):next b1
+1380 j=j1:k=k1
+1390 goto 530
+1400 end

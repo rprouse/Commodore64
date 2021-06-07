@@ -1,139 +1,139 @@
-10 PRINT TAB(26);"BACRAT"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY":PRINT:PRINT:PRINT
-40 PRINT"BACCARAT -- CHEMIN DE FER"
-SO PRINT
-60 PRINT"DO YOU NEED INSTRUCTIONS";
-70 INPUT Q$
-80 IF Q$<>"YES" THEN 210
-90 PRINT"    BACCARAT IS A VERY POPULAR GAME IN LAS"
-100 PRINT"VEGAS.  THE PLAYER AND BANKER EACH RECEIVE"
-110 PRINT"TWO CARDS FROM A 'SHOE' CONTAINING 8 DECKS"
-120 PRINT"OF CARDS.   ALL CARD COMBINATIONS TOTALING"
-130 PRINT"TEN ARE NOT COUNTED.  THE ONE THAT ENDS UP"
-140 PRINT"CLOSER TO NINE WINS.  THE STAKES ARE HIGH,"
-150 PRINT"ALL OF THE PLAYERS START WITH TEN THOUSAND"
-160 PRINT"DOLLARS.  YOU CAN BET ON THE DEALER OR THE"
-170 PRINT"PLAYER.   A THIRD CARD IS GIVEN ONLY UNDER"
-180 PRINT"CERTAIN CONDITIONS, AS YOU WILL SEE.   LET"
-190 PRINT"US BEGIN.      GOOD LUCK!"
-200 PRINT
-210 DIM M(20),F1(20),F(20),B$(13),V(13),G$(20)
-220 DIM Z(9,10),Q(4,13)
-240 FOR X=3 TO 6
-250 FOR Y=1 TO 10
-260 READ Z(X,Y)
-270 NEXT Y,X
-280 FOR S1=1 TO 10:READ W(S1):NEXT
-283 FOR S1=1 TO 4:READ A$(S1):NEXT
-285 FOR S1=1 TO 13:READ B$(S1):NEXT
-287 FOR S1=1 TO 13:READ V(S1):NEXT
-290 PRINT
-300 PRINT"HOW MANY PLAYERS";
-310 INPUT P1
-320 FOR J=1 TO P1
-330 PRINT"WHAT IS THE NAME OF PLAYER"J;
-340 INPUT G$(J)
-350 M(J)=10000
-360 NEXT J
-370 FOR S1=1 TO 4
-373 FOR S2=1 TO 13
-375 Q(S1,S2)=0
-377 NEXT S2
-379 NEXT S1
-380 FOR J=1 TO 6
-390 C=INT(1+RND(1)*4)
-400 D=INT(1+RND(1)*13)
-410 Q(C,D)=Q(C,D)+1
-420 IF Q(C,D)>=32 THEN 390
-430 B(J)=V(D)
-440 C$(J)=B$(D)+" OF "+A$(C)
-450 NEXT J
-460 W1=2
-470 FOR J=1 TO P1
-480 IF M(J)<1 THEN 380
-490 PRINT G$(J)" HAS $"M(J)".   BET";
-500 INPUT F(J)
-510 IF F(J)>M(J) THEN 490
-520 IF F(J)<>INT(F(J)) THEN 490
-530 IF F(J)<1 THEN 490
-540 PRINT"(1) BANKER OR (2) PLAYER";
-550 INPUT F1(J)
-560 IF F1(J)>=1000 THEN 490
-570 IF (F1(J)-1)*(F1(J)-2)<>0 THEN 540
-580 NEXT J
-590 J=0
-600 T1=B(1)+B(2)
-610 T2=B(3)+B(4)
-620 PRINT
-630 PRINT"BANKER"TAB(20)"PLAYER"
-640 PRINT C$(3)TAB(20)C$(1)
-650 PRINT C$(4)TAB(20)C$(2)
-660 IF T1<10 THEN 680
-670 T1=T1-10
-680 IF T2<10 THEN 700
-690 T2=T2-10
-700 IF W(T1+1)=0 THEN 770
-710 PRINT"PLAYER MUST DRAW."
-720 PRINT C$(5)
-730 T1=T1+B(5)
-740 IF T1<10 THEN 770
-750 T1=T1-10
-760 GOTO 790
-770 PRINT"PLAYER CANNOT DRAW."
-780 J=11
-790 PRINT"PLAYERS TOTAL:"T1
-800 PRINT
-810 IF T2<3 THEN 870
-820 IF T2>6 THEN 930
-830 IF J<>11 THEN 860
-840 IF T2=6 THEN 930
-850 GOTO 870
-860 IF Z(T2,B(5)+1)=0 THEN 930
-870 PRINT"BANKER MUST DRAW."
-880 PRINT C$(6)
-890 T2=T2+B(6)
-900 IF T2<10 THEN 920
-910 T2=T2-10
-920 GOTO 940
-930 PRINT"BANKER CANNOT DRAW."
-940 PRINT"BANKERS TOTAL:"T2
-950 PRINT
-960 IF T2<>T1 THEN 990
-970 PRINT"IT'S A TIE.  THE HAND IS PLAYED OVER."
-980 GOTO 380
-990 IF T2<T1 THEN 1030
-1000 W1=1
-1010 PRINT"BANKER WINS!!"
-1020 GOTO 1040
-1030 PRINT"PLAYER WINS!!"
-1040 FOR J=1 TO P1
-1050 IF M(J)<=0 THEN 1130
-1060 PRINT G$(J)" ";
-1070 IF F1(J)=W1 THEN 1110
-1080 M(J)=M(J)-F(J)
-1090 PRINT"LOSES $"F(J)", FOR A TOTAL OF $"M(J)"."
-1100 GOTO 1130
-1110 M(J)=M(J)+F(J)
-1120 PRINT"WINS $"F(J)", FOR A TOTAL OF $"M(J)"."
-1130 NEXT J
-1140 FOR J=1 TO P1
-1150 IF M(J)<>0 THEN 1190
-1160 NEXT J
-1170 PRINT"THANK YOU FOR YOUR MONEY, AND ";
-1180 GOTO 1320
-1190 PRINT
-1200 PRINT"---------- NEW GAME ----------"
-1210 PRINT
-1220 FOR X=1 TO 4
-1230 FOR Y=1 TO 13
-1240 IF Q(X,Y)<>8 THEN 380
-1250 NEXT Y,X
-1260 GOTO 370
-1270 DATA 1,1,1,1,1,1,1,1,0,1,0,0,1,1,1,1,1,1,0,0
-1280 DATA 0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,1,0,0
-1290 DATA 1,1,1,1,1,1,0,0,0,0,SPADES,HEARTS,DIAMONDS
-1300 DATA CLUBS,ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT
-1310 DATA NINE,TEN,JACK,QUEEN,KING,1,2,3,4,5,6,7,8,9,0,0,0,0
-1320 PRINT"THANK YOU FOR PLAYING."
-1330 END
+10 print tab(26);"bacrat"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey":print:print:print
+40 print"baccarat -- chemin de fer"
+so print
+60 print"do you need instructions";
+70 input q$
+80 if q$<>"yes" then 210
+90 print"    baccarat is a very popular game in las"
+100 print"vegas.  the player and banker each receive"
+110 print"two cards from a 'shoe' containing 8 decks"
+120 print"of cards.   all card combinations totaling"
+130 print"ten are not counted.  the one that ends up"
+140 print"closer to nine wins.  the stakes are high,"
+150 print"all of the players start with ten thousand"
+160 print"dollars.  you can bet on the dealer or the"
+170 print"player.   a third card is given only under"
+180 print"certain conditions, as you will see.   let"
+190 print"us begin.      good luck!"
+200 print
+210 dim m(20),f1(20),f(20),b$(13),v(13),g$(20)
+220 dim z(9,10),q(4,13)
+240 for x=3 to 6
+250 for y=1 to 10
+260 read z(x,y)
+270 next y,x
+280 for s1=1 to 10:read w(s1):next
+283 for s1=1 to 4:read a$(s1):next
+285 for s1=1 to 13:read b$(s1):next
+287 for s1=1 to 13:read v(s1):next
+290 print
+300 print"how many players";
+310 input p1
+320 for j=1 to p1
+330 print"what is the name of player"j;
+340 input g$(j)
+350 m(j)=10000
+360 next j
+370 for s1=1 to 4
+373 for s2=1 to 13
+375 q(s1,s2)=0
+377 next s2
+379 next s1
+380 for j=1 to 6
+390 c=int(1+rnd(1)*4)
+400 d=int(1+rnd(1)*13)
+410 q(c,d)=q(c,d)+1
+420 if q(c,d)>=32 then 390
+430 b(j)=v(d)
+440 c$(j)=b$(d)+" of "+a$(c)
+450 next j
+460 w1=2
+470 for j=1 to p1
+480 if m(j)<1 then 380
+490 print g$(j)" has $"m(j)".   bet";
+500 input f(j)
+510 if f(j)>m(j) then 490
+520 if f(j)<>int(f(j)) then 490
+530 if f(j)<1 then 490
+540 print"(1) banker or (2) player";
+550 input f1(j)
+560 if f1(j)>=1000 then 490
+570 if (f1(j)-1)*(f1(j)-2)<>0 then 540
+580 next j
+590 j=0
+600 t1=b(1)+b(2)
+610 t2=b(3)+b(4)
+620 print
+630 print"banker"tab(20)"player"
+640 print c$(3)tab(20)c$(1)
+650 print c$(4)tab(20)c$(2)
+660 if t1<10 then 680
+670 t1=t1-10
+680 if t2<10 then 700
+690 t2=t2-10
+700 if w(t1+1)=0 then 770
+710 print"player must draw."
+720 print c$(5)
+730 t1=t1+b(5)
+740 if t1<10 then 770
+750 t1=t1-10
+760 goto 790
+770 print"player cannot draw."
+780 j=11
+790 print"players total:"t1
+800 print
+810 if t2<3 then 870
+820 if t2>6 then 930
+830 if j<>11 then 860
+840 if t2=6 then 930
+850 goto 870
+860 if z(t2,b(5)+1)=0 then 930
+870 print"banker must draw."
+880 print c$(6)
+890 t2=t2+b(6)
+900 if t2<10 then 920
+910 t2=t2-10
+920 goto 940
+930 print"banker cannot draw."
+940 print"bankers total:"t2
+950 print
+960 if t2<>t1 then 990
+970 print"it's a tie.  the hand is played over."
+980 goto 380
+990 if t2<t1 then 1030
+1000 w1=1
+1010 print"banker wins!!"
+1020 goto 1040
+1030 print"player wins!!"
+1040 for j=1 to p1
+1050 if m(j)<=0 then 1130
+1060 print g$(j)" ";
+1070 if f1(j)=w1 then 1110
+1080 m(j)=m(j)-f(j)
+1090 print"loses $"f(j)", for a total of $"m(j)"."
+1100 goto 1130
+1110 m(j)=m(j)+f(j)
+1120 print"wins $"f(j)", for a total of $"m(j)"."
+1130 next j
+1140 for j=1 to p1
+1150 if m(j)<>0 then 1190
+1160 next j
+1170 print"thank you for your money, and ";
+1180 goto 1320
+1190 print
+1200 print"---------- new game ----------"
+1210 print
+1220 for x=1 to 4
+1230 for y=1 to 13
+1240 if q(x,y)<>8 then 380
+1250 next y,x
+1260 goto 370
+1270 data 1,1,1,1,1,1,1,1,0,1,0,0,1,1,1,1,1,1,0,0
+1280 data 0,0,0,0,1,1,1,1,0,0,0,0,0,0,0,0,1,1,0,0
+1290 data 1,1,1,1,1,1,0,0,0,0,spades,hearts,diamonds
+1300 data clubs,ace,two,three,four,five,six,seven,eight
+1310 data nine,ten,jack,queen,king,1,2,3,4,5,6,7,8,9,0,0,0,0
+1320 print"thank you for playing."
+1330 end

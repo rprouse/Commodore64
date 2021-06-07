@@ -1,259 +1,259 @@
-10 PRINT TAB(24);"TWONKY"
-20 PRINT TAB(18);"CREATIVE COMPUTING"
-30 PRINT TAB(16);"MORRISTOWN  NEW JERSEY"
-40 PRINT:PRINT:PRINT
-140 GOSUB 2250
-150 DIM A(15,15)
-160 LET R9=0
-170 GOSUB 1830
-180 PRINT "------------------------------------------"
-190 PRINT
-200 GOSUB 1450
-210 PRINT
-220 PRINT "MOVE OR SHOOT (M/S)";
-230 INPUT Q8$
-240 IF Q8$="M" THEN 270
-250 IF Q8$="S" THEN 950
-260 GOTO 210
-270 PRINT "WHICH WAY (F/B/R/L)";
-280 INPUT Q$
-290 IF Q$="F" THEN 340
-300 IF Q$="B" THEN 370
-310 IF Q$="L" THEN 400
-320 IF Q$="R" THEN 430
-330 GOTO 210
-340 LET X5=X
-350 LET Y5=Y-1
-360 GOTO 460
-370 LET X5=X
-380 LET Y5=Y+1
-390 GOTO 460
-400 LET X5=X-1
-410 LET Y5=Y
-420 GOTO 460
-430 LET X5=X+1
-440 LET Y5=Y
-450 GOTO 460
-460 IF X5<1 THEN 510
-470 IF X5>15 THEN 510
-480 IF Y5<1 THEN 510
-490 IF Y5>15 THEN 510
-500 GOTO 540
-510 PRINT "THAT MOVE TAKES YOU OUT OF THE MAZE."
-520 PRINT "MOVE NOT ALLOWED."
-530 GOTO 1430
-540 ON (A(X5,Y5)+1) GOTO 550,620,630,660,760,800,920
-550 REM *** EMPTY SPACE
-560 LET A(X,Y)=0
-570 LET A(X5,Y5)=1
-580 LET X=X5
-590 LET Y=Y5
-600 PRINT "MOVE ALLOWED."
-610 GOTO 1430
-620 REM *** IMPOSSIBLE TO GET HERE
-630 REM *** BLOCKED SPACE ROUTINE.
-640 PRINT "THAT SPACE IS BLOCKED."
-650 GOTO 1430
-660 REM *** RELOCATION ROUTINE.
-670 PRINT "YOU'VE BEEN   R E L O C A T E D !!!"
-680 GOSUB 2710
-690 IF A(Z,W)>2 THEN 540
-700 IF A(Z,W) <> 0 THEN 680
-710 LET A(Z,W)=1
-720 LET A(X,Y)=0
-730 LET X=Z
-740 LET Y=W
-750 GOTO 1430
-760 REM *** CHANGE ALL, SUPER TRAP.
-770 PRINT "   YOU HIT THE SUPER TRAP!! YOU GET A NEW MAZE."
-780 GOSUB 1830
-790 GOTO 1430
-800 REM *** HE WON!
-810 PRINT
-820 PRINT "I DON'T BELIEVE IT BUT YOU WON THE GAME!"
-830 PRINT "YOU GOT TO THE OBJECTIVE BEFORE"
-840 PRINT "   THE TWONKY GOT YOU!!"
-850 PRINT
-860 PRINT
-870 PRINT "TRY AGAIN (Y/N)";
-880 INPUT Q$
-890 IF Q$="Y" THEN 160
-900 IF Q$="N" THEN 2750
-910 GOTO 870
-920 REM *** HE LANDED ON TWONKY!]
-930 PRINT "YOU STEPPED ON THE TWONKY!"
-940 GOTO 1790
-950 REM *** SHOOT ROUTINE
-960 PRINT "WHICH MAY (F/B/R/L)";
-970 INPUT Q$
-980 IF Q$="F" THEN 1030
-990 IF Q$="B" THEN 1060
-1000 IF Q$="R" THEN 1120
-1010 IF Q$="L" THEN 1090
-1020 GOTO 210
-1030 LET S1=0
-1040 LET S2=-1
-1050 GOTO 1140
-1060 LET S1=0
-1070 LET S2=1
-1080 GOTO 1140
-1090 LET S1=-1
-1100 LET S2=0
-1110 GOTO 1140
-1120 LET S1=1
-1130 LET S2=0
-1140 LET R1=X
-1150 LET R2=Y
-1160 LET R1=R1+S1
-1170 LET R2=R2+S2
-1180 PRINT "Z A P --";
-1190 IF R1 < 1 THEN 1240
-1200 IF R1 > 15 THEN 1240
-1210 IF R2 < 1 THEN 1240
-1220 IF R2 > 15 THEN 1240
-1230 GOTO 1280
-1240 PRINT "FIZZLE..."
-1250 PRINT "SHOT LEFT MAZE."
-1260 PRINT "SHOT MISSED."
-1270 GOTO 1430
-1280 IF A(R1,R2) <>2 THEN 1330
-1290 PRINT "BLAST!!!!"
-1300 PRINT "YOU HIT WALL."
-1310 PRINT "SHOT MISSED."
-1320 GOTO 1430
-1330 IF A(R1,R2) <> 6 THEN 1160
-1340 PRINT " OUCH!!"
-1350 PRINT "TWONKY RETREATES."
-1360 LET A (R1,R2)=R9
-1370 GOSUB 2710
-1380 IF A(Z,W) <> 0 THEN 1370
-1390 LET A(Z,W)=6
-1410 LET X1=Z
-1420 LET Y1=W
-1430 GOSUB 1450
-1440 GOTO 1570
-1450 REM *** PRIBNT TWONKY AND OBJECTIVE DISTANCE
-1455 PRINT
-1460 PRINT "THE TWONKY IS ";
-1470 D=(SQR(ABS((X1-X)^2+(Y1-Y)^2)))
-1490 PRINT D;
-1500 PRINT " UNITS AWAY."
-1510 PRINT "THE OBJECTIVE IS ";
-1520 D1=(SQR(ABS(X2-X)^2+(Y2-Y)^2))
-1530 PRINT D1;
-1540 PRINT " UNITS AWAY."
-1550 PRINT
-1560 RETURN
-1570 REM *** TWONKYS LOGIC
-1580 IF D<2 THEN 1790
-1590 LET Z2=Y1
-1600 LET Z1=X1
-1610 IF X < X1 THEN 1680
-1620 IF X > X1 THEN 1700
-1630 IF Y < Y1 THEN 1660
-1640 LET Z2=Y1+1
-1650 GOTO 1710
-1660 LET Z2=Y1-1
-1670 GOTO 1710
-1680 LET Z1=X1-1
-1690 GOTO 1710
-1700 LET Z1=X1+1
-1710 LET A(X1,Y1)=R9
-1720 LET R9=A(Z1,Z2)
-1730 LET A(Z1,Z2)=6
-1740 LET X1=Z1
-1750 LET Y1=Z2
-1760 PRINT "TWONKY MOVES...."
-1770 GOSUB 1450
-1780 IF D >= 2 THEN 210
-1790 PRINT
-1800 PRINT "> > > SCHLOORP !!! < < <"
-1810 PRINT "THE TWONKY JUST ABSORBED YOU !! YOU LOSE."
-1820 GOTO 850
-1830 REM *** SET UP NEW MAZE ROUTINE
-1840 REM *** 1=PLAYER, 2=BLOCKED SPACES
-1850 REM *** 3=RELOCATIONS, 4=SUPER TRAP
-1860 REM *** 5=OBJECTIVE, 6=TWONKY
-1870 REM *** 0-EMPTY SPACES
-1880 REM *** CLEAR MAZE
-1883 FOR B0=1 TO 15
-1885 FOR B1=1 TO 15
-1890 LET A(B0,B1)=0
-1893 NEXT B1
-1895 NEXT B0
-1910 FOR I=1 TO 30
-1920 GOSUB 2710
-1930 IF A(Z,W) <> 0 THEN 1920
-1940 LET A(Z,W)=2
-1950 NEXT I
-1960 REM *** PLACE RELOCATIONS
-1970 FOR I=1 TO 22
-1980 GOSUB 2710
-1990 IF A(Z,W) <> 0 THEN 1980
-2000 LET A(Z,W)=3
-2010 NEXT I
-2020 REM *** PLACE THE SPECIAL TRAP
-2030 GOSUB 2710
-2040 IF A(Z,W) <> 0 THEN 2030
-2050 LET A(Z,W)=4
-2060 REM *** PLACE THE PLAYER
-2070 GOSUB 2710
-2080 IF A(Z,W) <> 0 THEN 2070
-2090 LET A(Z,W)=1
-2100 LET X=Z
-2110 LET Y=W
-2120 REM *** PLACE THE OBJECTIVE
-2130 GOSUB 2710
-2140 IF A(Z,W) <> 0 THEN 2130
-2150 LET A(Z,W)=5
-2160 LET X2=Z
-2170 LET Y2=W
-2180 REM *** PLACE THE TWONKY
-2190 GOSUB 2710
-2200 IF A(Z,W) <> 0 THEN 2190
-2210 LET A(Z,W)=6
-2220 LET X1=Z
-2230 LET Y1=W
-2240 RETURN
-2250 REM
-2310 PRINT "DO YOU WANT INSTRUCTIONS (Y/N)";
-2320 INPUT Q$
-2330 IF Q$="N" THEN 2700
-2340 IF Q$ <> "Y" THEN 2310
-2350 PRINT:PRINT:PRINT
-2380 PRINT "THIS IS THE GAME OF TWONKY."
-2410 PRINT "YOU HAVE LANDED ON THE PLANET OF TWINKY AND"
-2420 PRINT "ITS KING (KONG:THEIR KING IS KING KONG) HAS "
-2430 PRINT "CAPTURED YOU. HE HAS PUT YOU IN A MAZE THAT IS"
-2440 PRINT "15 * 15 UNITS LONG. YOU ARE IN THE DARK AND CANNOT"
-2450 PRINT "SEE... YOU MUST GET TO THE OBJECTIVE SQUARE AND"
-2460 PRINT "BE SET FREE."
-2470 PRINT
-2480 PRINT "     HAZARDS INCLUDE:"
-2490 PRINT "SQUARES THAT YOU CANNOT GO INTO (30)."
-2500 PRINT "SQUARES THAT RANDOMLY THROW YOU AROUND THE MAZE (22)."
-2510 PRINT "SQUARE THAT SETS UP A NEW MAZE AND ALL THAT'S IN IT (1)"
-2520 PRINT "MONSTER CALLED TWONKY THAT CHASES YOU AND WILL"
-2530 PRINT "    ABSORB YOU IF THE DISTANCE IT IS FROM YOU FALLS"
-2540 PRINT "    BELOW 2 UNITS."
-2550 PRINT "    TWONKY IS ALSO IMMUNE TO ALL TRAPS INCLUDING"
-2560 PRINT "      WALLS."
-2570 PRINT
-2590 PRINT "    YOU CAN:"  
-2600 PRINT "MOVE ONE SQUARE AT A TIME TO FIND THE OBJECTIVE"
-2610 PRINT "     OR ESCAPE FRON THE TWONKY."
-2620 PRINT "SHOOT AT THE TWONKY ONE DIRECTION AT A TIME."
-2630 PRINT "  IF THE TWONKY IS HIT, HE WILL BE REPLACED IN THE"
-2640 PRINT "        MAZE RANDOMLY."
-2645 PRINT
-2650 PRINT "IF THE TWONKY ABSORBS YOU...YOU LOSE."
-2660 PRINT " IF YOU LAND ON THE OBJECTIVE SQUARE YOU WIN."
-2670 PRINT
-2680 PRINT "GOOD LUCK!"
-2690 PRINT
-2700 RETURN
-2710 REM *** SUBROUTINE TO GET 2 RANDOM NUMBERS
-2720 LET Z=INT(RND(1)*15+1)
-2730 LET W=INT(RND(1)*15+1)
-2740 RETURN
-2750 END
+10 print tab(24);"twonky"
+20 print tab(18);"creative computing"
+30 print tab(16);"morristown  new jersey"
+40 print:print:print
+140 gosub 2250
+150 dim a(15,15)
+160 let r9=0
+170 gosub 1830
+180 print "------------------------------------------"
+190 print
+200 gosub 1450
+210 print
+220 print "move or shoot (m/s)";
+230 input q8$
+240 if q8$="m" then 270
+250 if q8$="s" then 950
+260 goto 210
+270 print "which way (f/b/r/l)";
+280 input q$
+290 if q$="f" then 340
+300 if q$="b" then 370
+310 if q$="l" then 400
+320 if q$="r" then 430
+330 goto 210
+340 let x5=x
+350 let y5=y-1
+360 goto 460
+370 let x5=x
+380 let y5=y+1
+390 goto 460
+400 let x5=x-1
+410 let y5=y
+420 goto 460
+430 let x5=x+1
+440 let y5=y
+450 goto 460
+460 if x5<1 then 510
+470 if x5>15 then 510
+480 if y5<1 then 510
+490 if y5>15 then 510
+500 goto 540
+510 print "that move takes you out of the maze."
+520 print "move not allowed."
+530 goto 1430
+540 on (a(x5,y5)+1) goto 550,620,630,660,760,800,920
+550 rem *** empty space
+560 let a(x,y)=0
+570 let a(x5,y5)=1
+580 let x=x5
+590 let y=y5
+600 print "move allowed."
+610 goto 1430
+620 rem *** impossible to get here
+630 rem *** blocked space routine.
+640 print "that space is blocked."
+650 goto 1430
+660 rem *** relocation routine.
+670 print "you've been   r e l o c a t e d !!!"
+680 gosub 2710
+690 if a(z,w)>2 then 540
+700 if a(z,w) <> 0 then 680
+710 let a(z,w)=1
+720 let a(x,y)=0
+730 let x=z
+740 let y=w
+750 goto 1430
+760 rem *** change all, super trap.
+770 print "   you hit the super trap!! you get a new maze."
+780 gosub 1830
+790 goto 1430
+800 rem *** he won!
+810 print
+820 print "i don't believe it but you won the game!"
+830 print "you got to the objective before"
+840 print "   the twonky got you!!"
+850 print
+860 print
+870 print "try again (y/n)";
+880 input q$
+890 if q$="y" then 160
+900 if q$="n" then 2750
+910 goto 870
+920 rem *** he landed on twonky!]
+930 print "you stepped on the twonky!"
+940 goto 1790
+950 rem *** shoot routine
+960 print "which may (f/b/r/l)";
+970 input q$
+980 if q$="f" then 1030
+990 if q$="b" then 1060
+1000 if q$="r" then 1120
+1010 if q$="l" then 1090
+1020 goto 210
+1030 let s1=0
+1040 let s2=-1
+1050 goto 1140
+1060 let s1=0
+1070 let s2=1
+1080 goto 1140
+1090 let s1=-1
+1100 let s2=0
+1110 goto 1140
+1120 let s1=1
+1130 let s2=0
+1140 let r1=x
+1150 let r2=y
+1160 let r1=r1+s1
+1170 let r2=r2+s2
+1180 print "z a p --";
+1190 if r1 < 1 then 1240
+1200 if r1 > 15 then 1240
+1210 if r2 < 1 then 1240
+1220 if r2 > 15 then 1240
+1230 goto 1280
+1240 print "fizzle..."
+1250 print "shot left maze."
+1260 print "shot missed."
+1270 goto 1430
+1280 if a(r1,r2) <>2 then 1330
+1290 print "blast!!!!"
+1300 print "you hit wall."
+1310 print "shot missed."
+1320 goto 1430
+1330 if a(r1,r2) <> 6 then 1160
+1340 print " ouch!!"
+1350 print "twonky retreates."
+1360 let a (r1,r2)=r9
+1370 gosub 2710
+1380 if a(z,w) <> 0 then 1370
+1390 let a(z,w)=6
+1410 let x1=z
+1420 let y1=w
+1430 gosub 1450
+1440 goto 1570
+1450 rem *** pribnt twonky and objective distance
+1455 print
+1460 print "the twonky is ";
+1470 d=(sqr(abs((x1-x)^2+(y1-y)^2)))
+1490 print d;
+1500 print " units away."
+1510 print "the objective is ";
+1520 d1=(sqr(abs(x2-x)^2+(y2-y)^2))
+1530 print d1;
+1540 print " units away."
+1550 print
+1560 return
+1570 rem *** twonkys logic
+1580 if d<2 then 1790
+1590 let z2=y1
+1600 let z1=x1
+1610 if x < x1 then 1680
+1620 if x > x1 then 1700
+1630 if y < y1 then 1660
+1640 let z2=y1+1
+1650 goto 1710
+1660 let z2=y1-1
+1670 goto 1710
+1680 let z1=x1-1
+1690 goto 1710
+1700 let z1=x1+1
+1710 let a(x1,y1)=r9
+1720 let r9=a(z1,z2)
+1730 let a(z1,z2)=6
+1740 let x1=z1
+1750 let y1=z2
+1760 print "twonky moves...."
+1770 gosub 1450
+1780 if d >= 2 then 210
+1790 print
+1800 print "> > > schloorp !!! < < <"
+1810 print "the twonky just absorbed you !! you lose."
+1820 goto 850
+1830 rem *** set up new maze routine
+1840 rem *** 1=player, 2=blocked spaces
+1850 rem *** 3=relocations, 4=super trap
+1860 rem *** 5=objective, 6=twonky
+1870 rem *** 0-empty spaces
+1880 rem *** clear maze
+1883 for b0=1 to 15
+1885 for b1=1 to 15
+1890 let a(b0,b1)=0
+1893 next b1
+1895 next b0
+1910 for i=1 to 30
+1920 gosub 2710
+1930 if a(z,w) <> 0 then 1920
+1940 let a(z,w)=2
+1950 next i
+1960 rem *** place relocations
+1970 for i=1 to 22
+1980 gosub 2710
+1990 if a(z,w) <> 0 then 1980
+2000 let a(z,w)=3
+2010 next i
+2020 rem *** place the special trap
+2030 gosub 2710
+2040 if a(z,w) <> 0 then 2030
+2050 let a(z,w)=4
+2060 rem *** place the player
+2070 gosub 2710
+2080 if a(z,w) <> 0 then 2070
+2090 let a(z,w)=1
+2100 let x=z
+2110 let y=w
+2120 rem *** place the objective
+2130 gosub 2710
+2140 if a(z,w) <> 0 then 2130
+2150 let a(z,w)=5
+2160 let x2=z
+2170 let y2=w
+2180 rem *** place the twonky
+2190 gosub 2710
+2200 if a(z,w) <> 0 then 2190
+2210 let a(z,w)=6
+2220 let x1=z
+2230 let y1=w
+2240 return
+2250 rem
+2310 print "do you want instructions (y/n)";
+2320 input q$
+2330 if q$="n" then 2700
+2340 if q$ <> "y" then 2310
+2350 print:print:print
+2380 print "this is the game of twonky."
+2410 print "you have landed on the planet of twinky and"
+2420 print "its king (kong:their king is king kong) has "
+2430 print "captured you. he has put you in a maze that is"
+2440 print "15 * 15 units long. you are in the dark and cannot"
+2450 print "see... you must get to the objective square and"
+2460 print "be set free."
+2470 print
+2480 print "     hazards include:"
+2490 print "squares that you cannot go into (30)."
+2500 print "squares that randomly throw you around the maze (22)."
+2510 print "square that sets up a new maze and all that's in it (1)"
+2520 print "monster called twonky that chases you and will"
+2530 print "    absorb you if the distance it is from you falls"
+2540 print "    below 2 units."
+2550 print "    twonky is also immune to all traps including"
+2560 print "      walls."
+2570 print
+2590 print "    you can:"  
+2600 print "move one square at a time to find the objective"
+2610 print "     or escape fron the twonky."
+2620 print "shoot at the twonky one direction at a time."
+2630 print "  if the twonky is hit, he will be replaced in the"
+2640 print "        maze randomly."
+2645 print
+2650 print "if the twonky absorbs you...you lose."
+2660 print " if you land on the objective square you win."
+2670 print
+2680 print "good luck!"
+2690 print
+2700 return
+2710 rem *** subroutine to get 2 random numbers
+2720 let z=int(rnd(1)*15+1)
+2730 let w=int(rnd(1)*15+1)
+2740 return
+2750 end

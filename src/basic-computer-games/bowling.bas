@@ -1,101 +1,101 @@
-10 PRINT TAB(34);"BOWL"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-270 DIM C(15),A(100,6)
-360 PRINT "WELCOME TO THE ALLEY"
-450 PRINT "BRING YOUR FRIENDS"
-540 PRINT "OKAY LET'S FIRST GET ACQUAINTED"
-630 PRINT ""
-720 PRINT "THE INSTRUCTIONS (Y/N)"
-810 INPUT Z$
-900 IF Z$="Y" THEN 990
-960 IF Z$="N" THEN 1530
-990 PRINT "THE GAME OF BOWLING TAKES MIND AND SKILL.DURING THE GAME"
-1080 PRINT "THE COMPUTER WILL KEEP SCORE.YOU MAY COMPETE WITH"
-1170 PRINT "OTHER PLAYERS[UP TO FOUR].YOU WILL BE PLAYING TEN FRAMES"
-1260 PRINT "ON THE PIN DIAGRAM 'O' MEANS THE PIN IS DOWN...'+' MEANS THE"
-1350 PRINT "PIN IS STANDING.AFTER THE GAME THE COMPUTER WILL SHOW YOUR"
-1440 PRINT "SCORES ."
-1530 PRINT "FIRST OF ALL...HOW MANY ARE PLAYING";
-1620 INPUT R
-1710 PRINT 
-1800 PRINT "VERY GOOD..."
-1890 FOR I=1 TO 100: FOR J=1 TO 6: A(I,J)=0: NEXT J: NEXT I
-1980 F=1
-2070 FOR P=1 TO R
-2160 M=0
-2250 B=1
-2340 M=0: Q=0
-2430 FOR I=1 TO 15: C(I)=0: NEXT I
-2520 REM ARK BALL GENERATOR USING MOD '15' SYSTEM
-2610 PRINT "TYPE ROLL TO GET THE BALL GOING."
-2700 INPUT N$
-2790 K=0: D=0
-2880 FOR I=1 TO 20
-2970 X=INT(RND(1)*100)
-3060 FOR J=1 TO 10
-3150 IF X<15*J THEN 3330
-3240 NEXT J
-3330 C(15*J-X)=1
-3420 NEXT I
-3510 REM ARK PIN DIAGRAM
-3600 PRINT "PLAYER:"P;"FRAME:";F"BALL:"B
-3690 FOR I=0 TO 3
-3780 PRINT
-3870 FOR J=1 TO 4-I
-3960 K=K+1
-4050 IF C(K)=1 THEN 4320
-4140 PRINT TAB(I);"+ ";
-4230 GOTO 4410
-4320 PRINT TAB(I);"O ";
-4410 NEXT J
-4500 NEXT I
-4590 PRINT ""
-4680 REM ARK ROLL ANALYSIS
-4770 FOR I=1 TO 10
-4860 D=D+C(I)
-4950 NEXT I
-5040 IF D-M <> 0 THEN 5220
-5130 PRINT "GUTTER!!"
-5220 IF B<>1 OR D<>10 THEN 5490
-5310 PRINT "STRIKE!!!!!"
-5400 Q=3
-5490 IF B<>2 OR D<>10 THEN 5760
-5580 PRINT "SPARE!!!!"
-5670 Q=2
-5760 IF B<>2 OR D>=10 THEN 6030
-5850 PRINT "ERROR!!!"
-5940 Q=1
-6030 IF B<>1 OR D>=10 THEN 6210
-6120 PRINT "ROLL YOUR 2ND BALL"
-6210 REM ARK STORAGE OF THE SCORES
-6300 PRINT 
-6390 A(F*P,B)=D
-6480 IF B=2 THEN 7020
-6570 B=2
-6660 M=D
-6750 IF Q=3 THEN 6210
-6840 A(F*P,B)=D-M
-6930 IF Q=0 THEN 2520
-7020 A(F*P,3)=Q
-7110 NEXT P
-7200 F=F+1
-7290 IF F<11 THEN 2070
-7295 PRINT "FRAMES"
-7380 FOR I=1 TO 10
-7470 PRINT I;
-7560 NEXT I
-7650 PRINT 
-7740 FOR P=1 TO R
-7830 FOR I=1 TO 3
-7920 FOR J=1 TO 10
-8010 PRINT A(J*P,I);
-8100 NEXT J
-8105 PRINT 
-8190 NEXT I
-8280 PRINT 
-8370 NEXT P
-8460 PRINT "DO YOU WANT ANOTHER GAME"
-8550 INPUT A$
-8640 IF LEFT$(A$,1)="Y" THEN 2610
-8730 END
+10 print tab(34);"bowl"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+270 dim c(15),a(100,6)
+360 print "welcome to the alley"
+450 print "bring your friends"
+540 print "okay let's first get acquainted"
+630 print ""
+720 print "the instructions (y/n)"
+810 input z$
+900 if z$="y" then 990
+960 if z$="n" then 1530
+990 print "the game of bowling takes mind and skill.during the game"
+1080 print "the computer will keep score.you may compete with"
+1170 print "other players[up to four].you will be playing ten frames"
+1260 print "on the pin diagram 'o' means the pin is down...'+' means the"
+1350 print "pin is standing.after the game the computer will show your"
+1440 print "scores ."
+1530 print "first of all...how many are playing";
+1620 input r
+1710 print 
+1800 print "very good..."
+1890 for i=1 to 100: for j=1 to 6: a(i,j)=0: next j: next i
+1980 f=1
+2070 for p=1 to r
+2160 m=0
+2250 b=1
+2340 m=0: q=0
+2430 for i=1 to 15: c(i)=0: next i
+2520 rem ark ball generator using mod '15' system
+2610 print "type roll to get the ball going."
+2700 input n$
+2790 k=0: d=0
+2880 for i=1 to 20
+2970 x=int(rnd(1)*100)
+3060 for j=1 to 10
+3150 if x<15*j then 3330
+3240 next j
+3330 c(15*j-x)=1
+3420 next i
+3510 rem ark pin diagram
+3600 print "player:"p;"frame:";f"ball:"b
+3690 for i=0 to 3
+3780 print
+3870 for j=1 to 4-i
+3960 k=k+1
+4050 if c(k)=1 then 4320
+4140 print tab(i);"+ ";
+4230 goto 4410
+4320 print tab(i);"o ";
+4410 next j
+4500 next i
+4590 print ""
+4680 rem ark roll analysis
+4770 for i=1 to 10
+4860 d=d+c(i)
+4950 next i
+5040 if d-m <> 0 then 5220
+5130 print "gutter!!"
+5220 if b<>1 or d<>10 then 5490
+5310 print "strike!!!!!"
+5400 q=3
+5490 if b<>2 or d<>10 then 5760
+5580 print "spare!!!!"
+5670 q=2
+5760 if b<>2 or d>=10 then 6030
+5850 print "error!!!"
+5940 q=1
+6030 if b<>1 or d>=10 then 6210
+6120 print "roll your 2nd ball"
+6210 rem ark storage of the scores
+6300 print 
+6390 a(f*p,b)=d
+6480 if b=2 then 7020
+6570 b=2
+6660 m=d
+6750 if q=3 then 6210
+6840 a(f*p,b)=d-m
+6930 if q=0 then 2520
+7020 a(f*p,3)=q
+7110 next p
+7200 f=f+1
+7290 if f<11 then 2070
+7295 print "frames"
+7380 for i=1 to 10
+7470 print i;
+7560 next i
+7650 print 
+7740 for p=1 to r
+7830 for i=1 to 3
+7920 for j=1 to 10
+8010 print a(j*p,i);
+8100 next j
+8105 print 
+8190 next i
+8280 print 
+8370 next p
+8460 print "do you want another game"
+8550 input a$
+8640 if left$(a$,1)="y" then 2610
+8730 end

@@ -1,83 +1,83 @@
-2 PRINT TAB(33);"HELLO"
-4 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-6 PRINT: PRINT: PRINT
-10 PRINT "HELLO.  MY NAME IS CREATIVE COMPUTER."
-20 PRINT: PRINT: INPUT "WHAT'S YOUR NAME";N$: PRINT
-30 PRINT "HI THERE, ";N$;", ARE YOU ENJOYING YOURSELF HERE";
-40 INPUT B$: PRINT
-50 IF B$="YES" THEN 70
-55 IF B$="NO" THEN 80
-60 PRINT N$;", I DON'T UNDERSTAND YOUR ANSWER OF '";B$;"'."
-65 PRINT "PLEASE ANSWER 'YES' OR 'NO'.  DO YOU LIKE IT HERE";: GOTO 40
-70 PRINT "I'M GLAD TO HEAR THAT, ";N$;".": PRINT
-75 GOTO 100
-80 PRINT "OH, I'M SORRY TO HEAR THAT, ";N$;". MAYBE WE CAN"
-85 PRINT "BRIGHTEN UP YOUR VISIT A BIT."
-100 PRINT
-105 PRINT "SAY, ";N$;", I CAN SOLVE ALL KINDS OF PROBLEMS EXCEPT"
-110 PRINT "THOSE DEALING WITH GREECE.  WHAT KIND OF PROBLEMS DO"
-120 PRINT "YOU HAVE (ANSWER SEX, HEALTH, MONEY, OR JOB)";
-125 INPUT C$
-126 PRINT
-130 IF C$="SEX" THEN 200
-132 IF C$="HEALTH" THEN 180
-134 IF C$="MONEY" THEN 160
-136 IF C$="JOB" THEN 145
-138 PRINT "OH, ";N$;", YOUR ANSWER OF ";C$;" IS GREEK TO ME."
-140 GOTO 250
-145 PRINT "I CAN SYMPATHIZE WITH YOU ";N$;".  I HAVE TO WORK"
-148 PRINT "VERY LONG HOURS FOR NO PAY -- AND SOME OF MY BOSSES"
-150 PRINT "REALLY BEAT ON MY KEYBOARD.  MY ADVICE TO YOU, ";N$;","
-153 PRINT "IS TO OPEN A RETAIL COMPUTER STORE.  IT'S GREAT FUN."
-155 GOTO 250
-160 PRINT "SORRY, ";N$;", I'M BROKE TOO.  WHY DON'T YOU SELL"
-162 PRINT "ENCYCLOPEADIAS OR MARRY SOMEONE RICH OR STOP EATING"
-164 PRINT "SO YOU WON'T NEED SO MUCH MONEY?"
-170 GOTO 250
-180 PRINT "MY ADVICE TO YOU ";N$;" IS:"
-185 PRINT "     1.  TAKE TWO ASPRIN"
-188 PRINT "     2.  DRINK PLENTY OF FLUIDS (ORANGE JUICE, NOT BEER!)"
-190 PRINT "     3.  GO TO BED (ALONE)"
-195 GOTO 250
-200 INPUT "IS YOUR PROBLEM TOO MUCH OR TOO LITTLE";D$: PRINT
-210 IF D$="TOO MUCH" THEN 220
-212 IF D$="TOO LITTLE" THEN 230
-215 PRINT "DON'T GET ALL SHOOK, ";N$;", JUST ANSWER THE QUESTION"
-217 INPUT "WITH 'TOO MUCH' OR 'TOO LITTLE'.  WHICH IS IT";D$:GOTO 210
-220 PRINT "YOU CALL THAT A PROBLEM?!!  I SHOULD HAVE SUCH PROBLEMS!"
-225 PRINT "IF IT BOTHERS YOU, ";N$;", TAKE A COLD SHOWER."
-228 GOTO 250
-230 PRINT "WHY ARE YOU HERE IN SUFFERN, ";N$;"?  YOU SHOULD BE"
-235 PRINT "IN TOKYO OR NEW YORK OR AMSTERDAM OR SOMEPLACE WITH SOME"
-240 PRINT "REAL ACTION."
-250 PRINT
-255 PRINT "ANY MORE PROBLEMS YOU WANT SOLVED, ";N$;
-260 INPUT E$: PRINT
-270 IF E$="YES" THEN 280
-273 IF E$="NO" THEN 300
-275 PRINT "JUST A SIMPLE 'YES' OR 'NO' PLEASE, ";N$;"."
-277 GOTO 255
-280 PRINT "WHAT KIND (SEX, MONEY, HEALTH, JOB)";
-282 GOTO 125
-300 PRINT
-302 PRINT "THAT WILL BE $5.00 FOR THE ADVICE, ";N$;"."
-305 PRINT "PLEASE LEAVE THE MONEY ON THE TERMINAL."
-307 FOR I=1 TO 2000: NEXT I
-310 PRINT: PRINT: PRINT
-315 PRINT "DID YOU LEAVE THE MONEY";
-320 INPUT G$: PRINT
-325 IF G$="YES" THEN 350
-330 IF G$="NO" THEN 370
-335 PRINT "YOUR ANSWER OF '";G$;"' CONFUSES ME, ";N$;"."
-340 PRINT "PLEASE RESPOND WITH 'YES' OR 'NO'.": GOTO 315
-350 PRINT "HEY, ";N$;"??? YOU LEFT NO MONEY AT ALL!"
-355 PRINT "YOU ARE CHEATING ME OUT OF MY HARD-EARNED LIVING."
-360 PRINT:PRINT "WHAT A RIP OFF, ";N$;"!!!":PRINT
-365 GOTO 385
-370 PRINT "THAT'S HONEST, ";N$;", BUT HOW DO YOU EXPECT"
-375 PRINT "ME TO GO ON WITH MY PSYCHOLOGY STUDIES IF MY PATIENTS"
-380 PRINT "DON'T PAY THEIR BILLS?"
-385 PRINT:PRINT "TAKE A WALK, ";N$;".":PRINT:PRINT:GOTO 999
-390 PRINT "NICE MEETING YOU, ";N$;", HAVE A NICE DAY."
-400 REM
-999 END
+2 print tab(33);"hello"
+4 print tab(15);"creative computing  morristown, new jersey"
+6 print: print: print
+10 print "hello.  my name is creative computer."
+20 print: print: input "what's your name";n$: print
+30 print "hi there, ";n$;", are you enjoying yourself here";
+40 input b$: print
+50 if b$="yes" then 70
+55 if b$="no" then 80
+60 print n$;", i don't understand your answer of '";b$;"'."
+65 print "please answer 'yes' or 'no'.  do you like it here";: goto 40
+70 print "i'm glad to hear that, ";n$;".": print
+75 goto 100
+80 print "oh, i'm sorry to hear that, ";n$;". maybe we can"
+85 print "brighten up your visit a bit."
+100 print
+105 print "say, ";n$;", i can solve all kinds of problems except"
+110 print "those dealing with greece.  what kind of problems do"
+120 print "you have (answer sex, health, money, or job)";
+125 input c$
+126 print
+130 if c$="sex" then 200
+132 if c$="health" then 180
+134 if c$="money" then 160
+136 if c$="job" then 145
+138 print "oh, ";n$;", your answer of ";c$;" is greek to me."
+140 goto 250
+145 print "i can sympathize with you ";n$;".  i have to work"
+148 print "very long hours for no pay -- and some of my bosses"
+150 print "really beat on my keyboard.  my advice to you, ";n$;","
+153 print "is to open a retail computer store.  it's great fun."
+155 goto 250
+160 print "sorry, ";n$;", i'm broke too.  why don't you sell"
+162 print "encyclopeadias or marry someone rich or stop eating"
+164 print "so you won't need so much money?"
+170 goto 250
+180 print "my advice to you ";n$;" is:"
+185 print "     1.  take two asprin"
+188 print "     2.  drink plenty of fluids (orange juice, not beer!)"
+190 print "     3.  go to bed (alone)"
+195 goto 250
+200 input "is your problem too much or too little";d$: print
+210 if d$="too much" then 220
+212 if d$="too little" then 230
+215 print "don't get all shook, ";n$;", just answer the question"
+217 input "with 'too much' or 'too little'.  which is it";d$:goto 210
+220 print "you call that a problem?!!  i should have such problems!"
+225 print "if it bothers you, ";n$;", take a cold shower."
+228 goto 250
+230 print "why are you here in suffern, ";n$;"?  you should be"
+235 print "in tokyo or new york or amsterdam or someplace with some"
+240 print "real action."
+250 print
+255 print "any more problems you want solved, ";n$;
+260 input e$: print
+270 if e$="yes" then 280
+273 if e$="no" then 300
+275 print "just a simple 'yes' or 'no' please, ";n$;"."
+277 goto 255
+280 print "what kind (sex, money, health, job)";
+282 goto 125
+300 print
+302 print "that will be $5.00 for the advice, ";n$;"."
+305 print "please leave the money on the terminal."
+307 for i=1 to 2000: next i
+310 print: print: print
+315 print "did you leave the money";
+320 input g$: print
+325 if g$="yes" then 350
+330 if g$="no" then 370
+335 print "your answer of '";g$;"' confuses me, ";n$;"."
+340 print "please respond with 'yes' or 'no'.": goto 315
+350 print "hey, ";n$;"??? you left no money at all!"
+355 print "you are cheating me out of my hard-earned living."
+360 print:print "what a rip off, ";n$;"!!!":print
+365 goto 385
+370 print "that's honest, ";n$;", but how do you expect"
+375 print "me to go on with my psychology studies if my patients"
+380 print "don't pay their bills?"
+385 print:print "take a walk, ";n$;".":print:print:goto 999
+390 print "nice meeting you, ";n$;", have a nice day."
+400 rem
+999 end

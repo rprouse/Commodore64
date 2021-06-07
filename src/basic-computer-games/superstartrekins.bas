@@ -1,127 +1,127 @@
-10 REM INSTRUCTIONS FOR "SUPER STARTREK"  MAR 5, 1978
-20 FOR I=1 TO 12:PRINT:NEXT I
-21 PRINT TAB(10);"*************************************"
-22 PRINT TAB(10);"*                                   *"
-23 PRINT TAB(10);"*                                   *"
-30 PRINT TAB(10);"*      * * SUPER STAR TREK * *      *"
-31 PRINT TAB(10);"*                                   *"
-32 PRINT TAB(10);"*                                   *"
-35 PRINT TAB(10);"*************************************"
-36 FOR I=1 TO 8:PRINT:NEXT I
-40 INPUT "DO YOU NEED INSTRUCTIONS (Y/N)";K$:IF K$="N" THEN 2000
-44 PRINT
-45 REM PRINT "TURN THE TTY ON-LINE AND HIT ANY KEY EXCEPT RETURN"
-46 REM IF INP(1)=13 THEN 46
-50 REM POKE 1229,2:POKE 1237,3:NULL 1
-90 PRINT"      INSTRUCTIONS FOR 'SUPER STAR TREK'"
-100 PRINT
-110 PRINT"1. WHEN YOU SEE \COMMAND ?\ PRINTED, ENTER ONE OF THE LEGAL"
-120 PRINT"     COMMANDS (NAV,SRS,LRS,PHA,TOR,SHE,DAM,COM, OR XXX)."
-130 PRINT"2. IF YOU SHOULD TYPE IN AN ILLEGAL COMMAND, YOU'LL GET A SHORT"
-140 PRINT"     LIST OF THE LEGAL COMMANDS PRINTED OUT."
-150 PRINT"3. SOME COMMANDS REQUIRE YOU TO ENTER DATA (FOR EXAMPLE, THE"
-160 PRINT"     'NAV' COMMAND COMES BACK WITH 'COURSE (1-9) ?'.)  IF YOU"
-170 PRINT"     TYPE IN ILLEGAL DATA (LIKE NEGATIVE NUMBERS), THAN COMMAND"
-180 PRINT"     WILL BE ABORTED"
-190 PRINT
-270 PRINT"     THE GALAXY IS DIVIDED INTO AN 8 X 8 QUADRANT GRID,"
-280 PRINT"AND EACH QUADRANT IS FURTHER DIVIDED INTO AN 8 X 8 SECTOR GRID."
-290 PRINT
-300 PRINT"     YOU WILL BE ASSIGNED A STARTING POINT SOMEWHERE IN THE"
-310 PRINT"GALAXY TO BEGIN A TOUR OF DUTY AS COMANDER OF THE STARSHIP"
-320 PRINT"\ENTERPRISE\; YOUR MISSION: TO SEEK AND DESTROY THE FLEET OF"
-330 PRINT"KLINGON WARWHIPS WHICH ARE MENACING THE UNITED FEDERATION OF"
-340 PRINT"PLANETS."
-360 PRINT
-370 PRINT"     YOU HAVE THE FOLLOWING COMMANDS AVAILABLE TO YOU AS CAPTAIN"
-380 PRINT"OF THE STARSHIP ENTERPRISE:"
-385 PRINT
-390 PRINT"\NAV\ COMMAND = WARP ENGINE CONTROL --"
-400 PRINT"     COURSE IS IN A CIRCULAR NUMERICAL      4  3  2"
-410 PRINT"     VECTOR ARRANGEMENT AS SHOWN             . . ."
-420 PRINT"     INTEGER AND REAL VALUES MAY BE           ..."
-430 PRINT"     USED.  (THUS COURSE 1.5 IS HALF-     5 ---*--- 1"
-440 PRINT"     WAY BETWEEN 1 AND 2                      ..."
-450 PRINT"                                             . . ."
-460 PRINT"     VALUES MAY APPROACH 9.0, WHICH         6  7  8"
-470 PRINT"     ITSELF IS EQUIVALENT TO 1.0"         
-480 PRINT"                                            COURSE"
-490 PRINT"     ONE WARP FACTOR IS THE SIZE OF "
-500 PRINT"     ONE QUADTANT.  THEREFORE, TO GET"
-510 PRINT"     FROM QUADRANT 6,5 TO 5,5, YOU WOULD"
-520 PRINT"     USE COURSE 3, WARP FACTOR 1."
-530 PRINT
-540 PRINT"\SRS\ COMMAND = SHORT RANGE SENSOR SCAN"
-550 PRINT"     SHOWS YOU A SCAN OF YOUR PRESENT QUADRANT."
-555 PRINT
-560 PRINT"     SYMBOLOGY ON YOUR SENSOR SCREEN IS AS FOLLOWS:"
-570 PRINT"        <*> = YOUR STARSHIP'S POSITION"
-580 PRINT"        +K+ = KLINGON BATTLE CRUISER"
-590 PRINT"        >!< = FEDERATION STARBASE (REFUEL/REPAIR/RE-ARM HERE!)"
-600 PRINT"         *  = STAR"
-605 PRINT
-610 PRINT"     A CONDENSED 'STATUS REPORT' WILL ALSO BE PRESENTED."
-620 PRINT
-640 PRINT"\LRS\ COMMAND = LONG RANGE SENSOR SCAN"
-650 PRINT"     SHOWS CONDITIONS IN SPACE FOR ONE QUADRANT ON EACH SIDE"
-660 PRINT"     OF THE ENTERPRISE (WHICH IS IN THE MIDDLE OF THE SCAN)"
-670 PRINT"     THE SCAN IS CODED IN THE FORM \###\, WHERE TH UNITS DIGIT"
-680 PRINT"     IS THE NUMBER OF STARS, THE TENS DIGIT IS THE NUMBER OF"
-690 PRINT"     STARBASES, AND THE HUNDRESDS DIGIT IS THE NUMBER OF"
-700 PRINT"     KLINGONS."
-705 PRINT
-706 PRINT"     EXAMPLE - 207 = 2 KLINGONS, NO STARBASES, & 7 STARS."
-710 PRINT
-720 PRINT"\PHA\ COMMAND = PHASER CONTROL."
-730 PRINT"     ALLOWS YOU TO DESTROY THE KLINGON BATTLE CRUISERS BY "
-740 PRINT"     ZAPPING THEM WITH SUITABLY LARGE UNITS OF ENERGY TO"
-750 PRINT"     DEPLETE THEIR SHIELD POWER.  (REMEMBER, KLINGONS HAVE"
-760 PRINT"     PHASERS TOO!)"
-770 PRINT
-780 PRINT"\TOR\ COMMAND = PHOTON TORPEDO CONTROL"
-790 PRINT"     TORPEDO COURSE IS THE SAME AS USED IN WARP ENGINE CONTROL"
-800 PRINT"     IF YOU HIT THE KLINGON VESSEL, HE IS DESTROYED AND"
-810 PRINT"     CANNOT FIRE BACK AT YOU.  IF YOU MISS, YOU ARE SUBJECT TO"
-820 PRINT"     HIS PHASER FIRE.  IN EITHER CASE, YOU ARE ALSO SUBJECT TO "
-825 PRINT"     THE PHASER FIRE OF ALL OTHER KLINGONS IN THE QUADRANT."
-830 PRINT
-835 PRINT"     THE LIBRARY-COMPUTER (\COM\ COMMAND) HAS AN OPTION TO "
-840 PRINT"     COMPUTE TORPEDO TRAJECTORY FOR YOU (OPTION 2)"
-850 PRINT
-860 PRINT"\SHE\ COMMAND = SHIELD CONTROL"
-870 PRINT"     DEFINES THE NUMBER OF ENERGY UNITS TO BE ASSIGNED TO THE"
-880 PRINT"     SHIELDS.  ENERGY IS TAKEN FROM TOTAL SHIP'S ENERGY.  NOTE"
-890 PRINT"     THAN THE STATUS DISPLAY TOTAL ENERGY INCLUDES SHIELD ENERGY"
-900 PRINT
-910 PRINT"\DAM\ COMMAND = DAMMAGE CONTROL REPORT"
-920 PRINT"     GIVES THE STATE OF REPAIR OF ALL DEVICES.  WHERE A NEGATIVE"
-930 PRINT"     'STATE OF REPAIR' SHOWS THAT THE DEVICE IS TEMPORARILY"
-940 PRINT"     DAMAGED."
-950 PRINT
-960 PRINT"\COM\ COMMAND = LIBRARY-COMPUTER"
-970 PRINT"     THE LIBRARY-COMPUTER CONTAINS SIX OPTIONS:"
-980 PRINT"     OPTION 0 = CUMULATIVE GALACTIC RECORD"
-990 PRINT"        THIS OPTION SHOWES COMPUTER MEMORY OF THE RESULTS OF ALL"
-1000 PRINT"        PREVIOUS SHORT AND LONG RANGE SENSOR SCANS"
-1010 PRINT"     OPTION 1 = STATUS REPORT"
-1020 PRINT"        THIS OPTION SHOWS THE NUMBER OF KLINGONS, STARDATES,"
-1030 PRINT"        AND STARBASES REMAINING IN THE GAME."
-1040 PRINT"     OPTION 2 = PHOTON TORPEDO DATA"
-1050 PRINT"        WHICH GIVES DIRECTIONS AND DISTANCE FROM THE ENTERPRISE"
-1060 PRINT"        TO ALL KLINGONS IN YOUR QUADRANT"
-1070 PRINT"     OPTION 3 = STARBASE NAV DATA"
-1080 PRINT"        THIS OPTION GIVES DIRECTION AND DISTANCE TO ANY "
-1090 PRINT"        STARBASE WITHIN YOUR QUADRANT"
-1100 PRINT"     OPTION 4 = DIRECTION/DISTANCE CALCULATOR"
-1110 PRINT"        THIS OPTION ALLOWS YOU TO ENTER COORDINATES FOR"
-1120 PRINT"        DIRECTION/DISTANCE CALCULATIONS"
-1130 PRINT"     OPTION 5 = GALACTIC /REGION NAME/ MAP"
-1140 PRINT"        THIS OPTION PRINTS THE NAMES OF THE SIXTEEN MAJOR "
-1150 PRINT"        GALACTIC REGIONS REFERRED TO IN THE GAME."
-1990 REM POKE 1229,0:POKE 1237,1:NULL 0
-2000 REM PRINT:PRINT:PRINT
-2010 REM PRINT "TURN CASSETTE PLAYER ON AND HIT ANY KEY EXCEPT RETURN"
-2020 REM IF INP(1)=13 THEN 2020
-2030 REM PRINT
-2040 REM PRINT "TURN CASSETTE PLAYER OFF AND "
-2050 REM PRINT "TYPE 'RUN' WHEN COMPUTER PRINTS 'OK'"
+10 rem instructions for "super startrek"  mar 5, 1978
+20 for i=1 to 12:print:next i
+21 print tab(10);"*************************************"
+22 print tab(10);"*                                   *"
+23 print tab(10);"*                                   *"
+30 print tab(10);"*      * * super star trek * *      *"
+31 print tab(10);"*                                   *"
+32 print tab(10);"*                                   *"
+35 print tab(10);"*************************************"
+36 for i=1 to 8:print:next i
+40 input "do you need instructions (y/n)";k$:if k$="n" then 2000
+44 print
+45 rem print "turn the tty on-line and hit any key except return"
+46 rem if inp(1)=13 then 46
+50 rem poke 1229,2:poke 1237,3:null 1
+90 print"      instructions for 'super star trek'"
+100 print
+110 print"1. when you see \command ?\ printed, enter one of the legal"
+120 print"     commands (nav,srs,lrs,pha,tor,she,dam,com, or xxx)."
+130 print"2. if you should type in an illegal command, you'll get a short"
+140 print"     list of the legal commands printed out."
+150 print"3. some commands require you to enter data (for example, the"
+160 print"     'nav' command comes back with 'course (1-9) ?'.)  if you"
+170 print"     type in illegal data (like negative numbers), than command"
+180 print"     will be aborted"
+190 print
+270 print"     the galaxy is divided into an 8 x 8 quadrant grid,"
+280 print"and each quadrant is further divided into an 8 x 8 sector grid."
+290 print
+300 print"     you will be assigned a starting point somewhere in the"
+310 print"galaxy to begin a tour of duty as comander of the starship"
+320 print"\enterprise\; your mission: to seek and destroy the fleet of"
+330 print"klingon warwhips which are menacing the united federation of"
+340 print"planets."
+360 print
+370 print"     you have the following commands available to you as captain"
+380 print"of the starship enterprise:"
+385 print
+390 print"\nav\ command = warp engine control --"
+400 print"     course is in a circular numerical      4  3  2"
+410 print"     vector arrangement as shown             . . ."
+420 print"     integer and real values may be           ..."
+430 print"     used.  (thus course 1.5 is half-     5 ---*--- 1"
+440 print"     way between 1 and 2                      ..."
+450 print"                                             . . ."
+460 print"     values may approach 9.0, which         6  7  8"
+470 print"     itself is equivalent to 1.0"         
+480 print"                                            course"
+490 print"     one warp factor is the size of "
+500 print"     one quadtant.  therefore, to get"
+510 print"     from quadrant 6,5 to 5,5, you would"
+520 print"     use course 3, warp factor 1."
+530 print
+540 print"\srs\ command = short range sensor scan"
+550 print"     shows you a scan of your present quadrant."
+555 print
+560 print"     symbology on your sensor screen is as follows:"
+570 print"        <*> = your starship's position"
+580 print"        +k+ = klingon battle cruiser"
+590 print"        >!< = federation starbase (refuel/repair/re-arm here!)"
+600 print"         *  = star"
+605 print
+610 print"     a condensed 'status report' will also be presented."
+620 print
+640 print"\lrs\ command = long range sensor scan"
+650 print"     shows conditions in space for one quadrant on each side"
+660 print"     of the enterprise (which is in the middle of the scan)"
+670 print"     the scan is coded in the form \###\, where th units digit"
+680 print"     is the number of stars, the tens digit is the number of"
+690 print"     starbases, and the hundresds digit is the number of"
+700 print"     klingons."
+705 print
+706 print"     example - 207 = 2 klingons, no starbases, & 7 stars."
+710 print
+720 print"\pha\ command = phaser control."
+730 print"     allows you to destroy the klingon battle cruisers by "
+740 print"     zapping them with suitably large units of energy to"
+750 print"     deplete their shield power.  (remember, klingons have"
+760 print"     phasers too!)"
+770 print
+780 print"\tor\ command = photon torpedo control"
+790 print"     torpedo course is the same as used in warp engine control"
+800 print"     if you hit the klingon vessel, he is destroyed and"
+810 print"     cannot fire back at you.  if you miss, you are subject to"
+820 print"     his phaser fire.  in either case, you are also subject to "
+825 print"     the phaser fire of all other klingons in the quadrant."
+830 print
+835 print"     the library-computer (\com\ command) has an option to "
+840 print"     compute torpedo trajectory for you (option 2)"
+850 print
+860 print"\she\ command = shield control"
+870 print"     defines the number of energy units to be assigned to the"
+880 print"     shields.  energy is taken from total ship's energy.  note"
+890 print"     than the status display total energy includes shield energy"
+900 print
+910 print"\dam\ command = dammage control report"
+920 print"     gives the state of repair of all devices.  where a negative"
+930 print"     'state of repair' shows that the device is temporarily"
+940 print"     damaged."
+950 print
+960 print"\com\ command = library-computer"
+970 print"     the library-computer contains six options:"
+980 print"     option 0 = cumulative galactic record"
+990 print"        this option showes computer memory of the results of all"
+1000 print"        previous short and long range sensor scans"
+1010 print"     option 1 = status report"
+1020 print"        this option shows the number of klingons, stardates,"
+1030 print"        and starbases remaining in the game."
+1040 print"     option 2 = photon torpedo data"
+1050 print"        which gives directions and distance from the enterprise"
+1060 print"        to all klingons in your quadrant"
+1070 print"     option 3 = starbase nav data"
+1080 print"        this option gives direction and distance to any "
+1090 print"        starbase within your quadrant"
+1100 print"     option 4 = direction/distance calculator"
+1110 print"        this option allows you to enter coordinates for"
+1120 print"        direction/distance calculations"
+1130 print"     option 5 = galactic /region name/ map"
+1140 print"        this option prints the names of the sixteen major "
+1150 print"        galactic regions referred to in the game."
+1990 rem poke 1229,0:poke 1237,1:null 0
+2000 rem print:print:print
+2010 rem print "turn cassette player on and hit any key except return"
+2020 rem if inp(1)=13 then 2020
+2030 rem print
+2040 rem print "turn cassette player off and "
+2050 rem print "type 'run' when computer prints 'ok'"

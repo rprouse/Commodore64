@@ -1,33 +1,33 @@
-10 PRINT TAB(21);"GAME OF ROCK, SCISSORS, PAPER"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-25 PRINT:PRINT:PRINT
-30 INPUT "HOW MANY GAMES";Q
-40 IF Q<11 THEN 60
-50 PRINT "SORRY, BUT WE AREN'T ALLOWED TO PLAY THAT MANY.": GOTO 30
-60 FOR G=1 TO Q
-70 PRINT: PRINT "GAME NUMBER";G
-80 X=INT(RND(1)*3+1)
-90 PRINT "3=ROCK...2=SCISSORS...1=PAPER"
-100 INPUT "1...2...3...WHAT'S YOUR CHOICE";K
-110 IF (K-1)*(K-2)*(K-3)<>0 THEN PRINT "INVALID.": GOTO 90
-120 PRINT "THIS IS MY CHOICE..."
-130 ON X GOTO 140,150,160
-140 PRINT "...PAPER": GOTO 170
-150 PRINT "...SCISSORS": GOTO 170
-160 PRINT "...ROCK"
-170 IF X=K THEN 250
-180 IF X>K THEN 230
-190 IF X=1 THEN 210
-200 PRINT "YOU WIN!!!":H=H+1: GOTO 260
-210 IF K<>3 THEN 200
-220 PRINT "WOW!  I WIN!!!":C=C+1:GOTO 260
-230 IF K<>1 OR X<>3 THEN 220
-240 GOTO 200
-250 PRINT "TIE GAME.  NO WINNER."
-260 NEXT G
-270 PRINT: PRINT "HERE IS THE FINAL GAME SCORE:"
-280 PRINT "I HAVE WON";C;"GAME(S)."
-290 PRINT "YOU HAVE WON";H;"GAME(S)."
-300 PRINT "AND";Q-(C+H);"GAME(S) ENDED IN A TIE."
-310 PRINT: PRINT "THANKS FOR PLAYING!!"
-320 END
+10 print tab(21);"game of rock, scissors, paper"
+20 print tab(15);"creative computing  morristown, new jersey"
+25 print:print:print
+30 input "how many games";q
+40 if q<11 then 60
+50 print "sorry, but we aren't allowed to play that many.": goto 30
+60 for g=1 to q
+70 print: print "game number";g
+80 x=int(rnd(1)*3+1)
+90 print "3=rock...2=scissors...1=paper"
+100 input "1...2...3...what's your choice";k
+110 if (k-1)*(k-2)*(k-3)<>0 then print "invalid.": goto 90
+120 print "this is my choice..."
+130 on x goto 140,150,160
+140 print "...paper": goto 170
+150 print "...scissors": goto 170
+160 print "...rock"
+170 if x=k then 250
+180 if x>k then 230
+190 if x=1 then 210
+200 print "you win!!!":h=h+1: goto 260
+210 if k<>3 then 200
+220 print "wow!  i win!!!":c=c+1:goto 260
+230 if k<>1 or x<>3 then 220
+240 goto 200
+250 print "tie game.  no winner."
+260 next g
+270 print: print "here is the final game score:"
+280 print "i have won";c;"game(s)."
+290 print "you have won";h;"game(s)."
+300 print "and";q-(c+h);"game(s) ended in a tie."
+310 print: print "thanks for playing!!"
+320 end

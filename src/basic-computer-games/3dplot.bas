@@ -1,17 +1,17 @@
-1 PRINT TAB(32);"3D PLOT"
-2 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-3 PRINT:PRINT:PRINT
-5 DEF FNA(Z)=30*EXP(-Z*Z/100)
-100 PRINT
-110 FOR X=-30 TO 30 STEP 1.5
-120 L=0
-130 Y1=5*INT(SQR(900-X*X)/5)
-140 FOR Y=Y1 TO -Y1 STEP -5
-150 Z=INT(25+FNA(SQR(X*X+Y*Y))-.7*Y)
-160 IF Z<=L THEN 190
-170 L=Z
-180 PRINT TAB(Z);"*";
-190 NEXT Y
-200 PRINT
-210 NEXT X
-300 END
+1 print tab(32);"3d plot"
+2 print tab(15);"creative computing  morristown, new jersey"
+3 print:print:print
+5 def fna(z)=30*exp(-z*z/100)
+100 print
+110 for x=-30 to 30 step 1.5
+120 l=0
+130 y1=5*int(sqr(900-x*x)/5)
+140 for y=y1 to -y1 step -5
+150 z=int(25+fna(sqr(x*x+y*y))-.7*y)
+160 if z<=l then 190
+170 l=z
+180 print tab(z);"*";
+190 next y
+200 print
+210 next x
+300 end

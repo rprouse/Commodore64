@@ -1,91 +1,91 @@
-100 PRINT TAB(26);"COLUMN"
-110 PRINT TAB(20);"CREATIVE COMPUTING"
-120 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-130 PRINT:PRINT:PRINT
-140 PRINT "THIS PROGRAM WILL SHOW YOU A CARD TRICK. AFTER THE FIRST DEAL"
-150 PRINT "PICK A CARD AND TYPE THE NUMBER OF THE COLUMN CONTAINING IT."
-160 PRINT "THE DEALER WILL THEN PICK UP THE CARDS, A COLUMN AT A TIME,"
-170 PRINT "AND WILL DEAL THEM OUT AGAIN HORIZONTALLY. WHEN HE FINISHES"
-180 PRINT "EACH TIME, TYPE THE NUMBER OF THE THE NEW COLUMN CONTAINING YOUR"
-190 PRINT "CARD. FOLLOWING THE LAST DEAL THE DEALER WILL TURN OVER THE"
-200 PRINT "CARDS, ONE AT A TIME, UNTIL HE REACHES THE ONE YOU PICKED."
-210 PRINT:PRINT:PRINT
-220 DIM A(21),B(21)
-230 FOR X=1 TO 21
-240 J=0
-250 T=INT(52*(RND(1)))
-270 FOR Y=1 TO X-1
-280 IF A(Y)=T THEN 250
-290 NEXT Y
-300 A(X)=T
-310 NEXT X
-320 N=0
-330 FOR I=1 TO 3
-340 FOR Z=1 TO 21
-350 IF A(Z)=4*(INT(A(Z)/4)) THEN 470
-360 IF A(Z)-2=4*(INT(A(Z)/4)) THEN 440
-370 IF A(Z)-3=4*(INT(A(Z)/4)) THEN 410
-380 C$="SPADES"
-390 D$=""
-400 GOTO 490
-410 C$="HEARTS"
-420 D$=""
-430 GOTO 490
-440 C$="CLUBS"
-450 D$=""
-460 GOTO 490
-470 C$="DIAMON"
-480 D$="DS"
-490 N=N+1
-500 IF N <> 4 THEN 530
-510 PRINT
-520 N=1
-530 IF A(Z) > 35 THEN 580
-540 PRINT TAB((N-1)*25);INT(A(Z)/4)+2;"OF ";C$;D$;
-550 IF J=5 THEN 900
-560 IF J=10 THEN 980
-570 GOTO 710
-580 IF INT(A(Z)/4)=9 THEN 670
-590 IF INT(A(Z)/4)=10 THEN 650
-600 IF INT(A(Z)/4)=11 THEN 630
-610 A$="JACK"
-620 GOTO 680
-630 A$="QUEEN"
-640 GOTO 680
-650 A$="KING"
-660 GOTO 680
-670 A$="ACE"
-680 PRINT TAB((N-1)*25);A$;" OF ";C$;D$;
-690 IF J=5 THEN 900
-700 IF J=10 THEN 980
-710 NEXT Z
-720 PRINT:PRINT
-730 PRINT "WHICH COLUMN CONTAINS YOUR CARD";
-740 INPUT K
-750 IF K<1 OR K > 3 THEN PRINT:PRINT "(1-3)":GOTO 730
-760 PRINT:PRINT
-770 T=1
-780 S=K+2-3*INT((K+1)/3)
-790 GOSUB 940
-800 S=K
-810 GOSUB 940
-820 S=K+1-3*INT(K/3)
-830 GOSUB 940
-840 FOR C=1 TO 21
-850 A(C)=B(C)
-860 NEXT C
-870 NEXT I
-880 J=5
-890 FOR Z=1 TO 11+INT(10*RND(1)+1):N=0:GOTO 350
-900 PRINT:NEXT Z:PRINT
-910 PRINT "OOPS!!! YOUR CARD IS THE";
-920 N=1
-930 J=10:Z=11:GOTO 350
-940 FOR R=S TO S+18 STEP 3
-950 B(T)=A(R)
-960 T=T+1
-970 NEXT R:RETURN
-980 PRINT ".":PRINT
-990 PRINT "DO YOU WANT TO SEE IT AGAIN";:INPUT T$
-1000 IF T$="YES" THEN PRINT:PRINT:GOTO 230
-1010 END
+100 print tab(26);"column"
+110 print tab(20);"creative computing"
+120 print tab(18);"morristown, new jersey"
+130 print:print:print
+140 print "this program will show you a card trick. after the first deal"
+150 print "pick a card and type the number of the column containing it."
+160 print "the dealer will then pick up the cards, a column at a time,"
+170 print "and will deal them out again horizontally. when he finishes"
+180 print "each time, type the number of the the new column containing your"
+190 print "card. following the last deal the dealer will turn over the"
+200 print "cards, one at a time, until he reaches the one you picked."
+210 print:print:print
+220 dim a(21),b(21)
+230 for x=1 to 21
+240 j=0
+250 t=int(52*(rnd(1)))
+270 for y=1 to x-1
+280 if a(y)=t then 250
+290 next y
+300 a(x)=t
+310 next x
+320 n=0
+330 for i=1 to 3
+340 for z=1 to 21
+350 if a(z)=4*(int(a(z)/4)) then 470
+360 if a(z)-2=4*(int(a(z)/4)) then 440
+370 if a(z)-3=4*(int(a(z)/4)) then 410
+380 c$="spades"
+390 d$=""
+400 goto 490
+410 c$="hearts"
+420 d$=""
+430 goto 490
+440 c$="clubs"
+450 d$=""
+460 goto 490
+470 c$="diamon"
+480 d$="ds"
+490 n=n+1
+500 if n <> 4 then 530
+510 print
+520 n=1
+530 if a(z) > 35 then 580
+540 print tab((n-1)*25);int(a(z)/4)+2;"of ";c$;d$;
+550 if j=5 then 900
+560 if j=10 then 980
+570 goto 710
+580 if int(a(z)/4)=9 then 670
+590 if int(a(z)/4)=10 then 650
+600 if int(a(z)/4)=11 then 630
+610 a$="jack"
+620 goto 680
+630 a$="queen"
+640 goto 680
+650 a$="king"
+660 goto 680
+670 a$="ace"
+680 print tab((n-1)*25);a$;" of ";c$;d$;
+690 if j=5 then 900
+700 if j=10 then 980
+710 next z
+720 print:print
+730 print "which column contains your card";
+740 input k
+750 if k<1 or k > 3 then print:print "(1-3)":goto 730
+760 print:print
+770 t=1
+780 s=k+2-3*int((k+1)/3)
+790 gosub 940
+800 s=k
+810 gosub 940
+820 s=k+1-3*int(k/3)
+830 gosub 940
+840 for c=1 to 21
+850 a(c)=b(c)
+860 next c
+870 next i
+880 j=5
+890 for z=1 to 11+int(10*rnd(1)+1):n=0:goto 350
+900 print:next z:print
+910 print "oops!!! your card is the";
+920 n=1
+930 j=10:z=11:goto 350
+940 for r=s to s+18 step 3
+950 b(t)=a(r)
+960 t=t+1
+970 next r:return
+980 print ".":print
+990 print "do you want to see it again";:input t$
+1000 if t$="yes" then print:print:goto 230
+1010 end

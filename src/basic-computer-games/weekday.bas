@@ -1,150 +1,150 @@
-10 PRINT TAB(32);"WEEKDAY"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-100 PRINT "WEEKDAY IS A COMPUTER DEMONSTRATION THAT"
-110 PRINT"GIVES FACTS ABOUT A DATE OF INTEREST TO YOU."
-120 PRINT
-130 PRINT "ENTER TODAY'S DATE IN THE FORM: 3,24,1979  ";
-140 INPUT M1,D1,Y1
-150 REM THIS PROGRAM DETERMINES THE DAY OF THE WEEK
-160 REM  FOR A DATE AFTER 1582
-170 DEF FNA(A)=INT(A/4)
-180 DIM T(12)
-190 DEF FNB(A)=INT(A/7)
-200 REM SPACE OUTPUT AND READ IN INITIAL VALUES FOR MONTHS.
-210 FOR I= 1 TO 12
-220 READ T(I)
-230 NEXT I
-240 PRINT"ENTER DAY OF BIRTH (OR OTHER DAY OF INTEREST)";
-250 INPUT M,D,Y
-260 PRINT
-270 LET I1 = INT((Y-1500)/100)
-280 REM TEST FOR DATE BEFORE CURRENT CALENDAR.
-290 IF Y-1582 <0 THEN 1300
-300 LET A = I1*5+(I1+3)/4
-310 LET I2=INT(A-FNB(A)*7)
-320 LET Y2=INT(Y/100)
-330 LET Y3 =INT(Y-Y2*100)
-340 LET A =Y3/4+Y3+D+T(M)+I2
-350 LET B=INT(A-FNB(A)*7)+1
-360 IF M > 2 THEN 470
-370 IF Y3 = 0 THEN 440
-380 LET T1=INT(Y-FNA(Y)*4)
-390 IF T1 <> 0 THEN 470
-400 IF B<>0 THEN 420
-410 LET B=6
-420 LET B = B-1
-430 GOTO 470
-440 LET A = I1-1
-450 LET T1=INT(A-FNA(A)*4)
-460 IF T1 = 0 THEN 400
-470 IF B <>0 THEN 490
-480 LET B = 7
-490 IF (Y1*12+M1)*31+D1<(Y*12+M)*31+D THEN 550
-500 IF (Y1*12+M1)*31+D1=(Y*12+M)*31+D THEN 530
-510 PRINT M;"/";D;"/";Y;" WAS A ";
-520 GOTO 570
-530 PRINT M;"/";D;"/";Y;" IS A ";
-540 GOTO 570
-550 PRINT M;"/";D;"/";Y;" WILL BE A ";
-560 REM PRINT THE DAY OF THE WEEK THE DATE FALLS ON.
-570 IF B <>1 THEN 590
-580 PRINT "SUNDAY."
-590 IF B<>2 THEN 610
-600 PRINT "MONDAY."
-610 IF B<>3 THEN 630
-620 PRINT "TUESDAY."
-630 IF B<>4 THEN 650
-640 PRINT "WEDNESDAY."
-650 IF B<>5 THEN 670
-660 PRINT "THURSDAY."
-670 IF B<>6 THEN 690
-680 GOTO 1250
-690 IF B<>7 THEN 710
-700 PRINT "SATURDAY."
-710 IF (Y1*12+M1)*31+D1=(Y*12+M)*31+D THEN 1120
-720 LET I5=Y1-Y
-730 PRINT
-740 LET I6=M1-M
-750 LET I7=D1-D
-760 IF I7>=0 THEN 790
-770 LET I6= I6-1
-780 LET I7=I7+30
-790 IF I6>=0 THEN 820
-800 LET I5=I5-1
-810 LET I6=I6+12
-820 IF I5<0 THEN 1310
-830 IF I7 <> 0 THEN 850
-835 IF I6 <> 0 THEN 850
-840 PRINT"***HAPPY BIRTHDAY***"
-850 PRINT " "," ","YEARS","MONTHS","DAYS"
-855 PRINT " "," ","-----","------","----"
-860 PRINT "YOUR AGE (IF BIRTHDATE) ",I5,I6,I7
-870 LET A8 = (I5*365)+(I6*30)+I7+INT(I6/2)
-880 LET K5 = I5
-890 LET K6 = I6
-900 LET K7 = I7
-910 REM CALCULATE RETIREMENT DATE.
-920 LET E = Y+65
-930 REM CALCULATE TIME SPENT IN THE FOLLOWING FUNCTIONS.
-940 LET F = .35
-950 PRINT "YOU HAVE SLEPT ",
-960 GOSUB 1370
-970 LET F = .17
-980 PRINT "YOU HAVE EATEN ",
-990 GOSUB 1370
-1000 LET F = .23
-1010 IF K5 > 3 THEN 1040
-1020 PRINT "YOU HAVE PLAYED",
-1030 GOTO 1080
-1040 IF K5 > 9 THEN 1070
-1050 PRINT "YOU HAVE PLAYED/STUDIED",
-1060 GOTO  1080
-1070 PRINT "YOU HAVE WORKED/PLAYED",
-1080 GOSUB 1370
-1085 GOTO 1530
-1090 PRINT "YOU HAVE RELAXED ",K5,K6,K7
-1100 PRINT 
-1110 PRINT TAB(16);"***  YOU MAY RETIRE IN";E;" ***"
-1120 PRINT
-1140 PRINT
-1200 PRINT
-1210 PRINT
-1220 PRINT
-1230 PRINT
-1240 END
-1250 IF D=13 THEN 1280
-1260 PRINT "FRIDAY."
-1270 GOTO 710
-1280 PRINT "FRIDAY THE THIRTEENTH---BEWARE!"
-1290 GOTO 710
-1300 PRINT "NOT PREPARED TO GIVE DAY OF WEEK PRIOR TO MDLXXXII. "
-1310 GOTO 1140
-1320 REM TABLE OF VALUES FOR THE MONTHS TO BE USED IN CALCULATIONS.
-1330 DATA 0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5
-1340 REM THIS IS THE CURRENT DATE USED IN THE CALCULATIONS.
-1350 REM THIS IS THE DATE TO BE CALCULATED ON.
-1360 REM CALCULATE TIME IN YEARS, MONTHS, AND DAYS
-1370 LET K1=INT(F*A8)
-1380 LET I5 = INT(K1/365)
-1390 LET K1 = K1- (I5*365)
-1400 LET I6 = INT(K1/30)
-1410 LET I7 = K1 -(I6*30)
-1420 LET K5 = K5-I5
-1430 LET K6 =K6-I6
-1440 LET K7 = K7-I7
-1450 IF K7>=0 THEN 1480
-1460 LET K7=K7+30
-1470 LET K6=K6-1
-1480 IF K6>0 THEN 1510
-1490 LET K6=K6+12
-1500 LET K5=K5-1
-1510 PRINT I5,I6,I7
-1520 RETURN
-1530 IF K6=12 THEN 1550
-1540 GOTO 1090
-1550 LET K5=K5+1
-1560 LET K6=0
-1570 GOTO 1090
-1580 REM
-1590 END
+10 print tab(32);"weekday"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+100 print "weekday is a computer demonstration that"
+110 print"gives facts about a date of interest to you."
+120 print
+130 print "enter today's date in the form: 3,24,1979  ";
+140 input m1,d1,y1
+150 rem this program determines the day of the week
+160 rem  for a date after 1582
+170 def fna(a)=int(a/4)
+180 dim t(12)
+190 def fnb(a)=int(a/7)
+200 rem space output and read in initial values for months.
+210 for i= 1 to 12
+220 read t(i)
+230 next i
+240 print"enter day of birth (or other day of interest)";
+250 input m,d,y
+260 print
+270 let i1 = int((y-1500)/100)
+280 rem test for date before current calendar.
+290 if y-1582 <0 then 1300
+300 let a = i1*5+(i1+3)/4
+310 let i2=int(a-fnb(a)*7)
+320 let y2=int(y/100)
+330 let y3 =int(y-y2*100)
+340 let a =y3/4+y3+d+t(m)+i2
+350 let b=int(a-fnb(a)*7)+1
+360 if m > 2 then 470
+370 if y3 = 0 then 440
+380 let t1=int(y-fna(y)*4)
+390 if t1 <> 0 then 470
+400 if b<>0 then 420
+410 let b=6
+420 let b = b-1
+430 goto 470
+440 let a = i1-1
+450 let t1=int(a-fna(a)*4)
+460 if t1 = 0 then 400
+470 if b <>0 then 490
+480 let b = 7
+490 if (y1*12+m1)*31+d1<(y*12+m)*31+d then 550
+500 if (y1*12+m1)*31+d1=(y*12+m)*31+d then 530
+510 print m;"/";d;"/";y;" was a ";
+520 goto 570
+530 print m;"/";d;"/";y;" is a ";
+540 goto 570
+550 print m;"/";d;"/";y;" will be a ";
+560 rem print the day of the week the date falls on.
+570 if b <>1 then 590
+580 print "sunday."
+590 if b<>2 then 610
+600 print "monday."
+610 if b<>3 then 630
+620 print "tuesday."
+630 if b<>4 then 650
+640 print "wednesday."
+650 if b<>5 then 670
+660 print "thursday."
+670 if b<>6 then 690
+680 goto 1250
+690 if b<>7 then 710
+700 print "saturday."
+710 if (y1*12+m1)*31+d1=(y*12+m)*31+d then 1120
+720 let i5=y1-y
+730 print
+740 let i6=m1-m
+750 let i7=d1-d
+760 if i7>=0 then 790
+770 let i6= i6-1
+780 let i7=i7+30
+790 if i6>=0 then 820
+800 let i5=i5-1
+810 let i6=i6+12
+820 if i5<0 then 1310
+830 if i7 <> 0 then 850
+835 if i6 <> 0 then 850
+840 print"***happy birthday***"
+850 print " "," ","years","months","days"
+855 print " "," ","-----","------","----"
+860 print "your age (if birthdate) ",i5,i6,i7
+870 let a8 = (i5*365)+(i6*30)+i7+int(i6/2)
+880 let k5 = i5
+890 let k6 = i6
+900 let k7 = i7
+910 rem calculate retirement date.
+920 let e = y+65
+930 rem calculate time spent in the following functions.
+940 let f = .35
+950 print "you have slept ",
+960 gosub 1370
+970 let f = .17
+980 print "you have eaten ",
+990 gosub 1370
+1000 let f = .23
+1010 if k5 > 3 then 1040
+1020 print "you have played",
+1030 goto 1080
+1040 if k5 > 9 then 1070
+1050 print "you have played/studied",
+1060 goto  1080
+1070 print "you have worked/played",
+1080 gosub 1370
+1085 goto 1530
+1090 print "you have relaxed ",k5,k6,k7
+1100 print 
+1110 print tab(16);"***  you may retire in";e;" ***"
+1120 print
+1140 print
+1200 print
+1210 print
+1220 print
+1230 print
+1240 end
+1250 if d=13 then 1280
+1260 print "friday."
+1270 goto 710
+1280 print "friday the thirteenth---beware!"
+1290 goto 710
+1300 print "not prepared to give day of week prior to mdlxxxii. "
+1310 goto 1140
+1320 rem table of values for the months to be used in calculations.
+1330 data 0, 3, 3, 6, 1, 4, 6, 2, 5, 0, 3, 5
+1340 rem this is the current date used in the calculations.
+1350 rem this is the date to be calculated on.
+1360 rem calculate time in years, months, and days
+1370 let k1=int(f*a8)
+1380 let i5 = int(k1/365)
+1390 let k1 = k1- (i5*365)
+1400 let i6 = int(k1/30)
+1410 let i7 = k1 -(i6*30)
+1420 let k5 = k5-i5
+1430 let k6 =k6-i6
+1440 let k7 = k7-i7
+1450 if k7>=0 then 1480
+1460 let k7=k7+30
+1470 let k6=k6-1
+1480 if k6>0 then 1510
+1490 let k6=k6+12
+1500 let k5=k5-1
+1510 print i5,i6,i7
+1520 return
+1530 if k6=12 then 1550
+1540 goto 1090
+1550 let k5=k5+1
+1560 let k6=0
+1570 goto 1090
+1580 rem
+1590 end

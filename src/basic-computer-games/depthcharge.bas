@@ -1,33 +1,33 @@
-2 PRINT TAB(30);"DEPTH CHARGE"
-4 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-6 PRINT: PRINT: PRINT
-20 INPUT "DIMENSION OF SEARCH AREA";G: PRINT
-30 N=INT(LOG(G)/LOG(2))+1
-40 PRINT "YOU ARE THE CAPTAIN OF THE DESTROYER USS COMPUTER"
-50 PRINT "AN ENEMY SUB HAS BEEN CAUSING YOU TROUBLE.  YOUR"
-60 PRINT "MISSION IS TO DESTROY IT.  YOU HAVE";N;"SHOTS."
-70 PRINT "SPECIFY DEPTH CHARGE EXPLOSION POINT WITH A"
-80 PRINT "TRIO OF NUMBERS -- THE FIRST TWO ARE THE"
-90 PRINT "SURFACE COORDINATES; THE THIRD IS THE DEPTH."
-100 PRINT : PRINT "GOOD LUCK !": PRINT
-110 A=INT(G*RND(1)) : B=INT(G*RND(1)) : C=INT(G*RND(1))
-120 FOR D=1 TO N : PRINT : PRINT "TRIAL #";D; : INPUT X,Y,Z
-130 IF ABS(X-A)+ABS(Y-B)+ABS(Z-C)=0 THEN 300
-140 GOSUB 500 : PRINT : NEXT D
-200 PRINT : PRINT "YOU HAVE BEEN TORPEDOED!  ABANDON SHIP!"
-210 PRINT "THE SUBMARINE WAS AT";A;",";B;",";C : GOTO 400
-300 PRINT : PRINT "B O O M ! ! YOU FOUND IT IN";D;"TRIES!"
-400 PRINT : PRINT: INPUT "ANOTHER GAME (Y OR N)";A$
-410 IF A$="Y" THEN 100
-420 PRINT "OK.  HOPE YOU ENJOYED YOURSELF." : GOTO 600
-500 PRINT "SONAR REPORTS SHOT WAS ";
-510 IF Y>B THEN PRINT "NORTH";
-520 IF Y<B THEN PRINT "SOUTH";
-530 IF X>A THEN PRINT "EAST";
-540 IF X<A THEN PRINT "WEST";
-550 IF Y<>B OR X<>A THEN PRINT " AND";
-560 IF Z>C THEN PRINT " TOO LOW."
-570 IF Z<C THEN PRINT " TOO HIGH."
-580 IF Z=C THEN PRINT " DEPTH OK."
-590 RETURN
-600 END
+2 print tab(30);"depth charge"
+4 print tab(15);"creative computing  morristown, new jersey"
+6 print: print: print
+20 input "dimension of search area";g: print
+30 n=int(log(g)/log(2))+1
+40 print "you are the captain of the destroyer uss computer"
+50 print "an enemy sub has been causing you trouble.  your"
+60 print "mission is to destroy it.  you have";n;"shots."
+70 print "specify depth charge explosion point with a"
+80 print "trio of numbers -- the first two are the"
+90 print "surface coordinates; the third is the depth."
+100 print : print "good luck !": print
+110 a=int(g*rnd(1)) : b=int(g*rnd(1)) : c=int(g*rnd(1))
+120 for d=1 to n : print : print "trial #";d; : input x,y,z
+130 if abs(x-a)+abs(y-b)+abs(z-c)=0 then 300
+140 gosub 500 : print : next d
+200 print : print "you have been torpedoed!  abandon ship!"
+210 print "the submarine was at";a;",";b;",";c : goto 400
+300 print : print "b o o m ! ! you found it in";d;"tries!"
+400 print : print: input "another game (y or n)";a$
+410 if a$="y" then 100
+420 print "ok.  hope you enjoyed yourself." : goto 600
+500 print "sonar reports shot was ";
+510 if y>b then print "north";
+520 if y<b then print "south";
+530 if x>a then print "east";
+540 if x<a then print "west";
+550 if y<>b or x<>a then print " and";
+560 if z>c then print " too low."
+570 if z<c then print " too high."
+580 if z=c then print " depth ok."
+590 return
+600 end

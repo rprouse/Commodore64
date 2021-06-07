@@ -1,364 +1,364 @@
-100 PRINT TAB(32)"MINOTAUR"
-120 PRINT TAB(15)"CREATIVE COMPUTING, MORRISTOWN, NEW JERSEY"
-130 PRINT:PRINT:PRINT
-160 L1=INT(RND(1)*3)+1
-170 X1=INT(RND(1)*(-21))+11
-180 Y1=INT(RND(1)*(-21))+11
-190 PRINT
-195 DIM B(15),C(15)
-200 GOSUB 1350
-210 REM INSTRUCTIONS
-220 GOSUB 1660
-230 REM BARRIERS
-240 GOSUB 2330
-250 REM PLACE PLAYER
-260 GOSUB 2420
-270 REM START GAME
-280 REM SPEAR
-290 IF X2=S1 AND Y2=S2 AND L2=S3 AND T>1 THEN 3690
-300 REM  IS HE EATEN?
-310 IF X1=X2 AND Y2=1 AND L1=L2 THEN 3670
-320 REM CHARGING
-330 IF RND(1)<.1 THEN 2850
-340 REM TURN #
-350 T=T+1
-360 PRINT"TURN";T;".  MINOTAUR IS AT (";X1;",";Y1;"), ON L. ";L1;"."
-370 PRINT "YOUR CONTROL";
-380 INPUT Z
-390 ON Z GOTO 400,430,450,480,500,530,550,3270
-400 X2=X2+F
-410 IF ABS(X2)>10 THEN 1160
-420 GOTO 1180
-430 X2=X2-F
-440 GOTO 410
-450 Y2=Y2+F
-460 IF ABS(Y2)>10 THEN 1160
-470 GOTO 420
-480 Y2=Y2-F
-490 GOTO 460
-500 L2=L2+1
-510 IF L2>3 OR L2<1 THEN 1330
-520 GOTO 420
-530 L2=L2-1
-540 GOTO 510
-550 REM  SPEAR-THROWING
-560 IF L1<>L2 THEN 1080
-570 IF X1<>X2 AND Y1<>Y2 THEN 1100
-580 IF X1<>X2 AND ABS(Y1-Y2)>10 THEN 1120
-590 IF ABS(X1-X2)>10 THEN 1120
-600 IF S9=1 THEN 3720
-610 PRINT"IN WHICH DIRECTION WOULD YOU LIKE TO THROW(USE 1,2,3,4)"
-620 INPUT H1
-630 PRINT"HOW FAR";
-640 INPUT H2
-650 S5=X2
-660 S6=Y2
-670 FOR H3=1 TO H2
-680 ON H1 GOTO 690,720,740,770
-690 S5=S5+1
-700 IF ABS(S5)>10 THEN 860
-710 GOTO 790
-720 S5=S5-1
-730 GOTO 700
-740 S6=S6-1
-750 IF ABS(S6)>10 THEN 860
-760 GOTO 790
-770 S6=S6-1
-780 GOTO 750
-790 PRINT"SPEAR IS AT (";S5;",";S6")."
-800 REM TEST FOR BARRIERS
-810 FOR A=1 TO 10
-820 IF S5=B(A) AND S6=C(A) THEN 850
-830 NEXT A
-840 GOTO 870
-850 PRINT "SMASH SPEAR SPLITERED AGAINST BARRIER #";A;""
-860 GOTO 1140
-870 NEXT H3
-880 IF S5<>X1 OR S6<>Y1 THEN 1010
-890 X=INT(RND(1)*3)+1
-900 ON X GOTO 910,1010,1070
-910 PRINT"YOU KILLED THE MINOTAUR IN";T;"TURNS."
-920 GOTO 1450
-930 PRINT"WOULD YOU LIKE TO PLAY AGAIN";
-940 INPUT X$
-950 IF X$<>"YES" THEN 3760
-960 T=0
-970 L1=INT(RND(1)*3)+1
-980 X1=INT(RND(1)*(-21))+11
-990 Y1=INT(RND(1)*(-21))+11
-1000 GOTO 230
-1010 PRINT"YOU MISSED.  SPEAR IS AT (";S5;",";S6;"). YOU MUST GET IT."
-1020 S1=S5
-1030 S2=S6
-1040 S3=L2
-1050 S9=1
-1060 GOTO 280
-1070 GOSUB 2840
-1080 PRINT"YOU ARE NOT ON THE SAME LEVEL. YOU CANNOT THROW."
-1090 GOTO 420
-1100 PRINT"YOU ARE NOT ON THE SAME XOR Y LINE. YOU CANNOT THROW."
-1110 GOTO 420
-1120 PRINT"YOU ARE NOT WITHIN 10. YOU CANNOT THROW."
-1130 GOTO 420
-1140 PRINT"YOU ARE NOW WEAPONLESS. YOU LOSE, SUCKER!"
-1150 GOTO 930
-1160 PRINT"YAAAAAAAAAAAAAAAAH YOU FELL OFF THE EDGE"
-1170 GOTO 1150
-1180 PRINT"YOU ARE AT (";X2;",";Y2;"), ON LEVEL ";L2;"."
-1190 REM TEST FOR BARRIERS
-1200 FOR A=1 TO 10
-1210 IF X2=B(A) AND Y2=C(A) THEN 1240
-1220 NEXT A
-1230 GOTO 1260
-1240 PRINT"YOU HAVE JUST FRIED YOURSELF ON AN ELECTRIFIED BARRIER."
-1250 GOTO 1150
-1260 REM TRAPDOORS
-1270 X=INT(RND(1)*10)+1
-1280 IF X=5 THEN 1300
-1290 GOTO 2510
-1300 PRINT"YAAAAAAAAAAAAAAH TRAPDOOR, YOU FELL DOWN ONE LEVEL"
-1310 L2=L2-1
-1320 IF L2>0 THEN 1290
-1330 PRINT"YOU FELL OUT OF THE CAVERN. YOU LOSE."
-1340 GOTO 1150
-1350 PRINT"DO YOU WANT TO BE THE MINOTAUR CHAMPION";
-1360 INPUT X9$
-1370 IF X9$<>"YES" THEN 1440
-1380 C2=20
-1390 PRINT"YOU MUST BEAT A SCORE OF 20."
-1391 DIM C3$(72)
-1419 DIM C4$(72)
-1440 RETURN
-1450 IF X9$<>"YES" THEN 930
-1460 C3=(1/T)*100
-1470 IF C3<20 THEN 1630
-1480 PRINT"YOU ARE NOW A QUALIFIED CHAMPION!"
-1620 GOTO 930
-1630 PRINT"SORRY ,YOU DID NOT BEAT THE CHAMPION."
-1640 PRINT"DO YOU WANT TO PLAY AGAIN";
-1650 GOTO 940
-1660 REM INSTRUCTIONS
-1670 PRINT
-1672 FORV7=1 TO 31
-1673 PRINT"*";
-1675 NEXT V7
-1680 PRINT TAB(32)"MINOTAUR";
-1681 FOR V8=1 TO 31
-1682 PRINT TAB(41)"*";
-1683 NEXT V8
-1720 PRINT
-1730 PRINT
-1740 PRINT"DO YOU NEED INSTRUCTIONS";
-1760 INPUT X$
-1770 IF X$<>"YES" THEN 2320
-1780 PRINT
-1800 PRINT "THE OBJECT OF THE GAME IS TO KILL THE MINOTAUR"
-1820 PRINT
-1825 FOR V9=1TO 31
-1826 PRINT"*";
-1827 NEXT V9
-1830 PRINTTAB(33)"CAVERN";
-1832 FOR V10=1 TO 31
-1833 PRINT TAB(41)"*";
-1835 NEXT V10
-1836 PRINT
-1837 PRINT
-1840 PRINT TAB(12)"  THE CAVERN OF THE MINOTAUR IS IN THREE"
-1850 PRINT TAB(12)"LEVELS.  EACH LEVEL IS A COORDINATE PLANE ."
-1860 PRINT TAB(12)"OUTSIDE OF THE LEVELS THERE IS NOTHING BUT "
-1870 PRINT TAB(12)"VACUUM.  THE PLANES STRETCH OUT 10 ON EACH AXIS"
-1880 PRINT TAB(12)"FROM THE ORIGIN."
-1890 PRINT
-1910 FOR V11=1 TO 31
-1920 PRINT"*";
-1930 NEXT V11
-1940 PRINT TAB(32)"HAZARDS";
-1945 FOR V12=1 TO 31
-1947 PRINT TAB(41)"*";
-1948 NEXT V12
-1950 PRINT
-1955 PRINT
-1960 PRINT TAB(32)"BARRIERS"
-1965 PRINT
-1970 PRINT TAB(12)"  INSIDE THE CAVERN ARE 10 ELECTRIFIED"
-1980 PRINT TAB(12)"PILLARS STRETCHING THROUGH THE THREE"
-1990 PRINT TAB(12)"LEVELS. THEY WILL DESTROY ANYTHING THAT"
-2000 PRINT TAB(12)"TOUCHES THEM!!"
-2010 PRINT
-2020 PRINT TAB(32)"TRAPDOORS"
-2025 PRINT
-2030 PRINT TAB(12)"  TRAPDOORS WILL APPEAR OUT OF NOWHERE"
-2040 PRINT TAB(12)"AND DROP YOU DOWN ONE LEVEL. IF YOU WERE"
-2050 PRINT TAB(12)"ON LEVEL ONE, YOU LOSE!!"
-2060 PRINT:PRINT
-2070 PRINT TAB(27)"CHARGING  MINOTAUR"
-2071 PRINT
-2080 PRINT TAB(12)"  THE MINOTAUR WILL CHARGE IF YOU"
-2090 PRINT TAB(12)"WOUND HIM WITH YOUR SPEAR.  ALSO, HE"
-2100 PRINT TAB(12)"MAY CHARGE FOR NO REASON AT ALL!!!!"
-2110 PRINT
-2120 PRINT
-2130 PRINTTAB(21)" HERE ARE YOUR CONTROL FUNCTIONS"
-2140 PRINT TAB(27)"1) MOVING EAST"
-2150 PRINT TAB(27)"2) MOVING WEST"
-2160 PRINT TAB(27)"3) MOVING NORTH"
-2170 PRINT TAB(27)"4) MOVING SOUTH"
-2180 PRINT TAB(27)"5) MOVING UP A LEVEL"
-2190 PRINT TAB(27)"6) MOVING DOWN A LEVEL"
-2200 PRINT TAB(27)"7) THROWING YOUR SPEAR"
-2210 PRINT TAB(27)"8) GETTING A MAP"
-2220 PRINT
-2230 PRINT
-2240 FOR V13=1 TO 29
-2250 PRINT"*";
-2260 NEXT V13
-2270 PRINTTAB(31)"HAVE FUN";
-2280 FOR V14=1 TO 30
-2290 PRINT TAB(41)"*";
-2300 NEXT V14
-2310 PRINT
-2320 RETURN
-2330 REM BARRIERS
-2340 PRINT "I WILL NOW SET THE BARRIERS."
-2350 FOR A=1 TO 10
-2360 B(A)= INT(RND(1)*(-21))+11
-2370 C(A)=INT(RND(1)*(-21))+11
-2380 PRINT"BARRIER #";A;":(";B(A);",";C(A);")."
-2390 NEXT A
-2400 PRINT
-2410 RETURN
-2420 REM PLACE PLAYER
-2430 PRINT"WHICH LEVEL DO YOU WANT TO START ON";
-2440 INPUT L2
-2450 PRINT"WHICH POINT";
-2460 INPUT X2,Y2
-2470 PRINT"HOW FAR DO YOU WANT TO MOVE PER A TURN";
-2480 INPUT F
-2490 PRINT
-2500 RETURN
-2510 REM MOVE MINOTAUR
-2520 X4=X1
-2530 Y4=Y1
-2540 L4=L1
-2550 X3=INT(RND(1)*6)+1
-2560 ON X3 GOTO 2570,2620,2640,2690,2710,2760
-2570 X1=X1+1
-2580 IF ABS(X1)>10 THEN 2600
-2590 GOTO 2780
-2600 X1=X4
-2610 GOTO 2550
-2620 X1=X1-1
-2630 GOTO 2580
-2640 Y1=Y1+1
-2650 IF ABS(Y1)>10 THEN 2670
-2660 GOTO 2780
-2670 Y1=Y4
-2680 GOTO 2550
-2690 IF X1=B(A) AND Y1=C(A) THEN 2550
-2700 GOTO 2650
-2710 L1=L1+1
-2720 IF L1>3 OR L1<1 THEN 2740
-2730 GOTO 2780
-2740 L1=L4
-2750 GOTO 2550
-2760 L1=L1-1
-2770 GOTO 2720
-2780 FOR A=1 TO 10
-2790 IF X1=B(A) AND Y1=C(A) THEN 255
-2800 NEXT A
-2810 PRINT
-2820 GOTO280
-2830 PRINT
-2840 PRINT"YOU WOUNDED THE MINOTAUR"
-2850 PRINT"THE MINOTAUR IS CHARGING."
-2860 IF X1>X2 THEN 2890
-2870 X3=1
-2880 GOTO 2910
-2890 X3=-1
-2900 GOTO 2910
-2910 IF Y1>Y2 THEN 2940
-2920 Y3=1
-2930 GOTO 2960
-2940 Y3=-1
-2950 GOTO2960
-2960 IF L1>L2 THEN 2990
-2970 L3 = 1
-2980 GOTO 3000
-2990 L3=-1
-3000 IF L1=L2 THEN 3050
-3010 L1=L1+L3
-3020 PRINT"LEVEL";L1;""
-3030 GOTO 3000
-3040 REM HI THERE
-3050 IF X1=X2 THEN 3100
-3060 X1=X1+X3
-3070 GOSUB 3140
-3080 PRINT"(";X1;",";Y1;")"
-3090 GOTO 3050
-3100 IF Y1=Y2 THEN 3210
-3110 Y1=Y1+Y3
-3120 GOSUB 3140
-3130 GOTO 3080
-3140 FOR P=1 TO 10
-3150 IF B(P)=X1 AND C(P)=Y1 THEN 3180
-3160 NEXT P
-3170 RETURN
-3180 PRINT"BZZZZZZZZZZZZZZZZZZZZOWNT MINOTAUR JUST FRIED HIMSELF"
-3190 PRINT"YOU WIN,  YOU LUCKY SCAB"
-3200 GOTO 1450
-3210 PRINT"BITE "
-3220 PRINT"CHEW"
-3230 PRINT"CHOMP"
-3240 PRINT"GULP"
-3250 PRINT"YOU LOSE ,SUCKER"
-3260 GOTO930
-3270 PRINT"WHAT LEVEL";
-3280 INPUT L4
-3290 FOR Y4=10 TO -10 STEP -1
-3300 FOR X4=-10 TO 10
-3310 IF X4=X2 AND Y4=Y2 AND L4=L2 THEN 3410
-3320 IF X4=X1 AND Y4=Y1 AND L4=L1 THEN 3430
-3330 IF L4=S1 AND Y4=S2 AND L4=S3 THEN 3450
-3340 FOR A=1 TO 10
-3350 IF B(A)=X4 AND C(A)=Y4 THEN 3480
-3360 NEXT A
-3370 IF X4=0AND Y4=0 THEN 3500
-3380 IF X4=0 OR Y4=0 THEN 3520
-3390 PRINT".";
-3400 GOTO 3530
-3410 PRINT"Y";
-3420 GOTO 3400
-3430 PRINT"M";
-3440 GOTO 3400
-3450 IF S9=0 THEN 3340
-3460 PRINT"S";
-3470 GOTO 3400
-3480 PRINT"B";
-3490 GOTO 3400
-3500 PRINT"O";
-3510 GOTO 3400
-3520 PRINT"X";
-3530 NEXT X4
-3540 PRINT
-3550 NEXT Y4
-3560 PRINT
-3570 PRINT"LEVEL:";L4
-3580 PRINT TAB(34)"KEY"
-3590 PRINT TAB(31)"Y=YOU"
-3600 PRINT TAB(31)"M=MINOTAUR"
-3610 PRINT TAB(31)"S=SPEAR"
-3620 PRINT TAB(31)"B=BARRIER"
-3630 PRINT TAB(31)"O=ORIGIN"
-3640 PRINT TAB(31)"X=AXIS"
-3650 PRINT
-3660 GOTO 2510
-3670 PRINT"MINOTAUR MOVED TO YOUR SPOT; HE SAID YOU TASTED GREAT!!"
-3680 GOTO 930
-3690 PRINT"YOU HAVE YOUR SPEAR"
-3700 S9=0
-3710 GOTO 300
-3720 PRINT"HOW CAN YOU THROW YOUR SPEAR IF YOU DON'T HAVE ONE?"
-3730 PRINT"SPEAR IS AT(";S1;",";S2;") ON LEVEL ";S3
-3740 GOTO 420
-3750 STOP
-3760 END
+100 print tab(32)"minotaur"
+120 print tab(15)"creative computing, morristown, new jersey"
+130 print:print:print
+160 l1=int(rnd(1)*3)+1
+170 x1=int(rnd(1)*(-21))+11
+180 y1=int(rnd(1)*(-21))+11
+190 print
+195 dim b(15),c(15)
+200 gosub 1350
+210 rem instructions
+220 gosub 1660
+230 rem barriers
+240 gosub 2330
+250 rem place player
+260 gosub 2420
+270 rem start game
+280 rem spear
+290 if x2=s1 and y2=s2 and l2=s3 and t>1 then 3690
+300 rem  is he eaten?
+310 if x1=x2 and y2=1 and l1=l2 then 3670
+320 rem charging
+330 if rnd(1)<.1 then 2850
+340 rem turn #
+350 t=t+1
+360 print"turn";t;".  minotaur is at (";x1;",";y1;"), on l. ";l1;"."
+370 print "your control";
+380 input z
+390 on z goto 400,430,450,480,500,530,550,3270
+400 x2=x2+f
+410 if abs(x2)>10 then 1160
+420 goto 1180
+430 x2=x2-f
+440 goto 410
+450 y2=y2+f
+460 if abs(y2)>10 then 1160
+470 goto 420
+480 y2=y2-f
+490 goto 460
+500 l2=l2+1
+510 if l2>3 or l2<1 then 1330
+520 goto 420
+530 l2=l2-1
+540 goto 510
+550 rem  spear-throwing
+560 if l1<>l2 then 1080
+570 if x1<>x2 and y1<>y2 then 1100
+580 if x1<>x2 and abs(y1-y2)>10 then 1120
+590 if abs(x1-x2)>10 then 1120
+600 if s9=1 then 3720
+610 print"in which direction would you like to throw(use 1,2,3,4)"
+620 input h1
+630 print"how far";
+640 input h2
+650 s5=x2
+660 s6=y2
+670 for h3=1 to h2
+680 on h1 goto 690,720,740,770
+690 s5=s5+1
+700 if abs(s5)>10 then 860
+710 goto 790
+720 s5=s5-1
+730 goto 700
+740 s6=s6-1
+750 if abs(s6)>10 then 860
+760 goto 790
+770 s6=s6-1
+780 goto 750
+790 print"spear is at (";s5;",";s6")."
+800 rem test for barriers
+810 for a=1 to 10
+820 if s5=b(a) and s6=c(a) then 850
+830 next a
+840 goto 870
+850 print "smash spear splitered against barrier #";a;""
+860 goto 1140
+870 next h3
+880 if s5<>x1 or s6<>y1 then 1010
+890 x=int(rnd(1)*3)+1
+900 on x goto 910,1010,1070
+910 print"you killed the minotaur in";t;"turns."
+920 goto 1450
+930 print"would you like to play again";
+940 input x$
+950 if x$<>"yes" then 3760
+960 t=0
+970 l1=int(rnd(1)*3)+1
+980 x1=int(rnd(1)*(-21))+11
+990 y1=int(rnd(1)*(-21))+11
+1000 goto 230
+1010 print"you missed.  spear is at (";s5;",";s6;"). you must get it."
+1020 s1=s5
+1030 s2=s6
+1040 s3=l2
+1050 s9=1
+1060 goto 280
+1070 gosub 2840
+1080 print"you are not on the same level. you cannot throw."
+1090 goto 420
+1100 print"you are not on the same xor y line. you cannot throw."
+1110 goto 420
+1120 print"you are not within 10. you cannot throw."
+1130 goto 420
+1140 print"you are now weaponless. you lose, sucker!"
+1150 goto 930
+1160 print"yaaaaaaaaaaaaaaaah you fell off the edge"
+1170 goto 1150
+1180 print"you are at (";x2;",";y2;"), on level ";l2;"."
+1190 rem test for barriers
+1200 for a=1 to 10
+1210 if x2=b(a) and y2=c(a) then 1240
+1220 next a
+1230 goto 1260
+1240 print"you have just fried yourself on an electrified barrier."
+1250 goto 1150
+1260 rem trapdoors
+1270 x=int(rnd(1)*10)+1
+1280 if x=5 then 1300
+1290 goto 2510
+1300 print"yaaaaaaaaaaaaaah trapdoor, you fell down one level"
+1310 l2=l2-1
+1320 if l2>0 then 1290
+1330 print"you fell out of the cavern. you lose."
+1340 goto 1150
+1350 print"do you want to be the minotaur champion";
+1360 input x9$
+1370 if x9$<>"yes" then 1440
+1380 c2=20
+1390 print"you must beat a score of 20."
+1391 dim c3$(72)
+1419 dim c4$(72)
+1440 return
+1450 if x9$<>"yes" then 930
+1460 c3=(1/t)*100
+1470 if c3<20 then 1630
+1480 print"you are now a qualified champion!"
+1620 goto 930
+1630 print"sorry ,you did not beat the champion."
+1640 print"do you want to play again";
+1650 goto 940
+1660 rem instructions
+1670 print
+1672 forv7=1 to 31
+1673 print"*";
+1675 next v7
+1680 print tab(32)"minotaur";
+1681 for v8=1 to 31
+1682 print tab(41)"*";
+1683 next v8
+1720 print
+1730 print
+1740 print"do you need instructions";
+1760 input x$
+1770 if x$<>"yes" then 2320
+1780 print
+1800 print "the object of the game is to kill the minotaur"
+1820 print
+1825 for v9=1to 31
+1826 print"*";
+1827 next v9
+1830 printtab(33)"cavern";
+1832 for v10=1 to 31
+1833 print tab(41)"*";
+1835 next v10
+1836 print
+1837 print
+1840 print tab(12)"  the cavern of the minotaur is in three"
+1850 print tab(12)"levels.  each level is a coordinate plane ."
+1860 print tab(12)"outside of the levels there is nothing but "
+1870 print tab(12)"vacuum.  the planes stretch out 10 on each axis"
+1880 print tab(12)"from the origin."
+1890 print
+1910 for v11=1 to 31
+1920 print"*";
+1930 next v11
+1940 print tab(32)"hazards";
+1945 for v12=1 to 31
+1947 print tab(41)"*";
+1948 next v12
+1950 print
+1955 print
+1960 print tab(32)"barriers"
+1965 print
+1970 print tab(12)"  inside the cavern are 10 electrified"
+1980 print tab(12)"pillars stretching through the three"
+1990 print tab(12)"levels. they will destroy anything that"
+2000 print tab(12)"touches them!!"
+2010 print
+2020 print tab(32)"trapdoors"
+2025 print
+2030 print tab(12)"  trapdoors will appear out of nowhere"
+2040 print tab(12)"and drop you down one level. if you were"
+2050 print tab(12)"on level one, you lose!!"
+2060 print:print
+2070 print tab(27)"charging  minotaur"
+2071 print
+2080 print tab(12)"  the minotaur will charge if you"
+2090 print tab(12)"wound him with your spear.  also, he"
+2100 print tab(12)"may charge for no reason at all!!!!"
+2110 print
+2120 print
+2130 printtab(21)" here are your control functions"
+2140 print tab(27)"1) moving east"
+2150 print tab(27)"2) moving west"
+2160 print tab(27)"3) moving north"
+2170 print tab(27)"4) moving south"
+2180 print tab(27)"5) moving up a level"
+2190 print tab(27)"6) moving down a level"
+2200 print tab(27)"7) throwing your spear"
+2210 print tab(27)"8) getting a map"
+2220 print
+2230 print
+2240 for v13=1 to 29
+2250 print"*";
+2260 next v13
+2270 printtab(31)"have fun";
+2280 for v14=1 to 30
+2290 print tab(41)"*";
+2300 next v14
+2310 print
+2320 return
+2330 rem barriers
+2340 print "i will now set the barriers."
+2350 for a=1 to 10
+2360 b(a)= int(rnd(1)*(-21))+11
+2370 c(a)=int(rnd(1)*(-21))+11
+2380 print"barrier #";a;":(";b(a);",";c(a);")."
+2390 next a
+2400 print
+2410 return
+2420 rem place player
+2430 print"which level do you want to start on";
+2440 input l2
+2450 print"which point";
+2460 input x2,y2
+2470 print"how far do you want to move per a turn";
+2480 input f
+2490 print
+2500 return
+2510 rem move minotaur
+2520 x4=x1
+2530 y4=y1
+2540 l4=l1
+2550 x3=int(rnd(1)*6)+1
+2560 on x3 goto 2570,2620,2640,2690,2710,2760
+2570 x1=x1+1
+2580 if abs(x1)>10 then 2600
+2590 goto 2780
+2600 x1=x4
+2610 goto 2550
+2620 x1=x1-1
+2630 goto 2580
+2640 y1=y1+1
+2650 if abs(y1)>10 then 2670
+2660 goto 2780
+2670 y1=y4
+2680 goto 2550
+2690 if x1=b(a) and y1=c(a) then 2550
+2700 goto 2650
+2710 l1=l1+1
+2720 if l1>3 or l1<1 then 2740
+2730 goto 2780
+2740 l1=l4
+2750 goto 2550
+2760 l1=l1-1
+2770 goto 2720
+2780 for a=1 to 10
+2790 if x1=b(a) and y1=c(a) then 255
+2800 next a
+2810 print
+2820 goto280
+2830 print
+2840 print"you wounded the minotaur"
+2850 print"the minotaur is charging."
+2860 if x1>x2 then 2890
+2870 x3=1
+2880 goto 2910
+2890 x3=-1
+2900 goto 2910
+2910 if y1>y2 then 2940
+2920 y3=1
+2930 goto 2960
+2940 y3=-1
+2950 goto2960
+2960 if l1>l2 then 2990
+2970 l3 = 1
+2980 goto 3000
+2990 l3=-1
+3000 if l1=l2 then 3050
+3010 l1=l1+l3
+3020 print"level";l1;""
+3030 goto 3000
+3040 rem hi there
+3050 if x1=x2 then 3100
+3060 x1=x1+x3
+3070 gosub 3140
+3080 print"(";x1;",";y1;")"
+3090 goto 3050
+3100 if y1=y2 then 3210
+3110 y1=y1+y3
+3120 gosub 3140
+3130 goto 3080
+3140 for p=1 to 10
+3150 if b(p)=x1 and c(p)=y1 then 3180
+3160 next p
+3170 return
+3180 print"bzzzzzzzzzzzzzzzzzzzzownt minotaur just fried himself"
+3190 print"you win,  you lucky scab"
+3200 goto 1450
+3210 print"bite "
+3220 print"chew"
+3230 print"chomp"
+3240 print"gulp"
+3250 print"you lose ,sucker"
+3260 goto930
+3270 print"what level";
+3280 input l4
+3290 for y4=10 to -10 step -1
+3300 for x4=-10 to 10
+3310 if x4=x2 and y4=y2 and l4=l2 then 3410
+3320 if x4=x1 and y4=y1 and l4=l1 then 3430
+3330 if l4=s1 and y4=s2 and l4=s3 then 3450
+3340 for a=1 to 10
+3350 if b(a)=x4 and c(a)=y4 then 3480
+3360 next a
+3370 if x4=0and y4=0 then 3500
+3380 if x4=0 or y4=0 then 3520
+3390 print".";
+3400 goto 3530
+3410 print"y";
+3420 goto 3400
+3430 print"m";
+3440 goto 3400
+3450 if s9=0 then 3340
+3460 print"s";
+3470 goto 3400
+3480 print"b";
+3490 goto 3400
+3500 print"o";
+3510 goto 3400
+3520 print"x";
+3530 next x4
+3540 print
+3550 next y4
+3560 print
+3570 print"level:";l4
+3580 print tab(34)"key"
+3590 print tab(31)"y=you"
+3600 print tab(31)"m=minotaur"
+3610 print tab(31)"s=spear"
+3620 print tab(31)"b=barrier"
+3630 print tab(31)"o=origin"
+3640 print tab(31)"x=axis"
+3650 print
+3660 goto 2510
+3670 print"minotaur moved to your spot; he said you tasted great!!"
+3680 goto 930
+3690 print"you have your spear"
+3700 s9=0
+3710 goto 300
+3720 print"how can you throw your spear if you don't have one?"
+3730 print"spear is at(";s1;",";s2;") on level ";s3
+3740 goto 420
+3750 stop
+3760 end

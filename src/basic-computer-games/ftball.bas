@@ -1,298 +1,298 @@
-10 PRINT TAB(33);"FTBALL"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT
-220 PRINT "THIS IS DARTMOUTH CHAMPIONSHIP FOOTBALL.":PRINT
-230 PRINT "YOU WILL QUARTERBACK DARTMOUTH. CALL PLAYS AS FOLLOWS:"
-240 PRINT "1= SIMPLE RUN; 2= TRICKY RUN; 3= SHORT PASS;"
-250 PRINT "4= LONG PASS; 5= PUNT; 6= QUICK KICK; 7= PLACE KICK."
-260 PRINT
-270 PRINT "CHOOSE YOUR OPPONENT";
-280 INPUT O$(1)
-290 O$(0)="DARTMOUTH"
-300 PRINT
-310 LET S(0)=0: LET S(1)=0
-320 REM
-330 DIM L$(20)
-340 FOR I=1 TO 20: READ L$(I): NEXT I
-350 DATA "KICK","RECEIVE"," YARD ","RUN BACK FOR ","BALL ON "
-360 DATA "YARD LINE"," SIMPLE RUN"," TRICKY RUN"," SHORT PASS"
-370 DATA " LONG PASS","PUNT"," QUICK KICK "," PLACE KICK"," LOSS "
-380 DATA " NO GAIN","GAIN "," TOUCHDOWN "," TOUCHBACK ","SAFETY***"
-385 DATA "JUNK"
-390 LET P=INT(RND(1)*2)
-400 PRINT O$(P);" WON THE TOSS"
-410 DEF FNF(X)=1-2*P
-420 DEF FNG(Z)=P*(X1-X)+(1-P)*(X-X1)
-430 IF P=0 THEN 470
-440 PRINT O$(1);" ELECTS TO RECEIVE."
-450 PRINT
-460 GOTO 580
-470 PRINT "DO YOU ELECT TO KICK OR RECEIVE";
-480 INPUT A$
-490 PRINT
-500 FOR E=1 TO 2
-510 IF A$=L$(E) THEN 550
-520 NEXT E
-530 PRINT "INCORRECT ANSWER.  PLEASE TYPE 'KICK' OR 'RECEIVE'";
-540 GOTO 480
-550 IF E=2 THEN 580
-560 LET P=1
-580 LET X=40+(1-P)*20
-590 LET Y=INT(200*(RND(1)-.5)^3+55)
-600 PRINT Y;L$(3);" KICKOFF"
-610 LET X=X-FNF(1)*Y
-620 IF ABS(X-50)>=50 THEN 700
-630 LET Y=INT(50*RND(1)^2)+(1-P)*INT(50*RND(1)^4)
-640 LET X=X+FNF(1)*Y
-650 IF ABS(X-50)>=50 THEN 655
-651 PRINT Y;L$(3);" RUNBACK"
-652 GOTO 720
-655 PRINT L$(4);
-660 GOTO 2600
-700 PRINT "TOUCHBACK FOR ";O$(P);"."
-710 LET X=20+P*60
-720 REM FIRST DOWN
-730 GOSUB 800
-740 LET X1=X
-750 LET D=1
-760 PRINT:PRINT "FIRST DOWN ";O$(P);"***"
-770 PRINT
-780 PRINT
-790 GOTO 860
-800 REM PRINT POSITION
-810 IF X>50 THEN 840
-820 PRINT L$(5);O$(0);X;L$(6)
-830 GOTO 850
-840 PRINT L$(5);O$(1);100-X;L$(6)
-850 RETURN
-860 REM NEW PLAY
-870 LET T=T+1
-880 IF T=30 THEN 1060
-890 IF T<50 THEN 940
-900 IF RND(1)>.2 THEN 940
-910 PRINT "END OF GAME  ***"
-920 PRINT "FINAL SCORE:  ";O$(0);": ";S(0);"  ";O$(1);": ";S(1)
-930 STOP
-940 IF P=1 THEN 1870
-950 PRINT "NEXT PLAY";
-960 INPUT Z
-970 IF Z<>INT(Z) THEN 990
-980 IF ABS(Z-4)<=3 THEN 1010
-990 PRINT "ILLEGAL PLAY NUMBER, RETYPE";
-1000 GOTO 960
-1010 LET F=0
-1020 PRINT L$(Z+6);".  ";
-1030 LET R=RND(1)*(.98+FNF(1)*.02)
-1040 LET R1=RND(1)
-1050 ON Z GOTO 1110,1150,1260,1480,1570,1570,1680
-1060 REM  JEAN'S SPECIAL
-1070 IF RND(1)> 1/3 THEN 940
-1080 PRINT "GAME DELAYED.  DOG ON FIELD."
-1090 PRINT
-1100 GOTO 940
-1110 REM  SIMPLE RUN
-1120 LET Y=INT(24*(R-.5)^3+3)
-1130 IF RND(1)<.05 THEN 1180
-1140 GOTO 2190
-1150 REM  TRICKY RUN
-1160 LET Y=INT(20*R-5)
-1170 IF RND(1)>.1 THEN 2190
-1180 LET F=-1
-1190 LET X3=X
-1200 LET X=X+FNF(1)*Y
-1210 IF ABS(X-50)>=50 THEN 1240
-1220 PRINT "***  FUMBLE AFTER ";
-1230 GOTO 2230
-1240 PRINT "***  FUMBLE."
-1250 GOTO 2450
-1260 REM  SHORT PASS
-1270 LET Y=INT(60*(R1-.5)^3+10)
-1280 IF R<.05 THEN 1330
-1290 IF R<.15 THEN 1390
-1300 IF R<.55 THEN 1420
-1310 PRINT "COMPLETE.  ";
-1320 GOTO 2190
-1330 IF D=4 THEN 1420
-1340 PRINT "INTERCEPTED."
-1350 LET F=-1
-1360 LET X=X+FNF(1)*Y
-1370 IF ABS(X-50)>=50 THEN 2450
-1380 GOTO 2300
-1390 PRINT "PASSER TACKLED.  ";
-1400 LET Y=-INT(10*R1)
-1410 GOTO 2190
-1420 LET Y=0
-1430 IF RND(1)<.3 THEN 1460
-1440 PRINT "INCOMPLETE.  ";
-1450 GOTO 2190
-1460 PRINT "BATTED DOWN.  ";
-1470 GOTO 2190
-1480 REM  LONG PASS
-1490 LET Y=INT(160*(R1-.5)^3+30)
-1500 IF R<.1 THEN 1330
-1510 IF R<.3 THEN 1540
-1520 IF R<.75 THEN 1420
-1530 GOTO 1310
-1540 PRINT "PASSER TACKLED.  ";
-1550 LET Y=-INT(15*R1+3)
-1560 GOTO 2190
-1570 REM  PUNT OR KICK
-1580 LET Y=INT(100*(R-.5)^3+35)
-1590 IF D=4 THEN 1610
-1600 LET Y=INT(Y*1.3)
-1610 PRINT Y;L$(3);" PUNT"
-1620 IF ABS(X+Y*FNF(1)-50)>=50 THEN 1670
-1630 IF D<4 THEN 1670
-1640 LET Y1=INT(R1^2*20)
-1650 PRINT Y1;L$(3);" RUN BACK"
-1660 LET Y=Y-Y1
-1670 GOTO 1350
-1680 REM  PLACE KICK
-1690 LET Y=INT(100*(R-.5)^3+35)
-1700 IF R1>.15 THEN 1750
-1710 PRINT "KICK IS BLOCKED  ***"
-1720 LET X=X-5*FNF(1)
-1730 LET P=1-P
-1740 GOTO 720
-1750 LET X=X+FNF(1)*Y
-1760 IF ABS(X-50)>=60 THEN 1810
-1770 PRINT "KICK IS SHORT."
-1780 IF ABS(X-50)>=50 THEN 2710
-1790 P=1-P
-1800 GOTO 630
-1810 IF R1>.5 THEN 1840
-1820 PRINT "KICK IS OFF TO THE SIDE."
-1830 GOTO 2710
-1840 PRINT "FIELD GOAL ***"
-1850 LET S(P)=S(P)+3
-1860 GOTO 2640
-1870 REM  OPPONENT'S PLAY
-1880 IF D>1 THEN 1940
-1890 IF RND(1)>1/3 THEN 1920
-1900 LET Z=3
-1910 GOTO 1010
-1920 LET Z=1
-1930 GOTO 1010
-1940 IF D=4 THEN 2090
-1950 IF 10+X-X1<5 THEN 1890
-1960 IF X<5 THEN 1890
-1970 IF X<=10 THEN 2160
-1980 IF X>X1 THEN 2020
-1990 LET A=INT(2*RND(1))
-2000 LET Z=2+A*2
-2010 GOTO 1010
-2020 IF D<3 THEN 1990
-2030 IF X<45 THEN 1990
-2040 IF RND(1)>1/4 THEN 2070
-2050 LET Z=6
-2060 GOTO 1010
-2070 LET Z=4
-2080 GOTO 1010
-2090 IF X>30 THEN 2140
-2100 IF 10+X-X1<3 THEN 1890
-2110 IF X<3 THEN 1890
-2120 LET Z=7
-2130 GOTO 1010
-2140 LET Z=5
-2150 GOTO 1010
-2160 LET A=INT(2*RND(1))
-2170 LET Z=2+A
-2180 GOTO 1010
-2190 REM GAIN OR LOSS
-2200 LET X3=X
-2210 LET X=X+FNF(1)*Y
-2220 IF ABS(X-50)>=50 THEN 2450
-2230 IF Y=0 THEN 2250
-2240 PRINT ABS(Y);L$(3);
-2250 PRINT L$(15+SGN(Y))
-2280 IF ABS(X3-50)>40 THEN 2300
-2290 IF RND(1)<.1 THEN 2860
-2300 GOSUB 800
-2310 IF F=0 THEN 2340
-2320 LET P=1-P
-2330 GOTO 740
-2340 IF FNG(1)>=10 THEN 740
-2350 IF D=4 THEN 2320
-2360 LET D=D+1
-2370 PRINT "DOWN: ";D;"     ";
-2380 IF (X1-50)*FNF(1)<40 THEN 2410
-2390 PRINT "GOAL TO GO"
-2400 GOTO 2420
-2410 PRINT "YARDS TO GO: ";10-FNG(1)
-2420 PRINT
-2430 PRINT
-2440 GOTO 860
-2450 REM BALL IN END-ZONE
-2460 IF X>=100 THEN 2490
-2470 LET E=0
-2480 GOTO 2500
-2490 LET E=1
-2500 ON 1+E-F*2+P*4 GOTO 2510,2590,2760,2710,2590,2510,2710,2760
-2510 REM SAFETY
-2520 LET S(1-P)=S(1-P)+2
-2530 PRINT L$(19)
-2540 GOSUB 2800
-2550 PRINT O$(P);" KICKS OFF FROM ITS 20 YARD LINE."
-2560 LET X=20+P*60
-2570 LET P=1-P
-2580 GOTO 590
-2590 REM OFFENSIVE TD
-2600 PRINT L$(17);"***"
-2610 IF RND(1)>.8 THEN 2680
-2620 LET S(P)=S(P)+7
-2630 PRINT "KICK IS GOOD."
-2640 GOSUB 2800
-2650 PRINT O$(P);" KICKS OFF"
-2660 LET P=1-P
-2670 GOTO 580
-2680 PRINT "KICK IS OFF TO THE SIDE"
-2690 LET S(P)=S(P)+6
-2700 GOTO 2640
-2710 REM TOUCHBACK
-2720 PRINT L$(18)
-2730 LET P=1-P
-2740 LET X=20+P*60
-2750 GOTO 720
-2760 REM DEFENSIVE TD
-2770 PRINT L$(17);"FOR ";O$(1-P);"***"
-2780 LET P=1-P
-2790 GOTO 2600
-2800 REM SCORE
-2810 PRINT
-2820 PRINT "SCORE:  ";S(0);" TO ";S(1)
-2830 PRINT
-2840 PRINT
-2850 RETURN
-2860 REM PENALTY
-2870 LET P3=INT(2*RND(1))
-2880 PRINT O$(P3);" OFFSIDES -- PENALTY OF 5 YARDS."
-2890 PRINT
-2900 PRINT
-2910 IF P3=0 THEN 2980
-2920 PRINT "DO YOU ACCEPT THE PENALTY";
-2930 INPUT A$
-2940 IF A$="NO" THEN 2300
-2950 IF A$="YES" THEN 3110
-2960 PRINT "TYPE 'YES' OR 'NO'";
-2970 GOTO 2930
-2980 REM OPPONENT'S STRATEGY ON PENALTY
-2990 IF P=1 THEN 3040
-3000 IF Y<=0 THEN 3080
-3010 IF F<0 THEN 3080
-3020 IF FNG(1)<3*D-2 THEN 3080
-3030 GOTO 3100
-3040 IF Y<=5 THEN 3100
-3050 IF F<0 THEN 3100
-3060 IF D<4 THEN 3080
-3070 IF FNG(1)<10 THEN 3100
-3080 PRINT "PENALTY REFUSED."
-3090 GOTO 2300
-3100 PRINT "PENALTY ACCEPTED."
-3110 LET F=0
-3120 LET D=D-1
-3130 IF P<>P3 THEN 3160
-3140 LET X=X3-FNF(1)*5
-3150 GOTO 2300
-3160 LET X=X3+FNF(1)*5
-3170 GOTO 2300
-3180 END
+10 print tab(33);"ftball"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print
+220 print "this is dartmouth championship football.":print
+230 print "you will quarterback dartmouth. call plays as follows:"
+240 print "1= simple run; 2= tricky run; 3= short pass;"
+250 print "4= long pass; 5= punt; 6= quick kick; 7= place kick."
+260 print
+270 print "choose your opponent";
+280 input o$(1)
+290 o$(0)="dartmouth"
+300 print
+310 let s(0)=0: let s(1)=0
+320 rem
+330 dim l$(20)
+340 for i=1 to 20: read l$(i): next i
+350 data "kick","receive"," yard ","run back for ","ball on "
+360 data "yard line"," simple run"," tricky run"," short pass"
+370 data " long pass","punt"," quick kick "," place kick"," loss "
+380 data " no gain","gain "," touchdown "," touchback ","safety***"
+385 data "junk"
+390 let p=int(rnd(1)*2)
+400 print o$(p);" won the toss"
+410 def fnf(x)=1-2*p
+420 def fng(z)=p*(x1-x)+(1-p)*(x-x1)
+430 if p=0 then 470
+440 print o$(1);" elects to receive."
+450 print
+460 goto 580
+470 print "do you elect to kick or receive";
+480 input a$
+490 print
+500 for e=1 to 2
+510 if a$=l$(e) then 550
+520 next e
+530 print "incorrect answer.  please type 'kick' or 'receive'";
+540 goto 480
+550 if e=2 then 580
+560 let p=1
+580 let x=40+(1-p)*20
+590 let y=int(200*(rnd(1)-.5)^3+55)
+600 print y;l$(3);" kickoff"
+610 let x=x-fnf(1)*y
+620 if abs(x-50)>=50 then 700
+630 let y=int(50*rnd(1)^2)+(1-p)*int(50*rnd(1)^4)
+640 let x=x+fnf(1)*y
+650 if abs(x-50)>=50 then 655
+651 print y;l$(3);" runback"
+652 goto 720
+655 print l$(4);
+660 goto 2600
+700 print "touchback for ";o$(p);"."
+710 let x=20+p*60
+720 rem first down
+730 gosub 800
+740 let x1=x
+750 let d=1
+760 print:print "first down ";o$(p);"***"
+770 print
+780 print
+790 goto 860
+800 rem print position
+810 if x>50 then 840
+820 print l$(5);o$(0);x;l$(6)
+830 goto 850
+840 print l$(5);o$(1);100-x;l$(6)
+850 return
+860 rem new play
+870 let t=t+1
+880 if t=30 then 1060
+890 if t<50 then 940
+900 if rnd(1)>.2 then 940
+910 print "end of game  ***"
+920 print "final score:  ";o$(0);": ";s(0);"  ";o$(1);": ";s(1)
+930 stop
+940 if p=1 then 1870
+950 print "next play";
+960 input z
+970 if z<>int(z) then 990
+980 if abs(z-4)<=3 then 1010
+990 print "illegal play number, retype";
+1000 goto 960
+1010 let f=0
+1020 print l$(z+6);".  ";
+1030 let r=rnd(1)*(.98+fnf(1)*.02)
+1040 let r1=rnd(1)
+1050 on z goto 1110,1150,1260,1480,1570,1570,1680
+1060 rem  jean's special
+1070 if rnd(1)> 1/3 then 940
+1080 print "game delayed.  dog on field."
+1090 print
+1100 goto 940
+1110 rem  simple run
+1120 let y=int(24*(r-.5)^3+3)
+1130 if rnd(1)<.05 then 1180
+1140 goto 2190
+1150 rem  tricky run
+1160 let y=int(20*r-5)
+1170 if rnd(1)>.1 then 2190
+1180 let f=-1
+1190 let x3=x
+1200 let x=x+fnf(1)*y
+1210 if abs(x-50)>=50 then 1240
+1220 print "***  fumble after ";
+1230 goto 2230
+1240 print "***  fumble."
+1250 goto 2450
+1260 rem  short pass
+1270 let y=int(60*(r1-.5)^3+10)
+1280 if r<.05 then 1330
+1290 if r<.15 then 1390
+1300 if r<.55 then 1420
+1310 print "complete.  ";
+1320 goto 2190
+1330 if d=4 then 1420
+1340 print "intercepted."
+1350 let f=-1
+1360 let x=x+fnf(1)*y
+1370 if abs(x-50)>=50 then 2450
+1380 goto 2300
+1390 print "passer tackled.  ";
+1400 let y=-int(10*r1)
+1410 goto 2190
+1420 let y=0
+1430 if rnd(1)<.3 then 1460
+1440 print "incomplete.  ";
+1450 goto 2190
+1460 print "batted down.  ";
+1470 goto 2190
+1480 rem  long pass
+1490 let y=int(160*(r1-.5)^3+30)
+1500 if r<.1 then 1330
+1510 if r<.3 then 1540
+1520 if r<.75 then 1420
+1530 goto 1310
+1540 print "passer tackled.  ";
+1550 let y=-int(15*r1+3)
+1560 goto 2190
+1570 rem  punt or kick
+1580 let y=int(100*(r-.5)^3+35)
+1590 if d=4 then 1610
+1600 let y=int(y*1.3)
+1610 print y;l$(3);" punt"
+1620 if abs(x+y*fnf(1)-50)>=50 then 1670
+1630 if d<4 then 1670
+1640 let y1=int(r1^2*20)
+1650 print y1;l$(3);" run back"
+1660 let y=y-y1
+1670 goto 1350
+1680 rem  place kick
+1690 let y=int(100*(r-.5)^3+35)
+1700 if r1>.15 then 1750
+1710 print "kick is blocked  ***"
+1720 let x=x-5*fnf(1)
+1730 let p=1-p
+1740 goto 720
+1750 let x=x+fnf(1)*y
+1760 if abs(x-50)>=60 then 1810
+1770 print "kick is short."
+1780 if abs(x-50)>=50 then 2710
+1790 p=1-p
+1800 goto 630
+1810 if r1>.5 then 1840
+1820 print "kick is off to the side."
+1830 goto 2710
+1840 print "field goal ***"
+1850 let s(p)=s(p)+3
+1860 goto 2640
+1870 rem  opponent's play
+1880 if d>1 then 1940
+1890 if rnd(1)>1/3 then 1920
+1900 let z=3
+1910 goto 1010
+1920 let z=1
+1930 goto 1010
+1940 if d=4 then 2090
+1950 if 10+x-x1<5 then 1890
+1960 if x<5 then 1890
+1970 if x<=10 then 2160
+1980 if x>x1 then 2020
+1990 let a=int(2*rnd(1))
+2000 let z=2+a*2
+2010 goto 1010
+2020 if d<3 then 1990
+2030 if x<45 then 1990
+2040 if rnd(1)>1/4 then 2070
+2050 let z=6
+2060 goto 1010
+2070 let z=4
+2080 goto 1010
+2090 if x>30 then 2140
+2100 if 10+x-x1<3 then 1890
+2110 if x<3 then 1890
+2120 let z=7
+2130 goto 1010
+2140 let z=5
+2150 goto 1010
+2160 let a=int(2*rnd(1))
+2170 let z=2+a
+2180 goto 1010
+2190 rem gain or loss
+2200 let x3=x
+2210 let x=x+fnf(1)*y
+2220 if abs(x-50)>=50 then 2450
+2230 if y=0 then 2250
+2240 print abs(y);l$(3);
+2250 print l$(15+sgn(y))
+2280 if abs(x3-50)>40 then 2300
+2290 if rnd(1)<.1 then 2860
+2300 gosub 800
+2310 if f=0 then 2340
+2320 let p=1-p
+2330 goto 740
+2340 if fng(1)>=10 then 740
+2350 if d=4 then 2320
+2360 let d=d+1
+2370 print "down: ";d;"     ";
+2380 if (x1-50)*fnf(1)<40 then 2410
+2390 print "goal to go"
+2400 goto 2420
+2410 print "yards to go: ";10-fng(1)
+2420 print
+2430 print
+2440 goto 860
+2450 rem ball in end-zone
+2460 if x>=100 then 2490
+2470 let e=0
+2480 goto 2500
+2490 let e=1
+2500 on 1+e-f*2+p*4 goto 2510,2590,2760,2710,2590,2510,2710,2760
+2510 rem safety
+2520 let s(1-p)=s(1-p)+2
+2530 print l$(19)
+2540 gosub 2800
+2550 print o$(p);" kicks off from its 20 yard line."
+2560 let x=20+p*60
+2570 let p=1-p
+2580 goto 590
+2590 rem offensive td
+2600 print l$(17);"***"
+2610 if rnd(1)>.8 then 2680
+2620 let s(p)=s(p)+7
+2630 print "kick is good."
+2640 gosub 2800
+2650 print o$(p);" kicks off"
+2660 let p=1-p
+2670 goto 580
+2680 print "kick is off to the side"
+2690 let s(p)=s(p)+6
+2700 goto 2640
+2710 rem touchback
+2720 print l$(18)
+2730 let p=1-p
+2740 let x=20+p*60
+2750 goto 720
+2760 rem defensive td
+2770 print l$(17);"for ";o$(1-p);"***"
+2780 let p=1-p
+2790 goto 2600
+2800 rem score
+2810 print
+2820 print "score:  ";s(0);" to ";s(1)
+2830 print
+2840 print
+2850 return
+2860 rem penalty
+2870 let p3=int(2*rnd(1))
+2880 print o$(p3);" offsides -- penalty of 5 yards."
+2890 print
+2900 print
+2910 if p3=0 then 2980
+2920 print "do you accept the penalty";
+2930 input a$
+2940 if a$="no" then 2300
+2950 if a$="yes" then 3110
+2960 print "type 'yes' or 'no'";
+2970 goto 2930
+2980 rem opponent's strategy on penalty
+2990 if p=1 then 3040
+3000 if y<=0 then 3080
+3010 if f<0 then 3080
+3020 if fng(1)<3*d-2 then 3080
+3030 goto 3100
+3040 if y<=5 then 3100
+3050 if f<0 then 3100
+3060 if d<4 then 3080
+3070 if fng(1)<10 then 3100
+3080 print "penalty refused."
+3090 goto 2300
+3100 print "penalty accepted."
+3110 let f=0
+3120 let d=d-1
+3130 if p<>p3 then 3160
+3140 let x=x3-fnf(1)*5
+3150 goto 2300
+3160 let x=x3+fnf(1)*5
+3170 goto 2300
+3180 end

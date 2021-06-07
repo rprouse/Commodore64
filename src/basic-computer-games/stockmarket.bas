@@ -1,232 +1,232 @@
-10 PRINT TAB(30);"STOCK MARKET"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT: PRINT: PRINT
-100 REM STOCK MARKET SIMULATION     -STOCK-
-101 REM REVISED 8/18/70 (D. PESSEL, L. BRAUN, C. LOSIK)  
-102 REM IMP VRBLS: A-MRKT TRND SLP; B5-BRKRGE FEE; C-TTL CSH ASSTS;    
-103 REM C5-TTL CSH ASSTS (TEMP); C(I)-CHNG IN STK VAL; D-TTL ASSTS;
-104 REM E1,E2-LRG CHNG MISC; I-STCK #; I1,I2-STCKS W LRG CHNG; 
-105 REM N1,N2-LRG CHNG DAY CNTS; P5-TTL DAYS PRCHSS; P(I)-PRTFL CNTNTS;
-106 REM Q9-NEW CYCL?; S4-SGN OF A; S5-TTL DYS SLS; S(I)-VALUE/SHR; 
-107 REM T-TTL STCK ASSTS; T5-TTL VAL OF TRNSCTNS;
-108 REM W3-LRG CHNG; X1-SMLL CHNG(<$1); Z4,Z5,Z6-NYSE AVE.; Z(I)-TRNSCT
-110 DIM S(5),P(5),Z(5),C(5) 
-112 REM SLOPE OF MARKET TREND:A  (SAME FOR ALL STOCKS) 
-113 LET X=1
-114 LET A=INT((RND(X)/10)*100+.5)/100 
-115 LET T5=0
-116 LET X9=0
-117 LET N1=0
-118 LET N2=0
-119 LET E1=0
-120 LET E2=0
-121 REM INTRODUCTION 
-122 PRINT "DO YOU WANT THE INSTRUCTIONS (YES-TYPE 1, NO-TYPE 0)"; 
-123 INPUT Z9
-124 PRINT 
-125 PRINT 
-126 IF Z9<1 THEN 200
-130 PRINT "THIS PROGRAM PLAYS THE STOCK MARKET.  YOU WILL BE GIVEN" 
-132 PRINT "$10,000 AND MAY BUY OR SELL STOCKS.  THE STOCK PRICES WILL"
-134 PRINT "BE GENERATED RANDOMLY AND THEREFORE THIS MODEL DOES NOT" 
-135 PRINT "REPRESENT EXACTLY WHAT HAPPENS ON THE EXCHANGE.  A TABLE"
-136 PRINT "OF AVAILABLE STOCKS, THEIR PRICES, AND THE NUMBER OF SHARES"
-137 PRINT "IN YOUR PORTFOLIO WILL BE PRINTED.  FOLLOWING THIS, THE" 
-138 PRINT "INITIALS OF EACH STOCK WILL BE PRINTED WITH A QUESTION"
-139 PRINT "MARK.  HERE YOU INDICATE A TRANSACTION.  TO BUY A STOCK" 
-140 PRINT "TYPE +NNN, TO SELL A STOCK TYPE -NNN, WHERE NNN IS THE"  
-141 PRINT "NUMBER OF SHARES.  A BROKERAGE FEE OF 1% WILL BE CHARGED"
-142 PRINT "ON ALL TRANSACTIONS.  NOTE THAT IF A STOCK'S VALUE DROPS"
-143 PRINT "TO ZERO IT MAY REBOUND TO A POSITIVE VALUE AGAIN.  YOU"
-144 PRINT "HAVE $10,000 TO INVEST.  USE INTEGERS FOR ALL YOUR INPUTS."
-145 PRINT "(NOTE:  TO GET A 'FEEL' FOR THE MARKET RUN FOR AT LEAST" 
-146 PRINT "10 DAYS)"
-147 PRINT "-----GOOD LUCK!-----"
-200 REM GENERATION OF STOCK TABLE; INPUT REQUESTS  
-210 REM INITIAL STOCK VALUES 
-220 LET S(1)=100
-230 LET S(2)=85 
-240 LET S(3)=150
-250 LET S(4)=140
-260 LET S(5)=110
-265 REM INITIAL T8 - # DAYS FOR FIRST TREND SLOPE (A)
-266 LET T8=INT(4.99*RND(X)+1) 
-267 REM RANDOMIZE SIGN OF FIRST TREND SLOPE (A)
-268 IF RND(X)>.5 THEN 270 
-269 LET A=-A
-270 REM RANDOMIZE INITIAL VALUES 
-280 GOSUB 830 
-285 REM INITIAL PORTFOLIO CONTENTS 
-290 FOR I=1 TO 5
-300 LET P(I)=0
-305 LET Z(I)=0
-310 NEXT I
-320 PRINT 
-330 PRINT 
-333 REM INITIALIZE CASH ASSETS:C 
-335 LET C=10000 
-338 REM PRINT INITIAL PORTFOLIO
-340 PRINT "STOCK"," ","INITIALS","PRICE/SHARE"
-350 PRINT "INT. BALLISTIC MISSILES","  IBM",S(1)
-352 PRINT "RED CROSS OF AMERICA","  RCA",S(2) 
-354 PRINT "LICHTENSTEIN, BUMRAP & JOKE","  LBJ",S(3)
-356 PRINT "AMERICAN BANKRUPT CO.","  ABC",S(4)
-358 PRINT "CENSURED BOOKS STORE","  CBS",S(5) 
-360 PRINT 
-361 REM NYSE AVERAGE:Z5; TEMP. VALUE:Z4; NET CHANGE:Z6 
-363 LET Z4=Z5 
-364 LET Z5=0
-365 LET T=0 
-370 FOR I=1 TO 5
-375 LET Z5=Z5+S(I)
-380 LET T=T+S(I)*P(I) 
-390 NEXT I
-391 LET Z5=INT(100*(Z5/5)+.5)/100 
-392 LET Z6=INT((Z5-Z4)*100+.5)/100
-393 REM TOTAL ASSETS:D 
-394 LET D=T+C 
-395 IF X9>0 THEN 398
-396 PRINT "NEW YORK STOCK EXCHANGE AVERAGE: "Z5 
-397 GOTO 399 
-398 PRINT "NEW YORK STOCK EXCHANGE AVERAGE: "Z5"NET CHANGE"Z6
-399 PRINT 
-400 LET T=INT(100*T+.5)/100 
-401 PRINT "TOTAL STOCK ASSETS ARE   $";T
-403 LET C=INT(100*C+.5)/100 
-405 PRINT "TOTAL CASH ASSETS ARE    $";C
-407 LET D=INT(100*D+.5)/100 
-408 PRINT "TOTAL ASSETS ARE         $";D
-410 PRINT 
-411 IF X9=0 THEN 416
-412 PRINT "DO YOU WISH TO CONTINUE (YES-TYPE 1, NO-TYPE 0)";
-413 INPUT Q9
-414 IF Q9<1 THEN 998
-416 REM INPUT TRANSACTIONS 
-420 PRINT "WHAT IS YOUR TRANSACTION IN" 
-430 PRINT "IBM";
-440 INPUT Z(1)
-450 PRINT "RCA";
-460 INPUT Z(2)
-470 PRINT "LBJ";
-480 INPUT Z(3)
-490 PRINT "ABC";
-500 INPUT Z(4)
-510 PRINT "CBS";
-520 INPUT Z(5)
-525 PRINT 
-530 REM TOTAL DAY'S PURCHASES IN $:P5
-540 LET P5=0
-550 REM TOTAL DAY'S SALES IN $:S5
-560 LET S5=0
-570 FOR I=1 TO 5
-575 LET Z(I)=INT(Z(I)+.5) 
-580 IF Z(I)<=0 THEN 610 
-590 LET P5=P5+Z(I)*S(I) 
-600 GOTO 620 
-610 LET S5=S5-Z(I)*S(I) 
-612 IF -Z(I)<=P(I) THEN 620 
-614 PRINT "YOU HAVE OVERSOLD A STOCK; TRY AGAIN." 
-616 GOTO 420 
-620 NEXT I
-622 REM TOTAL VALUE OF TRANSACTIONS:T5 
-625 LET T5=P5+S5
-630 REM BROKERAGE FEE:B5 
-640 LET B5=INT(.01*T5*100+.5)/100 
-650 REM CASH ASSETS=OLD CASH ASSETS-TOTAL PURCHASES
-652 REM -BROKERAGE FEES+TOTAL SALES:C5 
-654 LET C5=C-P5-B5+S5 
-656 IF C5>=0 THEN 674 
-658 PRINT "YOU HAVE USED $"-C5" MORE THAN YOU HAVE." 
-660 GOTO 420
-674 LET C=C5
-675 REM CALCULATE NEW PORTFOLIO  
-680 FOR I=1 TO 5
-690 LET P(I)=P(I)+Z(I)
-700 NEXT I
-710 REM CALCULATE NEW STOCK VALUES 
-720 GOSUB 830 
-750 REM PRINT PORTFOLIO
-751 REM BELL RINGING-DIFFERENT ON MANY COMPUTERS 
-755 PRINT 
-756 PRINT "**********     END OF DAY'S TRADING     **********"
-757 PRINT 
-758 PRINT 
-759 IF X9<1 THEN 769
-769 PRINT "STOCK","PRICE/SHARE","HOLDINGS", "VALUE", "NET PRICE CHANGE"
-770 PRINT "IBM", S(1), P(1), S(1)*P(1), C(1)
-771 PRINT "RCA", S(2), P(2), S(2)*P(2), C(2)
-772 PRINT "LBJ", S(3), P(3), S(3)*P(3), C(3)
-773 PRINT "ABC", S(4), P(4), S(4)*P(4), C(4)
-774 PRINT "CBS", S(5), P(5), S(5)*P(5), C(5)
-775 LET X9=1
-780 PRINT 
-790 PRINT 
-810 GOTO 360 
-829 REM NEW STOCK VALUES - SUBROUTINE
-830 REM RANDOMLY PRODUCE NEW STOCK VALUES BASED ON PREVIOUS
-831 REM DAY'S VALUES 
-832 REM N1,N2 ARE RANDOM NUMBERS OF DAYS WHICH RESPECTIVELY
-833 REM DETERMINE WHEN STOCK I1 WILL INCREASE 10 PTS. AND STOCK
-834 REM I2 WILL DECREASE 10 PTS. 
-840 REM IF N1 DAYS HAVE PASSED, PICK AN I1, SET E1, DETERMINE NEW N1 
-841 IF N1>0 THEN 850
-845 LET I1=INT(4.99*RND(X)+1) 
-846 LET N1=INT(4.99*RND(X)+1) 
-847 LET E1=1
-850 REM IF N2 DAYS HAVE PASSED, PICK AN I2, SET E2, DETERMINE NEW N2 
-851 IF N2>0 THEN 860
-855 LET I2=INT(4.99*RND(X)+1) 
-856 LET N2=INT(4.99*RND(X)+1) 
-857 LET E2=1
-860 REM DEDUCT ONE DAY FROM N1 AND N2
-861 LET N1=N1-1 
-862 LET N2=N2-1 
-890 REM LOOP THROUGH ALL STOCKS
-900 FOR I=1 TO 5
-910 LET X1=RND(X) 
-915 IF X1>.25 THEN 920
-916 LET X1=.25
-917 GOTO 935 
-920 IF X1>.5 THEN 925
-921 LET X1=.5
-922 GOTO 935 
-925 IF X1>.75 THEN 930
-926 LET X1=.75  
-927 GOTO 935 
-930 LET X1=0.0
-931 REM BIG CHANGE CONSTANT:W3  (SET TO ZERO INITIALLY)
-935 LET W3=0
-936 IF E1<1 THEN 945
-937 IF INT(I1+.5)<>INT(I+.5) THEN 945 
-938 REM ADD 10 PTS. TO THIS STOCK;  RESET E1 
-939 LET W3=10 
-943 LET E1=0
-945 IF E2<1 THEN 955
-947 IF INT(I2+.5)<>INT(I+.5) THEN 955 
-948 REM SUBTRACT 10 PTS. FROM THIS STOCK;  RESET E2
-949 LET W3=W3-10
-953 LET E2=0
-954 REM C(I) IS CHANGE IN STOCK VALUE
-955 LET C(I)=INT(A*S(I))+X1+INT(3-6*RND(X)+.5)+W3 
-956 LET C(I)=INT(100*C(I)+.5)/100 
-957 LET S(I)=S(I)+C(I)
-960 IF S(I)>0 THEN 967
-964 LET C(I)=0
-965 LET S(I)=0
-966 GOTO 970 
-967 LET S(I)=INT(100*S(I)+.5)/100 
-970 NEXT I
-972 REM AFTER T8 DAYS RANDOMLY CHANGE TREND SIGN AND SLOPE 
-973 LET T8=T8-1 
-974 IF T8<1 THEN 985
-980 RETURN
-985 REM RANDOMLY CHANGE TREND SIGN AND SLOPE (A), AND DURATION 
-986 REM OF TREND (T8)
-990 LET T8=INT(4.99*RND(X)+1) 
-992 LET A=INT((RND(X)/10)*100+.5)/100 
-993 LET S4=RND(X) 
-994 IF S4<=.5 THEN 997
-995 LET A=-A
-997 RETURN
-998 PRINT "HOPE YOU HAD FUN!!"
-999 END
+10 print tab(30);"stock market"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print: print: print
+100 rem stock market simulation     -stock-
+101 rem revised 8/18/70 (d. pessel, l. braun, c. losik)  
+102 rem imp vrbls: a-mrkt trnd slp; b5-brkrge fee; c-ttl csh assts;    
+103 rem c5-ttl csh assts (temp); c(i)-chng in stk val; d-ttl assts;
+104 rem e1,e2-lrg chng misc; i-stck #; i1,i2-stcks w lrg chng; 
+105 rem n1,n2-lrg chng day cnts; p5-ttl days prchss; p(i)-prtfl cntnts;
+106 rem q9-new cycl?; s4-sgn of a; s5-ttl dys sls; s(i)-value/shr; 
+107 rem t-ttl stck assts; t5-ttl val of trnsctns;
+108 rem w3-lrg chng; x1-smll chng(<$1); z4,z5,z6-nyse ave.; z(i)-trnsct
+110 dim s(5),p(5),z(5),c(5) 
+112 rem slope of market trend:a  (same for all stocks) 
+113 let x=1
+114 let a=int((rnd(x)/10)*100+.5)/100 
+115 let t5=0
+116 let x9=0
+117 let n1=0
+118 let n2=0
+119 let e1=0
+120 let e2=0
+121 rem introduction 
+122 print "do you want the instructions (yes-type 1, no-type 0)"; 
+123 input z9
+124 print 
+125 print 
+126 if z9<1 then 200
+130 print "this program plays the stock market.  you will be given" 
+132 print "$10,000 and may buy or sell stocks.  the stock prices will"
+134 print "be generated randomly and therefore this model does not" 
+135 print "represent exactly what happens on the exchange.  a table"
+136 print "of available stocks, their prices, and the number of shares"
+137 print "in your portfolio will be printed.  following this, the" 
+138 print "initials of each stock will be printed with a question"
+139 print "mark.  here you indicate a transaction.  to buy a stock" 
+140 print "type +nnn, to sell a stock type -nnn, where nnn is the"  
+141 print "number of shares.  a brokerage fee of 1% will be charged"
+142 print "on all transactions.  note that if a stock's value drops"
+143 print "to zero it may rebound to a positive value again.  you"
+144 print "have $10,000 to invest.  use integers for all your inputs."
+145 print "(note:  to get a 'feel' for the market run for at least" 
+146 print "10 days)"
+147 print "-----good luck!-----"
+200 rem generation of stock table; input requests  
+210 rem initial stock values 
+220 let s(1)=100
+230 let s(2)=85 
+240 let s(3)=150
+250 let s(4)=140
+260 let s(5)=110
+265 rem initial t8 - # days for first trend slope (a)
+266 let t8=int(4.99*rnd(x)+1) 
+267 rem randomize sign of first trend slope (a)
+268 if rnd(x)>.5 then 270 
+269 let a=-a
+270 rem randomize initial values 
+280 gosub 830 
+285 rem initial portfolio contents 
+290 for i=1 to 5
+300 let p(i)=0
+305 let z(i)=0
+310 next i
+320 print 
+330 print 
+333 rem initialize cash assets:c 
+335 let c=10000 
+338 rem print initial portfolio
+340 print "stock"," ","initials","price/share"
+350 print "int. ballistic missiles","  ibm",s(1)
+352 print "red cross of america","  rca",s(2) 
+354 print "lichtenstein, bumrap & joke","  lbj",s(3)
+356 print "american bankrupt co.","  abc",s(4)
+358 print "censured books store","  cbs",s(5) 
+360 print 
+361 rem nyse average:z5; temp. value:z4; net change:z6 
+363 let z4=z5 
+364 let z5=0
+365 let t=0 
+370 for i=1 to 5
+375 let z5=z5+s(i)
+380 let t=t+s(i)*p(i) 
+390 next i
+391 let z5=int(100*(z5/5)+.5)/100 
+392 let z6=int((z5-z4)*100+.5)/100
+393 rem total assets:d 
+394 let d=t+c 
+395 if x9>0 then 398
+396 print "new york stock exchange average: "z5 
+397 goto 399 
+398 print "new york stock exchange average: "z5"net change"z6
+399 print 
+400 let t=int(100*t+.5)/100 
+401 print "total stock assets are   $";t
+403 let c=int(100*c+.5)/100 
+405 print "total cash assets are    $";c
+407 let d=int(100*d+.5)/100 
+408 print "total assets are         $";d
+410 print 
+411 if x9=0 then 416
+412 print "do you wish to continue (yes-type 1, no-type 0)";
+413 input q9
+414 if q9<1 then 998
+416 rem input transactions 
+420 print "what is your transaction in" 
+430 print "ibm";
+440 input z(1)
+450 print "rca";
+460 input z(2)
+470 print "lbj";
+480 input z(3)
+490 print "abc";
+500 input z(4)
+510 print "cbs";
+520 input z(5)
+525 print 
+530 rem total day's purchases in $:p5
+540 let p5=0
+550 rem total day's sales in $:s5
+560 let s5=0
+570 for i=1 to 5
+575 let z(i)=int(z(i)+.5) 
+580 if z(i)<=0 then 610 
+590 let p5=p5+z(i)*s(i) 
+600 goto 620 
+610 let s5=s5-z(i)*s(i) 
+612 if -z(i)<=p(i) then 620 
+614 print "you have oversold a stock; try again." 
+616 goto 420 
+620 next i
+622 rem total value of transactions:t5 
+625 let t5=p5+s5
+630 rem brokerage fee:b5 
+640 let b5=int(.01*t5*100+.5)/100 
+650 rem cash assets=old cash assets-total purchases
+652 rem -brokerage fees+total sales:c5 
+654 let c5=c-p5-b5+s5 
+656 if c5>=0 then 674 
+658 print "you have used $"-c5" more than you have." 
+660 goto 420
+674 let c=c5
+675 rem calculate new portfolio  
+680 for i=1 to 5
+690 let p(i)=p(i)+z(i)
+700 next i
+710 rem calculate new stock values 
+720 gosub 830 
+750 rem print portfolio
+751 rem bell ringing-different on many computers 
+755 print 
+756 print "**********     end of day's trading     **********"
+757 print 
+758 print 
+759 if x9<1 then 769
+769 print "stock","price/share","holdings", "value", "net price change"
+770 print "ibm", s(1), p(1), s(1)*p(1), c(1)
+771 print "rca", s(2), p(2), s(2)*p(2), c(2)
+772 print "lbj", s(3), p(3), s(3)*p(3), c(3)
+773 print "abc", s(4), p(4), s(4)*p(4), c(4)
+774 print "cbs", s(5), p(5), s(5)*p(5), c(5)
+775 let x9=1
+780 print 
+790 print 
+810 goto 360 
+829 rem new stock values - subroutine
+830 rem randomly produce new stock values based on previous
+831 rem day's values 
+832 rem n1,n2 are random numbers of days which respectively
+833 rem determine when stock i1 will increase 10 pts. and stock
+834 rem i2 will decrease 10 pts. 
+840 rem if n1 days have passed, pick an i1, set e1, determine new n1 
+841 if n1>0 then 850
+845 let i1=int(4.99*rnd(x)+1) 
+846 let n1=int(4.99*rnd(x)+1) 
+847 let e1=1
+850 rem if n2 days have passed, pick an i2, set e2, determine new n2 
+851 if n2>0 then 860
+855 let i2=int(4.99*rnd(x)+1) 
+856 let n2=int(4.99*rnd(x)+1) 
+857 let e2=1
+860 rem deduct one day from n1 and n2
+861 let n1=n1-1 
+862 let n2=n2-1 
+890 rem loop through all stocks
+900 for i=1 to 5
+910 let x1=rnd(x) 
+915 if x1>.25 then 920
+916 let x1=.25
+917 goto 935 
+920 if x1>.5 then 925
+921 let x1=.5
+922 goto 935 
+925 if x1>.75 then 930
+926 let x1=.75  
+927 goto 935 
+930 let x1=0.0
+931 rem big change constant:w3  (set to zero initially)
+935 let w3=0
+936 if e1<1 then 945
+937 if int(i1+.5)<>int(i+.5) then 945 
+938 rem add 10 pts. to this stock;  reset e1 
+939 let w3=10 
+943 let e1=0
+945 if e2<1 then 955
+947 if int(i2+.5)<>int(i+.5) then 955 
+948 rem subtract 10 pts. from this stock;  reset e2
+949 let w3=w3-10
+953 let e2=0
+954 rem c(i) is change in stock value
+955 let c(i)=int(a*s(i))+x1+int(3-6*rnd(x)+.5)+w3 
+956 let c(i)=int(100*c(i)+.5)/100 
+957 let s(i)=s(i)+c(i)
+960 if s(i)>0 then 967
+964 let c(i)=0
+965 let s(i)=0
+966 goto 970 
+967 let s(i)=int(100*s(i)+.5)/100 
+970 next i
+972 rem after t8 days randomly change trend sign and slope 
+973 let t8=t8-1 
+974 if t8<1 then 985
+980 return
+985 rem randomly change trend sign and slope (a), and duration 
+986 rem of trend (t8)
+990 let t8=int(4.99*rnd(x)+1) 
+992 let a=int((rnd(x)/10)*100+.5)/100 
+993 let s4=rnd(x) 
+994 if s4<=.5 then 997
+995 let a=-a
+997 return
+998 print "hope you had fun!!"
+999 end

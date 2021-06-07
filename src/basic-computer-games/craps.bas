@@ -1,82 +1,82 @@
-5 PRINT TAB(33);"CRAPS"
-10 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-12 PRINT:PRINT:PRINT
-15 LET R=0
-20 PRINT"2,3,12 ARE LOSERS; 4,5,6,8,9,10 ARE POINTS; 7,11 ARE NATURAL WINNERS."
-21 LET T=1
-22 PRINT "PICK A NUMBER AND INPUT TO ROLL DICE";
-23 INPUT Z
-24 LET X=(RND(0))
-25 LET T =T+1
-26 IF T<=Z THEN 24
-27 PRINT"INPUT THE AMOUNT OF YOUR WAGER.";
-28 INPUT F
-30 PRINT "I WILL NOW THROW THE DICE"
-40 LET E=INT(7*RND(1))
-41 LET S=INT(7*RND(1))
-42 LET X=E+S
-50 IF X=7 THEN 180 
-55 IF X=11 THEN 180
-60 IF X=1 THEN 40
-62 IF X=2 THEN 195
-65 IF X=0 THEN 40
-70 IF X=2 THEN 200
-80 IF X=3 THEN 200
-90 IF X=12 THEN 200
-125 IF X=5 THEN 220
-130 IF X =6 THEN 220
-140 IF X=8 THEN 220
-150 IF X=9 THEN 220
-160 IF X =10 THEN 220
-170 IF X=4 THEN 220
-180 PRINT X "- NATURAL....A WINNER!!!!"
-185 PRINT X"PAYS EVEN MONEY, YOU WIN"F"DOLLARS"
-190 GOTO 210
-195 PRINT X"- SNAKE EYES....YOU LOSE."
-196 PRINT "YOU LOSE"F "DOLLARS."
-197 LET F=0-F
-198 GOTO 210
-200 PRINT X " - CRAPS...YOU LOSE."
-205 PRINT "YOU LOSE"F"DOLLARS."
-206 LET F=0-F
-210 LET R= R+F
-211 GOTO 320
-220 PRINT X "IS THE POINT. I WILL ROLL AGAIN"
-230 LET H=INT(7*RND(1))
-231 LET Q=INT(7*RND(1))
-232 LET O=H+Q
-240 IF O=1 THEN 230
-250 IF O=7 THEN 290
-255 IF O=0 THEN 230
-260 IF O=X THEN 310
-270 PRINT O " - NO POINT. I WILL ROLL AGAIN"
-280 GOTO 230
-290 PRINT O "- CRAPS. YOU LOSE."
-291 PRINT "YOU LOSE $"F
-292 F=0-F
-293 GOTO 210
-300 GOTO 320
-310 PRINT X"- A WINNER.........CONGRATS!!!!!!!!"
-311 PRINT X "AT 2 TO 1 ODDS PAYS YOU...LET ME SEE..."2*F"DOLLARS"
-312 LET F=2*F
-313 GOTO 210
-320 PRINT " IF YOU WANT TO PLAY AGAIN PRINT 5 IF NOT PRINT 2";
-330 INPUT M
-331 IF R<0 THEN 334
-332 IF R>0 THEN 336
-333 IF R=0 THEN 338
-334 PRINT "YOU ARE NOW UNDER $";-R
-335 GOTO 340
-336 PRINT "YOU ARE NOW AHEAD $";R
-337 GOTO 340
-338 PRINT "YOU ARE NOW EVEN AT 0"
-340 IF M=5 THEN 27
-341 IF R<0 THEN 350
-342 IF R>0 THEN 353
-343 IF R=0 THEN 355
-350 PRINT"TOO BAD, YOU ARE IN THE HOLE. COME AGAIN."
-351 GOTO 360
-353 PRINT"CONGRATULATIONS---YOU CAME OUT A WINNER. COME AGAIN!"
-354 GOTO 360
-355 PRINT"CONGRATULATIONS---YOU CAME OUT EVEN, NOT BAD FOR AN AMATEUR"
-360 END
+5 print tab(33);"craps"
+10 print tab(15);"creative computing  morristown, new jersey"
+12 print:print:print
+15 let r=0
+20 print"2,3,12 are losers; 4,5,6,8,9,10 are points; 7,11 are natural winners."
+21 let t=1
+22 print "pick a number and input to roll dice";
+23 input z
+24 let x=(rnd(0))
+25 let t =t+1
+26 if t<=z then 24
+27 print"input the amount of your wager.";
+28 input f
+30 print "i will now throw the dice"
+40 let e=int(7*rnd(1))
+41 let s=int(7*rnd(1))
+42 let x=e+s
+50 if x=7 then 180 
+55 if x=11 then 180
+60 if x=1 then 40
+62 if x=2 then 195
+65 if x=0 then 40
+70 if x=2 then 200
+80 if x=3 then 200
+90 if x=12 then 200
+125 if x=5 then 220
+130 if x =6 then 220
+140 if x=8 then 220
+150 if x=9 then 220
+160 if x =10 then 220
+170 if x=4 then 220
+180 print x "- natural....a winner!!!!"
+185 print x"pays even money, you win"f"dollars"
+190 goto 210
+195 print x"- snake eyes....you lose."
+196 print "you lose"f "dollars."
+197 let f=0-f
+198 goto 210
+200 print x " - craps...you lose."
+205 print "you lose"f"dollars."
+206 let f=0-f
+210 let r= r+f
+211 goto 320
+220 print x "is the point. i will roll again"
+230 let h=int(7*rnd(1))
+231 let q=int(7*rnd(1))
+232 let o=h+q
+240 if o=1 then 230
+250 if o=7 then 290
+255 if o=0 then 230
+260 if o=x then 310
+270 print o " - no point. i will roll again"
+280 goto 230
+290 print o "- craps. you lose."
+291 print "you lose $"f
+292 f=0-f
+293 goto 210
+300 goto 320
+310 print x"- a winner.........congrats!!!!!!!!"
+311 print x "at 2 to 1 odds pays you...let me see..."2*f"dollars"
+312 let f=2*f
+313 goto 210
+320 print " if you want to play again print 5 if not print 2";
+330 input m
+331 if r<0 then 334
+332 if r>0 then 336
+333 if r=0 then 338
+334 print "you are now under $";-r
+335 goto 340
+336 print "you are now ahead $";r
+337 goto 340
+338 print "you are now even at 0"
+340 if m=5 then 27
+341 if r<0 then 350
+342 if r>0 then 353
+343 if r=0 then 355
+350 print"too bad, you are in the hole. come again."
+351 goto 360
+353 print"congratulations---you came out a winner. come again!"
+354 goto 360
+355 print"congratulations---you came out even, not bad for an amateur"
+360 end

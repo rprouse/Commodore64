@@ -1,56 +1,56 @@
-1 PRINT TAB(33);"MUGWUMP"
-2 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-3 PRINT:PRINT:PRINT
-4 REM     COURTESY PEOPLE'S COMPUTER COMPANY
-10 DIM P(4,2)
-20 PRINT "THE OBJECT OF THIS GAME IS TO FIND FOUR MUGWUMPS"
-30 PRINT "HIDDEN ON A 10 BY 10 GRID.  HOMEBASE IS POSITION 0,0."
-40 PRINT "ANY GUESS YOU MAKE MUST BE TWO NUMBERS WITH EACH"
-50 PRINT "NUMBER BETWEEN 0 AND 9, INCLUSIVE.  FIRST NUMBER"
-60 PRINT "IS DISTANCE TO RIGHT OF HOMEBASE AND SECOND NUMBER"
-70 PRINT "IS DISTANCE ABOVE HOMEBASE."
-80 PRINT
-90 PRINT "YOU GET 10 TRIES.  AFTER EACH TRY, I WILL TELL"
-100 PRINT "YOU HOW FAR YOU ARE FROM EACH MUGWUMP."
-110 PRINT
-240 GOSUB 1000
-250 T=0
-260 T=T+1
-270 PRINT
-275 PRINT
-290 PRINT "TURN NO.";T;"-- WHAT IS YOUR GUESS";
-300 INPUT M,N
-310 FOR I=1 TO 4
-320 IF P(I,1)=-1 THEN 400
-330 IF P(I,1)<>M THEN 380
-340 IF P(I,2)<>N THEN 380
-350 P(I,1)=-1
-360 PRINT "YOU HAVE FOUND MUGWUMP";I
-370 GOTO 400
-380 D=SQR((P(I,1)-M)^2+(P(I,2)-N)^2)
-390 PRINT "YOU ARE";(INT(D*10))/10;"UNITS FROM MUGWUMP";I
-400 NEXT I
-410 FOR J=1 TO 4
-420 IF P(J,1)<>-1 THEN 470
-430 NEXT J
-440 PRINT
-450 PRINT "YOU GOT THEM ALL IN";T;"TURNS!"
-460 GOTO 580
-470 IF T<10 THEN 260
-480 PRINT
-490 PRINT "SORRY, THAT'S 10 TRIES.  HERE IS WHERE THEY'RE HIDING:"
-540 FOR I=1 TO 4
-550 IF P(I,1)=-1 THEN 570
-560 PRINT "MUGWUMP";I;"IS AT (";P(I,1);",";P(I,2);")"
-570 NEXT I
-580 PRINT
-600 PRINT "THAT WAS FUN! LET'S PLAY AGAIN......."
-610 PRINT "FOUR MORE MUGWUMPS ARE NOW IN HIDING."
-630 GOTO 240
-1000 FOR J=1 TO 2
-1010 FOR I=1 TO 4
-1020 P(I,J)=INT(10*RND(1))
-1030 NEXT I
-1040 NEXT J
-1050 RETURN
-1099 END
+1 print tab(33);"mugwump"
+2 print tab(15);"creative computing  morristown, new jersey"
+3 print:print:print
+4 rem     courtesy people's computer company
+10 dim p(4,2)
+20 print "the object of this game is to find four mugwumps"
+30 print "hidden on a 10 by 10 grid.  homebase is position 0,0."
+40 print "any guess you make must be two numbers with each"
+50 print "number between 0 and 9, inclusive.  first number"
+60 print "is distance to right of homebase and second number"
+70 print "is distance above homebase."
+80 print
+90 print "you get 10 tries.  after each try, i will tell"
+100 print "you how far you are from each mugwump."
+110 print
+240 gosub 1000
+250 t=0
+260 t=t+1
+270 print
+275 print
+290 print "turn no.";t;"-- what is your guess";
+300 input m,n
+310 for i=1 to 4
+320 if p(i,1)=-1 then 400
+330 if p(i,1)<>m then 380
+340 if p(i,2)<>n then 380
+350 p(i,1)=-1
+360 print "you have found mugwump";i
+370 goto 400
+380 d=sqr((p(i,1)-m)^2+(p(i,2)-n)^2)
+390 print "you are";(int(d*10))/10;"units from mugwump";i
+400 next i
+410 for j=1 to 4
+420 if p(j,1)<>-1 then 470
+430 next j
+440 print
+450 print "you got them all in";t;"turns!"
+460 goto 580
+470 if t<10 then 260
+480 print
+490 print "sorry, that's 10 tries.  here is where they're hiding:"
+540 for i=1 to 4
+550 if p(i,1)=-1 then 570
+560 print "mugwump";i;"is at (";p(i,1);",";p(i,2);")"
+570 next i
+580 print
+600 print "that was fun! let's play again......."
+610 print "four more mugwumps are now in hiding."
+630 goto 240
+1000 for j=1 to 2
+1010 for i=1 to 4
+1020 p(i,j)=int(10*rnd(1))
+1030 next i
+1040 next j
+1050 return
+1099 end

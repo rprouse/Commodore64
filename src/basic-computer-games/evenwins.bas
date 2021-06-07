@@ -1,128 +1,128 @@
-1 PRINT TAB(31);"EVEN WINS"
-2 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-3 PRINT:PRINT
-4 Y1=0
-10 M1=0
-20 DIM M(20),Y(20)
-30 PRINT "     THIS IS A TWO PERSON GAME CALLED 'EVEN WINS.'"
-40 PRINT "TO PLAY THE GAME, THE PLAYERS NEED 27 MARBLES OR"
-50 PRINT "OTHER OBJECTS ON A TABLE."
-60 PRINT
-70 PRINT 
-80 PRINT "     THE 2 PLAYERS ALTERNATE TURNS, WITH EACH PLAYER"
-90 PRINT "REMOVING FROM 1 TO 4 MARBLES ON EACH MOVE.  THE GAME"
-100 PRINT "ENDS WHEN THERE ARE NO MARBLES LEFT, AND THE WINNER"
-110 PRINT "IS THE ONE WITH AN EVEN NUMBER OF MARBLES."
-120 PRINT
-130 PRINT
-140 PRINT "     THE ONLY RULES ARE THAT (1) YOU MUST ALTERNATE TURNS,"
-150 PRINT "(2) YOU MUST TAKE BETWEEN 1 AND 4 MARBLES EACH TURN,"
-160 PRINT "AND (3) YOU CANNOT SKIP A TURN."
-170 PRINT
-180 PRINT
-190 PRINT
-200 PRINT "     TYPE A '1' IF YOU WANT TO GO FIRST, AND TYPE"
-210 PRINT "A '0' IF YOU WANT ME TO GO FIRST."
-220 INPUT C
-225 PRINT
-230 IF C=0 THEN 250
-240 GOTO 1060
-250 T=27
-260 M=2
-270 PRINT:PRINT "TOTAL=";T:PRINT
-280 M1=M1+M
-290 T=T-M
-300 PRINT "I PICK UP";M;"MARBLES."
-310 IF T=0 THEN 880
-320 PRINT:PRINT "TOTAL=";T
-330 PRINT
-340 PRINT "     AND WHAT IS YOUR NEXT MOVE, MY TOTAL IS";M1
-350 INPUT Y
-360 PRINT
-370 IF Y<1 THEN 1160
-380 IF Y>4 THEN 1160
-390 IF Y<=T THEN 430
-400 PRINT "     YOU HAVE TRIED TO TAKE MORE MARBLES THAN THERE ARE"
-410 PRINT "LEFT.  TRY AGAIN."
-420 GOTO 350
-430 Y1=Y1+Y
-440 T=T-Y
-450 IF T=0 THEN 880
-460 PRINT "TOTAL=";T
-470 PRINT
-480 PRINT "YOUR TOTAL IS";Y1
-490 IF T<.5 THEN 880
-500 R=T-6*INT(T/6)
-510 IF INT(Y1/2)=Y1/2 THEN 700
-520 IF T<4.2 THEN 580
-530 IF R>3.4 THEN 620
-540 M=R+1
-550 M1=M1+M
-560 T=T-M
-570 GOTO 300
-580 M=T
-590 T=T-M
-600 GOTO 830
-610 REM     250 IS WHERE I WIN.
-620 IF R<4.7 THEN 660
-630 IF R>3.5 THEN 660
-640 M=1
-650 GOTO 670
-660 M=4
-670 T=T-M
-680 M1=M1+M
-690 GOTO 300
-700 REM     I AM READY TO ENCODE THE STRAT FOR WHEN OPP TOT IS EVEN
-710 IF R<1.5 THEN 1020
-720 IF R>5.3 THEN 1020
-730 M=R-1
-740 M1=M1+M
-750 T=T-M
-760 IF T<.2 THEN 790
-770 REM     IS # ZERO HERE
-780 GOTO 300
-790 REM     IS = ZERO HERE
-800 PRINT "I PICK UP";M;"MARBLES."
-810 PRINT
-820 GOTO 880
-830 REM    THIS IS WHERE I WIN
-840 PRINT "I PICK UP";M;"MARBLES."
-850 PRINT
-860 PRINT "TOTAL = 0"
-870 M1=M1+M
-880 PRINT "THAT IS ALL OF THE MARBLES."
-890 PRINT
-900 PRINT " MY TOTAL IS";M1;", YOUR TOTAL IS";Y1
-910 PRINT
-920 IF INT(M1/2)=M1/2 THEN 950
-930 PRINT "     YOU WON.  DO YOU WANT TO PLAY"
-940 GOTO 960
-950 PRINT "     I WON.  DO YOU WANT TO PLAY"
-960 PRINT "AGAIN?  TYPE 1 FOR YES AND 0 FOR NO."
-970 INPUT A1
-980 IF A1=0 THEN 1030
-990 M1=0
-1000 Y1=0
-1010 GOTO 200
-1020 GOTO 640
-1030 PRINT
-1040 PRINT "OK.  SEE YOU LATER."
-1050 GOTO 1230
-1060 T=27
-1070 PRINT
-1080 PRINT
-1090 PRINT
-1100 PRINT "TOTAL=";T
-1110 PRINT
-1120 PRINT
-1130 PRINT "WHAT IS YOUR FIRST MOVE";
-1140 INPUT Y
-1150 GOTO 360
-1160 PRINT
-1170 PRINT "THE NUMBER OF MARBLES YOU TAKE MUST BE A POSITIVE"
-1180 PRINT "INTEGER BETWEEN 1 AND 4."
-1190 PRINT
-1200 PRINT "     WHAT IS YOUR NEXT MOVE?"
-1210 PRINT
-1220 GOTO 350
-1230 END
+1 print tab(31);"even wins"
+2 print tab(15);"creative computing  morristown, new jersey"
+3 print:print
+4 y1=0
+10 m1=0
+20 dim m(20),y(20)
+30 print "     this is a two person game called 'even wins.'"
+40 print "to play the game, the players need 27 marbles or"
+50 print "other objects on a table."
+60 print
+70 print 
+80 print "     the 2 players alternate turns, with each player"
+90 print "removing from 1 to 4 marbles on each move.  the game"
+100 print "ends when there are no marbles left, and the winner"
+110 print "is the one with an even number of marbles."
+120 print
+130 print
+140 print "     the only rules are that (1) you must alternate turns,"
+150 print "(2) you must take between 1 and 4 marbles each turn,"
+160 print "and (3) you cannot skip a turn."
+170 print
+180 print
+190 print
+200 print "     type a '1' if you want to go first, and type"
+210 print "a '0' if you want me to go first."
+220 input c
+225 print
+230 if c=0 then 250
+240 goto 1060
+250 t=27
+260 m=2
+270 print:print "total=";t:print
+280 m1=m1+m
+290 t=t-m
+300 print "i pick up";m;"marbles."
+310 if t=0 then 880
+320 print:print "total=";t
+330 print
+340 print "     and what is your next move, my total is";m1
+350 input y
+360 print
+370 if y<1 then 1160
+380 if y>4 then 1160
+390 if y<=t then 430
+400 print "     you have tried to take more marbles than there are"
+410 print "left.  try again."
+420 goto 350
+430 y1=y1+y
+440 t=t-y
+450 if t=0 then 880
+460 print "total=";t
+470 print
+480 print "your total is";y1
+490 if t<.5 then 880
+500 r=t-6*int(t/6)
+510 if int(y1/2)=y1/2 then 700
+520 if t<4.2 then 580
+530 if r>3.4 then 620
+540 m=r+1
+550 m1=m1+m
+560 t=t-m
+570 goto 300
+580 m=t
+590 t=t-m
+600 goto 830
+610 rem     250 is where i win.
+620 if r<4.7 then 660
+630 if r>3.5 then 660
+640 m=1
+650 goto 670
+660 m=4
+670 t=t-m
+680 m1=m1+m
+690 goto 300
+700 rem     i am ready to encode the strat for when opp tot is even
+710 if r<1.5 then 1020
+720 if r>5.3 then 1020
+730 m=r-1
+740 m1=m1+m
+750 t=t-m
+760 if t<.2 then 790
+770 rem     is # zero here
+780 goto 300
+790 rem     is = zero here
+800 print "i pick up";m;"marbles."
+810 print
+820 goto 880
+830 rem    this is where i win
+840 print "i pick up";m;"marbles."
+850 print
+860 print "total = 0"
+870 m1=m1+m
+880 print "that is all of the marbles."
+890 print
+900 print " my total is";m1;", your total is";y1
+910 print
+920 if int(m1/2)=m1/2 then 950
+930 print "     you won.  do you want to play"
+940 goto 960
+950 print "     i won.  do you want to play"
+960 print "again?  type 1 for yes and 0 for no."
+970 input a1
+980 if a1=0 then 1030
+990 m1=0
+1000 y1=0
+1010 goto 200
+1020 goto 640
+1030 print
+1040 print "ok.  see you later."
+1050 goto 1230
+1060 t=27
+1070 print
+1080 print
+1090 print
+1100 print "total=";t
+1110 print
+1120 print
+1130 print "what is your first move";
+1140 input y
+1150 goto 360
+1160 print
+1170 print "the number of marbles you take must be a positive"
+1180 print "integer between 1 and 4."
+1190 print
+1200 print "     what is your next move?"
+1210 print
+1220 goto 350
+1230 end

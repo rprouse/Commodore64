@@ -1,130 +1,130 @@
-100 PRINT TAB(31);"HORSERACE"
-110 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-120 PRINT:PRINT:PRINT
-210 DIM S(8)
-220 PRINT "WELCOME TO SOUTH PORTLAND HIGH RACETRACK"
-230 PRINT "                      ...OWNED BY LAURIE CHEVALIER"
-240 PRINT "DO YOU WANT DIRECTIONS";
-250 INPUT X$
-260 IF X$="NO" THEN 320
-270 PRINT"UP TO 10 MAY PLAY.  A TABLE OF ODDS WILL BE PRINTED.  YOU"
-280 PRINT"MAY BET ANY + AMOUNT UNDER 100000 ON ONE HORSE."
-290 PRINT "DURING THE RACE, A HORSE WILL BE SHOWN BY ITS"
-300 PRINT"NUMBER.  THE HORSES RACE DOWN THE PAPER!"
-310 PRINT
-320 PRINT "HOW MANY WANT TO BET";
-330 INPUT C
-340 PRINT "WHEN ? APPEARS,TYPE NAME"
-350 FOR A=1 TO C
-360 INPUT W$(A)
-370 NEXT A
-380 PRINT
-390 PRINT"HORSE",,"NUMBER","ODDS"
-400 PRINT
-410 FOR I=1 TO 8: S(I)=0: NEXT I
-420 LET R=0
-430 FOR A=1 TO 8
-440 LET D(A)=INT(10*RND(1)+1)
-450 NEXT A
-460 FOR A=1 TO 8
-470 LET R=R+D(A)
-480 NEXT A
-490 LET V$(1)="JOE MAW"
-500 LET V$(2)="L.B.J."
-510 LET V$(3)="MR.WASHBURN"
-520 LET V$(4)="MISS KAREN"
-530 LET V$(5)="JOLLY"
-540 LET V$(6)="HORSE"
-550 LET V$(7)="JELLY DO NOT"
-560 LET V$(8)="MIDNIGHT"
-570 FOR N=1 TO 8
-580 PRINT V$(N),,N,R/D(N);":1"
-590 NEXT N
-600 PRINT"--------------------------------------------------"
-610 PRINT "PLACE YOUR BETS...HORSE # THEN AMOUNT"
-620 FOR J=1 TO C
-630 PRINT W$(J);
-640 INPUT Q(J),P(J)
-650 IF P(J)<1 THEN 670
-660 IF P(J)<100000 THEN 690
-670 PRINT"  YOU CAN'T DO THAT!"
-680 GOTO 630
-690 NEXT J
-700 PRINT
-710 PRINT"1 2 3 4 5 6 7 8"
-720 PRINT"XXXXSTARTXXXX"
-730 FOR I=1 TO 8
-740 LET M=I
-750 LET M(I)=M
-760 LET Y(M(I))=INT(100*RND(1)+1)
-770 IF Y(M(I))<10 THEN 860
-780 LET S=INT(R/D(I)+.5)
-790 IF Y(M(I))<S+17 THEN 880
-800 IF Y(M(I))<S+37 THEN 900
-810 IF Y(M(I))<S+57 THEN 920
-820 IF Y(M(I))<77+S THEN 940
-830 IF Y(M(I))<S+92 THEN 960
-840 LET Y(M(I))=7
-850 GOTO 970
-860 LET Y(M(I))=1
-870 GOTO 970
-880 LET Y(M(I))=2
-890 GOTO 970
-900 LET Y(M(I))=3
-910 GOTO 970
-920 LET Y(M(I))=4
-930 GOTO 970
-940 LET Y(M(I))=5
-950 GOTO 970
-960 LET Y(M(I))=6
-970 NEXT I
-980 LET M=I
-990 FOR I=1 TO 8
-1000 LET S(M(I))=S(M(I))+Y(M(I))
-1010 NEXT I
-1020 LET I=1
-1030 FOR L=1 TO 8
-1040 FOR I=1 TO 8-L
-1050 IF S(M(I))<S(M(I+1))THEN 1090
-1060 LET H=M(I)
-1070 LET M(I)=M(I+1)
-1080 LET M(I+1)=H
-1090 NEXT I
-1100 NEXT L
-1110 LET T=S(M(8))
-1120 FOR I=1 TO 8
-1130 LET B=S(M(I))-S(M(I-1))
-1140 IF B=0 THEN 1190
-1150 FOR A=1 TO B
-1160 PRINT
-1170 IF S(M(I))>27 THEN 1240
-1180 NEXT A
-1190 PRINT M(I);
-1200 NEXT I
-1210 FOR A=1 TO 28-T
-1220 PRINT
-1230 NEXT A
-1240 PRINT "XXXXFINISHXXXX";
-1242 PRINT
-1243 PRINT
-1244 PRINT "---------------------------------------------"
-1245 PRINT
-1250 IF T<28 THEN 720
-1270 PRINT "THE RACE RESULTS ARE:"
-1272 LET Z9=1
-1280 FOR I=8 TO 1 STEP-1
-1290 LET F=M(I)
-1300 PRINT
-1310 PRINT Z9;"PLACE HORSE NO.";F,"AT ";R/D(F);":1"
-1312 LET Z9=Z9+1
-1320  NEXT I
-1330 FOR J=1 TO C
-1340 IF Q(J)<>M(8) THEN 1370
-1350 LET N=Q(J)
-1355 PRINT
-1360 PRINT W$(J);" WINS $";(R/D(N))*P(J)
-1370 NEXT J
-1372 PRINT "DO YOU WANT TO BET ON THE NEXT RACE ?"
-1374 INPUT "YES OR NO"; O$
-1376 IF O$="YES" THEN 380
-1380 END
+100 print tab(31);"horserace"
+110 print tab(15);"creative computing  morristown, new jersey"
+120 print:print:print
+210 dim s(8)
+220 print "welcome to south portland high racetrack"
+230 print "                      ...owned by laurie chevalier"
+240 print "do you want directions";
+250 input x$
+260 if x$="no" then 320
+270 print"up to 10 may play.  a table of odds will be printed.  you"
+280 print"may bet any + amount under 100000 on one horse."
+290 print "during the race, a horse will be shown by its"
+300 print"number.  the horses race down the paper!"
+310 print
+320 print "how many want to bet";
+330 input c
+340 print "when ? appears,type name"
+350 for a=1 to c
+360 input w$(a)
+370 next a
+380 print
+390 print"horse",,"number","odds"
+400 print
+410 for i=1 to 8: s(i)=0: next i
+420 let r=0
+430 for a=1 to 8
+440 let d(a)=int(10*rnd(1)+1)
+450 next a
+460 for a=1 to 8
+470 let r=r+d(a)
+480 next a
+490 let v$(1)="joe maw"
+500 let v$(2)="l.b.j."
+510 let v$(3)="mr.washburn"
+520 let v$(4)="miss karen"
+530 let v$(5)="jolly"
+540 let v$(6)="horse"
+550 let v$(7)="jelly do not"
+560 let v$(8)="midnight"
+570 for n=1 to 8
+580 print v$(n),,n,r/d(n);":1"
+590 next n
+600 print"--------------------------------------------------"
+610 print "place your bets...horse # then amount"
+620 for j=1 to c
+630 print w$(j);
+640 input q(j),p(j)
+650 if p(j)<1 then 670
+660 if p(j)<100000 then 690
+670 print"  you can't do that!"
+680 goto 630
+690 next j
+700 print
+710 print"1 2 3 4 5 6 7 8"
+720 print"xxxxstartxxxx"
+730 for i=1 to 8
+740 let m=i
+750 let m(i)=m
+760 let y(m(i))=int(100*rnd(1)+1)
+770 if y(m(i))<10 then 860
+780 let s=int(r/d(i)+.5)
+790 if y(m(i))<s+17 then 880
+800 if y(m(i))<s+37 then 900
+810 if y(m(i))<s+57 then 920
+820 if y(m(i))<77+s then 940
+830 if y(m(i))<s+92 then 960
+840 let y(m(i))=7
+850 goto 970
+860 let y(m(i))=1
+870 goto 970
+880 let y(m(i))=2
+890 goto 970
+900 let y(m(i))=3
+910 goto 970
+920 let y(m(i))=4
+930 goto 970
+940 let y(m(i))=5
+950 goto 970
+960 let y(m(i))=6
+970 next i
+980 let m=i
+990 for i=1 to 8
+1000 let s(m(i))=s(m(i))+y(m(i))
+1010 next i
+1020 let i=1
+1030 for l=1 to 8
+1040 for i=1 to 8-l
+1050 if s(m(i))<s(m(i+1))then 1090
+1060 let h=m(i)
+1070 let m(i)=m(i+1)
+1080 let m(i+1)=h
+1090 next i
+1100 next l
+1110 let t=s(m(8))
+1120 for i=1 to 8
+1130 let b=s(m(i))-s(m(i-1))
+1140 if b=0 then 1190
+1150 for a=1 to b
+1160 print
+1170 if s(m(i))>27 then 1240
+1180 next a
+1190 print m(i);
+1200 next i
+1210 for a=1 to 28-t
+1220 print
+1230 next a
+1240 print "xxxxfinishxxxx";
+1242 print
+1243 print
+1244 print "---------------------------------------------"
+1245 print
+1250 if t<28 then 720
+1270 print "the race results are:"
+1272 let z9=1
+1280 for i=8 to 1 step-1
+1290 let f=m(i)
+1300 print
+1310 print z9;"place horse no.";f,"at ";r/d(f);":1"
+1312 let z9=z9+1
+1320  next i
+1330 for j=1 to c
+1340 if q(j)<>m(8) then 1370
+1350 let n=q(j)
+1355 print
+1360 print w$(j);" wins $";(r/d(n))*p(j)
+1370 next j
+1372 print "do you want to bet on the next race ?"
+1374 input "yes or no"; o$
+1376 if o$="yes" then 380
+1380 end

@@ -1,85 +1,85 @@
-10 PRINT TAB(29);"RABBIT CHASE"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN NEW JERSEY"
-30 PRINT
-40 PRINT
-50 PRINT
-100 REM ('T' IS THE SQUARE OF THE CAPTURE DISTANCE)
-105 LET T=400
-115 REM --   INITALIZE VELOCITIES AND POSITIONS
-125 LET V1=INT(RNB(1)*10+.5)*10+50
-130 LET V2=(INT(RND(1)*2+.5)+1)*V1
-135 LET X1=(INT(RND(1)*400)+100)*SGN(RND(1)-.5)
-140 LET Y1=(INT(RND(1)*400)+100)*SGN(RND(1)-.5)
-145 IF Y1=0 OR X1=0 THEN 135
-150 LET X2=0
-155 LET Y2=0
-160 PRINT "SPEEDS (UNITS/HOP):"
-165 PRINT "RABBIT -";V1,"YOU -";V2
-170 PRINT
-175 PRINT
-180 PRINT
-185 LET C=(X2-X1)^2+(Y2-Y1)^2
-190 LET P1=3.141592653589/180
-195 LET H=1
-200 REM --   PRINT OUT
-215 LET D1=INT(RND(1)*359)
-220 PRINT "HOP#: ";
-225 LET Z=H
-230 GOSUB 510
-235 PRINT " DISTANCE TO RABBIT: ";
-240 LET Z=SQR((X2-X1)^2+(Y2-Y1)^2)
-245 GOSUB 510
-250 PRINT "   CLOSEST APPROACH: ";
-255 LET Z=SQR(C)
-260 GOSUB 510
-265 PRINT
-270 PRINT "RABBIT ---     POSITION: (";
-275 LET Z=X1
-280 GOSUB 520
-285 PRINT ",";
-290 LET Z=Y1
-295 GOSUB 520
-300 PRINT ")   AND DIRECTION:";
-305 LET Z=D1
-310 GOSUB 510
-315 PRINT
-320 PRINT "YOU ------     POSITION: (";
-325 LET Z=X2
-330 GOSUB 520
-335 PRINT ",";
-340 LET Z=Y2
-345 GOSUB 520
-350 PRINT ")   AND DIRECTION:";
-355 INPUT D2
-360 IF D2 < 0 OR D2 >=360 THEN 355
-365 PRINT
-370 PRINT
-380 REM --   COMPUTE PATHS AND SEE IF THEY INTERSECT
-390 LET X3=V1*COS(D1*P1)/100
-395 LET Y3=V1*SIN(D1*P1)/100
-400 LET X4=V2*COS(D2*P1)/100
-405 LET Y4=V2*SIN(D2*P1)/100
-410 LET C=(X2-X1)^2+(Y2-Y1)^2
-415 FOR I=1 TO 100
-420 LET X1=X1+X3
-425 LET Y1=Y1+Y3
-430 LET X2=X2+X4
-435 LET Y2=Y2+Y4
-440 IF C < (X2-X1)^2+(Y2-Y1)^2 THEN 445
-443 C=(X2-X1)^2+(Y2-Y1)^2
-445 NEXT I
-450 LET H=H+1
-455 IF C > T THEN 215
-460 PRINT
-465 PRINT
-470 PRINT "**********"
-475 PRINT "* GOT YA *"
-480 PRINT "**********"
-485 PRINT
-490 PRINT
-500 END
-510 REM --   CONVERTS NUMBERS TO STRINGS FOR CLEANER OUTPUT
-520 Z=INT(Z+.5)
-525 PRINT RIGHT$("     "+STR$(Z),5);
-585 RETURN
-590 END
+10 print tab(29);"rabbit chase"
+20 print tab(15);"creative computing  morristown new jersey"
+30 print
+40 print
+50 print
+100 rem ('t' is the square of the capture distance)
+105 let t=400
+115 rem --   initalize velocities and positions
+125 let v1=int(rnb(1)*10+.5)*10+50
+130 let v2=(int(rnd(1)*2+.5)+1)*v1
+135 let x1=(int(rnd(1)*400)+100)*sgn(rnd(1)-.5)
+140 let y1=(int(rnd(1)*400)+100)*sgn(rnd(1)-.5)
+145 if y1=0 or x1=0 then 135
+150 let x2=0
+155 let y2=0
+160 print "speeds (units/hop):"
+165 print "rabbit -";v1,"you -";v2
+170 print
+175 print
+180 print
+185 let c=(x2-x1)^2+(y2-y1)^2
+190 let p1=3.141592653589/180
+195 let h=1
+200 rem --   print out
+215 let d1=int(rnd(1)*359)
+220 print "hop#: ";
+225 let z=h
+230 gosub 510
+235 print " distance to rabbit: ";
+240 let z=sqr((x2-x1)^2+(y2-y1)^2)
+245 gosub 510
+250 print "   closest approach: ";
+255 let z=sqr(c)
+260 gosub 510
+265 print
+270 print "rabbit ---     position: (";
+275 let z=x1
+280 gosub 520
+285 print ",";
+290 let z=y1
+295 gosub 520
+300 print ")   and direction:";
+305 let z=d1
+310 gosub 510
+315 print
+320 print "you ------     position: (";
+325 let z=x2
+330 gosub 520
+335 print ",";
+340 let z=y2
+345 gosub 520
+350 print ")   and direction:";
+355 input d2
+360 if d2 < 0 or d2 >=360 then 355
+365 print
+370 print
+380 rem --   compute paths and see if they intersect
+390 let x3=v1*cos(d1*p1)/100
+395 let y3=v1*sin(d1*p1)/100
+400 let x4=v2*cos(d2*p1)/100
+405 let y4=v2*sin(d2*p1)/100
+410 let c=(x2-x1)^2+(y2-y1)^2
+415 for i=1 to 100
+420 let x1=x1+x3
+425 let y1=y1+y3
+430 let x2=x2+x4
+435 let y2=y2+y4
+440 if c < (x2-x1)^2+(y2-y1)^2 then 445
+443 c=(x2-x1)^2+(y2-y1)^2
+445 next i
+450 let h=h+1
+455 if c > t then 215
+460 print
+465 print
+470 print "**********"
+475 print "* got ya *"
+480 print "**********"
+485 print
+490 print
+500 end
+510 rem --   converts numbers to strings for cleaner output
+520 z=int(z+.5)
+525 print right$("     "+str$(z),5);
+585 return
+590 end

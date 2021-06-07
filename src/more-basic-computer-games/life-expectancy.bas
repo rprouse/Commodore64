@@ -1,176 +1,176 @@
-10 PRINT TAB(21);"LIFE EXPECTANCY"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-40 PRINT:PRINT:PRINT
-270 PRINT :PRINT:PRINT
-280 PRINT "THIS IS A LIFE EXPECTANCY TEST."
-290 PRINT "   DO YOU WISH INSTRUCTIONS";
-300 INPUT I$
-310 IF LEFT$(I$,1)="N" THEN 470
-320 PRINT:PRINT
-340 PRINT "   THIS IS A TEST TO PREDICT YOUR LIFE EXPECTANCY.  I"
-350 PRINT "WILL ASK YOU A SERIES OF SHORT QUESTIONS, WHICH YOU WILL"
-360 PRINT "REPLY BY TYPING IN THE CORRESPONDING ANSWER TO THE"
-370 PRINT "QUESTION."
-380 PRINT
-390 PRINT "        EXAMPLE:  WHAT IS YOUR SEX?"
-400 PRINT "               M=MALE"
-410 PRINT "               F=FEMALE"
-420 PRINT "'M' AND 'F' ARE THE POSSIBLE REPLIES TO THE QUESTION, ANSWER"
-430 PRINT "LIKE THIS:"
-440 PRINT "              CHOOSE ONE OF THE LETTERS ABOVE? M"
-450 PRINT "TYPING AN 'M' SIGNIFIES YOU ARE A MALE."
-460 PRINT:PRINT:PRINT
-470 R5=1
-480 Z=72
-490 A$="ABCDEMGHIJKLFNO"
-500 GOTO 1700
-510 R5=R5+1
-520 IF R5>21 THEN 1900
-530 DATA "+++SEX+++"
-540 DATA "ARE YOU MALE OR FEMALE?"
-550 DATA "M= MALE."
-560 DATA " F= FEMALE."
-570 DATA 2,"MF"
-580 DATA "+++LIFE STYLE+++"
-590   DATA "WHERE DO YOU LIVE?"
-600 DATA "G= IF YOU LIVE IN AN URBAN AREA WITH A POPULATION OVER 2 MIL."
-610 DATA "K= IF YOU LIVE IN A TOWN UNDER 10,000, OR ON A FARM."
-620 DATA " I= NEITHER."
-630 DATA 3,"GKI"
-640 DATA "HOW DO YOU WORK?"
-650 DATA "M= IF YOU WORK BEHIND A DESK."
-660 DATA "L= IF YOUR WORK REQUIRES HEAVY PHYSICAL LABOR."
-670 DATA " I= NONE OF THE ABOVE."
-680 DATA 3,"MLI"
-690 DATA "HOW LONG DO YOU EXERCISE STRENUOUSLY,"
-700 DATA "(TENNIS, RUNNING, SWIMMING, ETC.)?"
-710 DATA "F= FIVE TIMES A WEEK FOR AR LEAST A HALF HOUR."
-720 DATA "K= JUST TWO OR THREE TIMES A WEEK."
-730 DATA " I= DO NOT EXERCISE IN THIS FASHION."
-740 DATA 3,"FKI"
-750 DATA "WHO DO YOU LIVE WITH?"
-760 DATA "N= IF YOU LIVE WITH A SPOUSE, FRIEND, OR IN A FAMILY."
-770 DATA "H= IF YOU'VE LIVED ALONE FOR 1-10 YEARS SINCE AGE 25."
-780 DATA "G= FOR 11-20 YEARS."
-790 DATA "M= FOR 21-30 YEARS."
-800 DATA "E= FOR 31-40 YEARS."
-810 DATA " D= MORE THAN 40 YEARS."
-820 DATA 6,"NHGMED"
-830 DATA "+++PSYCHE+++"
-840 DATA "DO YOU SLEEP MORE THAN 10 HOURS A NIGHT?"
-850 DATA "I= NO."
-860 DATA " E=YES."
-870 DATA 2,"IE"
-880 DATA "+++MENTAL STATE+++"
-890 DATA "M= IF YOU ARE INTENSE, AGGRESSIVE, OR EASILY ANGERED."
-900 DATA "L= IF YOU ARE EASY GOING, RELAXED, OR A FOLLOWER."
-910 DATA " I= NEITHER."
-920 DATA 3,"MLI"
-930 DATA "+++HOW YOU FEEL+++"
-940 DATA "ARE YOU HAPPY OR UNHAPPY?"
-950 DATA "J= HAPPY."
-960 DATA "G= UNHAPPY."
-970 DATA " I= NEITHER."
-980 DATA 3,"JGI"
-990 DATA "+++FACTORS+++"
-1000 DATA "HAVE YOU HAD A SPEEDING TICKET IN THE LAST YEAR?"
-1010 DATA "H= YES."
-1020 DATA " I=NO."
-1030 DATA 2,"HI"
-1040 DATA "+++INCOME+++"
-1050 DATA "DO YOU EARN MORE THAN $50,000 A YEAR?"
-1060 DATA "G= YES."
-1070 DATA " I=NO."
-1080 DATA 2,"GI"
-1090 DATA "+++SCHOOLING+++"
-1100 DATA "J= IF YOU HAVE FINISHED COLLEGE."
-1110 DATA "L= IF YOU HAVE FINISHED COLLEGE WITH A GRADUATE"
-1120 DATA "OR PROFESSIONAL DEGREE."
-1130 DATA " I= NOTHING LISTED."
-1140 DATA 3,"JLI"
-1150 DATA "+++AGE+++"
-1160 DATA "ARE YOU 65 OR OLDER AND STILL WORKING?"
-1170 DATA "L= YES."
-1180 DATA " I= NO."
-1190 DATA 2,"LI"
-1200 DATA "+++HEREDITY+++"
-1210 DATA "K= IF ANY GRANDPARENTS LIVED TO 85 YEARS OLD."
-1220 DATA "O= IF ALL FOUR GRANDPARENTS LIVED TO 80 YEARS OLD."
-1230 DATA " I= NO GRANDPARENTS QUALIFY IN THE ABOVE."
-1240 DATA 3,"KOI"
-1250 DATA "HAS ANY PARENT DIED OF A STROKE OR HEART ATTACK"
-1260 DATA "BEFORE THE AGE OF 50?"
-1270 DATA "E= YES."
-1280 DATA " I= NO."
-1290 DATA 2,"EI"
-1300 DATA "+++FAMILY DISEASES+++"
-1310 DATA "ANY PARENT, BROTHER, OR SISTER UNDER 50 HAS (OR HAD) "
-1320 DATA "CANCER, A HEART CONDITION, OR DIABETES SINCE CHILDHOOD?"
-1330 DATA "M= YES."
-1340 DATA " I= NO."
-1350 DATA 2,"MI"
-1360 DATA "+++HEALTH+++"
-1365 DATA "HOW MUCH DO YOU SMOKE?"
-1370 DATA "A= IF YOU SMOKE MORE THAN TWO PACKS A DAY."
-1380 DATA "C= ONE TO TWO PACKS A DAY."
-1390 DATA "M= ONE HALF TO ONE PACK A DAY."
-1400 DATA " I= DON'T SMOKE."
-1410 DATA 4,"ACMI"
-1420 DATA "+++DRINK+++"
-1430 DATA "DO YOU DRINK THE EQUIVALENT OF A "
-1440 DATA "QUARTER BOTTLE OF ALCOHOLIC BEVERAGE A DAY?"
-1450 DATA "H= YES."
-1460 DATA " I= NO."
-1470 DATA 2,"HI"
-1480 DATA "+++WEIGHT+++"
-1490 DATA "A= IF YOU ARE OVERWEIGHT BY 50 POUNDS OR MORE."
-1500 DATA "E= OVER BY 30-50 POUNDS."
-1510 DATA "G= OVER BY 10-30 POUNDS."
-1520 DATA " I= NOT OVER WEIGHT."
-1530 DATA 4,"AEGI"
-1540 DATA "+++CHECKUPS+++"
-1550 DATA "DO YOU?  IF YOU ARE A MALE OVER 40 HAVE AN ANNUAL CHECKUP?"
-1560 DATA "K= YES."
-1570 DATA " I= IF NO OR NOT A MALE OR UNDER 40 YEARS OLD."
-1580 DATA 2,"KI"
-1590 DATA "DO YOU? IF YOU ARE A WOMAN SEE A GYNECOLOGIST ONCE A YEAR?"
-1600 DATA "K= YES."
-1610 DATA " I= IF NO OR NOT A WOMAN."
-1620 DATA 2,"KI"
-1630 DATA "+++CURRENT AGE+++"
-1640 DATA "K= IF YOU ARE BETWEEN 30 AND 40 YEARS OLD."
-1650 DATA "L= BETWEEN 40 AND 50."
-1660 DATA "F= BETWEEN 50 AND 70."
-1670 DATA "N= OVER 70."
-1680 DATA " I= UNDER 30."
-1690 DATA 5,"KLFNI"
-1700 FOR Q=1 TO 7
-1710 READ Q$
-1720 IF LEFT$(Q$,1)=" " THEN 1750
-1730 PRINT "  ";Q$
-1740 NEXT Q
-1750 PRINT " ";Q$
-1760 READ C,C$
-1770 PRINT "CHOOSE ONE OF THE LETTERS ABOVE";
-1780 INPUT G$
-1790 FOR C2=1 TO C
-1800 IF LEFT$(G$,1)= MID$(C$,C2,1) THEN 1830
-1810 NEXT C2
-1820 GOTO 1770
-1830 PRINT
-1840 FOR N=1 TO 15
-1850 IF LEFT$(G$,1)=MID$(A$,N,1) THEN 1870
-1860 NEXT N
-1870 M=N-9
-1880 Z=Z+M
-1890 GOTO 510
-1900 PRINT  "YOU ARE EXPECTED TO LIVE TO THE AGE OF";Z;"YEARS"
-1910 IF Z<60 THEN 1980
-1920 FOR Y=60 TO Z STEP 5
-1930 READ M$,F$
-1940 NEXT Y
-1950 DATA "26%","15%","36%","20%","48%","30%","61%","39%"
-1960 DATA "75%","53%","87%","70%","96%","88%","99.9%","99.6%"
-1970 PRINT "OUT LIVING ";M$;" OF THE MEN AND ";F$;" OF THE WOMEN."
-1980 END
+10 print tab(21);"life expectancy"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey"
+40 print:print:print
+270 print :print:print
+280 print "this is a life expectancy test."
+290 print "   do you wish instructions";
+300 input i$
+310 if left$(i$,1)="n" then 470
+320 print:print
+340 print "   this is a test to predict your life expectancy.  i"
+350 print "will ask you a series of short questions, which you will"
+360 print "reply by typing in the corresponding answer to the"
+370 print "question."
+380 print
+390 print "        example:  what is your sex?"
+400 print "               m=male"
+410 print "               f=female"
+420 print "'m' and 'f' are the possible replies to the question, answer"
+430 print "like this:"
+440 print "              choose one of the letters above? m"
+450 print "typing an 'm' signifies you are a male."
+460 print:print:print
+470 r5=1
+480 z=72
+490 a$="abcdemghijklfno"
+500 goto 1700
+510 r5=r5+1
+520 if r5>21 then 1900
+530 data "+++sex+++"
+540 data "are you male or female?"
+550 data "m= male."
+560 data " f= female."
+570 data 2,"mf"
+580 data "+++life style+++"
+590   data "where do you live?"
+600 data "g= if you live in an urban area with a population over 2 mil."
+610 data "k= if you live in a town under 10,000, or on a farm."
+620 data " i= neither."
+630 data 3,"gki"
+640 data "how do you work?"
+650 data "m= if you work behind a desk."
+660 data "l= if your work requires heavy physical labor."
+670 data " i= none of the above."
+680 data 3,"mli"
+690 data "how long do you exercise strenuously,"
+700 data "(tennis, running, swimming, etc.)?"
+710 data "f= five times a week for ar least a half hour."
+720 data "k= just two or three times a week."
+730 data " i= do not exercise in this fashion."
+740 data 3,"fki"
+750 data "who do you live with?"
+760 data "n= if you live with a spouse, friend, or in a family."
+770 data "h= if you've lived alone for 1-10 years since age 25."
+780 data "g= for 11-20 years."
+790 data "m= for 21-30 years."
+800 data "e= for 31-40 years."
+810 data " d= more than 40 years."
+820 data 6,"nhgmed"
+830 data "+++psyche+++"
+840 data "do you sleep more than 10 hours a night?"
+850 data "i= no."
+860 data " e=yes."
+870 data 2,"ie"
+880 data "+++mental state+++"
+890 data "m= if you are intense, aggressive, or easily angered."
+900 data "l= if you are easy going, relaxed, or a follower."
+910 data " i= neither."
+920 data 3,"mli"
+930 data "+++how you feel+++"
+940 data "are you happy or unhappy?"
+950 data "j= happy."
+960 data "g= unhappy."
+970 data " i= neither."
+980 data 3,"jgi"
+990 data "+++factors+++"
+1000 data "have you had a speeding ticket in the last year?"
+1010 data "h= yes."
+1020 data " i=no."
+1030 data 2,"hi"
+1040 data "+++income+++"
+1050 data "do you earn more than $50,000 a year?"
+1060 data "g= yes."
+1070 data " i=no."
+1080 data 2,"gi"
+1090 data "+++schooling+++"
+1100 data "j= if you have finished college."
+1110 data "l= if you have finished college with a graduate"
+1120 data "or professional degree."
+1130 data " i= nothing listed."
+1140 data 3,"jli"
+1150 data "+++age+++"
+1160 data "are you 65 or older and still working?"
+1170 data "l= yes."
+1180 data " i= no."
+1190 data 2,"li"
+1200 data "+++heredity+++"
+1210 data "k= if any grandparents lived to 85 years old."
+1220 data "o= if all four grandparents lived to 80 years old."
+1230 data " i= no grandparents qualify in the above."
+1240 data 3,"koi"
+1250 data "has any parent died of a stroke or heart attack"
+1260 data "before the age of 50?"
+1270 data "e= yes."
+1280 data " i= no."
+1290 data 2,"ei"
+1300 data "+++family diseases+++"
+1310 data "any parent, brother, or sister under 50 has (or had) "
+1320 data "cancer, a heart condition, or diabetes since childhood?"
+1330 data "m= yes."
+1340 data " i= no."
+1350 data 2,"mi"
+1360 data "+++health+++"
+1365 data "how much do you smoke?"
+1370 data "a= if you smoke more than two packs a day."
+1380 data "c= one to two packs a day."
+1390 data "m= one half to one pack a day."
+1400 data " i= don't smoke."
+1410 data 4,"acmi"
+1420 data "+++drink+++"
+1430 data "do you drink the equivalent of a "
+1440 data "quarter bottle of alcoholic beverage a day?"
+1450 data "h= yes."
+1460 data " i= no."
+1470 data 2,"hi"
+1480 data "+++weight+++"
+1490 data "a= if you are overweight by 50 pounds or more."
+1500 data "e= over by 30-50 pounds."
+1510 data "g= over by 10-30 pounds."
+1520 data " i= not over weight."
+1530 data 4,"aegi"
+1540 data "+++checkups+++"
+1550 data "do you?  if you are a male over 40 have an annual checkup?"
+1560 data "k= yes."
+1570 data " i= if no or not a male or under 40 years old."
+1580 data 2,"ki"
+1590 data "do you? if you are a woman see a gynecologist once a year?"
+1600 data "k= yes."
+1610 data " i= if no or not a woman."
+1620 data 2,"ki"
+1630 data "+++current age+++"
+1640 data "k= if you are between 30 and 40 years old."
+1650 data "l= between 40 and 50."
+1660 data "f= between 50 and 70."
+1670 data "n= over 70."
+1680 data " i= under 30."
+1690 data 5,"klfni"
+1700 for q=1 to 7
+1710 read q$
+1720 if left$(q$,1)=" " then 1750
+1730 print "  ";q$
+1740 next q
+1750 print " ";q$
+1760 read c,c$
+1770 print "choose one of the letters above";
+1780 input g$
+1790 for c2=1 to c
+1800 if left$(g$,1)= mid$(c$,c2,1) then 1830
+1810 next c2
+1820 goto 1770
+1830 print
+1840 for n=1 to 15
+1850 if left$(g$,1)=mid$(a$,n,1) then 1870
+1860 next n
+1870 m=n-9
+1880 z=z+m
+1890 goto 510
+1900 print  "you are expected to live to the age of";z;"years"
+1910 if z<60 then 1980
+1920 for y=60 to z step 5
+1930 read m$,f$
+1940 next y
+1950 data "26%","15%","36%","20%","48%","30%","61%","39%"
+1960 data "75%","53%","87%","70%","96%","88%","99.9%","99.6%"
+1970 print "out living ";m$;" of the men and ";f$;" of the women."
+1980 end

@@ -1,71 +1,71 @@
-10 PRINT TAB(32);"ANIMAL"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT: PRINT: PRINT
-40 PRINT "PLAY 'GUESS THE ANIMAL'"
-45 PRINT
-50 PRINT "THINK OF AN ANIMAL AND THE COMPUTER WILL TRY TO GUESS IT."
-60 PRINT
-70 DIM A$(200)
-80 FOR I=0 TO 3
-90 READ A$(I)
-100 NEXT I
-110 N=VAL(A$(0))
-120 REM          MAIN CONTROL SECTION
-130 INPUT "ARE YOU THINKING OF AN ANIMAL";A$
-140 IF A$="LIST" THEN 600
-150 IF LEFT$(A$,1)<>"Y" THEN 120
-160 K=1
-170 GOSUB 390
-180 IF LEN(A$(K))=0 THEN 999
-190 IF LEFT$(A$(K),2)="\Q" THEN 170
-200 PRINT "IS IT A ";RIGHT$(A$(K),LEN(A$(K))-2);
-210 INPUT A$
-220 A$=LEFT$(A$,1)
-230 IF LEFT$(A$,1)="Y" THEN PRINT "WHY NOT TRY ANOTHER ANIMAL?": GOTO 120
-240 INPUT "THE ANIMAL YOU WERE THINKING OF WAS A ";V$
-250 PRINT "PLEASE TYPE IN A QUESTION THAT WOULD DISTINGUISH A"
-260 PRINT V$;" FROM A ";RIGHT$(A$(K),LEN(A$(K))-2)
-270 INPUT X$
-280 PRINT "FOR A ";V$;" THE ANSWER WOULD BE ";
-290 INPUT A$
-300 A$=LEFT$(A$,1): IF A$<>"Y" AND A$<>"N" THEN 280
-310 IF A$="Y" THEN B$="N"
-320 IF A$="N" THEN B$="Y"
-330 Z1=VAL(A$(0))
-340 A$(0)=STR$(Z1+2)
-350 A$(Z1)=A$(K)
-360 A$(Z1+1)="\A"+V$
-370 A$(K)="\Q"+X$+"\"+A$+STR$(Z1+1)+"\"+B$+STR$(Z1)+"\"
-380 GOTO 120
-390 REM     SUBROUTINE TO PRINT QUESTIONS
-400 Q$=A$(K)
-410 FOR Z=3 TO LEN(Q$)
-415 IF MID$(Q$,Z,1)<>"\" THEN PRINT MID$(Q$,Z,1);: NEXT Z
-420 INPUT C$
-430 C$=LEFT$(C$,1)
-440 IF C$<>"Y" AND C$<>"N" THEN 410
-450 T$="\"+C$
-455 FOR X=3 TO LEN(Q$)-1
-460 IF MID$(Q$,X,2)=T$ THEN 480
-470 NEXT X
-475 STOP
-480 FOR Y=X+1 TO LEN(Q$)
-490 IF MID$(Q$,Y,1)="\" THEN 510
-500 NEXT Y
-505 STOP
-510 K=VAL(MID$(Q$,X+2,Y-X-2))
-520 RETURN
-530 DATA "4","\QDOES IT SWIM\Y2\N3\","\AFISH","\ABIRD"
-600 PRINT:PRINT "ANIMALS I ALREADY KNOW ARE:"
-605 X=0
-610 FOR I=1 TO 200
-620 IF LEFT$(A$(I),2)<>"\A" THEN 650
-624 PRINT TAB(15*X);
-630 FOR Z=3 TO LEN(A$(I))
-640 IF MID$(A$(I),Z,1)<>"\" THEN PRINT MID$(A$(I),Z,1);: NEXT Z
-645 X=X+1: IF X=4 THEN X=0: PRINT
-650 NEXT I
-660 PRINT
-670 PRINT
-680 GOTO 120
-999 END
+10 print tab(32);"animal"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print: print: print
+40 print "play 'guess the animal'"
+45 print
+50 print "think of an animal and the computer will try to guess it."
+60 print
+70 dim a$(200)
+80 for i=0 to 3
+90 read a$(i)
+100 next i
+110 n=val(a$(0))
+120 rem          main control section
+130 input "are you thinking of an animal";a$
+140 if a$="list" then 600
+150 if left$(a$,1)<>"y" then 120
+160 k=1
+170 gosub 390
+180 if len(a$(k))=0 then 999
+190 if left$(a$(k),2)="\q" then 170
+200 print "is it a ";right$(a$(k),len(a$(k))-2);
+210 input a$
+220 a$=left$(a$,1)
+230 if left$(a$,1)="y" then print "why not try another animal?": goto 120
+240 input "the animal you were thinking of was a ";v$
+250 print "please type in a question that would distinguish a"
+260 print v$;" from a ";right$(a$(k),len(a$(k))-2)
+270 input x$
+280 print "for a ";v$;" the answer would be ";
+290 input a$
+300 a$=left$(a$,1): if a$<>"y" and a$<>"n" then 280
+310 if a$="y" then b$="n"
+320 if a$="n" then b$="y"
+330 z1=val(a$(0))
+340 a$(0)=str$(z1+2)
+350 a$(z1)=a$(k)
+360 a$(z1+1)="\a"+v$
+370 a$(k)="\q"+x$+"\"+a$+str$(z1+1)+"\"+b$+str$(z1)+"\"
+380 goto 120
+390 rem     subroutine to print questions
+400 q$=a$(k)
+410 for z=3 to len(q$)
+415 if mid$(q$,z,1)<>"\" then print mid$(q$,z,1);: next z
+420 input c$
+430 c$=left$(c$,1)
+440 if c$<>"y" and c$<>"n" then 410
+450 t$="\"+c$
+455 for x=3 to len(q$)-1
+460 if mid$(q$,x,2)=t$ then 480
+470 next x
+475 stop
+480 for y=x+1 to len(q$)
+490 if mid$(q$,y,1)="\" then 510
+500 next y
+505 stop
+510 k=val(mid$(q$,x+2,y-x-2))
+520 return
+530 data "4","\qdoes it swim\y2\n3\","\afish","\abird"
+600 print:print "animals i already know are:"
+605 x=0
+610 for i=1 to 200
+620 if left$(a$(i),2)<>"\a" then 650
+624 print tab(15*x);
+630 for z=3 to len(a$(i))
+640 if mid$(a$(i),z,1)<>"\" then print mid$(a$(i),z,1);: next z
+645 x=x+1: if x=4 then x=0: print
+650 next i
+660 print
+670 print
+680 goto 120
+999 end

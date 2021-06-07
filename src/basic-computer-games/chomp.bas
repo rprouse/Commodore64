@@ -1,104 +1,104 @@
-10 PRINT TAB(33);"CHOMP"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-40 DIM A(10,10)
-100 REM *** THE GAME OF CHOMP *** COPYRIGHT PCC 1973 ***
-110 PRINT 
-120 PRINT "THIS IS THE GAME OF CHOMP (SCIENTIFIC AMERICAN, JAN 1973)"
-130 PRINT "DO YOU WANT THE RULES (1=YES, 0=NO!)";
-140 INPUT R
-150 IF R=0 THEN 340
-160 F=1
-170 R=5
-180 C=7
-190 PRINT "CHOMP IS FOR 1 OR MORE PLAYERS (HUMANS ONLY)."
-200 PRINT
-210 PRINT "HERE'S HOW A BOARD LOOKS (THIS ONE IS 5 BY 7):"
-220 GOSUB 540
-230 PRINT
-240 PRINT "THE BOARD IS A BIG COOKIE - R ROWS HIGH AND C COLUMNS"
-250 PRINT "WIDE. YOU INPUT R AND C AT THE START. IN THE UPPER LEFT"
-260 PRINT "CORNER OF THE COOKIE IS A POISON SQUARE (P). THE ONE WHO"
-270 PRINT "CHOMPS THE POISON SQUARE LOSES. TO TAKE A CHOMP, TYPE THE"
-280 PRINT "ROW AND COLUMN OF ONE OF THE SQUARES ON THE COOKIE."
-290 PRINT "ALL OF THE SQUARES BELOW AND TO THE RIGHT OF THAT SQUARE"
-300 PRINT "(INCLUDING THAT SQUARE, TOO) DISAPPEAR -- CHOMP!!"
-310 PRINT "NO FAIR CHOMPING SQUARES THAT HAVE ALREADY BEEN CHOMPED,"
-320 PRINT "OR THAT ARE OUTSIDE THE ORIGINAL DIMENSIONS OF THE COOKIE."
-330 PRINT 
-340 PRINT "HERE WE GO..."
-350 REM 
-360 F=0
-370 FOR I=1 TO 10
-372 FOR J=1 TO 10
-375 A(I,J)=0
-377 NEXT J
-379 NEXT I
-380 PRINT 
-390 PRINT "HOW MANY PLAYERS";
-400 INPUT P
-410 I1=0
-420 PRINT "HOW MANY ROWS";
-430 INPUT R
-440 IF R <= 9 THEN 470
-450 PRINT "TOO MANY ROWS (9 IS MAXIMUM). NOW, ";
-460 GOTO 420
-470 PRINT "HOW MANY COLUMNS";
-480 INPUT C
-490 IF C <= 9 THEN 530
-500 PRINT "TOO MANY COLUMNS (9 IS MAXIMUM). NOW, ";
-510 GOTO 470
-530 PRINT 
-540 FOR I=1 TO R
-550 FOR J=1 TO C
-560 A(I,J)=1
-570 NEXT J
-580 NEXT I
-590 A(1,1)=-1
-600 REM PRINT THE BOARD
-610 PRINT 
-620 PRINT TAB(7);"1 2 3 4 5 6 7 8 9"
-630 FOR I=1 TO R
-640 PRINT I;TAB(7);
-650 FOR J=1 TO C
-660 IF A(I,J)=-1 THEN 700
-670 IF A(I,J)=0 THEN 720
-680 PRINT "* ";
-690 GOTO 710
-700 PRINT "P ";
-710 NEXT J
-720 PRINT 
-730 NEXT I
-740 PRINT 
-750 IF F=0 THEN 770
-760 RETURN 
-770 REM GET CHOMPS FOR EACH PLAYER IN TURN
-780 LET I1=I1+1
-790 LET P1=I1-INT(I1/P)*P
-800 IF P1 <> 0 THEN 820
-810 P1=P
-820 PRINT "PLAYER";P1
-830 PRINT "COORDINATES OF CHOMP (ROW,COLUMN)";
-840 INPUT R1,C1
-850 IF R1<1 THEN 920
-860 IF R1>R THEN 920
-870 IF C1<1 THEN 920
-880 IF C1>C THEN 920
-890 IF A(R1,C1)=0 THEN 920
-900 IF A(R1,C1)=-1 THEN 1010
-910 GOTO 940
-920 PRINT "NO FAIR. YOU'RE TRYING TO CHOMP ON EMPTY SPACE!"
-930 GOTO 820
-940 FOR I=R1 TO R
-950 FOR J=C1 TO C
-960 A(I,J)=0
-970 NEXT J
-980 NEXT I
-990 GOTO 610
-1000 REM END OF GAME DETECTED IN LINE 900
-1010 PRINT "YOU LOSE, PLAYER";P1
-1020 PRINT 
-1030 PRINT "AGAIN (1=YES, 0=NO!)";
-1040 INPUT R
-1050 IF R=1 THEN 340
-1060 END
+10 print tab(33);"chomp"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+40 dim a(10,10)
+100 rem *** the game of chomp *** copyright pcc 1973 ***
+110 print 
+120 print "this is the game of chomp (scientific american, jan 1973)"
+130 print "do you want the rules (1=yes, 0=no!)";
+140 input r
+150 if r=0 then 340
+160 f=1
+170 r=5
+180 c=7
+190 print "chomp is for 1 or more players (humans only)."
+200 print
+210 print "here's how a board looks (this one is 5 by 7):"
+220 gosub 540
+230 print
+240 print "the board is a big cookie - r rows high and c columns"
+250 print "wide. you input r and c at the start. in the upper left"
+260 print "corner of the cookie is a poison square (p). the one who"
+270 print "chomps the poison square loses. to take a chomp, type the"
+280 print "row and column of one of the squares on the cookie."
+290 print "all of the squares below and to the right of that square"
+300 print "(including that square, too) disappear -- chomp!!"
+310 print "no fair chomping squares that have already been chomped,"
+320 print "or that are outside the original dimensions of the cookie."
+330 print 
+340 print "here we go..."
+350 rem 
+360 f=0
+370 for i=1 to 10
+372 for j=1 to 10
+375 a(i,j)=0
+377 next j
+379 next i
+380 print 
+390 print "how many players";
+400 input p
+410 i1=0
+420 print "how many rows";
+430 input r
+440 if r <= 9 then 470
+450 print "too many rows (9 is maximum). now, ";
+460 goto 420
+470 print "how many columns";
+480 input c
+490 if c <= 9 then 530
+500 print "too many columns (9 is maximum). now, ";
+510 goto 470
+530 print 
+540 for i=1 to r
+550 for j=1 to c
+560 a(i,j)=1
+570 next j
+580 next i
+590 a(1,1)=-1
+600 rem print the board
+610 print 
+620 print tab(7);"1 2 3 4 5 6 7 8 9"
+630 for i=1 to r
+640 print i;tab(7);
+650 for j=1 to c
+660 if a(i,j)=-1 then 700
+670 if a(i,j)=0 then 720
+680 print "* ";
+690 goto 710
+700 print "p ";
+710 next j
+720 print 
+730 next i
+740 print 
+750 if f=0 then 770
+760 return 
+770 rem get chomps for each player in turn
+780 let i1=i1+1
+790 let p1=i1-int(i1/p)*p
+800 if p1 <> 0 then 820
+810 p1=p
+820 print "player";p1
+830 print "coordinates of chomp (row,column)";
+840 input r1,c1
+850 if r1<1 then 920
+860 if r1>r then 920
+870 if c1<1 then 920
+880 if c1>c then 920
+890 if a(r1,c1)=0 then 920
+900 if a(r1,c1)=-1 then 1010
+910 goto 940
+920 print "no fair. you're trying to chomp on empty space!"
+930 goto 820
+940 for i=r1 to r
+950 for j=c1 to c
+960 a(i,j)=0
+970 next j
+980 next i
+990 goto 610
+1000 rem end of game detected in line 900
+1010 print "you lose, player";p1
+1020 print 
+1030 print "again (1=yes, 0=no!)";
+1040 input r
+1050 if r=1 then 340
+1060 end

@@ -1,144 +1,144 @@
-10 PRINT TAB(22);"FOUR IN A ROW"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-40 PRINT:PRINT:PRINT
-100 DIM B$(8,8),L(8),S(4),F(4)
-110 DIM V(16),N(4)
-130 DATA 1,100,500,1E20,1,800,4000,1E20
-140 DATA 1,75,900,1E18,1,450,3000,1E18
-150 FOR Z1=1 TO 16:READ V(Z1):NEXT Z1
-160 PRINT"THE GAME OF FOUR IN A ROW"
-170 INPUT"DO YOU WANT INSTRUCTIONS";A$
-180 IF A$="NO" THEN 270
-190 IF A$="YES" THEN 210
-200 PRINT"YES OR NO":GOTO 170
-210 PRINT"THE GAME CONSISTS OF STACKING X'S"
-220 PRINT"AND O'S (THE COMPUTER HAS O) UNTIL"
-230 PRINT"ONE OF THE PLAYERS GETS FOUR IN A"
-240 PRINT"ROW VERTICALLY, HORIZONTALLY, OR "
-250 PRINT"DIAGONALLY."
-260 PRINT:PRINT
-270 X$="X":O$="O"
-280 FOR I=1 TO 8:FOR J=1 TO 8:B$(I,J)="-":NEXT J:NEXT I
-290 FOR Z1=1 TO 8:L(Z1)=0:NEXT Z1
-300 INPUT"DO YOU WANT TO GO FIRST";A$
-310 IF A$="NO" THEN 610
-320 GOSUB 340
-330 GOTO 450
-340 FOR I=8 TO 1 STEP -1
-350 FOR J=1 TO 8
-360 PRINT"  ";B$(I,J);
-370 NEXT J
-380 PRINT
-390 NEXT I
-400 PRINT" ";
-410 FOR I=1 TO 8:PRINT I;:NEXT I
-420 PRINT:PRINT
-430 RETURN
-440 PRINT"ILLEGAL MOVE, TRY AGAIN."
-450 INPUT"A NUMBER BETWEEN 1 AND 8";M
-460 M=INT(M)
-470 IF M<1 OR M>8 THEN 440
-480 L=L(M)
-490 IF L>7 THEN 440
-500 L(M)=L+1:L=L+1
-510 B$(L,M)=X$
-520 PRINT
-530 GOSUB 340
-540 P$=X$
-550 GOSUB 1240
-560 FOR Z=1 TO 4
-570 IF S(Z)<4 THEN 600
-580 PRINT"Y O U   W I N !!!"
-590 GOTO 1580
-600 NEXT Z
-610 M9=0:V1=0
-620 N1=1
-630 FOR M4=1 TO 8
-640 L=L(M4)+1
-650 IF L>8 THEN 1080
-660 V=1
-670 P$=O$:W=0
-680 M=M4
-690 GOSUB 1240
-700 FOR Z1=1 TO 4:N(Z1)=0:NEXT Z1
-710 FOR Z=1 TO 4
-720 S=S(Z)
-730 IF S-W>3 THEN 1130
-740 T=S+F(Z)
-750 IF T<4 THEN 780
-760 V=V+4
-770 N(S)=N(S)+1
-780 NEXT Z
-790 FOR I = 1 TO 4
-800 N=N(I)-1
-810 IF N=-1 THEN 840
-820 I1=8*W+4*SGN(N)+I
-830 V=V + V(I1) + N*V(8*W+I)
-840 NEXT I
-850 IF W=1 THEN 880
-860 W=1:P$=X$
-870 GOTO 690
-880 L=L+1
-920 IF L>8 THEN 1020
-930 GOSUB 1240
-940 FOR Z=1 TO 4
-950 IF S(Z)>3 THEN V=2
-960 NEXT Z
-1020 IF V<V1 THEN 1080
-1030 IF V>V1 THEN N1=1: GOTO 1060
-1040 N1=N1 + 1
-1050 IF RND(1)>1/N1 THEN 1080
-1060 V1 = V
-1070 M9=M4
-1080 NEXT M4
-1090 IF M9<>0 THEN 1120
-1100 PRINT "T I E   G A M E ..."
-1110 GOTO 1580
-1120 M=M9
-1130 PRINT "COMPUTER PICKS COLUMN ";M:PRINT
-1140 L=L(M)+1:L(M)=L(M)+1
-1150 B$(L,M)=O$
-1160 P$=O$:GOSUB 340
-1170 GOSUB 1240
-1180 FOR Z = 1 TO 4
-1190 IF S(Z)<4 THEN 1220
-1200 PRINT"C O M P U T E R   W I N S !!!"
-1210 GOTO 1580
-1220 NEXT Z
-1230 GOTO 450
-1240 Q$=X$
-1250 IF P$=X$ THEN Q$=O$
-1260 D2=1:D1=0
-1270 Z=0
-1280 GOSUB 1360
-1290 D1=1:D2=1
-1300 GOSUB 1360
-1310 D2=0:D1=1
-1320 GOSUB 1360
-1330 D2=-1:D1=1
-1340 GOSUB 1360
-1350 RETURN
-1360 D=1:S=1
-1370 T=0
-1380 Z=Z+1
-1390 C=0
-1400 FOR K=1 TO 3
-1410 M5=M+K*D1:L1=L+K*D2
-1420 IF M5<1 OR L1<1 OR M5>8 OR L1>8 THEN 1510
-1430 B$=B$(L1,M5)
-1440 IF C=0 THEN 1480
-1450 IF B$=Q$ THEN K=3: GOTO 1510
-1460 T = T+1
-1470 GOTO 1510
-1480 IF B$=P$ THEN S=S+1:GOTO 1510
-1490 C=1
-1500 GOTO 1450
-1510 NEXT K
-1520 IF D=0 THEN 1550
-1530 D=0:D1=-D1:D2=-D2
-1540 GOTO 1390
-1550 S(Z)=S
-1560 F(Z)=T
-1570 RETURN
-1580 END
+10 print tab(22);"four in a row"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey"
+40 print:print:print
+100 dim b$(8,8),l(8),s(4),f(4)
+110 dim v(16),n(4)
+130 data 1,100,500,1e20,1,800,4000,1e20
+140 data 1,75,900,1e18,1,450,3000,1e18
+150 for z1=1 to 16:read v(z1):next z1
+160 print"the game of four in a row"
+170 input"do you want instructions";a$
+180 if a$="no" then 270
+190 if a$="yes" then 210
+200 print"yes or no":goto 170
+210 print"the game consists of stacking x's"
+220 print"and o's (the computer has o) until"
+230 print"one of the players gets four in a"
+240 print"row vertically, horizontally, or "
+250 print"diagonally."
+260 print:print
+270 x$="x":o$="o"
+280 for i=1 to 8:for j=1 to 8:b$(i,j)="-":next j:next i
+290 for z1=1 to 8:l(z1)=0:next z1
+300 input"do you want to go first";a$
+310 if a$="no" then 610
+320 gosub 340
+330 goto 450
+340 for i=8 to 1 step -1
+350 for j=1 to 8
+360 print"  ";b$(i,j);
+370 next j
+380 print
+390 next i
+400 print" ";
+410 for i=1 to 8:print i;:next i
+420 print:print
+430 return
+440 print"illegal move, try again."
+450 input"a number between 1 and 8";m
+460 m=int(m)
+470 if m<1 or m>8 then 440
+480 l=l(m)
+490 if l>7 then 440
+500 l(m)=l+1:l=l+1
+510 b$(l,m)=x$
+520 print
+530 gosub 340
+540 p$=x$
+550 gosub 1240
+560 for z=1 to 4
+570 if s(z)<4 then 600
+580 print"y o u   w i n !!!"
+590 goto 1580
+600 next z
+610 m9=0:v1=0
+620 n1=1
+630 for m4=1 to 8
+640 l=l(m4)+1
+650 if l>8 then 1080
+660 v=1
+670 p$=o$:w=0
+680 m=m4
+690 gosub 1240
+700 for z1=1 to 4:n(z1)=0:next z1
+710 for z=1 to 4
+720 s=s(z)
+730 if s-w>3 then 1130
+740 t=s+f(z)
+750 if t<4 then 780
+760 v=v+4
+770 n(s)=n(s)+1
+780 next z
+790 for i = 1 to 4
+800 n=n(i)-1
+810 if n=-1 then 840
+820 i1=8*w+4*sgn(n)+i
+830 v=v + v(i1) + n*v(8*w+i)
+840 next i
+850 if w=1 then 880
+860 w=1:p$=x$
+870 goto 690
+880 l=l+1
+920 if l>8 then 1020
+930 gosub 1240
+940 for z=1 to 4
+950 if s(z)>3 then v=2
+960 next z
+1020 if v<v1 then 1080
+1030 if v>v1 then n1=1: goto 1060
+1040 n1=n1 + 1
+1050 if rnd(1)>1/n1 then 1080
+1060 v1 = v
+1070 m9=m4
+1080 next m4
+1090 if m9<>0 then 1120
+1100 print "t i e   g a m e ..."
+1110 goto 1580
+1120 m=m9
+1130 print "computer picks column ";m:print
+1140 l=l(m)+1:l(m)=l(m)+1
+1150 b$(l,m)=o$
+1160 p$=o$:gosub 340
+1170 gosub 1240
+1180 for z = 1 to 4
+1190 if s(z)<4 then 1220
+1200 print"c o m p u t e r   w i n s !!!"
+1210 goto 1580
+1220 next z
+1230 goto 450
+1240 q$=x$
+1250 if p$=x$ then q$=o$
+1260 d2=1:d1=0
+1270 z=0
+1280 gosub 1360
+1290 d1=1:d2=1
+1300 gosub 1360
+1310 d2=0:d1=1
+1320 gosub 1360
+1330 d2=-1:d1=1
+1340 gosub 1360
+1350 return
+1360 d=1:s=1
+1370 t=0
+1380 z=z+1
+1390 c=0
+1400 for k=1 to 3
+1410 m5=m+k*d1:l1=l+k*d2
+1420 if m5<1 or l1<1 or m5>8 or l1>8 then 1510
+1430 b$=b$(l1,m5)
+1440 if c=0 then 1480
+1450 if b$=q$ then k=3: goto 1510
+1460 t = t+1
+1470 goto 1510
+1480 if b$=p$ then s=s+1:goto 1510
+1490 c=1
+1500 goto 1450
+1510 next k
+1520 if d=0 then 1550
+1530 d=0:d1=-d1:d2=-d2
+1540 goto 1390
+1550 s(z)=s
+1560 f(z)=t
+1570 return
+1580 end

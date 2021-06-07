@@ -1,641 +1,641 @@
-10 PRINT TAB(33);"SEABAT"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-40 REM
-50 REM  PROGRAM BY VINCENT ERIKSON
-60 REM   ORIGINALLY IN H.P. BASIC
-70 REM   CONVERTED TO MICROSOFT BASIC BY S.N.
-80 REM
-90 REM  NOTE THE FOLLOWING ABOUT CONVERSIONS:
-100 REM   1) RESTORE <LINE NUMBER> MEANS TO SET THE DATA
-110 REM      POINTER TO THE SPECIFIED LINE. THIS IS ONLY
-120 REM      PRESENT IN TRS-80 LEVEL II AND CP/M BASIC.
-130 REM      FOR OTHERS, IMPROVISE BY USING A RESTORE, AND
-140 REM      FOR...NEXT WITH READ STATEMENTS TO SKIP OVER
-150 REM      THE DATA THAT SHOULD BE IGNORED.
-160 REM
-170 REM   2) LOGICAL EXPRESSIONS ARE USED OFTEN.  A TRUE
-180 REM      EXPRESSION EVALUATES AS A (-1) AND A FALSE EXPRESSION
-190 REM      EVALUATES AS A (0).  THUS IF THE PROGRAM SAYS:
-200 REM          X = (D<50)
-210 REM      IT MEANS, LET X=0 IF D>=50, AND LET X=-1 IF D<50.
-220 REM      AGAIN, IMPROVISE IF YOUR BASIC DOESN'T HAVE THIS
-230 REM      (BUT ALL MICROSOFT BASICS DO.)
-240 REM
-245 REM   The real name of this program is, "Underwater Pie Lob"
-250 REM *** PROGRAM FOLLOWS ***
-260 REM ***
-270 DIM A(20,20),D(9)
-280 PRINT "WHAT IS YOUR NAME";
-290 INPUT N$
-300 PRINT
-310 REM *** SET UP AREA ***
-320 FOR I=1 TO 20
-322 FOR J=1 TO 20
-324 A(I,J)=0
-326 NEXT J
-328 NEXT I
-330 REM *** ISLAND ***
-340 RESTORE 6300
-350 FOR X=7 TO 13
-360 FOR Y=7 TO 12
-370 READ A(X,Y)
-380 NEXT Y
-390 NEXT X
-400 REM *** SUB ***
-410 S1=10: S2=10
-420 A(S1,S2)=2
-430 REM *** ENEMY SHIPS ***
-440 S=INT(RND(1)*16)+15
-450 RESTORE 6090
-460 FOR X=1 TO (INT(RND(1)*4)+1)*2-1
-470 READ D8,D9
-480 NEXT X
-490 FOR X=1 TO S
-500 X1=INT(RND(1)*20)+1
-510 X2=INT(RND(1)*20)+1
-520 IF A(X1,X2)<>0 THEN 500
-530 A(X1,X2)=3
-540 NEXT X
-550 PRINT "YOU MUST DESTROY";S;"ENEMY SHIPS TO WIN ";N$;"."
-560 REM *** HEADQUARTERS ***
-570 S3=INT(RND(1)*20)+1
-580 S4=INT(RND(1)*20)+1
-590 IF A(S3,S4)<>0 THEN 570
-600 A(S3,S4)=4
-610 REM *** UNDERWATER MINES ***
-620 FOR X=1 TO INT(RND(1)*8)+8
-630 X1=INT(RND(1)*20)+1
-640 X2=INT(RND(1)*20)+1
-650 IF A(X1,X2)<>0 THEN 630
-660 A(X1,X2)=5
-670 NEXT X
-680 REM *** SEA MONSTERS ***
-690 FOR X=1 TO 4
-700 X1=INT(RND(1)*18)+2
-710 X2=INT(RND(1)*18)+2
-720 IF A(X1,X2)<>0 THEN 700
-730 A(X1,X2)=6
-740 RESTORE 6090
-750 FOR Y=1 TO INT(RND(1)*8)+1
-760 READ M1,M2
-770 NEXT Y
-780 NEXT X
-790 REM *** SET STARTING VALUES ***
-800 FOR I=1 TO 9
-802 D(I)=0
-804 NEXT I
-810 C=30
-820 P=6000
-830 F=2500
-840 T=10
-850 M=3
-860 D=100
-870 D2=2
-880 REM *** COMMAND SECTION ***
-890 PRINT: PRINT: PRINT "WHAT ARE YOUR ORDERS ";N$;
-900 INPUT O
-910 ON INT(O+1) GOTO 1040,1680,2220,2680,3250,3410,3700,3880,4400,4660
-920 PRINT "THE COMMANDS ARE:"
-930 PRINT "     #0: NAVIGATION"
-940 PRINT "     #1: SONAR"
-950 PRINT "     #2: TORPEDO CONTROL"
-960 PRINT "     #3: POLARIS MISSILE CONTROL"
-970 PRINT "     #4: MANUEVERING"
-980 PRINT "     #5: STATUS/DAMAGE REPORT"
-990 PRINT "     #6: HEADQUARTERS"
-1000 PRINT "     #7: SABOTAGE"
-1010 PRINT "     #8: POWER CONVERSION"
-1020 PRINT "     #9: SURRENDER"
-1030 GOTO 890
-1040 REM *** #0: NAVIGATION ***
-1050 IF D(1) >= 0 THEN 1080
-1060 PRINT "ENGINES ARE UNDER REPAIR ";N$;"."
-1070 GOTO 890
-1080 IF C>8 THEN 1110
-1090 PRINT "NOT ENOUGH CREW TO MAN THE ENGINES ";N$;"."
-1100 GOTO 890
-1110 D1=1-((.23+RND(1)/10)*(-(D<=50)))
-1120 GOSUB 6090
-1130 PRINT "POWER AVAILABLE=";P;". POWER TO USE";
-1140 INPUT P1
-1150 IF P1<0 OR P1>P THEN 1130
-1160 IF P1 <= 1000 THEN 1210
-1170 IF RND(1)<.43 THEN 1210
-1180 PRINT "ATOMIC PILE GOES SUPERCRITICAL ";N$;"!!! HEADQUARTERS"
-1190 PRINT "WILL WARN ALL SUBS TO STAY AWAY FROM RADIOACTIVE AREA!!!"
-1200 GOTO 6180
-1210 X=S1
-1220 Y=S2
-1230 Q1=1
-1240 FOR X2=1 TO INT(INT(P1/100+.5)*D1+.5)
-1250 IF X+X1>0 AND X+X1<21 AND Y+Y1>0 AND Y+Y1<21 THEN 1280
-1260 PRINT "YOU CAN'T LEAVE THE AREA ";N$;"!!"
-1270 GOTO 1340
-1280 ON A(X+X1,Y+Y1)+1 GOTO 1290,1330,1630,1390,1440,1470,1490
-1290 X=X+X1
-1300 Y=Y+Y1
-1310 P=P-100
-1320 GOTO 1520
-1330 PRINT "YOU ALMOST RAN AGROUND ";N$;"!!"
-1340 A(X,Y)=2
-1350 A(S1,S2)=0
-1360 S1=X
-1370 S2=Y
-1380 GOTO 4690
-1390 IF D>50 THEN 1290
-1400 PRINT "YOU RAMMED A SHIP!!! YOU'RE BOTH SUNK!!";N$;"!!"
-1410 S=S-1
-1420 IF S=0 THEN 6260
-1430 GOTO 6180
-1440 IF D>50 THEN 1290
-1450 PRINT "YOU RAMMED HEADQUARTERS!! YOU'RE SUNK!!"
-1460 GOTO 6180
-1470 PRINT "YOU'VE BEEN BLOWN UP BY A MINE ";N$;"!!"
-1480 GOTO 6180
-1490 IF RND(1)<.21 THEN 1630
-1500 PRINT "YOU WERE EATEN BY A SEA MONSTER, ";N$;"!!"
-1510 GOTO 6180
-1520 REM *** CHECK FOR NEARBY SEA MONSTERS ***
-1530 FOR X3=X-2 TO X+2
-1540 FOR Y3=Y-2 TO Y+2
-1550 IF X3<1 OR X3>20 OR Y3<1 OR Y3>20 THEN 1610
-1560 IF A(X,Y)<>6 THEN 1610
-1570 IF RND(1)<.25 THEN 1500
-1580 IF Q1=0 THEN 1610
-1590 PRINT "YOU JUST HAD A NARROW ESCAPE WITH A SEA MONSTER ";N$;"!!"
-1600 Q1=0
-1610 NEXT Y3
-1620 NEXT X3
-1630 NEXT X2
-1640 PRINT "NAVIGATION COMPLETE. POWER LEFT=";P;"."
-1650 IF P>0 THEN 1340
-1660 PRINT "ATOMIC PILE HAS GONE DEAD!!! SUB SINKS, CREW SUFFOCATES"
-1670 GOTO 6180
-1680 REM *** #1: SONAR ***
-1690 IF D(2) >= 0 THEN 1720
-1700 PRINT "SONAR IS UNDER REPAIR ";N$;"."
-1710 GOTO 880
-1720 IF C>5 THEN 1750
-1730 PRINT "NOT ENOUGH CREW TO WORK SONAR ";N$;"."
-1740 GOTO 880
-1750 PRINT "OPTION #";
-1760 INPUT O
-1770 ON INT(O+1) GOTO 1790,2010
-1780 GOTO 1750
-1790 REM *** PRINT OUT MAP ***
-1800 PRINT
-1810 FOR X=1 TO 20
-1820 FOR Y=1 TO 20
-1830 DATA "   ","***","(X)","\S/","!H!"," $ ","-#-"
-1840 IF A(X,Y)<>0 THEN 1880
-1850 IF X<>1 AND X<>20 AND Y<>1 AND Y<>20 THEN 1880
-1860 PRINT " . ";
-1870 GOTO 1950
-1880 RESTORE 1830
-1890 FOR X1=1 TO A(X,Y)+1
-1900 READ A$
-1910 NEXT X1
-1920 IF D<50 AND RND(1)<.23 AND A(X,Y)<>1 AND A(A,Y)<>2 THEN 1860
-1930 IF RND(1)<.15 AND A(X,Y)>2 THEN 1860
-1940 PRINT A$;
-1950 NEXT Y
-1960 PRINT
-1970 NEXT X
-1980 P=P-50
-1990 IF P>0 THEN 880
-2000 GOTO 1660
-2010 REM *** DIRECTIONAL INFORMATION ***
-2020 FOR I=1 TO 5
-2022 B(I)=0
-2024 NEXT I
-2030 PRINT "DIRECTION   # OF SHIPS    DISTANCES"
-2040 RESTORE 6090
-2050 FOR X=1 TO 8
-2060 READ X1,Y1
-2070 X3=0
-2080 FOR X4=1 TO 20
-2090 IF S1+X1*X4<1 OR S1+X1*X4>20 OR S2+Y1*X4<1 OR S2+Y1*X4>20 THEN 2140
-2100 IF A(S1+X1*X4,S2+Y1*X4)<>3 THEN 2130
-2110 X3=X3+1
-2120 B(X3)=X4
-2130 NEXT X4
-2140 IF X3=0 THEN 2200
-2150 PRINT "   ";X,X3,
-2160 FOR X4=1 TO X3
-2170 PRINT B(X4);
-2180 NEXT X4
-2190 PRINT
-2200 NEXT X
-2210 GOTO 1980
-2220 REM *** #2: TORPEDO CONTROL ***
-2230 IF D(3) >=0 THEN 2260
-2240 PRINT "TORPEDO TUBES ARE UNDER REPAIR ";N$;"."
-2250 GOTO 880
-2260 IF C>=10 THEN 2290
-2270 PRINT "NOT ENOUGH CREW TO FIRE TORPEDO ";N$;"."
-2280 GOTO 880
-2290 IF T THEN 2320
-2300 PRINT "NO TORPEDOS LEFT ";N$;"."
-2310 GOTO 880
-2320 IF D<2000 THEN 2360
-2330 IF RND(1)>.5 THEN 2360
-2340 PRINT "PRESSURE IMPLODES UPON FIRING...YOU'RE CRUSHED!!"
-2350 GOTO 6180
-2360 GOSUB 6080
-2370 X=S1
-2380 Y=S2
-2390 FOR X2=1 TO INT(7+5*(-(D>50))-RND(1)*4+.5)
-2400 IF X+X1>0 AND X+X1<21 AND Y+Y1>0 AND Y+Y1<21 THEN 2460
-2410 PRINT "TORPEDO OUT OF SONAR RANGE...INEFFECTUAL ";N$;"."
-2420 T=T-1
-2430 P=P-150
-2440 IF P>0 THEN 4690
-2450 GOTO 1660
-2460 ON A(X+X1,Y+Y1)+1 GOTO 2470,2510,2650,2540,2580,2610,2630
-2470 X=X+X1
-2480 Y=Y+Y1
-2490 PRINT "..!..";
-2500 GOTO 2650
-2510 PRINT "YOU TOOK OUT SOME ISLAND ";N$;"!"
-2520 A(X+X1,Y+Y1)=0
-2530 GOTO 2420
-2540 PRINT "OUCH!!! YOU GOT ONE ";N$;"!!"
-2550 S=S-1
-2560 IF S<>0 THEN 2520
-2570 GOTO 6260
-2580 PRINT "YOU BLEW UP YOUR HEADQUARTERS ";N$;"!!!"
-2590 S3=0: S4=0: D2=0
-2600 GOTO 2520
-2610 PRINT "BLAM!! SHOT WASTED ON A MINE ";N$;"!!"
-2620 GOTO 2520
-2630 PRINT "A SEA MONSTER HAD A TORPEDO FOR LUNCH ";N$;"!!"
-2640 GOTO 2420
-2650 NEXT X2
-2660 PRINT "DUD."
-2670 GOTO 2420
-2680 REM #3: POLARIS MISSILE CONTROL ***
-2690 IF D(4) >= 0 THEN 2720
-2700 PRINT "MISSILE SILOS ARE UNDER REPAIR ";N$;"."
-2710 GOTO 880
-2720 IF C>23 THEN 2750
-2730 PRINT "NOT ENOUGH CREW TO LAUNCH A MISSILE ";N$;"."
-2740 GOTO 880
-2750 IF M<>0 THEN 2780
-2760 PRINT "NO MISSILES LEFT ";N$;"."
-2770 GOTO 880
-2780 IF D>50 AND D<2000 THEN 2850
-2790 PRINT "RECOMMEND THAT YOU DO NOT FIRE AT THIS DEPTH...PROCEED";
-2800 INPUT A$
-2810 IF LEFT$(A$,1)="N" THEN 880
-2820 IF RND(1)<.5 THEN 2850
-2830 PRINT "MISSILE EXPLODES UPON FIRING ";N$;"!! YOU'RE DEAD!!"
-2840 GOTO 6180
-2850 GOSUB 6080
-2860 PRINT "FUEL (LBS.)";
-2870 INPUT F1
-2880 IF F1>0 AND F1 <= F THEN 2910
-2890 PRINT "YOU HAVE";F;"LBS. LEFT ";N$;"."
-2900 GOTO 2860
-2910 F2=INT(F1/75+.5)
-2920 IF S1+X1*F2>0 AND S1+X1*F2<21 AND S2+Y1*F2>0 AND S2+Y1*F2<21 THEN 2980
-2930 PRINT "MISSILE OUT OF SONAR TRACKING ";N$;". MISSILE LOST."
-2940 M=M-1
-2950 F=F-F1
-2960 P=P-300
-2970 GOTO 2440
-2980 D3=0: D4=0: D5=0: D6=0
-2990 FOR X=S1+X1*F2-1 TO S1+X1*F2+1
-3000 FOR Y=S2+Y1*F2-1 TO S2+Y1*F2+1
-3010 IF X<1 OR X>20 OR Y<1 OR Y>20 THEN 3140
-3020 D3=D3-(A(X,Y)=3)
-3030 D4=D4-(A(X,Y)=6)
-3040 D5=D5-(A(X,Y)=5)
-3050 D6=D6-(A(X,Y)=1)
-3060 IF A(X,Y)<>4 THEN 3100
-3070 PRINT "YOU'VE JUST DESTROYED YOUR HEADQUARTERS ";N$;"!!!"
-3080 D3=0: S4=0: D2=0
-3090 GOTO 3130
-3100 IF A(X,Y)<>2 THEN 3130
-3110 PRINT "YOU'VE JUST DESTROYED YOURSELF ";N$;"!!!    DUMMY!!"
-3120 GOTO 6180
-3130 A(X,Y)=0
-3140 NEXT Y
-3150 NEXT X
-3160 IF D6=0 THEN 3180
-3170 PRINT "YOU BLEW OUT SOME ISLAND ";N$;"."
-3180 IF D5=0 THEN 3200
-3190 PRINT "YOU DESTROYED";D5;"MINES ";N$;"."
-3200 IF D4=0 THEN 3220
-3210 PRINT "YOU GOT";D4;"SEA MONSTERS ";N$;"!!!   GOOD WORK!!"
-3220 PRINT "YOU DESTROYED";D3;"ENEMY SHIPS ";N$;"!!!"
-3230 S=S-D3
-3240 GOTO 2940
-3250 REM *** MANUEVERING ***
-3260 IF D(5)>=0 THEN 3290
-3270 PRINT "BALLAST CONTROLS ARE BEING REPAIRED ";N$;"."
-3280 GOTO 890
-3290 IF C>12 THEN 3320
-3300 PRINT "THERE ARE NOT ENOUGH CREW TO WORK THE CONTROLS ";N$;"."
-3310 GOTO 880
-3320 PRINT "NEW DEPTH";
-3330 INPUT D1
-3340 IF D1 >= 0 AND D1<3000 THEN 3370
-3350 PRINT "HULL CRUSHED BY PRESSURE ";N$;"!!"
-3360 GOTO 6180
-3370 P=P-INT(ABS((D-D1)/2+.5))
-3380 PRINT "MANUEVER COMPLETE. POWER LOSS=";INT(ABS((D-D1)/2+.5))
-3390 D=D1
-3400 GOTO 4690
-3410 REM *** #5: STATUS / DAMAGE REPORT ***
-3420 IF D(6) >= 0 THEN 3450
-3430 PRINT "NO REPORTS ARE ABLE TO GET THROUGH ";N$;"."
-3440 GOTO 880
-3450 IF C>3 THEN 3480
-3460 PRINT "NO ONE LEFT TO GIVE THE REPORT ";N$;"."
-3470 GOTO 880
-3480 PRINT "# OF ENEMY SHIPS LEFT.......";S
-3490 PRINT "# OF POWER UNITS LEFT.......";P
-3500 PRINT "# OF TORPEDOS LEFT..........";T
-3510 PRINT "# OF MISSILES LEFT..........";M
-3520 PRINT "# OF CREWMEN LEFT...........";C
-3530 PRINT "LBS. OF FUEL LEFT...........";F
-3540 PRINT
-3550 PRINT "WANT A DAMAGE REPORT";
-3560 INPUT A$
-3570 IF LEFT$(A$,1)="N" THEN 3670
-3580 PRINT "   ITEM            DAMAGE  (+ GOOD, 0 NEUTRAL, - BAD)"
-3590 PRINT "   ----            ------"
-3600 DATA "ENGINES","SONAR","TORPEDOS","MISSILES","MANUEVERING"
-3610 DATA "STATUS","HEADQUARTERS","SABOTAGE","CONVERTER"
-3620 RESTORE 3600
-3630 FOR X=1 TO 9
-3640 READ A$
-3650 PRINT A$,D(X)
-3660 NEXT X
-3670 PRINT "YOU ARE AT LOCATION (";S1;",";S2;")."
-3680 PRINT
-3690 GOTO 880
-3700 REM #6: HEADQUARTERS ***
-3710 IF D(7) >=0 THEN 3740
-3720 PRINT "HEADQUARTERS IS DAMAGED.  UNABLE TO HELP ";N$;"."
-3730 GOTO 880
-3740 IF D2<>0 THEN 3770
-3750 PRINT "HEADQUARTERS IS DESERTED ";N$;"."
-3760 GOTO 880
-3770 IF SQR((S1-S3)^2+(S2-S4)^2) <= 2 AND D<51 THEN 3800
-3780 PRINT "UNABLE TO COMPLY WITH DOCKING ORDERS ";N$;"."
-3790 GOTO 880
-3800 PRINT "DIVERS FROM HEAD QUARTERS BRING OUT SUPPLYS AND MEN."
-3810 P=4000
-3820 T=8
-3830 M=2
-3840 F=1500
-3850 C=25
-3860 D2=D2-1
-3870 GOTO 4690
-3880 REM *** #7: SABOTAGE ***
-3890 IF D(8)>=0 THEN 3920
-3900 PRINT "HATCHES INACCESSIBLE ";N$;".  NO SABOTAGES POSSIBLE."
-3910 GOTO 880
-3920 IF C>10 THEN 3950
-3930 PRINT "NOT ENOUGH CREW TO GO ON MISSION ";N$;"."
-3940 GOTO 880
-3950 D3=0:D4=0
-3960 FOR X=S1-2 TO S1+2
-3970 FOR Y=S2-2 TO S2+2
-3980 IF X<1 OR X>20 OR Y<1 OR Y>20 THEN 4010
-3990 D3=D3-(A(X,Y)=3)
-4000 D4=D4-(A(X,Y)=6)
-4010 NEXT Y
-4020 NEXT X
-4030 IF D3<>0 THEN 4060
-4040 PRINT "NO SHIPS IN RANGE ";N$;"."
-4050 GOTO 880
-4060 PRINT "THERE ARE";D3;"SHIPS IN RANGE ";N$;"."
-4070 PRINT "HOW MANY MEN ARE GOING ";N$;
-4080 INPUT Q1
-4090 IF C-Q1 >= 10 THEN 4120
-4100 PRINT "YOU MUST LEAVE AT LEAST 10 MEN ON BOARD ";N$;"."
-4110 GOTO 4070
-4120 D5=INT(D3/Q1+.5)
-4130 D6=0
-4140 FOR X=S1-2 TO S1+2
-4150 FOR Y=S2-2 TO S2+2
-4160 IF D3/Q1>1-RND(1) AND RND(1)+D3/Q1<.9 THEN 4220
-4170 IF A(X,Y)<>3 THEN 4220
-4180 D6=D6+1
-4190 A(X,Y)=0
-4200 S=S-1
-4210 IF S=0 THEN 6260
-4220 NEXT Y
-4230 NEXT X
-4240 PRINT D6;"SHIPS WERE DESTROYED ";N$;"."
-4250 D6=0: D7=0
-4260 FOR X=1 TO Q1
-4270 D7=D7-(RND(1)>.6)
-4280 NEXT X
-4290 FOR X=1 TO Q1-D7
-4300 D6=D6-(RND(1)<.15)
-4310 NEXT X
-4320 IF D4=0 THEN 4360
-4330 PRINT "A SEA MONSTER SMELLS THE MEN ON THE WAY BACK!!!"
-4340 PRINT D7;"MEN WERE EATEN ";N$;"!!"
-4350 C=C-D7
-4360 PRINT D6;"MEN WERE LOST THROUGH ACCIDENTS ";N$;"."
-4370 C=C-D6
-4380 P=P-INT(10*Q1+RND(1)*10)
-4390 GOTO 4700
-4400 REM *** #8: POWER CONVERTER ***
-4410 IF D(9) >= 0 THEN 4440
-4420 PRINT "POWER CONVERTER IS DAMAGED ";N$;"."
-4430 GOTO 880
-4440 IF C>5 THEN 4470
-4450 PRINT "NOT ENOUGH MEN TO WORK THE CONVERTER ";N$;"."
-4460 GOTO 880
-4470 PRINT "OPTION? (1=FUEL TO POWER, 2=POWER TO FUEL)";
-4480 INPUT O
-4490 ON O GOTO 4520,4590
-4500 GOTO 4470
-4510 REM *** FUEL TO POWER CONVERSION ***
-4520 PRINT "FUEL AVAILABLE=";F;". CONVERT";
-4530 INPUT C1
-4540 IF C1>F OR C1<0 THEN 4520
-4550 F=F-C1
-4560 P=P+INT(C1/3)
-4570 GOTO 4640
-4590 PRINT "POWER AVAILABLE=";P-1;". CONVERT";
-4600 INPUT C1
-4610 IF C1>P-1 OR C1<0 THEN 4590
-4620 P=P-C1
-4630 F=F+INT(C1*3)
-4640 PRINT "CONVERSION COMPLETE. POWER=";P;". FUEL=";F;"."
-4650 GOTO 4690
-4660 REM *** #9: SURRENDER ***
-4670 PRINT "COWARD!! YOU'RE NOT VERY PATRIOTIC ";N$;"!!!"
-4680 GOTO 6180
-4690 REM *** RETALIATION SECTION ***
-4700 Q=0
-4710 FOR X=S1-4 TO S1+4
-4720 FOR Y=S2-4 TO S2+4
-4730 IF X<1 OR X>20 OR Y<1 OR Y>20 THEN 4760
-4740 IF A(X,Y)<>3 THEN 4760
-4750 Q=Q+(RND(1)/SQR((S1-X)^2+(S2-Y)^2))
-4760 NEXT Y
-4770 NEXT X
-4780 IF Q THEN 4810
-4790 PRINT "NO SHIPS IN RANGE TO DEPTH CHARGE YOU ";N$;"!!"
-4800 GOTO 5210
-4810 PRINT "DEPTH CHARGES OFF ";
-4820 IF RND(1)>.5 THEN 4850
-4830 PRINT "PORT SIDE ";N$;"!!!"
-4840 GOTO 4860
-4850 PRINT "STARBOARD SIDE ";N$;"!!!"
-4860 IF Q3>.13 OR RND(1)>.92 THEN 4890
-4870 PRINT "NO REAL DAMAGE SUSTAINED ";N$;"."
-4880 GOTO 5220
-4890 IF Q>.36 OR RND(1)>.96 THEN 4940
-4900 PRINT "LIGHT, SUPERFICAL DAMAGE ";N$;"."
-4910 P=P-50
-4920 D(INT(RND(1)*9)+1)=-RND(1)*2
-4930 GOTO 5210
-4940 IF Q>.6 OR RND(1)>.975 THEN 5020
-4950 PRINT "MODERATE DAMAGE. REPAIRS NEEDED."
-4960 P=P-75+INT(RND(1)*30)
-4970 FOR Y=1 TO 2
-4980 X=INT(RND(1)*9)+1
-4990 D(X)=D(X)-RND(1)*8
-5000 NEXT Y
-5010 GOTO 5210
-5020 IF Q>.9 OR RND(1)>.983 THEN 5100
-5030 PRINT "HEAVY DAMAGE!! REPAIRS IMMEDIATE ";N$;"!!!"
-5040 P=P-(200+INT(RND(1)*76))
-5050 FOR X=1 TO 4+INT(RND(1)*2)
-5060 Y=INT(RND(1)*9)+1
-5070 D(Y)=D(Y)-RND(1)*11
-5080 NEXT X
-5090 GOTO 5210
-5100 PRINT "DAMAGE CRITICAL!!!!   WE NEED HELP!!!"
-5110 A$="VRAVUKXCNVPCRHFDRSAXQURLQTRHXYACVFZYITLCBSSYYKDQIPCAEGQGPCNOTSIO"
-5120 X=INT(RND(1)*16)+1
-5130 PRINT "SEND 'HELP' IN CODE. HERE IS THE CODE:";MID$(A$,X,4);
-5134 FOR I=1 TO 500:NEXT I
-5136 PRINT CHR$(13);TAB(38);"XXXX";CHR$(13);TAB(38);"****"
-5140 INPUT "ENTER CODE";B$
-5150 PRINT
-5160 IF B$<>MID$(A$,X,4) THEN 5190
-5170 PRINT "FAST WORK ";N$;"!! HELP ARRIVES IN TIME TO SAVE YOU!!!"
-5180 GOTO 5040
-5190 PRINT "MESSAGE GARBLED ";N$;"...NO HELP ARRIVES!!!"
-5200 GOTO 6180
-5210 REM *** MOVE SHIPS / SEA MONSTERS ***
-5220 IF D(1) >= 0 OR D(3) >= 0 OR D(4) >= 0 OR D(5) >= 0 OR D(6) >= 0 OR D(7) >= 0 THEN 5260
-5230 IF D(8) >= 0 OR D(9) >= 0 THEN 5270
-5240 PRINT "DAMAGE TOO MUCH ";N$;"!!!   YOU'RE SUNK!!"
-5250 GOTO 6180
-5260 REM *** MOVE SHIPS / SEA MONSTERS ***
-5270 PRINT: PRINT: PRINT "---*** RESULT OF LAST ENEMY MANUEVER ***---"
-5280 FOR X=1 TO 20
-5290 FOR Y=1 TO 20
-5300 IF A(X,Y)<>3 THEN 5690
-5310 REM *** MOVE A SHIP ***
-5320 W=D8
-5330 V=D9
-5340 IF X+W>0 AND X+W<21 AND Y+V>0 AND Y+V<21 THEN 5420
-5350 FOR X0=19 TO 1 STEP -1
-5360 IF A(X-W*X0,Y-V*X0)<>0 THEN 5400
-5370 A(X-W*X0,Y-V*X0)=3
-5380 A(X,Y)=0
-5390 GOTO 6000
-5400 NEXT X0
-5410 STOP
-5420 ON A(X+W,Y+V)+1 GOTO 5430,5460,5530,5460,5560,5600,5650
-5430 A(X+W,Y+V)=3
-5440 A(X,Y)=0
-5450 GOTO 6000
-5460 REM *** CHANGE DIRECTION ***
-5470 RESTORE 6090
-5480 FOR X0=1 TO INT(RND(1)*8)+1
-5490 READ W,V
-5500 NEXT X0
-5510 IF X+W<1 OR X+W>20 OR Y+V<1 OR Y+V>20 THEN 5470
-5520 GOTO 5420
-5530 IF D>50 THEN 5460
-5540 PRINT "*** YOU'VE BEEN RAMMED BY A SHIP ";N$;"!!! ***"
-5550 GOTO 6180
-5560 IF RND(1)<.15 THEN 5460
-5570 PRINT "*** YOUR HEADQUARTERS WAS RAMMED ";N$;"!!! ***"
-5580 S3=0: S4=0: D2=0: A(X+W,Y+V)=0
-5590 GOTO 5620
-5600 IF RND(1)<.7 THEN 5460
-5610 PRINT "*** SHIP DESTROYED BY A MINE ";N$;"!!! ***"
-5620 S=S-1
-5630 IF S<>0 THEN 5440
-5640 GOTO 6260
-5650 IF RND(1)<.8 THEN 5460
-5660 PRINT "*** SHIP EATEN BY A SEA MONSTER ";N$;"!! ***"
-5670 S=S-1
-5680 GOTO 5630
-5690 REM *** MOVE A SEA MONSTER ***
-5700 IF A(X,Y)<>6 THEN 6000
-5710 IF X+M1<1 OR X+M1>20 OR Y+M2<1 OR Y+M2>20 THEN 5760
-5720 ON A(X+M1,Y+M2)+1 GOTO 5730,5760,5830,5850,5900,5730,5930
-5730 A(X+M1,Y+M2)=6
-5740 A(X,Y)=0
-5750 GOTO 6000
-5760 REM *** CHANGE DIRECTION ***
-5770 RESTORE 6090
-5780 FOR X0=1 TO INT(RND(1)*8)+1
-5790 READ M1,M2
-5800 NEXT X0
-5810 IF X+M1<1 OR X+M1>20 OR Y+M2<1 OR Y+M2>20 THEN 5760
-5820 GOTO 5720
-5830 PRINT "*** YOU'VE BEEN EATEN BY A SEA MONSTER ";N$;"!! ***"
-5840 GOTO 6180
-5850 IF RND(1)>.2 THEN 5760
-5860 PRINT "*** SHIP EATEN BY A SEA MONSTER ";N$;"!! ***"
-5870 S=S-1
-5880 IF S<>0 THEN 5730
-5890 GOTO 6260
-5900 PRINT "*** A SEA MONSTER ATE YOU HEADQUARTERS ";N$;"!! ***"
-5910 S3=0: S4=0: D2=0
-5920 GOTO 5730
-5930 IF RND(1)<.75 THEN 5760
-5940 PRINT "*** A SEA MONSTER FIGHT ";N$;"!!! ";
-5950 IF RND(1)<.8 THEN 5980
-5960 PRINT "AND ONE DIES!! ***"
-5970 GOTO 5730
-5980 PRINT "IT'S A TIE!! ***"
-5990 GOTO 5760
-6000 NEXT Y
-6010 NEXT X
-6020 REM *** MAKE REPAIRS ***
-6030 FOR Y=1 TO 9
-6040 X=INT(RND(1)*9)+1
-6050 D(X)=D(X)+(RND(1)*(2+RND(1)*2))*(1+(-(D<51) OR -(D>2000)))*(-(D(X)<3))
-6060 NEXT Y
-6070 GOTO 880
-6080 REM *** GOSUB FOR COURSE / DIRECTION ***
-6090 DATA -1,0,-1,1,0,1,1,1,1,0,1,-1,0,-1,-1,-1
-6100 PRINT "COURSE (1-8)";
-6110 INPUT C1
-6120 IF C1<1 OR C1>8 THEN 6100
-6130 RESTORE 6090
-6140 FOR X9=1 TO INT(C1+.5)
-6150 READ X1,Y1
-6160 NEXT X9
-6170 RETURN
-6180 REM *** DESTROYED ? ***
-6190 PRINT "THERE ARE STILL";S;"ENEMY SHIPS LEFT ";N$;"."
-6200 PRINT "YOU WILL BE DEMOTED TO THE RANK OF DECK SCRUBBER!!!"
-6210 PRINT "WANT ANOTHER GAME";
-6220 INPUT A$
-6230 IF LEFT$(A$,1)<>"Y" THEN 6250
-6240 GOTO 310
-6250 STOP
-6260 PRINT "GOOD WORK ";N$;"!!!  YOU GOT THEM ALL!!!"
-6270 PRINT "PROMOTION AND COMMENDATIONS WILL BE GIVEN IMMEDIATELY!!!"
-6280 GOTO 6210
-6300 DATA 0,1,1,1,0,0,0,1,1,1,1,0,1,1,1,0,1,1,1,1,0,0,0,1
-6310 DATA 1,1,0,0,1,1,0,1,1,0,1,0,0,0,1,0,0,0
-6320 END
+10 print tab(33);"seabat"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+40 rem
+50 rem  program by vincent erikson
+60 rem   originally in h.p. basic
+70 rem   converted to microsoft basic by s.n.
+80 rem
+90 rem  note the following about conversions:
+100 rem   1) restore <line number> means to set the data
+110 rem      pointer to the specified line. this is only
+120 rem      present in trs-80 level ii and cp/m basic.
+130 rem      for others, improvise by using a restore, and
+140 rem      for...next with read statements to skip over
+150 rem      the data that should be ignored.
+160 rem
+170 rem   2) logical expressions are used often.  a true
+180 rem      expression evaluates as a (-1) and a false expression
+190 rem      evaluates as a (0).  thus if the program says:
+200 rem          x = (d<50)
+210 rem      it means, let x=0 if d>=50, and let x=-1 if d<50.
+220 rem      again, improvise if your basic doesn't have this
+230 rem      (but all microsoft basics do.)
+240 rem
+245 rem   the real name of this program is, "underwater pie lob"
+250 rem *** program follows ***
+260 rem ***
+270 dim a(20,20),d(9)
+280 print "what is your name";
+290 input n$
+300 print
+310 rem *** set up area ***
+320 for i=1 to 20
+322 for j=1 to 20
+324 a(i,j)=0
+326 next j
+328 next i
+330 rem *** island ***
+340 restore 6300
+350 for x=7 to 13
+360 for y=7 to 12
+370 read a(x,y)
+380 next y
+390 next x
+400 rem *** sub ***
+410 s1=10: s2=10
+420 a(s1,s2)=2
+430 rem *** enemy ships ***
+440 s=int(rnd(1)*16)+15
+450 restore 6090
+460 for x=1 to (int(rnd(1)*4)+1)*2-1
+470 read d8,d9
+480 next x
+490 for x=1 to s
+500 x1=int(rnd(1)*20)+1
+510 x2=int(rnd(1)*20)+1
+520 if a(x1,x2)<>0 then 500
+530 a(x1,x2)=3
+540 next x
+550 print "you must destroy";s;"enemy ships to win ";n$;"."
+560 rem *** headquarters ***
+570 s3=int(rnd(1)*20)+1
+580 s4=int(rnd(1)*20)+1
+590 if a(s3,s4)<>0 then 570
+600 a(s3,s4)=4
+610 rem *** underwater mines ***
+620 for x=1 to int(rnd(1)*8)+8
+630 x1=int(rnd(1)*20)+1
+640 x2=int(rnd(1)*20)+1
+650 if a(x1,x2)<>0 then 630
+660 a(x1,x2)=5
+670 next x
+680 rem *** sea monsters ***
+690 for x=1 to 4
+700 x1=int(rnd(1)*18)+2
+710 x2=int(rnd(1)*18)+2
+720 if a(x1,x2)<>0 then 700
+730 a(x1,x2)=6
+740 restore 6090
+750 for y=1 to int(rnd(1)*8)+1
+760 read m1,m2
+770 next y
+780 next x
+790 rem *** set starting values ***
+800 for i=1 to 9
+802 d(i)=0
+804 next i
+810 c=30
+820 p=6000
+830 f=2500
+840 t=10
+850 m=3
+860 d=100
+870 d2=2
+880 rem *** command section ***
+890 print: print: print "what are your orders ";n$;
+900 input o
+910 on int(o+1) goto 1040,1680,2220,2680,3250,3410,3700,3880,4400,4660
+920 print "the commands are:"
+930 print "     #0: navigation"
+940 print "     #1: sonar"
+950 print "     #2: torpedo control"
+960 print "     #3: polaris missile control"
+970 print "     #4: manuevering"
+980 print "     #5: status/damage report"
+990 print "     #6: headquarters"
+1000 print "     #7: sabotage"
+1010 print "     #8: power conversion"
+1020 print "     #9: surrender"
+1030 goto 890
+1040 rem *** #0: navigation ***
+1050 if d(1) >= 0 then 1080
+1060 print "engines are under repair ";n$;"."
+1070 goto 890
+1080 if c>8 then 1110
+1090 print "not enough crew to man the engines ";n$;"."
+1100 goto 890
+1110 d1=1-((.23+rnd(1)/10)*(-(d<=50)))
+1120 gosub 6090
+1130 print "power available=";p;". power to use";
+1140 input p1
+1150 if p1<0 or p1>p then 1130
+1160 if p1 <= 1000 then 1210
+1170 if rnd(1)<.43 then 1210
+1180 print "atomic pile goes supercritical ";n$;"!!! headquarters"
+1190 print "will warn all subs to stay away from radioactive area!!!"
+1200 goto 6180
+1210 x=s1
+1220 y=s2
+1230 q1=1
+1240 for x2=1 to int(int(p1/100+.5)*d1+.5)
+1250 if x+x1>0 and x+x1<21 and y+y1>0 and y+y1<21 then 1280
+1260 print "you can't leave the area ";n$;"!!"
+1270 goto 1340
+1280 on a(x+x1,y+y1)+1 goto 1290,1330,1630,1390,1440,1470,1490
+1290 x=x+x1
+1300 y=y+y1
+1310 p=p-100
+1320 goto 1520
+1330 print "you almost ran aground ";n$;"!!"
+1340 a(x,y)=2
+1350 a(s1,s2)=0
+1360 s1=x
+1370 s2=y
+1380 goto 4690
+1390 if d>50 then 1290
+1400 print "you rammed a ship!!! you're both sunk!!";n$;"!!"
+1410 s=s-1
+1420 if s=0 then 6260
+1430 goto 6180
+1440 if d>50 then 1290
+1450 print "you rammed headquarters!! you're sunk!!"
+1460 goto 6180
+1470 print "you've been blown up by a mine ";n$;"!!"
+1480 goto 6180
+1490 if rnd(1)<.21 then 1630
+1500 print "you were eaten by a sea monster, ";n$;"!!"
+1510 goto 6180
+1520 rem *** check for nearby sea monsters ***
+1530 for x3=x-2 to x+2
+1540 for y3=y-2 to y+2
+1550 if x3<1 or x3>20 or y3<1 or y3>20 then 1610
+1560 if a(x,y)<>6 then 1610
+1570 if rnd(1)<.25 then 1500
+1580 if q1=0 then 1610
+1590 print "you just had a narrow escape with a sea monster ";n$;"!!"
+1600 q1=0
+1610 next y3
+1620 next x3
+1630 next x2
+1640 print "navigation complete. power left=";p;"."
+1650 if p>0 then 1340
+1660 print "atomic pile has gone dead!!! sub sinks, crew suffocates"
+1670 goto 6180
+1680 rem *** #1: sonar ***
+1690 if d(2) >= 0 then 1720
+1700 print "sonar is under repair ";n$;"."
+1710 goto 880
+1720 if c>5 then 1750
+1730 print "not enough crew to work sonar ";n$;"."
+1740 goto 880
+1750 print "option #";
+1760 input o
+1770 on int(o+1) goto 1790,2010
+1780 goto 1750
+1790 rem *** print out map ***
+1800 print
+1810 for x=1 to 20
+1820 for y=1 to 20
+1830 data "   ","***","(x)","\s/","!h!"," $ ","-#-"
+1840 if a(x,y)<>0 then 1880
+1850 if x<>1 and x<>20 and y<>1 and y<>20 then 1880
+1860 print " . ";
+1870 goto 1950
+1880 restore 1830
+1890 for x1=1 to a(x,y)+1
+1900 read a$
+1910 next x1
+1920 if d<50 and rnd(1)<.23 and a(x,y)<>1 and a(a,y)<>2 then 1860
+1930 if rnd(1)<.15 and a(x,y)>2 then 1860
+1940 print a$;
+1950 next y
+1960 print
+1970 next x
+1980 p=p-50
+1990 if p>0 then 880
+2000 goto 1660
+2010 rem *** directional information ***
+2020 for i=1 to 5
+2022 b(i)=0
+2024 next i
+2030 print "direction   # of ships    distances"
+2040 restore 6090
+2050 for x=1 to 8
+2060 read x1,y1
+2070 x3=0
+2080 for x4=1 to 20
+2090 if s1+x1*x4<1 or s1+x1*x4>20 or s2+y1*x4<1 or s2+y1*x4>20 then 2140
+2100 if a(s1+x1*x4,s2+y1*x4)<>3 then 2130
+2110 x3=x3+1
+2120 b(x3)=x4
+2130 next x4
+2140 if x3=0 then 2200
+2150 print "   ";x,x3,
+2160 for x4=1 to x3
+2170 print b(x4);
+2180 next x4
+2190 print
+2200 next x
+2210 goto 1980
+2220 rem *** #2: torpedo control ***
+2230 if d(3) >=0 then 2260
+2240 print "torpedo tubes are under repair ";n$;"."
+2250 goto 880
+2260 if c>=10 then 2290
+2270 print "not enough crew to fire torpedo ";n$;"."
+2280 goto 880
+2290 if t then 2320
+2300 print "no torpedos left ";n$;"."
+2310 goto 880
+2320 if d<2000 then 2360
+2330 if rnd(1)>.5 then 2360
+2340 print "pressure implodes upon firing...you're crushed!!"
+2350 goto 6180
+2360 gosub 6080
+2370 x=s1
+2380 y=s2
+2390 for x2=1 to int(7+5*(-(d>50))-rnd(1)*4+.5)
+2400 if x+x1>0 and x+x1<21 and y+y1>0 and y+y1<21 then 2460
+2410 print "torpedo out of sonar range...ineffectual ";n$;"."
+2420 t=t-1
+2430 p=p-150
+2440 if p>0 then 4690
+2450 goto 1660
+2460 on a(x+x1,y+y1)+1 goto 2470,2510,2650,2540,2580,2610,2630
+2470 x=x+x1
+2480 y=y+y1
+2490 print "..!..";
+2500 goto 2650
+2510 print "you took out some island ";n$;"!"
+2520 a(x+x1,y+y1)=0
+2530 goto 2420
+2540 print "ouch!!! you got one ";n$;"!!"
+2550 s=s-1
+2560 if s<>0 then 2520
+2570 goto 6260
+2580 print "you blew up your headquarters ";n$;"!!!"
+2590 s3=0: s4=0: d2=0
+2600 goto 2520
+2610 print "blam!! shot wasted on a mine ";n$;"!!"
+2620 goto 2520
+2630 print "a sea monster had a torpedo for lunch ";n$;"!!"
+2640 goto 2420
+2650 next x2
+2660 print "dud."
+2670 goto 2420
+2680 rem #3: polaris missile control ***
+2690 if d(4) >= 0 then 2720
+2700 print "missile silos are under repair ";n$;"."
+2710 goto 880
+2720 if c>23 then 2750
+2730 print "not enough crew to launch a missile ";n$;"."
+2740 goto 880
+2750 if m<>0 then 2780
+2760 print "no missiles left ";n$;"."
+2770 goto 880
+2780 if d>50 and d<2000 then 2850
+2790 print "recommend that you do not fire at this depth...proceed";
+2800 input a$
+2810 if left$(a$,1)="n" then 880
+2820 if rnd(1)<.5 then 2850
+2830 print "missile explodes upon firing ";n$;"!! you're dead!!"
+2840 goto 6180
+2850 gosub 6080
+2860 print "fuel (lbs.)";
+2870 input f1
+2880 if f1>0 and f1 <= f then 2910
+2890 print "you have";f;"lbs. left ";n$;"."
+2900 goto 2860
+2910 f2=int(f1/75+.5)
+2920 if s1+x1*f2>0 and s1+x1*f2<21 and s2+y1*f2>0 and s2+y1*f2<21 then 2980
+2930 print "missile out of sonar tracking ";n$;". missile lost."
+2940 m=m-1
+2950 f=f-f1
+2960 p=p-300
+2970 goto 2440
+2980 d3=0: d4=0: d5=0: d6=0
+2990 for x=s1+x1*f2-1 to s1+x1*f2+1
+3000 for y=s2+y1*f2-1 to s2+y1*f2+1
+3010 if x<1 or x>20 or y<1 or y>20 then 3140
+3020 d3=d3-(a(x,y)=3)
+3030 d4=d4-(a(x,y)=6)
+3040 d5=d5-(a(x,y)=5)
+3050 d6=d6-(a(x,y)=1)
+3060 if a(x,y)<>4 then 3100
+3070 print "you've just destroyed your headquarters ";n$;"!!!"
+3080 d3=0: s4=0: d2=0
+3090 goto 3130
+3100 if a(x,y)<>2 then 3130
+3110 print "you've just destroyed yourself ";n$;"!!!    dummy!!"
+3120 goto 6180
+3130 a(x,y)=0
+3140 next y
+3150 next x
+3160 if d6=0 then 3180
+3170 print "you blew out some island ";n$;"."
+3180 if d5=0 then 3200
+3190 print "you destroyed";d5;"mines ";n$;"."
+3200 if d4=0 then 3220
+3210 print "you got";d4;"sea monsters ";n$;"!!!   good work!!"
+3220 print "you destroyed";d3;"enemy ships ";n$;"!!!"
+3230 s=s-d3
+3240 goto 2940
+3250 rem *** manuevering ***
+3260 if d(5)>=0 then 3290
+3270 print "ballast controls are being repaired ";n$;"."
+3280 goto 890
+3290 if c>12 then 3320
+3300 print "there are not enough crew to work the controls ";n$;"."
+3310 goto 880
+3320 print "new depth";
+3330 input d1
+3340 if d1 >= 0 and d1<3000 then 3370
+3350 print "hull crushed by pressure ";n$;"!!"
+3360 goto 6180
+3370 p=p-int(abs((d-d1)/2+.5))
+3380 print "manuever complete. power loss=";int(abs((d-d1)/2+.5))
+3390 d=d1
+3400 goto 4690
+3410 rem *** #5: status / damage report ***
+3420 if d(6) >= 0 then 3450
+3430 print "no reports are able to get through ";n$;"."
+3440 goto 880
+3450 if c>3 then 3480
+3460 print "no one left to give the report ";n$;"."
+3470 goto 880
+3480 print "# of enemy ships left.......";s
+3490 print "# of power units left.......";p
+3500 print "# of torpedos left..........";t
+3510 print "# of missiles left..........";m
+3520 print "# of crewmen left...........";c
+3530 print "lbs. of fuel left...........";f
+3540 print
+3550 print "want a damage report";
+3560 input a$
+3570 if left$(a$,1)="n" then 3670
+3580 print "   item            damage  (+ good, 0 neutral, - bad)"
+3590 print "   ----            ------"
+3600 data "engines","sonar","torpedos","missiles","manuevering"
+3610 data "status","headquarters","sabotage","converter"
+3620 restore 3600
+3630 for x=1 to 9
+3640 read a$
+3650 print a$,d(x)
+3660 next x
+3670 print "you are at location (";s1;",";s2;")."
+3680 print
+3690 goto 880
+3700 rem #6: headquarters ***
+3710 if d(7) >=0 then 3740
+3720 print "headquarters is damaged.  unable to help ";n$;"."
+3730 goto 880
+3740 if d2<>0 then 3770
+3750 print "headquarters is deserted ";n$;"."
+3760 goto 880
+3770 if sqr((s1-s3)^2+(s2-s4)^2) <= 2 and d<51 then 3800
+3780 print "unable to comply with docking orders ";n$;"."
+3790 goto 880
+3800 print "divers from head quarters bring out supplys and men."
+3810 p=4000
+3820 t=8
+3830 m=2
+3840 f=1500
+3850 c=25
+3860 d2=d2-1
+3870 goto 4690
+3880 rem *** #7: sabotage ***
+3890 if d(8)>=0 then 3920
+3900 print "hatches inaccessible ";n$;".  no sabotages possible."
+3910 goto 880
+3920 if c>10 then 3950
+3930 print "not enough crew to go on mission ";n$;"."
+3940 goto 880
+3950 d3=0:d4=0
+3960 for x=s1-2 to s1+2
+3970 for y=s2-2 to s2+2
+3980 if x<1 or x>20 or y<1 or y>20 then 4010
+3990 d3=d3-(a(x,y)=3)
+4000 d4=d4-(a(x,y)=6)
+4010 next y
+4020 next x
+4030 if d3<>0 then 4060
+4040 print "no ships in range ";n$;"."
+4050 goto 880
+4060 print "there are";d3;"ships in range ";n$;"."
+4070 print "how many men are going ";n$;
+4080 input q1
+4090 if c-q1 >= 10 then 4120
+4100 print "you must leave at least 10 men on board ";n$;"."
+4110 goto 4070
+4120 d5=int(d3/q1+.5)
+4130 d6=0
+4140 for x=s1-2 to s1+2
+4150 for y=s2-2 to s2+2
+4160 if d3/q1>1-rnd(1) and rnd(1)+d3/q1<.9 then 4220
+4170 if a(x,y)<>3 then 4220
+4180 d6=d6+1
+4190 a(x,y)=0
+4200 s=s-1
+4210 if s=0 then 6260
+4220 next y
+4230 next x
+4240 print d6;"ships were destroyed ";n$;"."
+4250 d6=0: d7=0
+4260 for x=1 to q1
+4270 d7=d7-(rnd(1)>.6)
+4280 next x
+4290 for x=1 to q1-d7
+4300 d6=d6-(rnd(1)<.15)
+4310 next x
+4320 if d4=0 then 4360
+4330 print "a sea monster smells the men on the way back!!!"
+4340 print d7;"men were eaten ";n$;"!!"
+4350 c=c-d7
+4360 print d6;"men were lost through accidents ";n$;"."
+4370 c=c-d6
+4380 p=p-int(10*q1+rnd(1)*10)
+4390 goto 4700
+4400 rem *** #8: power converter ***
+4410 if d(9) >= 0 then 4440
+4420 print "power converter is damaged ";n$;"."
+4430 goto 880
+4440 if c>5 then 4470
+4450 print "not enough men to work the converter ";n$;"."
+4460 goto 880
+4470 print "option? (1=fuel to power, 2=power to fuel)";
+4480 input o
+4490 on o goto 4520,4590
+4500 goto 4470
+4510 rem *** fuel to power conversion ***
+4520 print "fuel available=";f;". convert";
+4530 input c1
+4540 if c1>f or c1<0 then 4520
+4550 f=f-c1
+4560 p=p+int(c1/3)
+4570 goto 4640
+4590 print "power available=";p-1;". convert";
+4600 input c1
+4610 if c1>p-1 or c1<0 then 4590
+4620 p=p-c1
+4630 f=f+int(c1*3)
+4640 print "conversion complete. power=";p;". fuel=";f;"."
+4650 goto 4690
+4660 rem *** #9: surrender ***
+4670 print "coward!! you're not very patriotic ";n$;"!!!"
+4680 goto 6180
+4690 rem *** retaliation section ***
+4700 q=0
+4710 for x=s1-4 to s1+4
+4720 for y=s2-4 to s2+4
+4730 if x<1 or x>20 or y<1 or y>20 then 4760
+4740 if a(x,y)<>3 then 4760
+4750 q=q+(rnd(1)/sqr((s1-x)^2+(s2-y)^2))
+4760 next y
+4770 next x
+4780 if q then 4810
+4790 print "no ships in range to depth charge you ";n$;"!!"
+4800 goto 5210
+4810 print "depth charges off ";
+4820 if rnd(1)>.5 then 4850
+4830 print "port side ";n$;"!!!"
+4840 goto 4860
+4850 print "starboard side ";n$;"!!!"
+4860 if q3>.13 or rnd(1)>.92 then 4890
+4870 print "no real damage sustained ";n$;"."
+4880 goto 5220
+4890 if q>.36 or rnd(1)>.96 then 4940
+4900 print "light, superfical damage ";n$;"."
+4910 p=p-50
+4920 d(int(rnd(1)*9)+1)=-rnd(1)*2
+4930 goto 5210
+4940 if q>.6 or rnd(1)>.975 then 5020
+4950 print "moderate damage. repairs needed."
+4960 p=p-75+int(rnd(1)*30)
+4970 for y=1 to 2
+4980 x=int(rnd(1)*9)+1
+4990 d(x)=d(x)-rnd(1)*8
+5000 next y
+5010 goto 5210
+5020 if q>.9 or rnd(1)>.983 then 5100
+5030 print "heavy damage!! repairs immediate ";n$;"!!!"
+5040 p=p-(200+int(rnd(1)*76))
+5050 for x=1 to 4+int(rnd(1)*2)
+5060 y=int(rnd(1)*9)+1
+5070 d(y)=d(y)-rnd(1)*11
+5080 next x
+5090 goto 5210
+5100 print "damage critical!!!!   we need help!!!"
+5110 a$="vravukxcnvpcrhfdrsaxqurlqtrhxyacvfzyitlcbssyykdqipcaegqgpcnotsio"
+5120 x=int(rnd(1)*16)+1
+5130 print "send 'help' in code. here is the code:";mid$(a$,x,4);
+5134 for i=1 to 500:next i
+5136 print chr$(13);tab(38);"xxxx";chr$(13);tab(38);"****"
+5140 input "enter code";b$
+5150 print
+5160 if b$<>mid$(a$,x,4) then 5190
+5170 print "fast work ";n$;"!! help arrives in time to save you!!!"
+5180 goto 5040
+5190 print "message garbled ";n$;"...no help arrives!!!"
+5200 goto 6180
+5210 rem *** move ships / sea monsters ***
+5220 if d(1) >= 0 or d(3) >= 0 or d(4) >= 0 or d(5) >= 0 or d(6) >= 0 or d(7) >= 0 then 5260
+5230 if d(8) >= 0 or d(9) >= 0 then 5270
+5240 print "damage too much ";n$;"!!!   you're sunk!!"
+5250 goto 6180
+5260 rem *** move ships / sea monsters ***
+5270 print: print: print "---*** result of last enemy manuever ***---"
+5280 for x=1 to 20
+5290 for y=1 to 20
+5300 if a(x,y)<>3 then 5690
+5310 rem *** move a ship ***
+5320 w=d8
+5330 v=d9
+5340 if x+w>0 and x+w<21 and y+v>0 and y+v<21 then 5420
+5350 for x0=19 to 1 step -1
+5360 if a(x-w*x0,y-v*x0)<>0 then 5400
+5370 a(x-w*x0,y-v*x0)=3
+5380 a(x,y)=0
+5390 goto 6000
+5400 next x0
+5410 stop
+5420 on a(x+w,y+v)+1 goto 5430,5460,5530,5460,5560,5600,5650
+5430 a(x+w,y+v)=3
+5440 a(x,y)=0
+5450 goto 6000
+5460 rem *** change direction ***
+5470 restore 6090
+5480 for x0=1 to int(rnd(1)*8)+1
+5490 read w,v
+5500 next x0
+5510 if x+w<1 or x+w>20 or y+v<1 or y+v>20 then 5470
+5520 goto 5420
+5530 if d>50 then 5460
+5540 print "*** you've been rammed by a ship ";n$;"!!! ***"
+5550 goto 6180
+5560 if rnd(1)<.15 then 5460
+5570 print "*** your headquarters was rammed ";n$;"!!! ***"
+5580 s3=0: s4=0: d2=0: a(x+w,y+v)=0
+5590 goto 5620
+5600 if rnd(1)<.7 then 5460
+5610 print "*** ship destroyed by a mine ";n$;"!!! ***"
+5620 s=s-1
+5630 if s<>0 then 5440
+5640 goto 6260
+5650 if rnd(1)<.8 then 5460
+5660 print "*** ship eaten by a sea monster ";n$;"!! ***"
+5670 s=s-1
+5680 goto 5630
+5690 rem *** move a sea monster ***
+5700 if a(x,y)<>6 then 6000
+5710 if x+m1<1 or x+m1>20 or y+m2<1 or y+m2>20 then 5760
+5720 on a(x+m1,y+m2)+1 goto 5730,5760,5830,5850,5900,5730,5930
+5730 a(x+m1,y+m2)=6
+5740 a(x,y)=0
+5750 goto 6000
+5760 rem *** change direction ***
+5770 restore 6090
+5780 for x0=1 to int(rnd(1)*8)+1
+5790 read m1,m2
+5800 next x0
+5810 if x+m1<1 or x+m1>20 or y+m2<1 or y+m2>20 then 5760
+5820 goto 5720
+5830 print "*** you've been eaten by a sea monster ";n$;"!! ***"
+5840 goto 6180
+5850 if rnd(1)>.2 then 5760
+5860 print "*** ship eaten by a sea monster ";n$;"!! ***"
+5870 s=s-1
+5880 if s<>0 then 5730
+5890 goto 6260
+5900 print "*** a sea monster ate you headquarters ";n$;"!! ***"
+5910 s3=0: s4=0: d2=0
+5920 goto 5730
+5930 if rnd(1)<.75 then 5760
+5940 print "*** a sea monster fight ";n$;"!!! ";
+5950 if rnd(1)<.8 then 5980
+5960 print "and one dies!! ***"
+5970 goto 5730
+5980 print "it's a tie!! ***"
+5990 goto 5760
+6000 next y
+6010 next x
+6020 rem *** make repairs ***
+6030 for y=1 to 9
+6040 x=int(rnd(1)*9)+1
+6050 d(x)=d(x)+(rnd(1)*(2+rnd(1)*2))*(1+(-(d<51) or -(d>2000)))*(-(d(x)<3))
+6060 next y
+6070 goto 880
+6080 rem *** gosub for course / direction ***
+6090 data -1,0,-1,1,0,1,1,1,1,0,1,-1,0,-1,-1,-1
+6100 print "course (1-8)";
+6110 input c1
+6120 if c1<1 or c1>8 then 6100
+6130 restore 6090
+6140 for x9=1 to int(c1+.5)
+6150 read x1,y1
+6160 next x9
+6170 return
+6180 rem *** destroyed ? ***
+6190 print "there are still";s;"enemy ships left ";n$;"."
+6200 print "you will be demoted to the rank of deck scrubber!!!"
+6210 print "want another game";
+6220 input a$
+6230 if left$(a$,1)<>"y" then 6250
+6240 goto 310
+6250 stop
+6260 print "good work ";n$;"!!!  you got them all!!!"
+6270 print "promotion and commendations will be given immediately!!!"
+6280 goto 6210
+6300 data 0,1,1,1,0,0,0,1,1,1,1,0,1,1,1,0,1,1,1,1,0,0,0,1
+6310 data 1,1,0,0,1,1,0,1,1,0,1,0,0,0,1,0,0,0
+6320 end

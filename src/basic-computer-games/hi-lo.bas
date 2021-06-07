@@ -1,29 +1,29 @@
-10 PRINT TAB(34);"HI LO"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-100 PRINT "THIS IS THE GAME OF HI LO.":PRINT
-110 PRINT "YOU WILL HAVE 6 TRIES TO GUESS THE AMOUNT OF MONEY IN THE"
-120 PRINT "HI LO JACKPOT, WHICH IS BETWEEN 1 AND 100 DOLLARS.  IF YOU"
-130 PRINT "GUESS THE AMOUNT, YOU WIN ALL THE MONEY IN THE JACKPOT!"
-140 PRINT "THEN YOU GET ANOTHER CHANCE TO WIN MORE MONEY.  HOWEVER,"
-150 PRINT "IF YOU DO NOT GUESS THE AMOUNT, THE GAME ENDS.":PRINT
-160 R=0
-170 B=0:PRINT
-180 Y=INT(100*RND(1))
-200 PRINT "YOUR GUESS";
-210 INPUT A
-220 B=B+1
-230 IF A=Y THEN 300
-240 IF A>Y THEN 270
-250 PRINT "YOUR GUESS IS TOO LOW.":GOTO 280
-270 PRINT "YOUR GUESS IS TOO HIGH."
-280 PRINT:IF B<6 THEN 200
-290 PRINT "YOU BLEW IT...TOO BAD...THE NUMBER WAS";Y
-295 R=0:GOTO 350
-300 PRINT "GOT IT!!!!!!!!!!   YOU WIN";Y;"DOLLARS."
-310 R=R+Y
-320 PRINT "YOUR TOTAL WINNINGS ARE NOW";R;"DOLLARS."
-350 PRINT:PRINT "PLAY AGAIN (YES OR NO)";
-360 INPUT A$:IF A$="YES" THEN 170
-380 PRINT:PRINT "SO LONG.  HOPE YOU ENJOYED YOURSELF!!!"
-390 END
+10 print tab(34);"hi lo"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+100 print "this is the game of hi lo.":print
+110 print "you will have 6 tries to guess the amount of money in the"
+120 print "hi lo jackpot, which is between 1 and 100 dollars.  if you"
+130 print "guess the amount, you win all the money in the jackpot!"
+140 print "then you get another chance to win more money.  however,"
+150 print "if you do not guess the amount, the game ends.":print
+160 r=0
+170 b=0:print
+180 y=int(100*rnd(1))
+200 print "your guess";
+210 input a
+220 b=b+1
+230 if a=y then 300
+240 if a>y then 270
+250 print "your guess is too low.":goto 280
+270 print "your guess is too high."
+280 print:if b<6 then 200
+290 print "you blew it...too bad...the number was";y
+295 r=0:goto 350
+300 print "got it!!!!!!!!!!   you win";y;"dollars."
+310 r=r+y
+320 print "your total winnings are now";r;"dollars."
+350 print:print "play again (yes or no)";
+360 input a$:if a$="yes" then 170
+380 print:print "so long.  hope you enjoyed yourself!!!"
+390 end

@@ -1,92 +1,92 @@
-10 PRINT TAB(30);"SCHMOO"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN NEW JERSEY"
-21 PRINT
-22 PRINT
-23 PRINT
-30 PRINT "THIS IS A NEW SCHMOO GAME.  SCHMOOS"
-32 PRINT "ARE IMAGINARY CREATURES WHO LOVE"
-34 PRINT "BEING SPLATTED WITH JUICY MUD BALLS."
-36 PRINT "YOU, BEING A SCHMOO LOVER, TRY TO"
-38 PRINT "MAKE SCHMOOS HAPPY BY TOSSING MUD"
-40 PRINT "BALLS AT THEM.  YOU HAVE A"
-42 PRINT "MECHANICAL MUD SLINGER THAT WILL"
-44 PRINT "SLING MUD TO A MAXIMUM DISTANCE"
-46 PRINT "OF 46,500 INCHES. YOUR JOB IS TO"
-50 PRINT "SET THE MUD SLINGER AT THE CORRECT"
-55 PRINT "ELEVATION (0 TO 90) AND THE CORRECT"
-60 PRINT "DIRECTIONAL ANGLE (0 TO 360) TO SPLAT THE"
-65 PRINT "SCHMOO.  A HIT WITHIN 100 INCHES OF THE SCHMOO"
-70 PRINT "WILL SPLATTER HIM."
-75 PRINT
-90 PRINT
-100 K1=0
-110 Z=INT(1+RND(1)*4-1E-08)
-120 ON Z GOTO 130,140,150,160
-130 P=-1
-135 Q=-1
-138 GOTO 200
-140 P=-1
-145 Q=1
-148 GOTO 200
-150 P=1
-155 Q=-1
-158 GOTO 200
-160 P=1
-165 Q=1
-200 X=(INT(26000*RND(1)+5000))*P
-210 Y=(INT(26000*RND(1)+5000))*Q
-220 S=0
-230 K1=K1+1
-240 IF K1 < 2 THEN 400
-250 R=INT(7*RND(1)+5)
-260 GOTO 400
-300 PRINT "THE ELEVATION MUST BE BETWEEN 1 AND 90."
-310 GOTO 500
-320 PRINT "DIRECTIONAL ANGLE MUST BE FROM 0 TO 360."
-340 GOTO 500
-350 PRINT "*SCHMOO SPLATTED*";S;" MUD BALLS TOSSED."
-351 PRINT
-352 PRINT "I SEE ANOTHER SCHMOO.  TO SPLAT"
-354 PRINT "HIM, TYPE MUD.  TO QUIT, TYPE QUIT."
-356 PRINT
-358 INPUT C$
-360 IF C$="MUD" THEN 110
-361 STOP
-362 PRINT "YOU MISSED THE SCHMOO AT (";X;",";Y;")."
-364 PRINT "YOUR MUD HIT (";INT(X1);",";INT(Y1);")."
-366 PRINT
-370 IF K1 < 2 THEN 500
-380 IF S >= R THEN 800
-390 PRINT "SCHMOO MUD HIT ";R2;"INCHES FROM YOU."
-395 GOTO 500
-400 PRINT
-410 PRINT "COORDINATES OF THE SCHMOO ARE (";X;",";Y;")."
-415 IF K1 < 2 THEN 420
-417 PRINT "THE SCHMOO IS HAPPY TO BE SPLATTED."
-418 PRINT "TO MAKE YOU HAPPY TOO,"
-419 PRINT "HE WILL THROW MUD AT YOU."
-420 PRINT
-500 PRINT "MUD SLINGER ELEVATION";
-502 INPUT B
-504 PRINT "DIRECTIONAL ANGLE OF MUD SLINGER";
-506 INPUT C
-520 IF B = 90 THEN 700
-530 IF B > 90 THEN 300
-540 IF B < 1 THEN 300
-550 IF C < 0 THEN 320
-560 IF C > (360-(1E-08)) THEN 320
-570 S=S+1
-580 IF K1 < 2 THEN 595
-590 R2=INT(ABS(300*RND(1)*(11-2*S))+90)
-595 J=3.1415926535/180
-596 D=ABS(INT(93000*SIN(B*J)*COS(B*J)))
-610 X1=D*COS(C*3.1415926535/180)
-620 Y1=D*SIN(C*3.1415926535/180)
-630 D1=SQR((X-X1)^2+(Y-Y1)^2)
-640 IF 100 >= D1 THEN 350
-650 GOTO 362
-700 PRINT "YOU DOPE!  YOU SPLATTED YOURSELF."
-710 GOTO 900
-800 PRINT "THE SCHMOO HAS SPLATTED YOU!"
-802 PRINT "CLEAN UP AND GOODBYE!"
-900 END
+10 print tab(30);"schmoo"
+20 print tab(15);"creative computing  morristown new jersey"
+21 print
+22 print
+23 print
+30 print "this is a new schmoo game.  schmoos"
+32 print "are imaginary creatures who love"
+34 print "being splatted with juicy mud balls."
+36 print "you, being a schmoo lover, try to"
+38 print "make schmoos happy by tossing mud"
+40 print "balls at them.  you have a"
+42 print "mechanical mud slinger that will"
+44 print "sling mud to a maximum distance"
+46 print "of 46,500 inches. your job is to"
+50 print "set the mud slinger at the correct"
+55 print "elevation (0 to 90) and the correct"
+60 print "directional angle (0 to 360) to splat the"
+65 print "schmoo.  a hit within 100 inches of the schmoo"
+70 print "will splatter him."
+75 print
+90 print
+100 k1=0
+110 z=int(1+rnd(1)*4-1e-08)
+120 on z goto 130,140,150,160
+130 p=-1
+135 q=-1
+138 goto 200
+140 p=-1
+145 q=1
+148 goto 200
+150 p=1
+155 q=-1
+158 goto 200
+160 p=1
+165 q=1
+200 x=(int(26000*rnd(1)+5000))*p
+210 y=(int(26000*rnd(1)+5000))*q
+220 s=0
+230 k1=k1+1
+240 if k1 < 2 then 400
+250 r=int(7*rnd(1)+5)
+260 goto 400
+300 print "the elevation must be between 1 and 90."
+310 goto 500
+320 print "directional angle must be from 0 to 360."
+340 goto 500
+350 print "*schmoo splatted*";s;" mud balls tossed."
+351 print
+352 print "i see another schmoo.  to splat"
+354 print "him, type mud.  to quit, type quit."
+356 print
+358 input c$
+360 if c$="mud" then 110
+361 stop
+362 print "you missed the schmoo at (";x;",";y;")."
+364 print "your mud hit (";int(x1);",";int(y1);")."
+366 print
+370 if k1 < 2 then 500
+380 if s >= r then 800
+390 print "schmoo mud hit ";r2;"inches from you."
+395 goto 500
+400 print
+410 print "coordinates of the schmoo are (";x;",";y;")."
+415 if k1 < 2 then 420
+417 print "the schmoo is happy to be splatted."
+418 print "to make you happy too,"
+419 print "he will throw mud at you."
+420 print
+500 print "mud slinger elevation";
+502 input b
+504 print "directional angle of mud slinger";
+506 input c
+520 if b = 90 then 700
+530 if b > 90 then 300
+540 if b < 1 then 300
+550 if c < 0 then 320
+560 if c > (360-(1e-08)) then 320
+570 s=s+1
+580 if k1 < 2 then 595
+590 r2=int(abs(300*rnd(1)*(11-2*s))+90)
+595 j=3.1415926535/180
+596 d=abs(int(93000*sin(b*j)*cos(b*j)))
+610 x1=d*cos(c*3.1415926535/180)
+620 y1=d*sin(c*3.1415926535/180)
+630 d1=sqr((x-x1)^2+(y-y1)^2)
+640 if 100 >= d1 then 350
+650 goto 362
+700 print "you dope!  you splatted yourself."
+710 goto 900
+800 print "the schmoo has splatted you!"
+802 print "clean up and goodbye!"
+900 end

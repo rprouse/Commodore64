@@ -1,43 +1,43 @@
-1 PRINT TAB(24);"COUNT DOWN"
-2 PRINT TAB(20);"CREATIVE COMPUTING"
-3 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-4 PRINT:PRINT:PRINT
-5 A=INT(RND(1)*10)
-6 T=0
-7 N=0
-15 PRINT "YOU HAVE ACTIVATED THE SELF-DESTRUCT MECHANISM ";
-20 PRINT "IN THIS SCHOOL."
-25 PRINT "IF YOU WISH, YOU MAY STOP THE MECHANISM."
-27 PRINT "TO DO SO, JUST TYPE IN THE CORRECT NUMBER,"
-35 PRINT "WHICH WILL STOP THE COUNT-DOWN."
-37 PRINT "PLEASE HURRY!! THERE IS NO TIME TO WASTE!!!!!!!"
-44 PRINT "WHAT'LL IT BE";:INPUT X:PRINT
-45 IF T=4 THEN 98
-47 GOTO 200
-50 REM
-75 PRINT "YOUR NUMBER DOES NOT COMPUTE!!"
-80 PRINT "PLEASE TRY AGAIN!!!!":T=T+1
-81 IF T=2 THEN 96
-82 IF T=3 THEN 105
-83 GOTO 44
-85 PRINT "CORRECT!!!!":LET N=5
-90 PRINT "THE COUNTDOUN HAS STOPPED."
-92 PRINT "YOU HAVED SAVED THE SCHOOL!"
-93 PRINT "(HAVE YOU SEEN YOUR SHRINK LATELY ?)"
-94 LET T=10
-95 GOTO 1000
-96 PRINT "TIME GROWS SHORT, PLEASE HURRY!!!!!!!!"
-97 GOTO 44
-98 PRINT:PRINT:PRINT:PRINT
-99 PRINT TAB(32);"TOO LATE"
-100 PRINT:PRINT:PRINT:PRINT TAB(32);"\ **** /"
-101 PRINT TAB(31);"-- BOOM --"
-102 PRINT TAB(32);"/ **** \"
-103 PRINT:PRINT:PRINT
-104 GOTO 1000
-105 PRINT "HURRY, THE COUNT-DOWN IS APPROACHING ZERO!!!!!!!!!"
-110 GOTO 44
-200 IF X<A THEN PRINT "TOO SMALL!!!!!":GOTO 50
-210 IF X>A THEN PRINT "TOO BIG!!!!!":GOTO 50
-225 IF X=A THEN 85
-1000 END
+1 print tab(24);"count down"
+2 print tab(20);"creative computing"
+3 print tab(18);"morristown, new jersey"
+4 print:print:print
+5 a=int(rnd(1)*10)
+6 t=0
+7 n=0
+15 print "you have activated the self-destruct mechanism ";
+20 print "in this school."
+25 print "if you wish, you may stop the mechanism."
+27 print "to do so, just type in the correct number,"
+35 print "which will stop the count-down."
+37 print "please hurry!! there is no time to waste!!!!!!!"
+44 print "what'll it be";:input x:print
+45 if t=4 then 98
+47 goto 200
+50 rem
+75 print "your number does not compute!!"
+80 print "please try again!!!!":t=t+1
+81 if t=2 then 96
+82 if t=3 then 105
+83 goto 44
+85 print "correct!!!!":let n=5
+90 print "the countdoun has stopped."
+92 print "you haved saved the school!"
+93 print "(have you seen your shrink lately ?)"
+94 let t=10
+95 goto 1000
+96 print "time grows short, please hurry!!!!!!!!"
+97 goto 44
+98 print:print:print:print
+99 print tab(32);"too late"
+100 print:print:print:print tab(32);"\ **** /"
+101 print tab(31);"-- boom --"
+102 print tab(32);"/ **** \"
+103 print:print:print
+104 goto 1000
+105 print "hurry, the count-down is approaching zero!!!!!!!!!"
+110 goto 44
+200 if x<a then print "too small!!!!!":goto 50
+210 if x>a then print "too big!!!!!":goto 50
+225 if x=a then 85
+1000 end

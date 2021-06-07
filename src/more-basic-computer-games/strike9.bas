@@ -1,116 +1,116 @@
-10 PRINT TAB(25);"STRIKE 9"
-20 PRINT TAB(19);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN NEW JERSEY"
-90 DIM A(9),D(4)
-110 PRINT:PRINT:PRINT
-170 PRINT "DO YOU NEED INSTRUCTIONS ";
-180 INPUT R$
-190 IF R$ = "NO" THEN 340
-200 IF R$ <> "YES" THEN 170
-210 PRINT "STRIKE NINE IS PLAYED WITH A PAIR OF DICE AND A"
-220 PRINT "BOARD WITH NINE NUMBERS: 1 2 3 4 5 6 7 8 9. YOU"
-230 PRINT "ARE GIVEN A ROLL AND CAN KNOCK OFF UP TO 4 NUMBERS."
-240 PRINT "IF YOU INPUT THAT YOU WANT TO REMOVE 5 NUMBERS, YOU"
-250 PRINT "WILL BE GIVEN A CHART OF THE NUMBERS YOU HAVE LEFT"
-260 PRINT "TO REMOVE. NEXT YOU INPUT HOW MANY NUMBERS YOU WANT"
-270 PRINT "TO REMOVE, AND THEN INPUT THE NUMBERS YOU WANT TO "
-280 PRINT "TAKE OFF, ONE AT A TIME. THE NUMBERS YOU TAKE OFF"
-290 PRINT "MUST ADD UP TO THE ROLL. YOU WIN BY REMOVING EVERY"
-300 PRINT "NUMBER FROM THE BOARD. YOU LOSE IF YOU CANNOT"
-310 PRINT "REMOVE ALL NUMBERS WITH THE ROLL YOU HAVE."
-320 PRINT
-340 PRINT "READY TO PLAY?"
-350 PRINT
-355 PRINT "HERE IS THE BOARD:"
-360 REM SET UP THE BOARD
-370 FOR B=1 TO 9
-380 PRINT B;
-390 A(B)=B
-400 NEXT B
-405 PRINT
-410 C=INT(RND(1)*6+1)+INT(RND(1)*6+1)
-420 PRINT "YOUR ROLL IS ",C
-430 T=0
-440 FOR X=1 TO 9
-450 T=T+A(X)
-460 NEXT X
-465 REM CHECK FOR LOSS
-470 IF C > T THEN 950
-480 IF C=T THEN 1120
-490 FOR K=1 TO 9
-500 FOR L=1 TO 9
-510 FOR M=1 TO 9
-520 FOR N=1 TO 9
-530 IF N=K THEN 630
-540 IF N=L THEN 630
-550 IF N=M THEN 630
-560 IF M=K THEN 640
-570 IF M=L THEN 640
-580 IF L=K THEN 650
-590 IF C-A(K)=0 THEN 680
-600 IF C-A(K)=A(N) THEN 680
-610 IF C-A(K)-A(L)=A(N) THEN 680
-620 IF C-A(K)-A(M)=A(N) THEN 680
-630 NEXT N
-640 NEXT M
-650 NEXT L
-660 NEXT K
-670 GOTO 950
-680 FOR X=1 TO 4
-690 D(X)=0
-700 NEXT X
-710 PRINT "# OF NUMBERS TO REMOVE ";
-720 INPUT E
-730 IF INT(E) <> E THEN 760
-740 IF E < 1 THEN 760
-750 IF E>4 THEN 880
-755 GOTO 770
-760 PRINT "ANSWER 1, 2, 3, OR 4 (5 FOR THE BOARD)"
-765 GOTO 710
-770 PRINT "WHAT IS THE NUMBER";
-780 FOR F=1 TO E
-790 INPUT D(F)
-800 IF A(D(F)) <> 0 THEN 825
-810 PRINT "YOU REMOVED IT BEFORE, TRY AGAN."
-820 GOTO 710
-825 NEXT F
-830 IF C <> D(1)+D(2)+D(3)+D(4) THEN 870
-835 FOR F=1 TO E
-840 A(D(F))=0
-850 NEXT F
-860 GOTO 410
-870 PRINT "THOSE NUMBERS DON'T ADD UP TO YOUR ROLL, TRY AGAIN"
-875 GOTO 710
-880 PRINT "THE NUMBERS YOU HAVE LEFT TO REMOVE ARE:  ";
-890 FOR B=1 TO 9
-900 IF A(B)=0 THEN 920
-910 PRINT A(B);
-920 NEXT B
-930 PRINT
-940 GOTO 710
-950 PRINT "SORRY, YOU LOST THIS TIME."
-960 T=0
-970 FOR B=1 TO 9
-980 IF A(B)=0 THEN 1000
-990 T=T+1
-1000 NEXT B
-1010 PRINT "THERE ARE ";T;" NUMBERS LEFT ON THE BOARD:   ";
-1020 FOR X=1 TO 9
-1030 IF A(X)=0 THEN 1050
-1040 PRINT A(X);
-1050 NEXT X
-1060 PRINT
-1070 PRINT "WANT TO TRY AGAIN (YES OR NO)";
-1080 INPUT G$
-1090 IF G$="YES" THEN 170
-1100 IF G$ <> "NO" THEN 1070
-1110 END
-1120 PRINT "* * * CONGRATULATIONS * * *"
-1130 PRINT "* YOU WON *"
-1140 PRINT
-1150 PRINT
-1160 PRINT "PLAY ANOTHER GAME (YES OR NO)";
-1170 INPUT H$
-1180 IF H$="YES" THEN 170
-1190 IF H$ <> "NO" THEN 1160
-1200 END
+10 print tab(25);"strike 9"
+20 print tab(19);"creative computing"
+30 print tab(18);"morristown new jersey"
+90 dim a(9),d(4)
+110 print:print:print
+170 print "do you need instructions ";
+180 input r$
+190 if r$ = "no" then 340
+200 if r$ <> "yes" then 170
+210 print "strike nine is played with a pair of dice and a"
+220 print "board with nine numbers: 1 2 3 4 5 6 7 8 9. you"
+230 print "are given a roll and can knock off up to 4 numbers."
+240 print "if you input that you want to remove 5 numbers, you"
+250 print "will be given a chart of the numbers you have left"
+260 print "to remove. next you input how many numbers you want"
+270 print "to remove, and then input the numbers you want to "
+280 print "take off, one at a time. the numbers you take off"
+290 print "must add up to the roll. you win by removing every"
+300 print "number from the board. you lose if you cannot"
+310 print "remove all numbers with the roll you have."
+320 print
+340 print "ready to play?"
+350 print
+355 print "here is the board:"
+360 rem set up the board
+370 for b=1 to 9
+380 print b;
+390 a(b)=b
+400 next b
+405 print
+410 c=int(rnd(1)*6+1)+int(rnd(1)*6+1)
+420 print "your roll is ",c
+430 t=0
+440 for x=1 to 9
+450 t=t+a(x)
+460 next x
+465 rem check for loss
+470 if c > t then 950
+480 if c=t then 1120
+490 for k=1 to 9
+500 for l=1 to 9
+510 for m=1 to 9
+520 for n=1 to 9
+530 if n=k then 630
+540 if n=l then 630
+550 if n=m then 630
+560 if m=k then 640
+570 if m=l then 640
+580 if l=k then 650
+590 if c-a(k)=0 then 680
+600 if c-a(k)=a(n) then 680
+610 if c-a(k)-a(l)=a(n) then 680
+620 if c-a(k)-a(m)=a(n) then 680
+630 next n
+640 next m
+650 next l
+660 next k
+670 goto 950
+680 for x=1 to 4
+690 d(x)=0
+700 next x
+710 print "# of numbers to remove ";
+720 input e
+730 if int(e) <> e then 760
+740 if e < 1 then 760
+750 if e>4 then 880
+755 goto 770
+760 print "answer 1, 2, 3, or 4 (5 for the board)"
+765 goto 710
+770 print "what is the number";
+780 for f=1 to e
+790 input d(f)
+800 if a(d(f)) <> 0 then 825
+810 print "you removed it before, try agan."
+820 goto 710
+825 next f
+830 if c <> d(1)+d(2)+d(3)+d(4) then 870
+835 for f=1 to e
+840 a(d(f))=0
+850 next f
+860 goto 410
+870 print "those numbers don't add up to your roll, try again"
+875 goto 710
+880 print "the numbers you have left to remove are:  ";
+890 for b=1 to 9
+900 if a(b)=0 then 920
+910 print a(b);
+920 next b
+930 print
+940 goto 710
+950 print "sorry, you lost this time."
+960 t=0
+970 for b=1 to 9
+980 if a(b)=0 then 1000
+990 t=t+1
+1000 next b
+1010 print "there are ";t;" numbers left on the board:   ";
+1020 for x=1 to 9
+1030 if a(x)=0 then 1050
+1040 print a(x);
+1050 next x
+1060 print
+1070 print "want to try again (yes or no)";
+1080 input g$
+1090 if g$="yes" then 170
+1100 if g$ <> "no" then 1070
+1110 end
+1120 print "* * * congratulations * * *"
+1130 print "* you won *"
+1140 print
+1150 print
+1160 print "play another game (yes or no)";
+1170 input h$
+1180 if h$="yes" then 170
+1190 if h$ <> "no" then 1160
+1200 end

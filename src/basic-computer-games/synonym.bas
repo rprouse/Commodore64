@@ -1,53 +1,53 @@
-2 PRINT TAB(33);"SYNONYM"
-4 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-6 PRINT: PRINT: PRINT
-10 DIM R$(5),W$(10),L(30),R(30)
-20 R$(1)="RIGHT": R$(2)="CORRECT": R$(3)="FINE": R$(4)="GOOD!"
-30 R$(5)="CHECK"
-70 C=0
-90 PRINT "A SYNONYM OF A WORD MEANS ANOTHER WORD IN THE ENGLISH"
-100 PRINT "LANGUAGE WHICH HAS THE SAME OR VERY NEARLY THE SAME";
-110 PRINT " MEANING."
-130 PRINT "I CHOOSE A WORD -- YOU TYPE A SYNONYM."
-140 PRINT "IF YOU CAN'T THINK OF A SYNONYM, TYPE THE WORD 'HELP'"
-145 PRINT "AND I WILL TELL YOU A SYNONYM.": PRINT
-150 RESTORE: C=C+1: READ N
-160 IF C>N THEN 420
-170 N1=INT(RND(1)*N+1)
-174 IF R(N1)=1 THEN 170
-176 R(N1)=1
-180 FOR I=1 TO N1
-190 READ N2
-200 FOR J=1 TO N2
-210 READ W$(J)
-220 NEXT J
-230 NEXT I
-232 FOR J=1 TO N2: L(J)=J: NEXT J
-235 L(0)=N2: G=1: PRINT
-237 L(G)=L(L(0)): L(0)=N2-1: PRINT
-240 PRINT "     WHAT IS A SYNONYM OF ";W$(G);: INPUT A$
-250 IF A$="HELP" THEN 340
-260 FOR K=1 TO N2
-270 IF G=K THEN 290
-280 IF A$=W$(K) THEN 320
-290 NEXT K
-300 PRINT "     TRY AGAIN.": GOTO 240
-320 PRINT R$(INT(RND(1)*5+1)): GOTO 150
-340 G1=INT(RND(1)*L(0)+1)
-360 PRINT "**** A SYNONYM OF ";W$(G);" IS ";W$(L(G1));".": PRINT
-370 L(G1)=L(L(0)): L(0)=L(0)-1: GOTO 240
-420 PRINT: PRINT "SYNONYM DRILL COMPLETED.": GOTO 999
-500 DATA 10
-510 DATA 5,"FIRST","START","BEGINNING","ONSET","INITIAL"
-520 DATA 5,"SIMILAR","ALIKE","SAME","LIKE","RESEMBLING"
-530 DATA 5,"MODEL","PATTERN","PROTOTYPE","STANDARD","CRITERION"
-540 DATA 5,"SMALL","INSIGNIFICANT","LITTLE","TINY","MINUTE"
-550 DATA 6,"STOP","HALT","STAY","ARREST","CHECK","STANDSTILL"
-560 DATA 6,"HOUSE","DWELLING","RESIDENCE","DOMICILE","LODGING"
-565 DATA "HABITATION"
-570 DATA 7,"PIT","HOLE","HOLLOW","WELL","GULF","CHASM","ABYSS"
-580 DATA 7,"PUSH","SHOVE","THRUST","PROD","POKE","BUTT","PRESS"
-590 DATA 6,"RED","ROUGE","SCARLET","CRIMSON","FLAME","RUBY"
-600 DATA 7,"PAIN","SUFFERING","HURT","MISERY","DISTRESS","ACHE"
-605 DATA "DISCOMFORT"
-999 END
+2 print tab(33);"synonym"
+4 print tab(15);"creative computing  morristown, new jersey"
+6 print: print: print
+10 dim r$(5),w$(10),l(30),r(30)
+20 r$(1)="right": r$(2)="correct": r$(3)="fine": r$(4)="good!"
+30 r$(5)="check"
+70 c=0
+90 print "a synonym of a word means another word in the english"
+100 print "language which has the same or very nearly the same";
+110 print " meaning."
+130 print "i choose a word -- you type a synonym."
+140 print "if you can't think of a synonym, type the word 'help'"
+145 print "and i will tell you a synonym.": print
+150 restore: c=c+1: read n
+160 if c>n then 420
+170 n1=int(rnd(1)*n+1)
+174 if r(n1)=1 then 170
+176 r(n1)=1
+180 for i=1 to n1
+190 read n2
+200 for j=1 to n2
+210 read w$(j)
+220 next j
+230 next i
+232 for j=1 to n2: l(j)=j: next j
+235 l(0)=n2: g=1: print
+237 l(g)=l(l(0)): l(0)=n2-1: print
+240 print "     what is a synonym of ";w$(g);: input a$
+250 if a$="help" then 340
+260 for k=1 to n2
+270 if g=k then 290
+280 if a$=w$(k) then 320
+290 next k
+300 print "     try again.": goto 240
+320 print r$(int(rnd(1)*5+1)): goto 150
+340 g1=int(rnd(1)*l(0)+1)
+360 print "**** a synonym of ";w$(g);" is ";w$(l(g1));".": print
+370 l(g1)=l(l(0)): l(0)=l(0)-1: goto 240
+420 print: print "synonym drill completed.": goto 999
+500 data 10
+510 data 5,"first","start","beginning","onset","initial"
+520 data 5,"similar","alike","same","like","resembling"
+530 data 5,"model","pattern","prototype","standard","criterion"
+540 data 5,"small","insignificant","little","tiny","minute"
+550 data 6,"stop","halt","stay","arrest","check","standstill"
+560 data 6,"house","dwelling","residence","domicile","lodging"
+565 data "habitation"
+570 data 7,"pit","hole","hollow","well","gulf","chasm","abyss"
+580 data 7,"push","shove","thrust","prod","poke","butt","press"
+590 data 6,"red","rouge","scarlet","crimson","flame","ruby"
+600 data 7,"pain","suffering","hurt","misery","distress","ache"
+605 data "discomfort"
+999 end

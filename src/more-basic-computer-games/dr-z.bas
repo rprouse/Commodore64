@@ -1,68 +1,68 @@
-5 PRINT TAB(27);"DR.Z"
-6 PRINT TAB(20);"CREATIVE COMPUTING"
-7 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-8 PRINT:PRINT:PRINT
-20 PRINT "HELLO THERE, I'M YOUR COMPUTER THERAPIST."
-30 PRINT "WHAT IS YOUR NAME? AND TELL ME SOMETHING ABOUT YOURSELF."
-40 PRINT "HOWEVER, DON'T TYPE MORE THAN ONE LINE. I TIRE EASILY."
-50 INPUT A$
-60 PRINT "WHAT DID YOU SAY YOUR NAME WAS AGAIN?"
-70 INPUT B$
-80 PRINT "HOW DO YOU FEEL TODAY?"
-90 LET C=0:U=0:V=0
-100 INPUT A$
-110 PRINT
-120 PRINT
-130 IF C=10 THEN 720
-140 LET Z=INT(10*RND(1))
-150 IF U=Z THEN 140
-160 IF V=Z THEN 140
-170 LET U=Z
-180 ON Z+1 GOTO 690,420,450,480,510,540,570,600,630,660
-380 GOTO 690
-390 PRINT "THAT'S VERY INTERESTING, TELL ME MORE."
-400 PRINT
-410 GOTO 690
-420 PRINT "HAVE YOU FELT THIS WAY LONG?"
-430 PRINT
-440 GOTO 690
-450 PRINT "DO YOU THINK THIS IS REASONABLE IN LIGHT OF YOUR INTERESTS?"
-460 PRINT
-470 GOTO 690
-480 PRINT "DO YOUR FRIENDS FIND THIS ACCEPTABLE?"
-490 PRINT
-500 GOTO 690
-510 PRINT "DO YOU FEEL COMFORTABLE WITH THIS FEELING?"
-520 PRINT
-530 GOTO 690
-540 PRINT "DO YOU THINK THAT THIS IS A NORMAL FEELING?"
-550 PRINT
-560 GOTO 690
-570 PRINT "WHY DO YOU THINK YOU FEEL THIS WAY?"
-580 PRINT
-590 GOTO 690
-600 PRINT "HAVE YOU TALKED TO ANYONE ABOUT THIS?"
-610 PRINT
-620 GOTO 690
-630 PRINT "WHY ARE YOU HERE?"
-640 PRINT
-650 GOTO 690
-660 PRINT "ARE YOU SATISFIED WITH THE WAY YOUR IDEAS ARE DEVELOPING?"
-670 PRINT
-690 LET C=C+1
-700 LET U=Z
-710 GOTO 100
-720 PRINT "I THINK YOU ARE MAKING A GREAT ATTEMPT TO SOLVE YOUR"
-730 PRINT "DIFFICULTIES, AND I SEE NO NEED TO CONTINUE THIS"
-740 PRINT "SESSION ANY FURTHER."
-750 PRINT B$;" WOULD YOU MAKE ANOTHER APPOINTMENT WITH MY COMPUTER"
-760 PRINT "FOR SOMETIME IN THE NEXT FEW WEEKS. WHAT DATE WOULD YOU"
-770 PRINT "PREFER?"
-780 INPUT A$
-790 PRINT "THAT WILL BE FINE ."
-800 PRINT "I'VE ENJOYED COMMUNICATING WITH YOU."
-810 PRINT "HAVE A NICE DAY."
-820 FOR T=1 TO 6
-830 PRINT
-840 NEXT T
-850 END
+5 print tab(27);"dr.z"
+6 print tab(20);"creative computing"
+7 print tab(18);"morristown, new jersey"
+8 print:print:print
+20 print "hello there, i'm your computer therapist."
+30 print "what is your name? and tell me something about yourself."
+40 print "however, don't type more than one line. i tire easily."
+50 input a$
+60 print "what did you say your name was again?"
+70 input b$
+80 print "how do you feel today?"
+90 let c=0:u=0:v=0
+100 input a$
+110 print
+120 print
+130 if c=10 then 720
+140 let z=int(10*rnd(1))
+150 if u=z then 140
+160 if v=z then 140
+170 let u=z
+180 on z+1 goto 690,420,450,480,510,540,570,600,630,660
+380 goto 690
+390 print "that's very interesting, tell me more."
+400 print
+410 goto 690
+420 print "have you felt this way long?"
+430 print
+440 goto 690
+450 print "do you think this is reasonable in light of your interests?"
+460 print
+470 goto 690
+480 print "do your friends find this acceptable?"
+490 print
+500 goto 690
+510 print "do you feel comfortable with this feeling?"
+520 print
+530 goto 690
+540 print "do you think that this is a normal feeling?"
+550 print
+560 goto 690
+570 print "why do you think you feel this way?"
+580 print
+590 goto 690
+600 print "have you talked to anyone about this?"
+610 print
+620 goto 690
+630 print "why are you here?"
+640 print
+650 goto 690
+660 print "are you satisfied with the way your ideas are developing?"
+670 print
+690 let c=c+1
+700 let u=z
+710 goto 100
+720 print "i think you are making a great attempt to solve your"
+730 print "difficulties, and i see no need to continue this"
+740 print "session any further."
+750 print b$;" would you make another appointment with my computer"
+760 print "for sometime in the next few weeks. what date would you"
+770 print "prefer?"
+780 input a$
+790 print "that will be fine ."
+800 print "i've enjoyed communicating with you."
+810 print "have a nice day."
+820 for t=1 to 6
+830 print
+840 next t
+850 end

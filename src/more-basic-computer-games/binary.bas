@@ -1,55 +1,55 @@
-10 PRINT TAB(30);"BINARY"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN NEW JERSEY"
-110 B$="01"
-120 T0=20
-130 PRINT
-140 PRINT
-150 FOR I=1 TO 10
-160 GOSUB 560
-170 PRINT "BINARY:";
-180 FOR J=1 TO 5
-190 PRINT MID$(B$,B(J)+1,1);
-200 NEXT J
-210 PRINT "     DECIMAL:";
-220 INPUT A
-230 IF A=D THEN 260
-240 PRINT D
-250 T0=T0-1
-260 PRINT
-270 NEXT I
-280 PRINT
-290 PRINT
-300 FOR I=1 TO 10
-310 GOSUB 560
-320 PRINT "DECIMAL:  ";D;
-330 PRINT "     BINARY:   ";
-340 I$="00000"
-350 INPUT I$
-360 IF LEN(I$)> 10 THEN 420
-370 I$="00000"+I$
-375 I$=RIGHT$(I$,5)
-380 FOR J=1 TO 5
-390 IF MID$(B$,B(J)+1,1)<>MID$(I$,J,1) THEN 420
-400 NEXT J
-410 GOTO 480
-420 PRINT " ";
-430 FOR J=1 TO 5
-440 PRINT MID$(B$,B(J)+1,1);
-450 NEXT J
-460 PRINT
-470 T0=T0-1
-480 PRINT
-490 NEXT I
-500 PRINT
-510 PRINT
-520 PRINT "YOUR SCORE:";INT(T0/.2+.5);"%"
-530 PRINT
-540 PRINT
-550 END
-560 D=0
-570 FOR J=1 TO 5
-580 B(J)=INT(RND(1)+.5)
-590 D=D*2+B(J)
-600 NEXT J
-610 RETURN
-620 END
+10 print tab(30);"binary"
+20 print tab(15);"creative computing  morristown new jersey"
+110 b$="01"
+120 t0=20
+130 print
+140 print
+150 for i=1 to 10
+160 gosub 560
+170 print "binary:";
+180 for j=1 to 5
+190 print mid$(b$,b(j)+1,1);
+200 next j
+210 print "     decimal:";
+220 input a
+230 if a=d then 260
+240 print d
+250 t0=t0-1
+260 print
+270 next i
+280 print
+290 print
+300 for i=1 to 10
+310 gosub 560
+320 print "decimal:  ";d;
+330 print "     binary:   ";
+340 i$="00000"
+350 input i$
+360 if len(i$)> 10 then 420
+370 i$="00000"+i$
+375 i$=right$(i$,5)
+380 for j=1 to 5
+390 if mid$(b$,b(j)+1,1)<>mid$(i$,j,1) then 420
+400 next j
+410 goto 480
+420 print " ";
+430 for j=1 to 5
+440 print mid$(b$,b(j)+1,1);
+450 next j
+460 print
+470 t0=t0-1
+480 print
+490 next i
+500 print
+510 print
+520 print "your score:";int(t0/.2+.5);"%"
+530 print
+540 print
+550 end
+560 d=0
+570 for j=1 to 5
+580 b(j)=int(rnd(1)+.5)
+590 d=d*2+b(j)
+600 next j
+610 return
+620 end

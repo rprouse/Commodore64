@@ -1,165 +1,165 @@
-10 PRINT TAB(33);"SLALOM"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-310 PRINT "HOW MANY GATES DOES THIS COURSE HAVE (1 TO 25)";
-320 INPUT V
-330 IF V>25 THEN 360
-340 IF V<1 THEN 390
-350 GOTO 1440
-360 PRINT "25 IS THE LIMIT."
-370 LET V=25
-380 GOTO 1440
-390 PRINT "TRY AGAIN,"
-400 GOTO 310
-410 PRINT "RATE YOURSELF AS A SKIER, (1=WORST, 3=BEST)";
-420 INPUT A
-430 IF A<1 THEN 460
-440 IF A>3 THEN 460
-450 GOTO 480
-460 PRINT "THE BOUNDS ARE 1-3"
-470 GOTO 410
-480 PRINT"THE STARTER COUNTS DOWN...5...4...3...2...1...GO!";
-490 REM
-500 LET T=0
-510 LET S=INT(RND(1)*(18-9)+9)
-520 PRINT
-525 PRINT "YOU'RE OFF!"
-530 FOR O=1 TO V
-540    READ Q
-550    PRINT
-555    PRINT "HERE COMES GATE #";STR$(O);":"
-560    PRINT S;"M.P.H."
-570    LET S1=S
-580    PRINT "OPTION";
-590    INPUT O1
-600    IF O1=0 THEN 970
-610   IF O1>8 THEN 1420
-620    IF O1<1 THEN 1420
-630    GOSUB 990
-640    IF S<7 THEN 1390
-650    LET T=T+(Q-S+1)
-660    IF S>Q THEN 1630
-670 NEXT O
-680 PRINT:PRINT "YOU TOOK";(T+RND(1));"SECONDS."
-690 LET M=T
-700 LET M=M/V
-710 IF M<1.5-(A*.1) THEN 1650
-720 IF M<2.9-(A*.1) THEN 1680
-730 IF M<4.4-(A*.01) THEN 1710
-740 PRINT:PRINT "DO YOU WANT TO RACE AGAIN";
-750 INPUT B$
-760 REM
-770 IF B$="NO" THEN 1740
-780 IF B$="YES" THEN 480
-790 PRINT "PLEASE TYPE 'YES' OR 'NO'"
-800 GOTO 740
-810 STOP
-820 PRINT
-825 PRINT "*** SLALOM: THIS IS THE 1976 WINTER OLYMPIC GIANT SLALOM.  YOU ARE"
-830 PRINT "            THE AMERICAN TEAM'S ONLY HOPE OF A GOLD MEDAL."
-840 PRINT
-845 PRINT "     0 -- TYPE THIS IS YOU WANT TO SEE HOW LONG YOU'VE TAKEN."
-850 PRINT "     1 -- TYPE THIS IF YOU WANT TO SPEED UP A LOT."
-860 PRINT "     2 -- TYPE THIS IF YOU WANT TO SPEED UP A LITTLE."
-870 PRINT "     3 -- TYPE THIS IF YOU WANT TO SPEED UP A TEENSY."
-880 PRINT "     4 -- TYPE THIS IF YOU WANT TO KEEP GOING THE SAME SPEED."
-890 PRINT "     5 -- TYPE THIS IF YOU WANT TO CHECK A TEENSY."
-900 PRINT "     6 -- TYPE THIS IF YOU WANT TO CHECK A LITTLE."
-910 PRINT "     7 -- TYPE THIS IF YOU WANT TO CHECK A LOT."
-920 PRINT "     8 -- TYPE THIS IF YOU WANT TO CHEAT AND TRY TO SKIP A GATE."
-930 PRINT
-935 PRINT " THE PLACE TO USE THESE OPTIONS IS WHEN THE COMPUTER ASKS:"
-940 PRINT
-945 PRINT "OPTION?"
-950 PRINT
-955 PRINT "                GOOD LUCK!"
-957 PRINT
-960 GOTO 1470
-970 PRINT "YOU'VE TAKEN";(T+RND(1));"SECONDS."
-980 GOTO 580
-990 ON O1 GOTO 1130,1010,1170,1080,1190,1100,1150,1210
-1000 STOP
-1010 LET S=S+INT(RND(1)*(5-3)+3)
-1020 PRINT S;"M.P.H."
-1030 IF S>Q THEN 1290
-1040 IF S>Q-1 THEN 1060
-1050 RETURN
-1060 PRINT "CLOSE ONE!"
-1070 RETURN
-1080 PRINT S;"M.P.H."
-1090 GOTO 1030
-1100 LET S=S-INT(RND(1)*(5-3)+3)
-1110 PRINT S;"M.P.H."
-1120 GOTO 1030
-1130 LET S=S+INT(RND(1)*(10-5)+5)
-1140 GOTO 1080
-1150 LET S=S-INT(RND(1)*(10-5)+5)
-1160 GOTO 1110
-1170 LET S=S+INT(RND(1)*(4-1)+1)
-1180 GOTO 1110
-1190 LET S=S-INT(RND(1)*(4-1)+1)
-1200 GOTO 1110
-1210 PRINT "***CHEAT"
-1220 IF RND(1)<.7 THEN 1260
-1230 PRINT "YOU MADE IT!"
-1240 LET T=T+1.5
-1250 RETURN
-1260 PRINT "AN OFFICIAL CAUGHT YOU!"
-1270 PRINT "YOU TOOK";(T+RND(1));"SECONDS."
-1280 GOTO 740
-1290 IF RND(1)<((S-Q)*.1)+.2 THEN 1320
-1300 PRINT "YOU WENT OVER THE NAXIMUM SPEED AND MADE IT!"
-1310 RETURN
-1320 PRINT "YOU WENT OVER THE MAXIMUM SPEED AND ";
-1330 IF RND(1)<.5 THEN 1370
-1340 PRINT "WIPED OUT!"
-1350 PRINT "YOU TOOK";(T+RND(1));"SECONDS"
-1360 GOTO 740
-1370 PRINT "SNAGGED A FLAG!"
-1380 GOTO 1350
-1390 PRINT "LET'S BE REALISTIC, OK?  LET'S GO BACK AND TRY AGAIN..."
-1400 LET S=S1
-1410 GOTO 550
-1420 PRINT "WHAT?"
-1430 GOTO 580
-1440 PRINT
-1445 PRINT "TYPE ";CHR$(34);"INS";CHR$(34);" FOR INSTRUCTIONS"
-1450 PRINT "TYPE ";CHR$(34);"MAX";CHR$(34);" FOR APPROXIMATE MAXIMUM SPEEDS"
-1460 PRINT "TYPE ";CHR$(34);"RUN";CHR$(34);" FOR THE BEGINNING OF THE RACE"
-1470 PRINT "COMMAND--";
-1480 INPUT A$
-1490 REM
-1500 IF A$="INS" THEN 820
-1510 IF A$="MAX" THEN 1550
-1520 IF A$="RUN" THEN 410
-1530 PRINT CHR$(34);A$;CHR$(34);" IS AN ILLEGAL COMMAND--RETRY";
-1540 GOTO 1480
-1550 PRINT "GATE MAX"
-1560 PRINT " #  M.P.H."
-1570 PRINT"----------"
-1580 FOR B=1 TO V
-1590    READ Q
-1600    PRINT B;"  ";Q
-1610 NEXT B
-1620 GOTO 1470
-1630 LET T=T+.5
-1640 GOTO 670
-1650 PRINT "YOU WON A GOLD MEDAL!"
-1660 LET G(1)=G(1)+1
-1670 GOTO 1730
-1680 PRINT "YOU WON A SILVER MEDAL"
-1690 LET S(1)=S(1)+1
-1700 GOTO 1730
-1710 PRINT "YOU WON A BRONZE MEDAL"
-1720 LET B(1)=B(1)+1
-1730 GOTO 740
-1740 PRINT "THANKS FOR THE RACE"
-1750 IF G(1)<1 THEN 1770
-1760 PRINT "GOLD MEDALS:";G(1)
-1770 IF S(1)<1 THEN 1790
-1780 PRINT "SILVER MEDALS:";S(1)
-1790 IF B(1)<1 THEN 1830
-1800 PRINT "BRONZE MEDALS:";B(1)
-1810 DATA 14,18,26,29,18,25,28,32,29,20,29,29,25,21,26,29,20,21,20
-1820 DATA 18,26,25,33,31,22
-1830 END
+10 print tab(33);"slalom"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+310 print "how many gates does this course have (1 to 25)";
+320 input v
+330 if v>25 then 360
+340 if v<1 then 390
+350 goto 1440
+360 print "25 is the limit."
+370 let v=25
+380 goto 1440
+390 print "try again,"
+400 goto 310
+410 print "rate yourself as a skier, (1=worst, 3=best)";
+420 input a
+430 if a<1 then 460
+440 if a>3 then 460
+450 goto 480
+460 print "the bounds are 1-3"
+470 goto 410
+480 print"the starter counts down...5...4...3...2...1...go!";
+490 rem
+500 let t=0
+510 let s=int(rnd(1)*(18-9)+9)
+520 print
+525 print "you're off!"
+530 for o=1 to v
+540    read q
+550    print
+555    print "here comes gate #";str$(o);":"
+560    print s;"m.p.h."
+570    let s1=s
+580    print "option";
+590    input o1
+600    if o1=0 then 970
+610   if o1>8 then 1420
+620    if o1<1 then 1420
+630    gosub 990
+640    if s<7 then 1390
+650    let t=t+(q-s+1)
+660    if s>q then 1630
+670 next o
+680 print:print "you took";(t+rnd(1));"seconds."
+690 let m=t
+700 let m=m/v
+710 if m<1.5-(a*.1) then 1650
+720 if m<2.9-(a*.1) then 1680
+730 if m<4.4-(a*.01) then 1710
+740 print:print "do you want to race again";
+750 input b$
+760 rem
+770 if b$="no" then 1740
+780 if b$="yes" then 480
+790 print "please type 'yes' or 'no'"
+800 goto 740
+810 stop
+820 print
+825 print "*** slalom: this is the 1976 winter olympic giant slalom.  you are"
+830 print "            the american team's only hope of a gold medal."
+840 print
+845 print "     0 -- type this is you want to see how long you've taken."
+850 print "     1 -- type this if you want to speed up a lot."
+860 print "     2 -- type this if you want to speed up a little."
+870 print "     3 -- type this if you want to speed up a teensy."
+880 print "     4 -- type this if you want to keep going the same speed."
+890 print "     5 -- type this if you want to check a teensy."
+900 print "     6 -- type this if you want to check a little."
+910 print "     7 -- type this if you want to check a lot."
+920 print "     8 -- type this if you want to cheat and try to skip a gate."
+930 print
+935 print " the place to use these options is when the computer asks:"
+940 print
+945 print "option?"
+950 print
+955 print "                good luck!"
+957 print
+960 goto 1470
+970 print "you've taken";(t+rnd(1));"seconds."
+980 goto 580
+990 on o1 goto 1130,1010,1170,1080,1190,1100,1150,1210
+1000 stop
+1010 let s=s+int(rnd(1)*(5-3)+3)
+1020 print s;"m.p.h."
+1030 if s>q then 1290
+1040 if s>q-1 then 1060
+1050 return
+1060 print "close one!"
+1070 return
+1080 print s;"m.p.h."
+1090 goto 1030
+1100 let s=s-int(rnd(1)*(5-3)+3)
+1110 print s;"m.p.h."
+1120 goto 1030
+1130 let s=s+int(rnd(1)*(10-5)+5)
+1140 goto 1080
+1150 let s=s-int(rnd(1)*(10-5)+5)
+1160 goto 1110
+1170 let s=s+int(rnd(1)*(4-1)+1)
+1180 goto 1110
+1190 let s=s-int(rnd(1)*(4-1)+1)
+1200 goto 1110
+1210 print "***cheat"
+1220 if rnd(1)<.7 then 1260
+1230 print "you made it!"
+1240 let t=t+1.5
+1250 return
+1260 print "an official caught you!"
+1270 print "you took";(t+rnd(1));"seconds."
+1280 goto 740
+1290 if rnd(1)<((s-q)*.1)+.2 then 1320
+1300 print "you went over the naximum speed and made it!"
+1310 return
+1320 print "you went over the maximum speed and ";
+1330 if rnd(1)<.5 then 1370
+1340 print "wiped out!"
+1350 print "you took";(t+rnd(1));"seconds"
+1360 goto 740
+1370 print "snagged a flag!"
+1380 goto 1350
+1390 print "let's be realistic, ok?  let's go back and try again..."
+1400 let s=s1
+1410 goto 550
+1420 print "what?"
+1430 goto 580
+1440 print
+1445 print "type ";chr$(34);"ins";chr$(34);" for instructions"
+1450 print "type ";chr$(34);"max";chr$(34);" for approximate maximum speeds"
+1460 print "type ";chr$(34);"run";chr$(34);" for the beginning of the race"
+1470 print "command--";
+1480 input a$
+1490 rem
+1500 if a$="ins" then 820
+1510 if a$="max" then 1550
+1520 if a$="run" then 410
+1530 print chr$(34);a$;chr$(34);" is an illegal command--retry";
+1540 goto 1480
+1550 print "gate max"
+1560 print " #  m.p.h."
+1570 print"----------"
+1580 for b=1 to v
+1590    read q
+1600    print b;"  ";q
+1610 next b
+1620 goto 1470
+1630 let t=t+.5
+1640 goto 670
+1650 print "you won a gold medal!"
+1660 let g(1)=g(1)+1
+1670 goto 1730
+1680 print "you won a silver medal"
+1690 let s(1)=s(1)+1
+1700 goto 1730
+1710 print "you won a bronze medal"
+1720 let b(1)=b(1)+1
+1730 goto 740
+1740 print "thanks for the race"
+1750 if g(1)<1 then 1770
+1760 print "gold medals:";g(1)
+1770 if s(1)<1 then 1790
+1780 print "silver medals:";s(1)
+1790 if b(1)<1 then 1830
+1800 print "bronze medals:";b(1)
+1810 data 14,18,26,29,18,25,28,32,29,20,29,29,25,21,26,29,20,21,20
+1820 data 18,26,25,33,31,22
+1830 end

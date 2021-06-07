@@ -1,37 +1,37 @@
-1 PRINT TAB(27)"DOORS"
-2 PRINT TAB(20)"CREATIVE COMPUTING"
-3 PRINT TAB(18)"MORRISTOWN, NEW JERSEY"
-4 PRINT
-5 PRINT
-6 PRINT
-25 DIM K(20)
-30 DEF FNR(Z)=INT(Z*RND(1))
-32 FOR X=0 TO 6:READ R$(X):NEXT X
-33 FOR X=0 TO 6: READ S$(X):NEXT X
-35 D=1:T=10+FNR(21):N=3+FNR(3):K3=8+FNR(5)
-40 PRINT"THERE ARE";N;"LOCKED DOORS AND THERE ARE";K3;"KEYS(0-"K3-1")"
-41 PRINT"YOU WILL HAVE ";T-1;"TRIES TO OPEN THEM ALL"
-42 PRINT"(SOME KEYS MAY OPEN MORE THAN ONE DOOR)"
-65 FOR X=2 TO N:K(X)=FNR(K3):NEXT X
-70 T=T-1:IF T=0 THEN 150
-80 PRINT"TRIES LEFT =";T;"           DOOR #";D;"KEY";
-90 INPUT K2
-100 IF K2<>K(D) THEN 70
-110 PRINT S$(FNR(7)):D=D+1
-120 IF D<N+1 THEN 70
-125 PRINT
-130 PRINT"YOU DID IT, BEHIND DOOR #";N;"IS..........................."
-140 PRINT R$(FNR(7)) "!!":GOTO 170
-150 PRINT"YOU LOSE,  THE REST OF THE KEYS ARE:"
-160 FOR X=D TO N:PRINT"DOOR";X;"KEY"K(X):NEXT X
-170 PRINT"DO YOU WANT TO PLAY AGAIN(YES SIR! OR NO SIR!)"
-171 INPUT Q$
-180 IF Q$="YES SIR!" THEN 35
-181 IF Q$="NO SIR!" THEN 999
-190 PRINT"HEY, I DIDN'T JUST FALL OFF A TURNIP TRUCK, YA KNOW!!!!!"
-200 GOTO 170
-500 DATA"A POT OF GOLD","A BEAUTIFUL MAIDEN","A MAN EATING TIGER"
-505 DATA"NOTHING","$22.59","A ROLLS ROYCE","THE KEYS TO THE WORLD"
-600 DATA"OPEN SESAME!","C-R-E-E-E-E-E-A-A-K!","WA LAH!","TA-DAH!"
-605 DATA"ABRACADABRA!", "CLICK !!!!!!!!?!???????!!!!!!!!", "SURPRISE!"
-999 END
+1 print tab(27)"doors"
+2 print tab(20)"creative computing"
+3 print tab(18)"morristown, new jersey"
+4 print
+5 print
+6 print
+25 dim k(20)
+30 def fnr(z)=int(z*rnd(1))
+32 for x=0 to 6:read r$(x):next x
+33 for x=0 to 6: read s$(x):next x
+35 d=1:t=10+fnr(21):n=3+fnr(3):k3=8+fnr(5)
+40 print"there are";n;"locked doors and there are";k3;"keys(0-"k3-1")"
+41 print"you will have ";t-1;"tries to open them all"
+42 print"(some keys may open more than one door)"
+65 for x=2 to n:k(x)=fnr(k3):next x
+70 t=t-1:if t=0 then 150
+80 print"tries left =";t;"           door #";d;"key";
+90 input k2
+100 if k2<>k(d) then 70
+110 print s$(fnr(7)):d=d+1
+120 if d<n+1 then 70
+125 print
+130 print"you did it, behind door #";n;"is..........................."
+140 print r$(fnr(7)) "!!":goto 170
+150 print"you lose,  the rest of the keys are:"
+160 for x=d to n:print"door";x;"key"k(x):next x
+170 print"do you want to play again(yes sir! or no sir!)"
+171 input q$
+180 if q$="yes sir!" then 35
+181 if q$="no sir!" then 999
+190 print"hey, i didn't just fall off a turnip truck, ya know!!!!!"
+200 goto 170
+500 data"a pot of gold","a beautiful maiden","a man eating tiger"
+505 data"nothing","$22.59","a rolls royce","the keys to the world"
+600 data"open sesame!","c-r-e-e-e-e-e-a-a-k!","wa lah!","ta-dah!"
+605 data"abracadabra!", "click !!!!!!!!?!???????!!!!!!!!", "surprise!"
+999 end

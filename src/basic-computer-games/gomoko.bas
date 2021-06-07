@@ -1,54 +1,54 @@
-2 PRINT TAB(33);"GOMOKO"
-4 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-6 PRINT:PRINT:PRINT
-8 DIM A(19,19)
-10 PRINT "WELCOME TO THE ORIENTAL GAME OF GOMOKO."
-20 PRINT: PRINT "THE GAME IS PLAYED ON AN N BY N GRID OF A SIZE"
-30 PRINT "THAT YOU SPECIFY.  DURING YOUR PLAY, YOU MAY COVER ONE GRID"
-40 PRINT "INTERSECTION WITH A MARKER. THE OBJECT OF THE GAME IS TO GET"
-50 PRINT "5 ADJACENT MARKERS IN A ROW -- HORIZONTALLY, VERTICALLY, OR"
-60 PRINT "DIAGONALLY.  ON THE BOARD DIAGRAM, YOUR MOVES ARE MARKED"
-70 PRINT "WITH A '1' AND THE COMPUTER MOVES WITH A '2'."
-80 PRINT: PRINT "THE COMPUTER DOES NOT KEEP TRACK OF WHO HAS WON."
-90 PRINT "TO END THE GAME, TYPE -1,-1 FOR YOUR MOVE.": PRINT
-110 PRINT "WHAT IS YOUR BOARD SIZE (MIN 7/ MAX 19)";: INPUT N
-115 IF N>6 THEN 117
-116 GOTO 120
-117 IF N<20 THEN 210
-120 PRINT "I SAID, THE MINIMUM IS 7, THE MAXIMUM IS 19.": GOTO 110
-210 FOR I=1 TO N:FOR J=1 TO N: A(I,J)=0: NEXT J: NEXT I
-300 PRINT: PRINT "WE ALTERNATE MOVES.  YOU GO FIRST...": PRINT
-310 PRINT "YOUR PLAY (I,J)";: INPUT I,J
-315 PRINT
-320 IF I=-1 THEN 980
-330 X=I: Y=J: GOSUB 910: IF L=1 THEN 410
-340 PRINT "ILLEGAL MOVE.  TRY AGAIN...": GOTO 310
-410 IF A(I,J)=0 THEN 440
-420 PRINT "SQUARE OCCUPIED.  TRY AGAIN...": GOTO 310
-440 A(I,J)=1
-500 REM *** COMPUTER TRIES AN INTELLIGENT MOVE ***
-510 FOR E=-1 TO 1: FOR F=-1 TO 1: IF E+F-E*F=0 THEN 590
-540 X=I+F: Y=J+F: GOSUB 910
-570 IF L=0 THEN 590
-580 IF A(X,Y)=1 THEN 710
-590 NEXT F: NEXT E
-600 REM *** COMPUTER TRIES A RANDOM MOVE ***
-610 X=INT(N*RND(1)+1): Y=INT(N*RND(1)+1): GOSUB 910: IF L=0 THEN 610
-650 IF A(X,Y)<>0 THEN 610
-660 A(X,Y)=2: GOSUB 810: GOTO 310
-710 X=I-E: Y=J-F: GOSUB 910
-750 IF L=0 THEN 610
-760 GOTO 650
-800 REM *** PRINT THE BOARD ***
-810 FOR I=1 TO N: FOR J=1 TO N: PRINT A(I,J);
-840 NEXT J: PRINT: NEXT I: PRINT: RETURN
-910 L=1: IF X<1 THEN 970
-920 IF X>N THEN 970
-930 IF Y<1 THEN 970
-940 IF Y>N THEN 970
-950 RETURN
-970 L=0: RETURN
-980 PRINT: PRINT "THANKS FOR THE GAME!!"
-985 PRINT "PLAY AGAIN (1 FOR YES, 0 FOR NO)";: INPUT Q
-990 IF Q=1 THEN 110
-999 END
+2 print tab(33);"gomoko"
+4 print tab(15);"creative computing  morristown, new jersey"
+6 print:print:print
+8 dim a(19,19)
+10 print "welcome to the oriental game of gomoko."
+20 print: print "the game is played on an n by n grid of a size"
+30 print "that you specify.  during your play, you may cover one grid"
+40 print "intersection with a marker. the object of the game is to get"
+50 print "5 adjacent markers in a row -- horizontally, vertically, or"
+60 print "diagonally.  on the board diagram, your moves are marked"
+70 print "with a '1' and the computer moves with a '2'."
+80 print: print "the computer does not keep track of who has won."
+90 print "to end the game, type -1,-1 for your move.": print
+110 print "what is your board size (min 7/ max 19)";: input n
+115 if n>6 then 117
+116 goto 120
+117 if n<20 then 210
+120 print "i said, the minimum is 7, the maximum is 19.": goto 110
+210 for i=1 to n:for j=1 to n: a(i,j)=0: next j: next i
+300 print: print "we alternate moves.  you go first...": print
+310 print "your play (i,j)";: input i,j
+315 print
+320 if i=-1 then 980
+330 x=i: y=j: gosub 910: if l=1 then 410
+340 print "illegal move.  try again...": goto 310
+410 if a(i,j)=0 then 440
+420 print "square occupied.  try again...": goto 310
+440 a(i,j)=1
+500 rem *** computer tries an intelligent move ***
+510 for e=-1 to 1: for f=-1 to 1: if e+f-e*f=0 then 590
+540 x=i+f: y=j+f: gosub 910
+570 if l=0 then 590
+580 if a(x,y)=1 then 710
+590 next f: next e
+600 rem *** computer tries a random move ***
+610 x=int(n*rnd(1)+1): y=int(n*rnd(1)+1): gosub 910: if l=0 then 610
+650 if a(x,y)<>0 then 610
+660 a(x,y)=2: gosub 810: goto 310
+710 x=i-e: y=j-f: gosub 910
+750 if l=0 then 610
+760 goto 650
+800 rem *** print the board ***
+810 for i=1 to n: for j=1 to n: print a(i,j);
+840 next j: print: next i: print: return
+910 l=1: if x<1 then 970
+920 if x>n then 970
+930 if y<1 then 970
+940 if y>n then 970
+950 return
+970 l=0: return
+980 print: print "thanks for the game!!"
+985 print "play again (1 for yes, 0 for no)";: input q
+990 if q=1 then 110
+999 end

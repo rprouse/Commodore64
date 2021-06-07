@@ -1,246 +1,246 @@
-2 PRINT TAB(34);"LEM"
-4 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-7 REM ROCKT2 IS AN INTERACTIVE GAME THAT SIMULATES A LUNAR
-8 REM LANDING IS SIMILAR TO THAT OF THE APOLLO PROGRAM.
-9 REM THERE IS ABSOLUTELY NO CHANCE INVOLVED
-10 Z$="GO"
-15 B1=1
-20 M=17.95
-25 F1=5.25
-30 N=7.5
-35 R0=926
-40 V0=1.29
-45 T=0
-50 H0=60
-55 R=R0+H0
-60 A=-3.425
-65 R1=0
-70 A1=8.84361E-04
-75 R3=0
-80 A3=0
-85 M1=7.45
-90 M0=M1
-95 B=750
-100 T1=0
-105 F=0
-110 P=0
-115 N=1
-120 M2=0
-125 S=0
-130 C=0
-135 IF Z$="YES" THEN 1150
-140 PRINT
-145 PRINT "LUNAR LANDING SIMULATION"
-150 PRINT
-155 PRINT "HAVE YOU FLOWN AN APOLLO/LEM MISSION BEFORE";
-160 PRINT " (YES OR NO)";
-165 INPUT Q$
-170 IF Q$="YES" THEN 190
-175 IF Q$="NO" THEN 205
-180 PRINT "JUST ANSWER THE QUESTION, PLEASE, ";
-185 GOTO 160
-190 PRINT
-195 PRINT "INPUT MEASUREMENT OPTION NUMBER";
-200 GOTO 225
-205 PRINT
-210 PRINT "WHICH SYSTEM OF MEASUREMENT DO YOU PREFER?"
-215 PRINT " 1=METRIC     0=ENGLISH"
-220 PRINT "ENTER THE APPROPRIATE NUMBER";
-225 INPUT K
-230 PRINT
-235 IF K=0 THEN 280
-240 IF K=1 THEN 250
-245 GOTO 220
-250 Z=1852.8
-255 M$="METERS"
-260 G3=3.6
-265 N$=" KILOMETERS"
-270 G5=1000
-275 GOTO 305
-280 Z=6080
-285 M$="FEET"
-290 G3=.592
-295 N$="N.MILES"
-300 G5=Z
-305 IF B1=3 THEN 670
-310 IF Q$="YES" THEN 485
-315 PRINT
-320 PRINT "  YOU ARE ON A LUNAR LANDING MISSION.  AS THE PILOT OF"
-325 PRINT "THE LUNAR EXCURSION MODULE, YOU WILL BE EXPECTED TO"
-330 PRINT "GIVE CERTAIN COMMANDS TO THE MODULE NAVIGATION SYSTEM."
-335 PRINT "THE ON-BOARD COMPUTER WILL GIVE A RUNNING ACCOUNT"
-340 PRINT "OF INFORMATION NEEDED TO NAVIGATE THE SHIP."
-345 PRINT
-350 PRINT
-355 PRINT "THE ATTITUDE ANGLE CALLED FOR IS DESCRIBED AS FOLLOWS."
-360 PRINT "+ OR -180 DEGREES IS DIRECTLY AWAY FROM THE MOON"
-365 PRINT "-90 DEGREES IS ON A TANGENT IN THE DIRECTION OF ORBIT"
-370 PRINT "+90 DEGREES IS ON A TANGENT FROM THE DIRECTION OF ORBIT"
-375 PRINT "0 (ZERO) DEGREES IS DIRECTLY TOWARD THE MOON"
-380 PRINT
-385 PRINT TAB(30);"-180|+180"
-390 PRINT TAB(34);"^"
-395 PRINT TAB(27);"-90 < -+- > +90"
-400 PRINT TAB(34);"!"
-405 PRINT TAB(34);"0"
-410 PRINT TAB(21);"<<<< DIRECTION OF ORBIT <<<<"
-415 PRINT
-420 PRINT TAB(20);"------ SURFACE OF MOON ------"
-425 PRINT
-430 PRINT
-435 PRINT "ALL ANGLES BETWEEN -180 AND +180 DEGREES ARE ACCEPTED."
-440 PRINT
-445 PRINT "1 FUEL UNIT = 1 SEC. AT MAX THRUST"
-450 PRINT "ANY DISCREPANCIES ARE ACCOUNTED FOR IN THE USE OF FUEL"
-455 PRINT "FOR AN ATTITUDE CHANGE."
-460 PRINT "AVAILABLE ENGINE POWER: 0 (ZERO) AND ANY VALUE BETWEEN"
-465 PRINT "10 AND 100 PERCENT."
-470 PRINT
-475 PRINT"NEGATIVE THRUST OR TIME IS PROHIBITED."
-480 PRINT
-485 PRINT
-490 PRINT "INPUT: TIME INTERVAL IN SECONDS ------ (T)"
-495 PRINT "       PERCENTAGE OF THRUST ---------- (P)"
-500 PRINT "       ATTITUDE ANGLE IN DEGREES ----- (A)"
-505 PRINT
-510 IF Q$="YES" THEN 535
-515 PRINT "FOR EXAMPLE:"
-520 PRINT "T,P,A? 10,65,-60"
-525 PRINT "TO ABORT THE MISSION AT ANY TIME, ENTER 0,0,0"
-530 PRINT
-535 PRINT "OUTPUT: TOTAL TIME IN ELAPSED SECONDS"
-540 PRINT "        HEIGHT IN ";M$
-545 PRINT "        DISTANCE FROM LANDING SITE IN ";M$
-550 PRINT "        VERTICAL VELOCITY IN ";M$;"/SECOND"
-555 PRINT "        HORIZONTAL VELOCITY IN ";M$;"/SECOND"
-560 PRINT "        FUEL UNITS REMAINING"
-565 PRINT
-570 GOTO 670
-575 PRINT
-580 PRINT "T,P,A";
-585 INPUT T1,F,P
-590 F=F/100
-595 IF T1<0 THEN 905
-600 IF T1=0 THEN 1090
-605 IF ABS(F-.05)>1 THEN 945
-610 IF ABS(F-.05)<.05 THEN 945
-615 IF ABS(P)>180 THEN 925
-620 N=20
-625 IF T1<400 THEN 635
-630 N=T1/20
-635 T1=T1/N
-640 P=P*3.14159/180
-645 S=SIN(P)
-650 C=COS(P)
-655 M2=M0*T1*F/B
-660 R3=-.5*R0*((V0/R)^2)+R*A1*A1
-665 A3=-2*R1*A1/R
-670 FOR I=1 TO N
-675 IF M1=0 THEN 715
-680 M1=M1-M2
-685 IF M1>0 THEN 725
-690 F=F*(1+M1/M2)
-695 M2=M1+M2
-700 PRINT "YOU ARE OUT OF FUEL."
-705 M1=0
-710 GOTO 725
-715 F=0
-720 M2=0
-725 M=M-.5*M2
-730 R4=R3
-735 R3=-.5*R0*((V0/R)^2)+R*A1*A1
-740 R2=(3*R3-R4)/2+.00526*F1*F*C/M
-745 A4=A3
-750 A3=-2*R1*A1/R
-755 A2=(3*A3-A4)/2+.0056*F1*F*S/(M*R)
-760 X=R1*T1+.5*R2*T1*T1
-765 R=R+X
-770 H0=H0+X
-775 R1=R1+R2*T1
-780 A=A+A1*T1+.5*A2*T1*T1
-785 A1=A1+A2*T1
-790 M=M-.5*M2
-795 T=T+T1
-800 IF H0<3.287828E-04 THEN 810
-805 NEXT I
-810 H=H0*Z
-815 H1=R1*Z
-820 D=R0*A*Z
-825 D1=R*A1*Z
-830 T2=M1*B/M0
-835 PRINT " ";T;TAB(10);H;TAB(23);D;
-840 PRINT TAB(37);H1;TAB(49);D1;TAB(60);T2
-845 IF H0<3.287828E-04 THEN 880
-850 IF R0*A>164.474 THEN 1050
-855 IF M1>0 THEN 580
-860 T1=20
-865 F=0
-870 P=0
-875 GOTO 620
-880 IF R1<-8.21957E-04 THEN 1020
-885 IF ABS(R*A1)>4.93174E-04 THEN 1020
-890 IF H0<-3.287828E-04 THEN 1020
-895 IF ABS(D)>10*Z THEN 1065
-900 GOTO 995
-905 PRINT
-910 PRINT "THIS SPACECRAFT IS NOT ABLE TO VIOLATE THE SPACE-";
-915 PRINT "TIME CONTINUUM."
-920 GOTO 575
-925 PRINT
-930 PRINT "IF YOU WANT TO SPIN AROUND, GO OUTSIDE THE MODULE"
-935 PRINT "FOR AN E.V.A."
-940 GOTO 575
-945 PRINT
-950 PRINT "IMPOSSIBLE THRUST VALUE ";
-955 IF F<0 THEN 985
-960 IF F-.05<.05 THEN 975
-965 PRINT "TOO LARGE"
-970 GOTO 575
-975 PRINT "TOO SMALL"
-980 GOTO 575
-985 PRINT "NEGATIVE"
-990 GOTO 575
-995 PRINT
-1000 PRINT "TRANQUILITY BASE HERE -- THE EAGLE HAS LANDED."
-1005 PRINT "CONGRATULATIONS -- THERE WAS NO SPACECRAFT DAMAGE."
-1010 PRINT "YOU MAY NOW PROCEED WITH SURFACE EXPLORATION."
-1015 GOTO 1100
-1020 PRINT
-1025 PRINT "CRASH !!!!!!!!!!!!!!!!"
-1030 PRINT "YOUR IMPACT CREATED A CRATER";ABS(H);M$;" DEEP."
-1035 X1=SQR(D1*D1+H1*H1)*G3
-1040 PRINT "AT CONTACT YOU WERE TRAVELING";X1;N$;"/HR"
-1045 GOTO 1100
-1050 PRINT
-1055 PRINT "YOU HAVE BEEN LOST IN SPACE WITH NO HOPE OF RECOVERY."
-1060 GOTO 1100
-1065 PRINT "YOU ARE DOWN SAFELY - "
-1075 PRINT
-1080 PRINT "BUT MISSED THE LANDING SITE BY";ABS(D/G5);N$;"."
-1085 GOTO 1100
-1090 PRINT
-1095 PRINT "MISSION ABENDED"
-1100 PRINT 
-1105 PRINT "DO YOU WANT TO TRY IT AGAIN (YES/NO)?"
-1110 INPUT Z$
-1115 IF Z$="YES" THEN 20
-1120 IF Z$="NO" THEN 1130
-1125 GOTO 1105
-1130 PRINT
-1135 PRINT "TOO BAD, THE SPACE PROGRAM HATES TO LOSE EXPERIENCED"
-1140 PRINT "ASTRONAUTS."
-1145 STOP
-1150 PRINT
-1155 PRINT "OK, DO YOU WANT THE COMPLETE INSTRUCTIONS OR THE INPUT -"
-1160 PRINT "OUTPUT STATEMENTS?"
-1165 PRINT "1=COMPLETE INSTRUCTIONS"
-1170 PRINT "2=INPUT-OUTPUT STATEMENTS"
-1175 PRINT "3=NEITHER"
-1180 INPUT B1
-1185 Q$="NO"
-1190 IF B1=1 THEN 205
-1195 Q$="YES"
-1200 IF B1=2 THEN 190
-1205 IF B1=3 THEN 190
-1210 GOTO 1165
-1215 END
+2 print tab(34);"lem"
+4 print tab(15);"creative computing  morristown, new jersey"
+7 rem rockt2 is an interactive game that simulates a lunar
+8 rem landing is similar to that of the apollo program.
+9 rem there is absolutely no chance involved
+10 z$="go"
+15 b1=1
+20 m=17.95
+25 f1=5.25
+30 n=7.5
+35 r0=926
+40 v0=1.29
+45 t=0
+50 h0=60
+55 r=r0+h0
+60 a=-3.425
+65 r1=0
+70 a1=8.84361e-04
+75 r3=0
+80 a3=0
+85 m1=7.45
+90 m0=m1
+95 b=750
+100 t1=0
+105 f=0
+110 p=0
+115 n=1
+120 m2=0
+125 s=0
+130 c=0
+135 if z$="yes" then 1150
+140 print
+145 print "lunar landing simulation"
+150 print
+155 print "have you flown an apollo/lem mission before";
+160 print " (yes or no)";
+165 input q$
+170 if q$="yes" then 190
+175 if q$="no" then 205
+180 print "just answer the question, please, ";
+185 goto 160
+190 print
+195 print "input measurement option number";
+200 goto 225
+205 print
+210 print "which system of measurement do you prefer?"
+215 print " 1=metric     0=english"
+220 print "enter the appropriate number";
+225 input k
+230 print
+235 if k=0 then 280
+240 if k=1 then 250
+245 goto 220
+250 z=1852.8
+255 m$="meters"
+260 g3=3.6
+265 n$=" kilometers"
+270 g5=1000
+275 goto 305
+280 z=6080
+285 m$="feet"
+290 g3=.592
+295 n$="n.miles"
+300 g5=z
+305 if b1=3 then 670
+310 if q$="yes" then 485
+315 print
+320 print "  you are on a lunar landing mission.  as the pilot of"
+325 print "the lunar excursion module, you will be expected to"
+330 print "give certain commands to the module navigation system."
+335 print "the on-board computer will give a running account"
+340 print "of information needed to navigate the ship."
+345 print
+350 print
+355 print "the attitude angle called for is described as follows."
+360 print "+ or -180 degrees is directly away from the moon"
+365 print "-90 degrees is on a tangent in the direction of orbit"
+370 print "+90 degrees is on a tangent from the direction of orbit"
+375 print "0 (zero) degrees is directly toward the moon"
+380 print
+385 print tab(30);"-180|+180"
+390 print tab(34);"^"
+395 print tab(27);"-90 < -+- > +90"
+400 print tab(34);"!"
+405 print tab(34);"0"
+410 print tab(21);"<<<< direction of orbit <<<<"
+415 print
+420 print tab(20);"------ surface of moon ------"
+425 print
+430 print
+435 print "all angles between -180 and +180 degrees are accepted."
+440 print
+445 print "1 fuel unit = 1 sec. at max thrust"
+450 print "any discrepancies are accounted for in the use of fuel"
+455 print "for an attitude change."
+460 print "available engine power: 0 (zero) and any value between"
+465 print "10 and 100 percent."
+470 print
+475 print"negative thrust or time is prohibited."
+480 print
+485 print
+490 print "input: time interval in seconds ------ (t)"
+495 print "       percentage of thrust ---------- (p)"
+500 print "       attitude angle in degrees ----- (a)"
+505 print
+510 if q$="yes" then 535
+515 print "for example:"
+520 print "t,p,a? 10,65,-60"
+525 print "to abort the mission at any time, enter 0,0,0"
+530 print
+535 print "output: total time in elapsed seconds"
+540 print "        height in ";m$
+545 print "        distance from landing site in ";m$
+550 print "        vertical velocity in ";m$;"/second"
+555 print "        horizontal velocity in ";m$;"/second"
+560 print "        fuel units remaining"
+565 print
+570 goto 670
+575 print
+580 print "t,p,a";
+585 input t1,f,p
+590 f=f/100
+595 if t1<0 then 905
+600 if t1=0 then 1090
+605 if abs(f-.05)>1 then 945
+610 if abs(f-.05)<.05 then 945
+615 if abs(p)>180 then 925
+620 n=20
+625 if t1<400 then 635
+630 n=t1/20
+635 t1=t1/n
+640 p=p*3.14159/180
+645 s=sin(p)
+650 c=cos(p)
+655 m2=m0*t1*f/b
+660 r3=-.5*r0*((v0/r)^2)+r*a1*a1
+665 a3=-2*r1*a1/r
+670 for i=1 to n
+675 if m1=0 then 715
+680 m1=m1-m2
+685 if m1>0 then 725
+690 f=f*(1+m1/m2)
+695 m2=m1+m2
+700 print "you are out of fuel."
+705 m1=0
+710 goto 725
+715 f=0
+720 m2=0
+725 m=m-.5*m2
+730 r4=r3
+735 r3=-.5*r0*((v0/r)^2)+r*a1*a1
+740 r2=(3*r3-r4)/2+.00526*f1*f*c/m
+745 a4=a3
+750 a3=-2*r1*a1/r
+755 a2=(3*a3-a4)/2+.0056*f1*f*s/(m*r)
+760 x=r1*t1+.5*r2*t1*t1
+765 r=r+x
+770 h0=h0+x
+775 r1=r1+r2*t1
+780 a=a+a1*t1+.5*a2*t1*t1
+785 a1=a1+a2*t1
+790 m=m-.5*m2
+795 t=t+t1
+800 if h0<3.287828e-04 then 810
+805 next i
+810 h=h0*z
+815 h1=r1*z
+820 d=r0*a*z
+825 d1=r*a1*z
+830 t2=m1*b/m0
+835 print " ";t;tab(10);h;tab(23);d;
+840 print tab(37);h1;tab(49);d1;tab(60);t2
+845 if h0<3.287828e-04 then 880
+850 if r0*a>164.474 then 1050
+855 if m1>0 then 580
+860 t1=20
+865 f=0
+870 p=0
+875 goto 620
+880 if r1<-8.21957e-04 then 1020
+885 if abs(r*a1)>4.93174e-04 then 1020
+890 if h0<-3.287828e-04 then 1020
+895 if abs(d)>10*z then 1065
+900 goto 995
+905 print
+910 print "this spacecraft is not able to violate the space-";
+915 print "time continuum."
+920 goto 575
+925 print
+930 print "if you want to spin around, go outside the module"
+935 print "for an e.v.a."
+940 goto 575
+945 print
+950 print "impossible thrust value ";
+955 if f<0 then 985
+960 if f-.05<.05 then 975
+965 print "too large"
+970 goto 575
+975 print "too small"
+980 goto 575
+985 print "negative"
+990 goto 575
+995 print
+1000 print "tranquility base here -- the eagle has landed."
+1005 print "congratulations -- there was no spacecraft damage."
+1010 print "you may now proceed with surface exploration."
+1015 goto 1100
+1020 print
+1025 print "crash !!!!!!!!!!!!!!!!"
+1030 print "your impact created a crater";abs(h);m$;" deep."
+1035 x1=sqr(d1*d1+h1*h1)*g3
+1040 print "at contact you were traveling";x1;n$;"/hr"
+1045 goto 1100
+1050 print
+1055 print "you have been lost in space with no hope of recovery."
+1060 goto 1100
+1065 print "you are down safely - "
+1075 print
+1080 print "but missed the landing site by";abs(d/g5);n$;"."
+1085 goto 1100
+1090 print
+1095 print "mission abended"
+1100 print 
+1105 print "do you want to try it again (yes/no)?"
+1110 input z$
+1115 if z$="yes" then 20
+1120 if z$="no" then 1130
+1125 goto 1105
+1130 print
+1135 print "too bad, the space program hates to lose experienced"
+1140 print "astronauts."
+1145 stop
+1150 print
+1155 print "ok, do you want the complete instructions or the input -"
+1160 print "output statements?"
+1165 print "1=complete instructions"
+1170 print "2=input-output statements"
+1175 print "3=neither"
+1180 input b1
+1185 q$="no"
+1190 if b1=1 then 205
+1195 q$="yes"
+1200 if b1=2 then 190
+1205 if b1=3 then 190
+1210 goto 1165
+1215 end

@@ -1,93 +1,93 @@
-1 PRINT TAB(27);"BIG6"
-2 PRINT TAB(20);"CREATIVE COMPUTING"
-3 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-4 PRINT:PRINT:PRINT
-10 PRINT "  THIS PROGRAM IS A DICE WHEEL GAME IN WHICH"
-20 PRINT "YOU CAN BET ON ANY NUMBER BETWEEN ONE AND SIX"
-30 PRINT "AND UP TO THREE NUMBERS."
-40 PRINT "  THE HOUSE LIMIT IS FROM $1 TO $500!!"
-50 PRINT "TO END THIS PROGRAM TYPE THE WORD 'STOP'."
-60 PRINT "GOOD LUCK!"
-65 PRINT:PRINT
-67 DIM S(3)
-70 GOTO 90
-80 PRINT "YOU CANNOT BET ON LESS THAN ONE OR MORE THAN THREE NUMBERS."
-90 PRINT "HOW MANY NUMBERS DO YOU WANT TO BET ON";
-100 INPUT N$:IF N$="STOP" THEN 3360
-110 N=VAL(N$)
-120 IF N=2 THEN 370
-130 IF N=3 THEN 600
-140 IF N>3 OR N<1 THEN 80
-190 PRINT "WHAT NUMBER";
-200 INPUT V
-210 IF V<=6 OR V>=1 THEN 260
-240 PRINT "YOU CAN ONLY BET ON AN INTEGER FRON ONE TO SIX."
-250 GOTO 190
-260 PRINT "WAGER";
-270 INPUT F
-280 IF F<=500 OR F >=1 THEN 330
-310 PRINT "THE HOUSE LIMIT IS FROM $1 TO $500"
-320 GOTO 260
-330 GOSUB 1870
-340 S2=V:S3=F:GOSUB 2060
-360 GOTO 3260
-370 PRINT "WHAT TWO NUMBERS";
-380 INPUT V,P
-390 IF V<=6 OR V>=1 OR P<=6 OR P>=1 THEN 460
-440 PRINT "YOU CAN ONLY BET ON AN INTEGER FROM ONE TO SIX."
-450 GOTO 370
-460 PRINT "WAGER ON BOTH";
-470 INPUT F,I
-480 IF F<=500 OR F>=1 OR I<=500 OR I>=1 THEN 550
-530 PRINT "THE HOUSE LIMIT IS FROM $1 TO $500."
-540 GOTO 460
-550 GOSUB 1870
-560 S2=V:S3=F:GOSUB 2060
-570 S2=P:S3=I:GOSUB 2060
-590 GOTO 3260
-600 PRINT "WHAT THREE NUMBERS";
-610 INPUT V,P,S
-620 IF V<=6 OR V>=1 OR P<=6 OR P>=1 OR S<=6 OR S>=1 THEN 710
-690 PRINT "YOU CAN ONLY BET ON AN INTEGER FROM ONE TO SIX."
-700 GOTO 600
-710 PRINT "WAGER ON EACH OF THE THREE";
-720 INPUT F,I,J
-730 IF F<=500 OR F>=1 OR I<=500 OR I>=1 OR J<=500 OR J>=1 THEN 820
-800 PRINT "THE HOUSE LIMIT IS FROM $1 TO $500."
-810 GOTO 710
-820 GOSUB 1870
-830 S2=V:S3=F:GOSUB 2060
-840 S2=P:S3=I:GOSUB 2060
-850 S2=S:S3=J:GOSUB 2060
-870 GOTO 3260
-1870 X=-1
-1880 A=INT(6*RND(1)+1):B=INT(6*RND(1)+1):C=INT(6*RND(1)+1)
-1890 S(1)=A:S(2)=B:S(3)=C
-1900 FOR Y=1 TO 2
-1910 FOR X=1 TO 3-Y
-1920 IF S(X)<=S(X+1) THEN 1940
-1930 TE=S(X):S(X)=S(X+1):S(X+1)=TE
-1940 NEXT X:NEXT Y
-1950 PRINT "THE LUCKY NUMBERS ARE: "S(1);S(2);S(3)
-1960 RETURN
-2060 C1=0
-2070 IF S2=A THEN C1=C1+1
-2080 IF S2=B THEN C1=C1+1
-2090 IF S2=C THEN C1=C1+1
-2100 IF C1>0 THEN 2130
-2110 S3=S3*(-1)
-2120 PRINT "YOU LOSE ON: ";S2:GOTO 2150
-2130 S3=S3*C1
-2140 PRINT "YOU WIN ";C1;" TIMES ON:"S2
-2150 W=W+S3
-2160 RETURN
-3260 IF W=0 THEN PRINT "YOU'RE EVEN!!":PRINT:GOTO 90
-3270 IF W>0 THEN PRINT "YOU'RE AHEAD $";W:PRINT:GOTO 90
-3280 IF W<0 THEN PRINT "YOU'RE BEHIND $";W:PRINT:GOTO 90
-3350 REM
-3360 PRINT:PRINT:PRINT "SO YOU WANT TO CASH IN YOUR CHIPS, I SEE!!"
-3370 IF W>0 THEN 3410
-3380 PRINT "YOU DIDN'T WIN ANY MONEY, BUT I'M WILLING TO CALL IT EVEN!!"
-3390 GOTO 3440
-3410 PRINT "YOU WON EXACTLY $";W;"!! NOT BAD !!!"
-3440 END
+1 print tab(27);"big6"
+2 print tab(20);"creative computing"
+3 print tab(18);"morristown, new jersey"
+4 print:print:print
+10 print "  this program is a dice wheel game in which"
+20 print "you can bet on any number between one and six"
+30 print "and up to three numbers."
+40 print "  the house limit is from $1 to $500!!"
+50 print "to end this program type the word 'stop'."
+60 print "good luck!"
+65 print:print
+67 dim s(3)
+70 goto 90
+80 print "you cannot bet on less than one or more than three numbers."
+90 print "how many numbers do you want to bet on";
+100 input n$:if n$="stop" then 3360
+110 n=val(n$)
+120 if n=2 then 370
+130 if n=3 then 600
+140 if n>3 or n<1 then 80
+190 print "what number";
+200 input v
+210 if v<=6 or v>=1 then 260
+240 print "you can only bet on an integer fron one to six."
+250 goto 190
+260 print "wager";
+270 input f
+280 if f<=500 or f >=1 then 330
+310 print "the house limit is from $1 to $500"
+320 goto 260
+330 gosub 1870
+340 s2=v:s3=f:gosub 2060
+360 goto 3260
+370 print "what two numbers";
+380 input v,p
+390 if v<=6 or v>=1 or p<=6 or p>=1 then 460
+440 print "you can only bet on an integer from one to six."
+450 goto 370
+460 print "wager on both";
+470 input f,i
+480 if f<=500 or f>=1 or i<=500 or i>=1 then 550
+530 print "the house limit is from $1 to $500."
+540 goto 460
+550 gosub 1870
+560 s2=v:s3=f:gosub 2060
+570 s2=p:s3=i:gosub 2060
+590 goto 3260
+600 print "what three numbers";
+610 input v,p,s
+620 if v<=6 or v>=1 or p<=6 or p>=1 or s<=6 or s>=1 then 710
+690 print "you can only bet on an integer from one to six."
+700 goto 600
+710 print "wager on each of the three";
+720 input f,i,j
+730 if f<=500 or f>=1 or i<=500 or i>=1 or j<=500 or j>=1 then 820
+800 print "the house limit is from $1 to $500."
+810 goto 710
+820 gosub 1870
+830 s2=v:s3=f:gosub 2060
+840 s2=p:s3=i:gosub 2060
+850 s2=s:s3=j:gosub 2060
+870 goto 3260
+1870 x=-1
+1880 a=int(6*rnd(1)+1):b=int(6*rnd(1)+1):c=int(6*rnd(1)+1)
+1890 s(1)=a:s(2)=b:s(3)=c
+1900 for y=1 to 2
+1910 for x=1 to 3-y
+1920 if s(x)<=s(x+1) then 1940
+1930 te=s(x):s(x)=s(x+1):s(x+1)=te
+1940 next x:next y
+1950 print "the lucky numbers are: "s(1);s(2);s(3)
+1960 return
+2060 c1=0
+2070 if s2=a then c1=c1+1
+2080 if s2=b then c1=c1+1
+2090 if s2=c then c1=c1+1
+2100 if c1>0 then 2130
+2110 s3=s3*(-1)
+2120 print "you lose on: ";s2:goto 2150
+2130 s3=s3*c1
+2140 print "you win ";c1;" times on:"s2
+2150 w=w+s3
+2160 return
+3260 if w=0 then print "you're even!!":print:goto 90
+3270 if w>0 then print "you're ahead $";w:print:goto 90
+3280 if w<0 then print "you're behind $";w:print:goto 90
+3350 rem
+3360 print:print:print "so you want to cash in your chips, i see!!"
+3370 if w>0 then 3410
+3380 print "you didn't win any money, but i'm willing to call it even!!"
+3390 goto 3440
+3410 print "you won exactly $";w;"!! not bad !!!"
+3440 end

@@ -1,176 +1,176 @@
-1 PRINT TAB(25)"WARFISH"
-2 PRINT TAB(20)"CREATIVE COMPUTING"
-3 PRINT TAB(18)"MORRISTOWN, NEW JERSEY"
-5 PRINT
-6 PRINT
-7 PRINT
-8 PRINT
-9 DIM A$(72)
-10 Q0=RND(1)
-30 PRINT"DO YOU DESIRE THE RULES OF WARFISH ";
-40 INPUT X$
-50 IF X$="NO" THEN 200
-51 IF X$="YES" THEN 60
-52 PRINT"YES OR NO ONLY, PLEASE."
-53 GOTO 30
-60 PRINT
-70 PRINT"YOU COMMAND AN AMERICAN SUBMARINE THAT BEEN SENT OUT"
-80 PRINT"TO ATTACK JAPANESE SHIPS AT SEA DURING WORLD WAR TWO"
-90 PRINT
-100 PRINT" THE ORDERS THAT CAN BE GIVEN ARE THE FOLLOWING:"
-110 PRINT"PERISCOPE - TO SEARCH FOR JAPANESE SHIPS"
-120 PRINT"TORPEDO - TO LAUNCH TORPEDOES AT JAPANESE SHIPS"
-130 PRINT "DIVE - TO ESCAPE JAPANESE SHIPS THAT ARE ATTACKING"
-140 PRINT
-150 PRINT"THESE ARE SOME HISTORIC U.S. NAVY SUBMARINES -"
-160 PRINT"      TAUTOG, SILVERSIDES, CAVALLA, BLUEFISH, THRESHER"
-170 PRINT"       SWORDFISH, FLASHER, TROUT,ARCHER"
-180 PRINT"SELECT ONE OF THE ABOVE, OR USE A NAME OF YOUR CHOICE"
-200 PRINT"PRINT THE NAME OF YOUR SUBMARINE ";
-210 INPUT A$
-220 T=26
-230 D=INT(RND(1)*10)
-240 IF D<6 THEN 330
-250 IF D<>6 AND D<> 7 THEN 270
-255 R$="DESTROYER"
-260 W=2100
-270 IF D<>8 THEN290
-271 R$="DESTROYER ESCORT"
-280 W=1350
-290 IF D<>9 THEN 310
-291 R$="TORPEDO BOAT"
-300 W=70
-310 IF D=6 OR D=7 THEN 313
-311 Q=1
-312 GOTO 314
-313 Q=2
-314 PRINT
-315 PRINT
-320 PRINT"JAPANESE ";R$;" IS ATTACKING"
-330 IF D>= 6 THEN 340
-335 A=INT(RND(1)*10)
-340 PRINT
-350 PRINT
-360 PRINT"ORDERS, COMMANDER  ";
-370 INPUT C$
-371 C$=MID$(C$,1,1)
-380 IF C$="P" THEN 420
-390 IF C$="T" THEN 780
-400 IF C$="D" THEN 990
-410 GOTO 360
-420 IF D>5 OR Q>0 THEN 760
-430 IF A>=4 THEN 470
-435 R$="FREIGHTER"
-440 IF A<>0 AND A<>1 THEN 450
-445 W=6500
-450 IF A<> 2 THEN 460
-455 W=7500
-460 IF A<>3 THEN 470
-465 W=8100
-470 IF A<>7 AND A<>8 THEN 490
-475 R$="TANKER"
-480 IF A<>8 THEN 485
-481 W=10000
-482 GOTO 490
-485 W=9500
-490 IF A<>4 AND A<>5 THEN 510
-491 R$="TRANSPORT"
-500 IF A<>5 THEN 505
-501 W=11500
-502 GOTO 510
-505 W=8800
-510 IF A<>6 THEN 530
-515 R$="AMMUNITION SHIP"
-520 W=9650
-530 IF A>=9 OR A=6 THEN 540
-535 Q=1
-540 IF A<>6 THEN 550
-545 Q=1
-550 IF A<9 THEN 760
-560 E=INT(RND(1)*10)
-570 IF E<>0 THEN 590
-575 R$="BATTLESHIP"
-580 W=33500
-590 IF E<>1 THEN 610
-595 R$="AIRCRAFT CARRIER"
-600 W=25700
-610 IF E<>2 THEN 630
-615 R$="HEAVY CRUISER"
-620 W= 9900
-630 IF E<>3 THEN 650
-635 R$="LIGHT CRUISER"
-640 W=9600
-650 IF E<>4 AND E<>5 THEN 670
-655 R$="DESTROYER"
-660 W=2100
-670 IF E<>6 AND E<>7 THEN 690
-675 R$="SUBMARINE"
-680 W=1500
-690 IF E<>8 AND E<>9 THEN 710
-700 W=1350
-710 IF E<=5 THEN 720
-715 Q=1
-720 IF E<>4 ANDE<>5 THEN 730
-725 Q=2
-730 IF E<>2 AND E<>3 THEN 740
-735 Q=3
-740 IF E<>1 THEN 750
-745 W=4
-750 IFE<>0 THEN 760
-755 Q=6
-760 PRINT"JAPANESE ";R$;" - ";W;" TONS"
-770 GOTO 340
-780 IF Q>=1 THEN 800
-785 PRINT" NO JAPANESE SHIPS IN SIGHT - JUST OCEAN"
-790 IF Q<1 THEN 360
-800 PRINT T;" TORPEDOES LEFT"
-810 PRINT"NUMBER OF TORPEDOES TO FIRE";
-820 INPUT R
-830 IF R<0 OR T-R<0 THEN 810
-840 IF R<>INT(R) THEN 810
-850 T=T-R
-860 S=INT(RND(1)*10)
-870 IF S>R THEN 860
-880 Q=Q-S
-890 IF Q<=0 THEN 900
-895 Q$="DAMAGED"
-900 IF Q>=1 THEN 930
-905 Q$="SUNK"
-910 O=O+W
-920 L=L+1
-930 PRINT R;" TORPEDOES FIRED -";S;" HITS";
-940 IF S<>0 THEN 950
-945 PRINT
-950 IF S<=0 THEN 960
-955 PRINT" -"; R$;" ";Q$
-960 IF D>5 AND Q>0 THEN 1140
-970 IF T<1 THEN 1160
-980 IF Q<1 THEN 230
-985 GOTO 340
-990 IF D>=6 THEN 1000
-995 PRINT" THEN USS ";A$;" IS NOT UNDER ATTACK"
-1000 IF D<6 THEN 360
-1010 U=INT(RND(1)*10)*250+500
-1020 PRINT "DISTANCE OF JAPANESE ";R$;"            DEPTH OF USS ";A$
-1030 PRINT U;"YARDS                                  ";Z;"FEET"
-1040 U=U-250
-1050 Z=Z+25
-1060 IF U>-250 THEN 1030
-1070 IF R$="TORPEDO BOAT " THEN 1100
-1080 N=INT(RND(1)*10)*25+50
-1090 IF N+26>Z AND N-26<Z THEN 1120
-1099 U=Z=0
-1100 PRINT"THE USS ";A$;" IS UNHURT"
-1110 Q=0
-1111 GOTO 230
-1120 PRINT"THE USS ";A$;" HAS BEEN SUNK BY DEPTH CHARGES"
-1130 GOTO 1180
-1140 PRINT"THE USS ";A$;" HAS BEEN SUNK BY GUNFIRE"
-1150 GOTO 1180
-1160 PRINT"THE USS ";A$;" HAS EXPENDED ALL OF ITS TORPEDOES"
-1170 IF O<=0 THEN 1180
-1175 PRINT"CONGRATULATIONS ON A SUCCESSFUL DEPLOYMENT"
-1180 PRINT
-1190 PRINT" THE SUBMARINE USS ";A$;" HAS SUNK A TOTAL OF";L;" SHIPS"
-1200 PRINT" THE ENEMY TONNAGE SUNK IS "JO;" TONS"
-1210 END
+1 print tab(25)"warfish"
+2 print tab(20)"creative computing"
+3 print tab(18)"morristown, new jersey"
+5 print
+6 print
+7 print
+8 print
+9 dim a$(72)
+10 q0=rnd(1)
+30 print"do you desire the rules of warfish ";
+40 input x$
+50 if x$="no" then 200
+51 if x$="yes" then 60
+52 print"yes or no only, please."
+53 goto 30
+60 print
+70 print"you command an american submarine that been sent out"
+80 print"to attack japanese ships at sea during world war two"
+90 print
+100 print" the orders that can be given are the following:"
+110 print"periscope - to search for japanese ships"
+120 print"torpedo - to launch torpedoes at japanese ships"
+130 print "dive - to escape japanese ships that are attacking"
+140 print
+150 print"these are some historic u.s. navy submarines -"
+160 print"      tautog, silversides, cavalla, bluefish, thresher"
+170 print"       swordfish, flasher, trout,archer"
+180 print"select one of the above, or use a name of your choice"
+200 print"print the name of your submarine ";
+210 input a$
+220 t=26
+230 d=int(rnd(1)*10)
+240 if d<6 then 330
+250 if d<>6 and d<> 7 then 270
+255 r$="destroyer"
+260 w=2100
+270 if d<>8 then290
+271 r$="destroyer escort"
+280 w=1350
+290 if d<>9 then 310
+291 r$="torpedo boat"
+300 w=70
+310 if d=6 or d=7 then 313
+311 q=1
+312 goto 314
+313 q=2
+314 print
+315 print
+320 print"japanese ";r$;" is attacking"
+330 if d>= 6 then 340
+335 a=int(rnd(1)*10)
+340 print
+350 print
+360 print"orders, commander  ";
+370 input c$
+371 c$=mid$(c$,1,1)
+380 if c$="p" then 420
+390 if c$="t" then 780
+400 if c$="d" then 990
+410 goto 360
+420 if d>5 or q>0 then 760
+430 if a>=4 then 470
+435 r$="freighter"
+440 if a<>0 and a<>1 then 450
+445 w=6500
+450 if a<> 2 then 460
+455 w=7500
+460 if a<>3 then 470
+465 w=8100
+470 if a<>7 and a<>8 then 490
+475 r$="tanker"
+480 if a<>8 then 485
+481 w=10000
+482 goto 490
+485 w=9500
+490 if a<>4 and a<>5 then 510
+491 r$="transport"
+500 if a<>5 then 505
+501 w=11500
+502 goto 510
+505 w=8800
+510 if a<>6 then 530
+515 r$="ammunition ship"
+520 w=9650
+530 if a>=9 or a=6 then 540
+535 q=1
+540 if a<>6 then 550
+545 q=1
+550 if a<9 then 760
+560 e=int(rnd(1)*10)
+570 if e<>0 then 590
+575 r$="battleship"
+580 w=33500
+590 if e<>1 then 610
+595 r$="aircraft carrier"
+600 w=25700
+610 if e<>2 then 630
+615 r$="heavy cruiser"
+620 w= 9900
+630 if e<>3 then 650
+635 r$="light cruiser"
+640 w=9600
+650 if e<>4 and e<>5 then 670
+655 r$="destroyer"
+660 w=2100
+670 if e<>6 and e<>7 then 690
+675 r$="submarine"
+680 w=1500
+690 if e<>8 and e<>9 then 710
+700 w=1350
+710 if e<=5 then 720
+715 q=1
+720 if e<>4 ande<>5 then 730
+725 q=2
+730 if e<>2 and e<>3 then 740
+735 q=3
+740 if e<>1 then 750
+745 w=4
+750 ife<>0 then 760
+755 q=6
+760 print"japanese ";r$;" - ";w;" tons"
+770 goto 340
+780 if q>=1 then 800
+785 print" no japanese ships in sight - just ocean"
+790 if q<1 then 360
+800 print t;" torpedoes left"
+810 print"number of torpedoes to fire";
+820 input r
+830 if r<0 or t-r<0 then 810
+840 if r<>int(r) then 810
+850 t=t-r
+860 s=int(rnd(1)*10)
+870 if s>r then 860
+880 q=q-s
+890 if q<=0 then 900
+895 q$="damaged"
+900 if q>=1 then 930
+905 q$="sunk"
+910 o=o+w
+920 l=l+1
+930 print r;" torpedoes fired -";s;" hits";
+940 if s<>0 then 950
+945 print
+950 if s<=0 then 960
+955 print" -"; r$;" ";q$
+960 if d>5 and q>0 then 1140
+970 if t<1 then 1160
+980 if q<1 then 230
+985 goto 340
+990 if d>=6 then 1000
+995 print" then uss ";a$;" is not under attack"
+1000 if d<6 then 360
+1010 u=int(rnd(1)*10)*250+500
+1020 print "distance of japanese ";r$;"            depth of uss ";a$
+1030 print u;"yards                                  ";z;"feet"
+1040 u=u-250
+1050 z=z+25
+1060 if u>-250 then 1030
+1070 if r$="torpedo boat " then 1100
+1080 n=int(rnd(1)*10)*25+50
+1090 if n+26>z and n-26<z then 1120
+1099 u=z=0
+1100 print"the uss ";a$;" is unhurt"
+1110 q=0
+1111 goto 230
+1120 print"the uss ";a$;" has been sunk by depth charges"
+1130 goto 1180
+1140 print"the uss ";a$;" has been sunk by gunfire"
+1150 goto 1180
+1160 print"the uss ";a$;" has expended all of its torpedoes"
+1170 if o<=0 then 1180
+1175 print"congratulations on a successful deployment"
+1180 print
+1190 print" the submarine uss ";a$;" has sunk a total of";l;" ships"
+1200 print" the enemy tonnage sunk is "jo;" tons"
+1210 end

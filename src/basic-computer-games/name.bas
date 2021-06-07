@@ -1,25 +1,25 @@
-1 PRINT TAB(34);"NAME"
-2 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-3 PRINT: PRINT: PRINT
-5 DIM B$(40)
-10 PRINT "HELLO.": PRINT "MY NAME IS CREATIVE COMPUTER."
-20 PRINT "WHAT'S YOUR NAME (FIRST AND LAST";: INPUT A$: L=LEN(A$)
-30 PRINT: PRINT "THANK YOU, ";
-40 FOR I=1 TO L: B$(I)=MID$(A$,I,1): NEXT I
-50 FOR I=L TO 1 STEP -1: PRINT B$(I);: NEXT I
-60 PRINT ".": PRINT "OOPS!  I GUESS I GOT IT BACKWARDS.  A SMART"
-70 PRINT "COMPUTER LIKE ME SHOULDN'T MAKE A MISTAKE LIKE THAT!": PRINT
-80 PRINT "BUT I JUST NOTICED YOUR LETTERS ARE OUT OF ORDER."
-90 PRINT "LET'S PUT THEM IN ORDER LIKE THIS: ";
-100 FOR J=2 TO L: I=J-1: T$=B$(J)
-110 IF T$>B$(I) THEN 130
-120 B$(I+1)=B$(I): I=I-1: IF I>0 THEN 110
-130 B$(I+1)=T$: NEXT J
-140 FOR I=1 TO L: PRINT B$(I);: NEXT I: PRINT: PRINT
-150 PRINT "DON'T YOU LIKE THAT BETTER";: INPUT D$
-160 IF D$="YES" THEN 180
-170 PRINT: PRINT "I'M SORRY YOU DON'T LIKE IT THAT WAY.": GOTO 200
-180 PRINT: PRINT "I KNEW YOU'D AGREE!!"
-200 PRINT: PRINT "I REALLY ENJOYED MEETING YOU ";A$;"."
-210 PRINT "HAVE A NICE DAY!"
-999 END
+1 print tab(34);"name"
+2 print tab(15);"creative computing  morristown, new jersey"
+3 print: print: print
+5 dim b$(40)
+10 print "hello.": print "my name is creative computer."
+20 print "what's your name (first and last";: input a$: l=len(a$)
+30 print: print "thank you, ";
+40 for i=1 to l: b$(i)=mid$(a$,i,1): next i
+50 for i=l to 1 step -1: print b$(i);: next i
+60 print ".": print "oops!  i guess i got it backwards.  a smart"
+70 print "computer like me shouldn't make a mistake like that!": print
+80 print "but i just noticed your letters are out of order."
+90 print "let's put them in order like this: ";
+100 for j=2 to l: i=j-1: t$=b$(j)
+110 if t$>b$(i) then 130
+120 b$(i+1)=b$(i): i=i-1: if i>0 then 110
+130 b$(i+1)=t$: next j
+140 for i=1 to l: print b$(i);: next i: print: print
+150 print "don't you like that better";: input d$
+160 if d$="yes" then 180
+170 print: print "i'm sorry you don't like it that way.": goto 200
+180 print: print "i knew you'd agree!!"
+200 print: print "i really enjoyed meeting you ";a$;"."
+210 print "have a nice day!"
+999 end

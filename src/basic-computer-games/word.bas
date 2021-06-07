@@ -1,65 +1,65 @@
-2 PRINT TAB(33);"WORD"
-3 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-4 PRINT: PRINT: PRINT
-5 DIM S(7),A(7),L(7),D(7),P(7)
-10 PRINT "I AM THINKING OF A WORD -- YOU GUESS IT.  I WILL GIVE YOU"
-15 PRINT "CLUES TO HELP YOU GET IT.  GOOD LUCK!!": PRINT: PRINT
-20 REM
-30 PRINT: PRINT: PRINT "YOU ARE STARTING A NEW GAME..."
-35 RESTORE
-40 READ N
-50 C=INT(RND(1)*N+1)
-60 FOR I=1 TO C
-70 READ S$
-80 NEXT I
-90 G=0
-95 S(0)=LEN(S$)
-100 FOR I=1 TO LEN(S$): S(I)=ASC(MID$(S$,I,1)): NEXT I
-110 FOR I=1 TO 5
-120 A(I)=45
-130 NEXT I
-140 FOR J=1 TO 5
-144 P(J)=0
-146 NEXT J
-150 PRINT "GUESS A FIVE LETTER WORD";
-160 INPUT L$
-170 G=G+1
-172 IF S$=L$ THEN 500
-173 FOR I=1 TO 7: P(I)=0: NEXT I
-175 L(0)=LEN(L$)
-180 FOR I=1 TO LEN(L$): L(I)=ASC(MID$(L$,I,1)): NEXT I
-190 IF L(1)=63 THEN 300
-200 IF L(0)<>5 THEN 400
-205 M=0: Q=1
-210 FOR I=1 TO 5
-220 FOR J=1 TO 5
-230 IF S(I)<>L(J) THEN 260
-231 P(Q)=L(J)
-232 Q=Q+1
-233 IF I<>J THEN 250
-240 A(J)=L(J)
-250 M=M+1
-260 NEXT J
-265 NEXT I
-270 A(0)=5
-272 P(0)=M
-275 A$="": FOR I=1 TO A(0): A$=A$+CHR$(A(I)): NEXT I
-277 P$="": FOR I=1 TO P(0): P$=P$+CHR$(P(I)): NEXT I
-280 PRINT "THERE WERE";M;"MATCHES AND THE COMMON LETTERS WERE...";P$
-285 PRINT "FROM THE EXACT LETTER MATCHES, YOU KNOW................";A$
-286 IF A$=S$ THEN 500
-287 IF M>1 THEN 289
-288 PRINT: PRINT "IF YOU GIVE UP, TYPE '?' FOR YOUR NEXT GUESS."
-289 PRINT
-290 GOTO 150
-300 S$="": FOR I=1 TO 7: S$=S$+CHR$(S(I)): NEXT I
-310 PRINT "THE SECRET WORD IS ";S$: PRINT
-320 GOTO 30
-400 PRINT "YOU MUST GUESS A 5 LETTER WORD.  START AGAIN."
-410 PRINT: G=G-1: GOTO 150
-500 PRINT "YOU HAVE GUESSED THE WORD.  IT TOOK";G;"GUESSES!": PRINT
-510 INPUT "WANT TO PLAY AGAIN";Q$
-520 IF Q$="YES" THEN 30
-530 DATA 12,"DINKY","SMOKE","WATER","GRASS","TRAIN","MIGHT","FIRST"
-540 DATA "CANDY","CHAMP","WOULD","CLUMP","DOPEY"
-999 END
+2 print tab(33);"word"
+3 print tab(15);"creative computing  morristown, new jersey"
+4 print: print: print
+5 dim s(7),a(7),l(7),d(7),p(7)
+10 print "i am thinking of a word -- you guess it.  i will give you"
+15 print "clues to help you get it.  good luck!!": print: print
+20 rem
+30 print: print: print "you are starting a new game..."
+35 restore
+40 read n
+50 c=int(rnd(1)*n+1)
+60 for i=1 to c
+70 read s$
+80 next i
+90 g=0
+95 s(0)=len(s$)
+100 for i=1 to len(s$): s(i)=asc(mid$(s$,i,1)): next i
+110 for i=1 to 5
+120 a(i)=45
+130 next i
+140 for j=1 to 5
+144 p(j)=0
+146 next j
+150 print "guess a five letter word";
+160 input l$
+170 g=g+1
+172 if s$=l$ then 500
+173 for i=1 to 7: p(i)=0: next i
+175 l(0)=len(l$)
+180 for i=1 to len(l$): l(i)=asc(mid$(l$,i,1)): next i
+190 if l(1)=63 then 300
+200 if l(0)<>5 then 400
+205 m=0: q=1
+210 for i=1 to 5
+220 for j=1 to 5
+230 if s(i)<>l(j) then 260
+231 p(q)=l(j)
+232 q=q+1
+233 if i<>j then 250
+240 a(j)=l(j)
+250 m=m+1
+260 next j
+265 next i
+270 a(0)=5
+272 p(0)=m
+275 a$="": for i=1 to a(0): a$=a$+chr$(a(i)): next i
+277 p$="": for i=1 to p(0): p$=p$+chr$(p(i)): next i
+280 print "there were";m;"matches and the common letters were...";p$
+285 print "from the exact letter matches, you know................";a$
+286 if a$=s$ then 500
+287 if m>1 then 289
+288 print: print "if you give up, type '?' for your next guess."
+289 print
+290 goto 150
+300 s$="": for i=1 to 7: s$=s$+chr$(s(i)): next i
+310 print "the secret word is ";s$: print
+320 goto 30
+400 print "you must guess a 5 letter word.  start again."
+410 print: g=g-1: goto 150
+500 print "you have guessed the word.  it took";g;"guesses!": print
+510 input "want to play again";q$
+520 if q$="yes" then 30
+530 data 12,"dinky","smoke","water","grass","train","might","first"
+540 data "candy","champ","would","clump","dopey"
+999 end

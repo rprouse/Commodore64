@@ -1,85 +1,85 @@
-10 PRINT TAB(21);"MOTORCYCLE JUMP"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-40 PRINT:PRINT:PRINT
-50 DIM I2(14),I$(84)
-90 I$="R.ARM L.ARM R.LEG L.LEG BACK  NECK  SKULL RIBS  KNEE  BUTT  "
-100 I$=I$+"FACE  PELVISPRIDE BIKE  "
-110 T=.1
-130 T2=0
-140 T3=0
-150 PRINT "WE'RE AT THE SCENE OF THE BIG MOTORCYCLE JUMP!"
-160 INPUT "HOW MANY BUSSES WILL YOU TRY TO JUMP";N
-170 J=N*15
-180 PRINT N;" BUSSES!  THAT'S ";J;" FEET!"
-190 INPUT "WHAT RAMP ANGLE WILL YOU USE";A2
-200 IF A2<90 AND A2>0 THEN 230
-210 PRINT A2;" DEGREES? THAT'S IMPOSSIBLE.  COME ON NOW, "
-220 GOTO 190
-230 A=A2*.01745
-240 INPUT "HOW FAST WILL YOU LEAVE THE RAMP";S
-250 PRINT "      GOOD LUCK!"
-260 IF S>0 THEN 300
-270 PRINT "A PRACTICE JUMP!"
-280 PRINT "OK, THIS TIME ";
-290 GOTO 240
-300 H=6
-310 D=0
-320 G=6
-330 R2=0
-340 S2=0
-350 S=S*1.5
-360 PRINT "THERE HE GOES!!!!"
-380 S=S-S2
-390 F=S*T
-400 D2=F*COS(A)
-410 R=F*SIN(A)
-420 R2=R2+(32*T)
-430 R3=R2*T
-440 H=H+R-R3
-450 D=D+D2
-460 PRINT "*";
-480 S2=(S/120)*32*T
-490 IF D>=J THEN G=G-R
-510 IF G<=0 THEN G=0
-520 IF H>G THEN 380
-530 IF D<J THEN 600
-540 IF D>J+20 THEN 640
-550 L=((D-J)/30)+RND(1)
-560 IF L>.8 THEN 650
-570 PRINT "HE MADE IT !  GREAT JUMP, KILLER!"
-580 T2=T2+1
-590 GOTO 920
-600 PRINT "HE'S SHORT OF THE RAMP ....."
-620 L2=INT((((J-D)/5)*2)+(RND(1)*5)+.5)
-630 GOTO 670
-640 PRINT "HE JUMPED TOO FAR!"
-650 PRINT "HE MISSED THE RAMP."
-660 L2=INT(((D+20-J)/20)+(RND(1)*5))
-670 PRINT "I THINK HE'S HURT......"
-680 FOR K=1 TO 14
-690 I2(K)=K
-700 NEXT K
-710 K2=14
-720 IF L2>14 THEN L2=14
-730 IF L2<=0 THEN L2=1
-760 FOR K=1 TO L2
-770 V=INT(RND(1)*1000)
-780 V=(V-(INT(V/K2)*K2))+1
-790 H2=I2(V)
-800 I2(V)=I2(K2)
-810 I2(K2)=H2
-820 K2=K2-1
-830 NEXT K
-840 PRINT "WELL, KILLER, THE DOCTOR SAYS YOU BROKE YOUR:"
-860 FOR K=(15-L2) TO 14
-880 P=(6*I2(K))-5
-890 A$=MID$(I$,P,6)
-900 PRINT A$
-910 NEXT K
-920 T3=T3+1
-930 INPUT "WANT TO JUMP AGAIN";A$
-940 IF LEFT$(A$,1)="Y" THEN PRINT:PRINT:GOTO 160
-950 PRINT "YOU MADE IT ";T2;" OUT OF ";T3;" ATTEMPTS."
-960 PRINT "BE CAREFUL, NOW."
-970 END
+10 print tab(21);"motorcycle jump"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey"
+40 print:print:print
+50 dim i2(14),i$(84)
+90 i$="r.arm l.arm r.leg l.leg back  neck  skull ribs  knee  butt  "
+100 i$=i$+"face  pelvispride bike  "
+110 t=.1
+130 t2=0
+140 t3=0
+150 print "we're at the scene of the big motorcycle jump!"
+160 input "how many busses will you try to jump";n
+170 j=n*15
+180 print n;" busses!  that's ";j;" feet!"
+190 input "what ramp angle will you use";a2
+200 if a2<90 and a2>0 then 230
+210 print a2;" degrees? that's impossible.  come on now, "
+220 goto 190
+230 a=a2*.01745
+240 input "how fast will you leave the ramp";s
+250 print "      good luck!"
+260 if s>0 then 300
+270 print "a practice jump!"
+280 print "ok, this time ";
+290 goto 240
+300 h=6
+310 d=0
+320 g=6
+330 r2=0
+340 s2=0
+350 s=s*1.5
+360 print "there he goes!!!!"
+380 s=s-s2
+390 f=s*t
+400 d2=f*cos(a)
+410 r=f*sin(a)
+420 r2=r2+(32*t)
+430 r3=r2*t
+440 h=h+r-r3
+450 d=d+d2
+460 print "*";
+480 s2=(s/120)*32*t
+490 if d>=j then g=g-r
+510 if g<=0 then g=0
+520 if h>g then 380
+530 if d<j then 600
+540 if d>j+20 then 640
+550 l=((d-j)/30)+rnd(1)
+560 if l>.8 then 650
+570 print "he made it !  great jump, killer!"
+580 t2=t2+1
+590 goto 920
+600 print "he's short of the ramp ....."
+620 l2=int((((j-d)/5)*2)+(rnd(1)*5)+.5)
+630 goto 670
+640 print "he jumped too far!"
+650 print "he missed the ramp."
+660 l2=int(((d+20-j)/20)+(rnd(1)*5))
+670 print "i think he's hurt......"
+680 for k=1 to 14
+690 i2(k)=k
+700 next k
+710 k2=14
+720 if l2>14 then l2=14
+730 if l2<=0 then l2=1
+760 for k=1 to l2
+770 v=int(rnd(1)*1000)
+780 v=(v-(int(v/k2)*k2))+1
+790 h2=i2(v)
+800 i2(v)=i2(k2)
+810 i2(k2)=h2
+820 k2=k2-1
+830 next k
+840 print "well, killer, the doctor says you broke your:"
+860 for k=(15-l2) to 14
+880 p=(6*i2(k))-5
+890 a$=mid$(i$,p,6)
+900 print a$
+910 next k
+920 t3=t3+1
+930 input "want to jump again";a$
+940 if left$(a$,1)="y" then print:print:goto 160
+950 print "you made it ";t2;" out of ";t3;" attempts."
+960 print "be careful, now."
+970 end

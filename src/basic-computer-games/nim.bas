@@ -1,156 +1,156 @@
-100 PRINT TAB(33);"NIM"
-110 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-120 PRINT:PRINT:PRINT
-210 DIM A(100),B(100,10),D(2)
-220 PRINT "THIS IS THE GAME OF NIM."
-230 PRINT "DO YOU WANT INSTRUCTIONS";
-240 INPUT Z$
-250 IF Z$="NO" THEN 440
-260 IF Z$="no" THEN 440
-270 IF Z$="YES" THEN 310
-280 IF Z$="yes" THEN 310
-290 PRINT "PLEASE ANSWER YES OR NO"
-300 GOTO 240
-310 PRINT "THE GAME IS PLAYED WITH A NUMBER OF PILES OF OBJECTS."
-320 PRINT "ANY NUMBER OF OBJECTS ARE REMOVED FROM ONE PILE BY YOU AND"
-330 PRINT "THE MACHINE ALTERNATELY.  ON YOUR TURN, YOU MAY TAKE"
-340 PRINT "ALL THE OBJECTS THAT REMAIN IN ANY PILE, BUT YOU MUST"
-350 PRINT "TAKE AT LEAST ONE OBJECT, AND YOU MAY TAKE OBJECTS FROM"
-360 PRINT "ONLY ONE PILE ON A SINGLE TURN.  YOU MUST SPECIFY WHETHER"
-370 PRINT "WINNING IS DEFINED AS TAKING OR NOT TAKING THE LAST OBJECT,"
-380 PRINT "THE NUMBER OF PILES IN THE GAME, AND HOW MANY OBJECTS ARE"
-390 PRINT "ORIGINALLY IN EACH PILE.  EACH PILE MAY CONTAIN A"
-400 PRINT "DIFFERENT NUMBER OF OBJECTS."
-410 PRINT "THE MACHINE WILL SHOW ITS MOVE BY LISTING EACH PILE AND THE"
-420 PRINT "NUMBER OF OBJECTS REMAINING IN THE PILES AFTER  EACH OF ITS"
-430 PRINT "MOVES."
-440 PRINT
-450 PRINT "ENTER WIN OPTION - 1 TO TAKE LAST, 2 TO AVOID LAST";
-460 INPUT W
-470 IF W=1 THEN 490
-480 IF W<>2 THEN 450
-490 PRINT "ENTER NUMBER OF PILES";
-500 INPUT N
-510 IF N>100 THEN 490
-520 IF N<1 THEN 490
-530 IF N<>INT(N) THEN 490
-540 PRINT "ENTER PILE SIZES"
-550 FOR I=1 TO N
-560 PRINT I;
-570 INPUT A(I)
-580 IF A(I)>2000 THEN 560
-590 IF A(I)<1 THEN 560
-600 IF A(I)<>INT(A(I)) THEN 560
-610 NEXT I
-620 PRINT "DO YOU WANT TO MOVE FIRST";
-630 INPUT Q9$
-640 IF Q9$="YES" THEN 1450
-650 IF Q9$="yes" THEN 1450
-660 IF Q9$="NO" THEN 700
-670 IF Q9$="no" THEN 700
-680 PRINT "PLEASE ANSWER YES OR NO."
-690 GOTO 630
-700 IF W=1 THEN 940
-710 LET C=0
-720 FOR I=1 TO N
-730 IF A(I)=0 THEN 770
-740 LET C=C+1
-750 IF C=3 THEN 840
-760 LET D(C)=I
-770 NEXT I
-780 IF C=2 THEN 920
-790 IF A(D(1))>1 THEN 820
-800 PRINT "MACHINE LOSES"
-810 GOTO 1640
-820 PRINT "MACHINE WINS"
-830 GOTO 1640
-840 LET C=0
-850 FOR I=1 TO N
-860 IF A(I)>1 THEN 940
-870 IF A(I)=0 THEN 890
-880 LET C=C+1
-890 NEXT I
-900 IF C/2<>INT(C/2) THEN 800
-910 GOTO 940
-920 IF A(D(1))=1 THEN 820
-930 IF A(D(2))=1 THEN 820
-940 FOR I=1 TO N
-950 LET E=A(I)
-960 FOR J=0 TO 10
-970 LET F=E/2
-980 LET B(I,J)=2*(F-INT(F))
-990 LET E=INT(F)
-1000 NEXT J
-1010 NEXT I
-1020 FOR J=10 TO 0 STEP -1
-1030 LET C=0
-1040 LET H=0
-1050 FOR I=1 TO N
-1060 IF B(I,J)=0 THEN 1110
-1070 LET C=C+1
-1080 IF A(I)<=H THEN 1110
-1090 LET H=A(I)
-1100 LET G=I
-1110 NEXT I
-1120 IF C/2<>INT(C/2) THEN 1190
-1130 NEXT J
-1140 LET E=INT(N*RND(1)+1)
-1150 IF A(E)=0 THEN 1140
-1160 LET F=INT(A(E)*RND(1)+1)
-1170 LET A(E)=A(E)-F
-1180 GOTO 1380
-1190 LET A(G)=0
-1200 FOR J=0 TO 10
-1210 LET B(G,J)=0
-1220 LET C=0
-1230 FOR I=1 TO N
-1240 IF B(I,J)=0 THEN 1260
-1250 LET C=C+1
-1260 NEXT I
-1270 LET A(G)=A(G)+2*(C/2-INT(C/2))*2^J
-1280 NEXT J
-1290 IF W=1 THEN 1380
-1300 LET C=0
-1310 FOR I=1 TO N
-1320 IF A(I)>1 THEN 1380
-1330 IF A(I)=0 THEN 1350
-1340 LET C=C+1
-1350 NEXT I
-1360 IF C/2<>INT(C/2) THEN 1380
-1370 LET A(G)=1-A(G)
-1380 PRINT "PILE  SIZE"
-1390 FOR I=1 TO N
-1400 PRINT I;A(I)
-1410 NEXT I
-1420 IF W=2 THEN 1450
-1430 GOSUB 1570
-1440 IF Z=1 THEN 820
-1450 PRINT "YOUR MOVE - PILE, NUMBER TO BE REMOVED";
-1460 INPUT X,Y
-1470 IF X>N THEN 1450
-1480 IF X<1 THEN 1450
-1490 IF X<>INT(X) THEN 1450
-1500 IF Y>A(X) THEN 1450
-1510 IF Y<1 THEN 1450
-1520 IF Y<>INT(Y) THEN 1450
-1530 LET A(X)=A(X)-Y
-1540 GOSUB 1570
-1550 IF Z=1 THEN 800
-1560 GOTO 700
-1570 LET Z=0
-1580 FOR I=1 TO N
-1590 IF A(I)=0 THEN 1610
-1600 RETURN
-1610 NEXT I
-1620 LET Z=1
-1630 RETURN
-1640 PRINT "do you want to play another game";
-1650 INPUT Q9$
-1660 IF Q9$="YES" THEN 1720
-1670 IF Q9$="yes" THEN 1720
-1680 IF Q9$="NO" THEN 1730
-1690 IF Q9$="no" THEN 1730
-1700 PRINT "PLEASE.  YES OR NO."
-1710 GOTO 1650 
-1720 GOTO 440
-1730 END
+100 print tab(33);"nim"
+110 print tab(15);"creative computing  morristown, new jersey"
+120 print:print:print
+210 dim a(100),b(100,10),d(2)
+220 print "this is the game of nim."
+230 print "do you want instructions";
+240 input z$
+250 if z$="no" then 440
+260 if z$="no" then 440
+270 if z$="yes" then 310
+280 if z$="yes" then 310
+290 print "please answer yes or no"
+300 goto 240
+310 print "the game is played with a number of piles of objects."
+320 print "any number of objects are removed from one pile by you and"
+330 print "the machine alternately.  on your turn, you may take"
+340 print "all the objects that remain in any pile, but you must"
+350 print "take at least one object, and you may take objects from"
+360 print "only one pile on a single turn.  you must specify whether"
+370 print "winning is defined as taking or not taking the last object,"
+380 print "the number of piles in the game, and how many objects are"
+390 print "originally in each pile.  each pile may contain a"
+400 print "different number of objects."
+410 print "the machine will show its move by listing each pile and the"
+420 print "number of objects remaining in the piles after  each of its"
+430 print "moves."
+440 print
+450 print "enter win option - 1 to take last, 2 to avoid last";
+460 input w
+470 if w=1 then 490
+480 if w<>2 then 450
+490 print "enter number of piles";
+500 input n
+510 if n>100 then 490
+520 if n<1 then 490
+530 if n<>int(n) then 490
+540 print "enter pile sizes"
+550 for i=1 to n
+560 print i;
+570 input a(i)
+580 if a(i)>2000 then 560
+590 if a(i)<1 then 560
+600 if a(i)<>int(a(i)) then 560
+610 next i
+620 print "do you want to move first";
+630 input q9$
+640 if q9$="yes" then 1450
+650 if q9$="yes" then 1450
+660 if q9$="no" then 700
+670 if q9$="no" then 700
+680 print "please answer yes or no."
+690 goto 630
+700 if w=1 then 940
+710 let c=0
+720 for i=1 to n
+730 if a(i)=0 then 770
+740 let c=c+1
+750 if c=3 then 840
+760 let d(c)=i
+770 next i
+780 if c=2 then 920
+790 if a(d(1))>1 then 820
+800 print "machine loses"
+810 goto 1640
+820 print "machine wins"
+830 goto 1640
+840 let c=0
+850 for i=1 to n
+860 if a(i)>1 then 940
+870 if a(i)=0 then 890
+880 let c=c+1
+890 next i
+900 if c/2<>int(c/2) then 800
+910 goto 940
+920 if a(d(1))=1 then 820
+930 if a(d(2))=1 then 820
+940 for i=1 to n
+950 let e=a(i)
+960 for j=0 to 10
+970 let f=e/2
+980 let b(i,j)=2*(f-int(f))
+990 let e=int(f)
+1000 next j
+1010 next i
+1020 for j=10 to 0 step -1
+1030 let c=0
+1040 let h=0
+1050 for i=1 to n
+1060 if b(i,j)=0 then 1110
+1070 let c=c+1
+1080 if a(i)<=h then 1110
+1090 let h=a(i)
+1100 let g=i
+1110 next i
+1120 if c/2<>int(c/2) then 1190
+1130 next j
+1140 let e=int(n*rnd(1)+1)
+1150 if a(e)=0 then 1140
+1160 let f=int(a(e)*rnd(1)+1)
+1170 let a(e)=a(e)-f
+1180 goto 1380
+1190 let a(g)=0
+1200 for j=0 to 10
+1210 let b(g,j)=0
+1220 let c=0
+1230 for i=1 to n
+1240 if b(i,j)=0 then 1260
+1250 let c=c+1
+1260 next i
+1270 let a(g)=a(g)+2*(c/2-int(c/2))*2^j
+1280 next j
+1290 if w=1 then 1380
+1300 let c=0
+1310 for i=1 to n
+1320 if a(i)>1 then 1380
+1330 if a(i)=0 then 1350
+1340 let c=c+1
+1350 next i
+1360 if c/2<>int(c/2) then 1380
+1370 let a(g)=1-a(g)
+1380 print "pile  size"
+1390 for i=1 to n
+1400 print i;a(i)
+1410 next i
+1420 if w=2 then 1450
+1430 gosub 1570
+1440 if z=1 then 820
+1450 print "your move - pile, number to be removed";
+1460 input x,y
+1470 if x>n then 1450
+1480 if x<1 then 1450
+1490 if x<>int(x) then 1450
+1500 if y>a(x) then 1450
+1510 if y<1 then 1450
+1520 if y<>int(y) then 1450
+1530 let a(x)=a(x)-y
+1540 gosub 1570
+1550 if z=1 then 800
+1560 goto 700
+1570 let z=0
+1580 for i=1 to n
+1590 if a(i)=0 then 1610
+1600 return
+1610 next i
+1620 let z=1
+1630 return
+1640 print "do you want to play another game";
+1650 input q9$
+1660 if q9$="yes" then 1720
+1670 if q9$="yes" then 1720
+1680 if q9$="no" then 1730
+1690 if q9$="no" then 1730
+1700 print "please.  yes or no."
+1710 goto 1650 
+1720 goto 440
+1730 end

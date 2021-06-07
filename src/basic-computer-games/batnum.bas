@@ -1,90 +1,90 @@
-10 PRINT TAB(33);"BATNUM"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-110 PRINT "THIS PROGRAM IS A 'BATTLE OF NUMBERS' GAME, WHERE THE"
-120 PRINT "COMPUTER IS YOUR OPPONENT."
-130 PRINT 
-140 PRINT "THE GAME STARTS WITH AN ASSUMED PILE OF OBJECTS. YOU"
-150 PRINT "AND YOUR OPPONENT ALTERNATELY REMOVE OBJECTS FROM THE PILE."
-160 PRINT "WINNING IS DEFINED IN ADVANCE AS TAKING THE LAST OBJECT OR"
-170 PRINT "NOT. YOU CAN ALSO SPECIFY SOME OTHER BEGINNING CONDITIONS."
-180 PRINT "DON'T USE ZERO, HOWEVER, IN PLAYING THE GAME."
-190 PRINT "ENTER A NEGATIVE NUMBER FOR NEW PILE SIZE TO STOP PLAYING."
-200 PRINT
-210 GOTO 330
-220 FOR I=1 TO 10
-230 PRINT
-240 NEXT I
-330 INPUT "ENTER PILE SIZE";N
-350 IF N>=1 THEN 370
-360 GOTO 330
-370 IF N<>INT(N) THEN 220
-380 IF N<1 THEN 220
-390 INPUT "ENTER WIN OPTION - 1 TO TAKE LAST, 2 TO AVOID LAST: ";M
-410 IF M=1 THEN 430
-420 IF M<>2 THEN 390
-430 INPUT "ENTER MIN AND MAX ";A,B
-450 IF A>B THEN 430
-460 IF A<1 THEN 430
-470 IF A<>INT(A) THEN 430
-480 IF B<>INT(B) THEN 430
-490 INPUT "ENTER START OPTION - 1 COMPUTER FIRST, 2 YOU FIRST ";S
-500 PRINT:PRINT
-510 IF S=1 THEN 530
-520 IF S<>2 THEN 490
-530 C=A+B
-540 IF S=2 THEN 570
-550 GOSUB 600
-560 IF W=1 THEN 220
-570 GOSUB 810
-580 IF W=1 THEN 220
-590 GOTO 550
-600 Q=N
-610 IF M=1 THEN 630
-620 Q=Q-1
-630 IF M=1 THEN 680
-640 IF N>A THEN 720
-650 W=1
-660 PRINT "COMPUTER TAKES";N;"AND LOSES."
-670 RETURN
-680 IF N>B THEN 720
-690 W=1
-700 PRINT "COMPUTER TAKES";N;"AND WINS."
-710 RETURN
-720 P=Q-C*INT(Q/C)
-730 IF P>=A THEN 750
-740 P=A
-750 IF P<=B THEN 770
-760 P=B
-770 N=N-P
-780 PRINT "COMPUTER TAKES";P;"AND LEAVES";N
-790 W=0
-800 RETURN
-810 PRINT:PRINT "YOUR MOVE ";
-820 INPUT P
-830 IF P<>0 THEN 870
-840 PRINT "I TOLD YOU NOT TO USE ZERO! COMPUTER WINS BY FORFEIT."
-850 W=1
-860 RETURN
-870 IF P<>INT(P) THEN 920
-880 IF P>=A THEN 910
-890 IF P=N THEN 960
-900 GOTO 920
-910 IF P<=B THEN 940
-920 PRINT "ILLEGAL MOVE, REENTER IT ";
-930 GOTO 820
-940 N=N-P
-950 IF N<>0 THEN 1030
-960 IF M=1 THEN 1000
-970 PRINT "TOUGH LUCK, YOU LOSE."
-980 W=1
-990 RETURN
-1000 PRINT "CONGRATULATIONS, YOU WIN."
-1010 W=1
-1020 RETURN
-1030 IF N>=0 THEN 1060
-1040 N=N+P
-1050 GOTO 920
-1060 W=0
-1070 RETURN
-1080 END
+10 print tab(33);"batnum"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+110 print "this program is a 'battle of numbers' game, where the"
+120 print "computer is your opponent."
+130 print 
+140 print "the game starts with an assumed pile of objects. you"
+150 print "and your opponent alternately remove objects from the pile."
+160 print "winning is defined in advance as taking the last object or"
+170 print "not. you can also specify some other beginning conditions."
+180 print "don't use zero, however, in playing the game."
+190 print "enter a negative number for new pile size to stop playing."
+200 print
+210 goto 330
+220 for i=1 to 10
+230 print
+240 next i
+330 input "enter pile size";n
+350 if n>=1 then 370
+360 goto 330
+370 if n<>int(n) then 220
+380 if n<1 then 220
+390 input "enter win option - 1 to take last, 2 to avoid last: ";m
+410 if m=1 then 430
+420 if m<>2 then 390
+430 input "enter min and max ";a,b
+450 if a>b then 430
+460 if a<1 then 430
+470 if a<>int(a) then 430
+480 if b<>int(b) then 430
+490 input "enter start option - 1 computer first, 2 you first ";s
+500 print:print
+510 if s=1 then 530
+520 if s<>2 then 490
+530 c=a+b
+540 if s=2 then 570
+550 gosub 600
+560 if w=1 then 220
+570 gosub 810
+580 if w=1 then 220
+590 goto 550
+600 q=n
+610 if m=1 then 630
+620 q=q-1
+630 if m=1 then 680
+640 if n>a then 720
+650 w=1
+660 print "computer takes";n;"and loses."
+670 return
+680 if n>b then 720
+690 w=1
+700 print "computer takes";n;"and wins."
+710 return
+720 p=q-c*int(q/c)
+730 if p>=a then 750
+740 p=a
+750 if p<=b then 770
+760 p=b
+770 n=n-p
+780 print "computer takes";p;"and leaves";n
+790 w=0
+800 return
+810 print:print "your move ";
+820 input p
+830 if p<>0 then 870
+840 print "i told you not to use zero! computer wins by forfeit."
+850 w=1
+860 return
+870 if p<>int(p) then 920
+880 if p>=a then 910
+890 if p=n then 960
+900 goto 920
+910 if p<=b then 940
+920 print "illegal move, reenter it ";
+930 goto 820
+940 n=n-p
+950 if n<>0 then 1030
+960 if m=1 then 1000
+970 print "tough luck, you lose."
+980 w=1
+990 return
+1000 print "congratulations, you win."
+1010 w=1
+1020 return
+1030 if n>=0 then 1060
+1040 n=n+p
+1050 goto 920
+1060 w=0
+1070 return
+1080 end

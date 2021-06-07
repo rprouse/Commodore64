@@ -1,147 +1,147 @@
-1 PRINT TAB(30)"TENNIS MATCH"
-2 PRINT TAB(15)"CREATIVE COMPUTING, MORRISTOWN, NEW JERSEY"
-10 PRINT:PRINT:PRINT
-21 PRINT "THERE ARE SEVERAL OPTIONS AVAILABLE TO YOU AS TO POSITION,"
-22 PRINT "PLACEMENT OF SHOT, AND SPEED (TYPE) OF SHOT. THE KEY THAT "
-23 PRINT "YOU WILL USE IS..."
-24 PRINT TAB(5)"POSITION(PLACEMENT, TOO): L.BACKCOURT(1);R.BACK-"
-25 PRINT "COURT(2); L. FORECOURT(3); R. FORECOURT(4)."
-26 PRINT TAB(5)"SPEED (TYPE) OF SHOT: FAST-SLAM(S);SLOWLOB(L)."
-27 PRINT TAB(3)"BACKHANDS AND FOREHANDS WILL MERELY BE ASSUMED AS YOU "
-28 PRINT "SHOOT FROM A CERTAIN SECTION OF THE COURT."
-29 PRINT TAB(5) "ON SERVES, YOU CANNOT HAVE PLACEMENT OPTIONS, BUT YOU"
-30 PRINT "WILL BE ABLE TO ALTER THE SPEED OF IT.  BY THE WAY, YOU"
-31 PRINT "WILL BE ALLOWED TO SERVE FIRST IN ALL GAMES."
-32 PRINT TAB(10);"ARE YOU READY?... HERE WE GO!!!"
-35 Y=0
-36 Z=0
-38 PRINT
-39 PRINT
-40 PRINT "     SERVE!   TYPE";
-41 INPUT A$: IF A$<>"L" AND A$<>"S" THEN PRINT "'L' OR 'S'": GOTO 40
-42 A=100*RND (1)
-43 IF A$="L" THEN 52
-44 C=6
-45 D=51
-46 IF A<C THEN 50
-47 IF A<D THEN 70
-48 PRINT TAB(10);" SERVE IS BAD"
-49 GOTO 55
-50 PRINT TAB(10);"LET SERVE...TAKE 2"
-51 GOTO 40
-52 C=4
-53 D=66
-54 GOTO 46
-55 PRINT TAB(10);"SERVE AGAIN!!    TYPE";
-56 INPUT B$: IF B$<>"L" AND B$<>"S" THEN PRINT "'L' OR 'S'": GOTO 55
-57 E=100*RND(1)
-58 IF B$="L" THEN 67
-59 G=5
-60 H=41
-61 IF E<G THEN 65
-62 IF E<H THEN 70
-63 PRINT TAB(10);"SERVE IS BAD... DOUBLE FAULT!"
-64 GOTO 130
-65 PRINT TAB(10);"LET SERVE... TAKE 1"
-66 GOTO 55
-67 G=3
-68 H=76
-69 GOTO61
-70 I=100 * RND(1)
-71 IF I>6 THEN 74
-72 PRINT TAB(10);"SERVE IS GOOD... ACE!!"
-73 GOTO 128
-74 K=100*RND (1)
-75 IF A$="L" THEN 81
-76 IF B$="L" THEN 81
-77 N=61
-78 IF K<N THEN 85
-79 PRINT TAB(10); " SERVE IS GOOD... CAN'T RETURN IT!!"
-80 GOTO 128
-81 N=76
-82 GOTO 78
-85 PRINT TAB(10);"SERVE HAS BEEN RETURNED..."
-86 PRINT
-87 O=INT (4*RND(1))+1
-88 PRINT TAB(20);"WHAT IS YOUR POSITION?";
-89 INPUT Q
-90 IF O+Q=5 THEN 124
-91 PRINT TAB(20);"WHAT TYPE OF SHOT ARE YOU MAKING";
-92 INPUT C$
-93 PRINT TAB(20);"WHAT PART OF THE COURT ARE YOU AIMING FOR";
-94 INPUT R
-95 S=100*RND(1)
-96 IF C$="L" THEN 99
-97 IF S<81 THEN 107
-98 GOTO 100
-99 IF S<91 THEN 107
-100 U=4*RND(1)
-101 PRINT TAB(30);"YOUR RETURN IS BAD..."
-102 IF U<2 THEN 105
-103 PRINT TAB(33);"HIT OUT-OF-BOUNDS"
-104 GOTO 130
-105 PRINT TAB(33);"HIT INTO NET"
-106 GOTO 130
-107 PRINT TAB(30);"YOUR RETURN IS GOOD!"
-108 A1=INT(4*RND(1))
-109 IF R+A1=5 THEN 127
-110 W=100*RND(1)
-111 IF C$="L" THEN 112
-112 IF W<84 THEN 122
-113 GOTO 115
-114 IF W<84 THEN 122
-115 C1=4*RND(1)
-116 PRINT TAB(30);"COMPUTER'S RETURN IS BAD"
-117 IF B<2 THEN 120
-118 PRINT TAB(33);"HIT OUT-OF-BOUNDS"
-119 GOTO 128
-120 PRINT TAB(33);"HIT INTO NET"
-121 GOTO 128
-122 PRINT TAB(30);"COMPUTER'S RETURN IS GOOD!"
-123 GOTO 86
-124 PRINT "    NICE TRY-YOU WERE UNABLE TO REACH THAT SHOT-COURT #"O
-125 GOTO 130
-127 PRINT "    NICE SHOT- THE COMPUTER COULDN'T REACH IT"
-128 Y=Y+1
-129 GOTO 131
-130 Z=Z+1
-131 PRINT:GOSUB 200
-132 PRINT TAB(15);"SCORE    "S$
-134 IF Y>=4 AND Y>Z+1 THEN 137
-135 IF Z>=4 AND Z>Y+1 THEN 139
-136 GOTO 38
-137 Y1=Y1+1
-138 GOTO 140
-139 Z1=Z1+1
-140 PRINT"--------------- GAME OVER ----------------"
-141 PRINT TAB(15);"SCORE-GAMES      YOU...ME"
-142  PRINT TAB(32);Y1;"   ";Z1
-143 IF Y1>=6 AND Y1>Z1+1 THEN 146
-144 IF Z1>=6 AND Z1>Y1+1 THEN 149
-145 GOTO 35
-146 PRINT
-147 PRINT "*****CONGRATULATIONS...YOU WON*****"
-148 GOTO 151
-149 PRINT
-150 PRINT "*****AS PREDICTED, THE COMPUTER IS AGAIN TRIUMPHANT!*****"
-151 PRINT
-152 PRINT"   I'D LIKE TO PLAY YOU AGAIN SOMETIME, BUT RIGHT NOW, I"
-153 PRINT "HAVE TO REST.........BYE!!!"
-154 PRINT
-200 IF Y>=2 AND Z>=2 THEN 300
-210 IF Y=4 OR Z=4 THEN S$="GAME": GOTO 400
-220 IF Y=0 THEN Y$="LOVE"
-230 IF Y=1 THEN Y$="15 - "
-240 IF Y=2 THEN Y$="30 - "
-245 IF Y=3 THEN Y$="40 - "
-250 IF Z=0 THEN Z$="LOVE"
-255 IF Z=1 THEN Z$="15"
-260 IF Z=2 THEN ZI="30"
-265 IF Z=3 THEN Z$="40"
-270 S$=Y$+Z$:GOTO 400
-300 IF Y=Z THEN S$="DUCE":GOTO 400
-310 IF Y=Z+1 THEN S$="ADD IN ": GOTO 400
-320 IF Y=Z-1 THEN SI="ADD OUT": GOTO 400
-330 IF Y=Z+2 OR Z=Y+2 THEN S$="GAME"
-400 RETURN
-500 END
+1 print tab(30)"tennis match"
+2 print tab(15)"creative computing, morristown, new jersey"
+10 print:print:print
+21 print "there are several options available to you as to position,"
+22 print "placement of shot, and speed (type) of shot. the key that "
+23 print "you will use is..."
+24 print tab(5)"position(placement, too): l.backcourt(1);r.back-"
+25 print "court(2); l. forecourt(3); r. forecourt(4)."
+26 print tab(5)"speed (type) of shot: fast-slam(s);slowlob(l)."
+27 print tab(3)"backhands and forehands will merely be assumed as you "
+28 print "shoot from a certain section of the court."
+29 print tab(5) "on serves, you cannot have placement options, but you"
+30 print "will be able to alter the speed of it.  by the way, you"
+31 print "will be allowed to serve first in all games."
+32 print tab(10);"are you ready?... here we go!!!"
+35 y=0
+36 z=0
+38 print
+39 print
+40 print "     serve!   type";
+41 input a$: if a$<>"l" and a$<>"s" then print "'l' or 's'": goto 40
+42 a=100*rnd (1)
+43 if a$="l" then 52
+44 c=6
+45 d=51
+46 if a<c then 50
+47 if a<d then 70
+48 print tab(10);" serve is bad"
+49 goto 55
+50 print tab(10);"let serve...take 2"
+51 goto 40
+52 c=4
+53 d=66
+54 goto 46
+55 print tab(10);"serve again!!    type";
+56 input b$: if b$<>"l" and b$<>"s" then print "'l' or 's'": goto 55
+57 e=100*rnd(1)
+58 if b$="l" then 67
+59 g=5
+60 h=41
+61 if e<g then 65
+62 if e<h then 70
+63 print tab(10);"serve is bad... double fault!"
+64 goto 130
+65 print tab(10);"let serve... take 1"
+66 goto 55
+67 g=3
+68 h=76
+69 goto61
+70 i=100 * rnd(1)
+71 if i>6 then 74
+72 print tab(10);"serve is good... ace!!"
+73 goto 128
+74 k=100*rnd (1)
+75 if a$="l" then 81
+76 if b$="l" then 81
+77 n=61
+78 if k<n then 85
+79 print tab(10); " serve is good... can't return it!!"
+80 goto 128
+81 n=76
+82 goto 78
+85 print tab(10);"serve has been returned..."
+86 print
+87 o=int (4*rnd(1))+1
+88 print tab(20);"what is your position?";
+89 input q
+90 if o+q=5 then 124
+91 print tab(20);"what type of shot are you making";
+92 input c$
+93 print tab(20);"what part of the court are you aiming for";
+94 input r
+95 s=100*rnd(1)
+96 if c$="l" then 99
+97 if s<81 then 107
+98 goto 100
+99 if s<91 then 107
+100 u=4*rnd(1)
+101 print tab(30);"your return is bad..."
+102 if u<2 then 105
+103 print tab(33);"hit out-of-bounds"
+104 goto 130
+105 print tab(33);"hit into net"
+106 goto 130
+107 print tab(30);"your return is good!"
+108 a1=int(4*rnd(1))
+109 if r+a1=5 then 127
+110 w=100*rnd(1)
+111 if c$="l" then 112
+112 if w<84 then 122
+113 goto 115
+114 if w<84 then 122
+115 c1=4*rnd(1)
+116 print tab(30);"computer's return is bad"
+117 if b<2 then 120
+118 print tab(33);"hit out-of-bounds"
+119 goto 128
+120 print tab(33);"hit into net"
+121 goto 128
+122 print tab(30);"computer's return is good!"
+123 goto 86
+124 print "    nice try-you were unable to reach that shot-court #"o
+125 goto 130
+127 print "    nice shot- the computer couldn't reach it"
+128 y=y+1
+129 goto 131
+130 z=z+1
+131 print:gosub 200
+132 print tab(15);"score    "s$
+134 if y>=4 and y>z+1 then 137
+135 if z>=4 and z>y+1 then 139
+136 goto 38
+137 y1=y1+1
+138 goto 140
+139 z1=z1+1
+140 print"--------------- game over ----------------"
+141 print tab(15);"score-games      you...me"
+142  print tab(32);y1;"   ";z1
+143 if y1>=6 and y1>z1+1 then 146
+144 if z1>=6 and z1>y1+1 then 149
+145 goto 35
+146 print
+147 print "*****congratulations...you won*****"
+148 goto 151
+149 print
+150 print "*****as predicted, the computer is again triumphant!*****"
+151 print
+152 print"   i'd like to play you again sometime, but right now, i"
+153 print "have to rest.........bye!!!"
+154 print
+200 if y>=2 and z>=2 then 300
+210 if y=4 or z=4 then s$="game": goto 400
+220 if y=0 then y$="love"
+230 if y=1 then y$="15 - "
+240 if y=2 then y$="30 - "
+245 if y=3 then y$="40 - "
+250 if z=0 then z$="love"
+255 if z=1 then z$="15"
+260 if z=2 then zi="30"
+265 if z=3 then z$="40"
+270 s$=y$+z$:goto 400
+300 if y=z then s$="duce":goto 400
+310 if y=z+1 then s$="add in ": goto 400
+320 if y=z-1 then si="add out": goto 400
+330 if y=z+2 or z=y+2 then s$="game"
+400 return
+500 end

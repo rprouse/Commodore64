@@ -1,102 +1,102 @@
-1 PRINT TAB(26)"MATPUZLE"
-2 PRINTTAB(20)"CREATIVE COMPUTING"
-3 PRINT TAB(18)"MORRISTOWN, NEW JERSEY"
-4 PRINT:PRINT
-10 DIM A$(6),B$(6,6),C(6,6),C$(6,6)
-20 PRINT"THIS IS A PUZZLE-MAKING GAME."
-30 PRINT"YOU INPUT UP TO SIX WORDS, UP TO SIX"
-40 PRINT"LETTERS EACH, AND EQUAL IN LENGTH."
-50 PRINT"THE COMPUTER WILL SCRAMBLE THEN AND"
-60 PRINT"TRINT THEM IN A MATRIX.  THE COMPUTER "
-70 PRINT"WILL ALSO PRINT A CORRESPONDING NUMBER"
-80 PRINT"BOARD.  WHEN IT STOPS TEAR IT AND GIVE IT"
-90 PRINT"TO A FRIEND."
-100 PRINT"HOW MANY WORDS DO YOU WANT (UP TO 6)";
-105 INPUT W
-110 PRINT"HOW MANY LETTERS IN EACH WORD (MUST BE SAME)";
-115 INPUT L
-120 PRINT"TYPE ONE";L;"LETTER WORD ON EACH LINE"
-130 FOR X=1 TO W
-140 INPUT A$(X)
-150 NEXT X
-160 FOR X=1 TO W
-170 FOR  Y=1 TO L
-180 C$(X,Y)=MID$(A$(X),Y,1):B$(X,Y)=MID$(A$(X),Y,1)
-190 NEXT Y
-200 NEXT X
-210 PRINT
-215 FOR P=1 TO 28
-220 PRINT"-";
-221 NEXT P
-225 PRINT TAB(29)"( TEAR HERE )";
-226 FOR P1=1 TO 27
-227 PRINT TAB(43)"-";
-228 NEXT P1
-230 PRINT
-240 FOR Z=1 TO 60
-250 F=INT(RND(1)*W+1)
-260 D=INT(RND(1)*W+1)
-270 G=INT(RND(1)*L+1)
-280 E=INT(RND(1)*L+1)
-290 J$=B$(F,G)
-300 B$(F,G)=B$(D,E)
-310 B$(D,E)=J$
-320 NEXT Z
-330 PRINT TAB(4);
-340 FOR Z1=1 TO L
-350 PRINT TAB(5);Z1;" ";
-360 NEXT Z1
-370 PRINT
-380 PRINT
-390 FOR Z2=1 TO W
-400 PRINT Z2;"   ";
-410 FOR Z3=1 TO L
-420 PRINT B$(Z2,Z3);"   ";
-430 NEXT Z3
-440 PRINT
-450 PRINT
-460 NEXT Z2
-470 PRINT
-480 PRINT
-490 PRINT
-500 FOR P=1 TO L
-510 FOR Q=1 TO W
-520 T=0
-530 FOR R=1 TO W
-540 FOR S=1 TO L
-550 IF T=1 THEN 600
-560 IF B$(R,S)<>C$(Q,P)THEN 600
-570 C(Q,P)=R+S
-580 T=1
-590 B$(R,S)=" "
-600 NEXT S
-610 NEXT R
-620 NEXT Q
-630 NEXT P
-640 FOR X=1 TO W
-650 PRINT TAB(3)
-660 FOR M=1 TO L
-670 IF C(X,M)>9 THEN 700
-680 PRINT C(X,M);"     ";
-690 GOTO 710
-700 PRINT C(X,M);"    ";
-710 NEXT M
-720 PRINT:PRINT
-730 PRINT TAB(2);
-740 FOR M1=1 TO L
-750 PRINT"-----";"   ";
-760 NEXT M1
-770 PRINT
-780 NEXT X
-790 PRINT
-800 PRINT
-810 PRINT"THE NUMBER ABOVE EACH DASH IS THE SUM OF TWO COORDINATES OF"
-820 PRINT"THE POINT ON THE MATRIX WHERE THE CORRECT LETTER FOR THAT "
-830 PRINT"SPOT WILL APPEAR.  THE PROBLEM IS THAT THE SUM OF SOME "
-840 PRINT"COORDINATES ARE THE SAME SO SEVERAL LETTERS COULD FIT. SO "
-850 PRINT"TRY NOW TO FIND WHAT WORDS WERE USED AND SOLVE THE PUZZLE"
-855 PRINT"-- GOOD LUCK"
-860 PRINT"DO YOU WANT ANOTHER RUN";
-861 INPUT Y9$
-870 IF Y9$="YES" THEN 100
-880 END
+1 print tab(26)"matpuzle"
+2 printtab(20)"creative computing"
+3 print tab(18)"morristown, new jersey"
+4 print:print
+10 dim a$(6),b$(6,6),c(6,6),c$(6,6)
+20 print"this is a puzzle-making game."
+30 print"you input up to six words, up to six"
+40 print"letters each, and equal in length."
+50 print"the computer will scramble then and"
+60 print"trint them in a matrix.  the computer "
+70 print"will also print a corresponding number"
+80 print"board.  when it stops tear it and give it"
+90 print"to a friend."
+100 print"how many words do you want (up to 6)";
+105 input w
+110 print"how many letters in each word (must be same)";
+115 input l
+120 print"type one";l;"letter word on each line"
+130 for x=1 to w
+140 input a$(x)
+150 next x
+160 for x=1 to w
+170 for  y=1 to l
+180 c$(x,y)=mid$(a$(x),y,1):b$(x,y)=mid$(a$(x),y,1)
+190 next y
+200 next x
+210 print
+215 for p=1 to 28
+220 print"-";
+221 next p
+225 print tab(29)"( tear here )";
+226 for p1=1 to 27
+227 print tab(43)"-";
+228 next p1
+230 print
+240 for z=1 to 60
+250 f=int(rnd(1)*w+1)
+260 d=int(rnd(1)*w+1)
+270 g=int(rnd(1)*l+1)
+280 e=int(rnd(1)*l+1)
+290 j$=b$(f,g)
+300 b$(f,g)=b$(d,e)
+310 b$(d,e)=j$
+320 next z
+330 print tab(4);
+340 for z1=1 to l
+350 print tab(5);z1;" ";
+360 next z1
+370 print
+380 print
+390 for z2=1 to w
+400 print z2;"   ";
+410 for z3=1 to l
+420 print b$(z2,z3);"   ";
+430 next z3
+440 print
+450 print
+460 next z2
+470 print
+480 print
+490 print
+500 for p=1 to l
+510 for q=1 to w
+520 t=0
+530 for r=1 to w
+540 for s=1 to l
+550 if t=1 then 600
+560 if b$(r,s)<>c$(q,p)then 600
+570 c(q,p)=r+s
+580 t=1
+590 b$(r,s)=" "
+600 next s
+610 next r
+620 next q
+630 next p
+640 for x=1 to w
+650 print tab(3)
+660 for m=1 to l
+670 if c(x,m)>9 then 700
+680 print c(x,m);"     ";
+690 goto 710
+700 print c(x,m);"    ";
+710 next m
+720 print:print
+730 print tab(2);
+740 for m1=1 to l
+750 print"-----";"   ";
+760 next m1
+770 print
+780 next x
+790 print
+800 print
+810 print"the number above each dash is the sum of two coordinates of"
+820 print"the point on the matrix where the correct letter for that "
+830 print"spot will appear.  the problem is that the sum of some "
+840 print"coordinates are the same so several letters could fit. so "
+850 print"try now to find what words were used and solve the puzzle"
+855 print"-- good luck"
+860 print"do you want another run";
+861 input y9$
+870 if y9$="yes" then 100
+880 end

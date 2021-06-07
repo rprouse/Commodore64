@@ -1,79 +1,79 @@
-2 PRINT TAB(32);"FLIPFLOP"
-4 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-6 PRINT
-10 REM *** CREATED BY MICHAEL CASS
-15 DIM A$(20)
-20 PRINT "THE OBJECT OF THIS PUZZLE IS TO CHANGE THIS:"
-30 PRINT
-40 PRINT "X X X X X X X X X X"
-50 PRINT
-60 PRINT "TO THIS:"
-70 PRINT
-80 PRINT "O O O O O O O O O O"
-90 PRINT
-100 PRINT "BY TYPING THE NUMBER CORRESPONDING TO THE POSITION OF THE"
-110 PRINT "LETTER ON SOME NUMBERS, ONE POSITION WILL CHANGE, ON"
-120 PRINT "OTHERS, TWO WILL CHANGE.  TO RESET LINE TO ALL X'S, TYPE 0"
-130 PRINT "(ZERO) AND TO START OVER IN THE MIDDLE OF A GAME, TYPE "
-140 PRINT "11 (ELEVEN)."
-170 PRINT
-180 REM
-190 Q=RND(1)
-200 PRINT "HERE IS THE STARTING LINE OF X'S."
-210 PRINT
-220 C=0
-230 PRINT "1 2 3 4 5 6 7 8 9 10"
-240 PRINT "X X X X X X X X X X"
-250 PRINT
-260 REM
-270 FOR X=1 TO 10
-280 A$(X)="X"
-290 NEXT X
-300 GOTO 320
-310 PRINT "ILLEGAL ENTRY--TRY AGAIN."
-320 PRINT "INPUT THE NUMBER";
-330 INPUT N
-340 IF N<>INT(N) THEN 310
-350 IF N=11 THEN 180
-360 IF N>11 THEN 310
-370 IF N=0 THEN 230
-380 IF M=N THEN 510
-390 M=N
-400 IF A$(N)="O" THEN 480
-410 A$(N)="O"
-420 R=TAN(Q+N/Q-N)-SIN(Q/N)+336*SIN(8*N)
-430 N=R-INT(R)
-440 N=INT(10*N)
-450 IF A$(N)="O" THEN 480
-460 A$(N)="O"
-470 GOTO 610
-480 A$(N)="X"
-490 IF M=N THEN 420
-500 GOTO 610
-510 IF A$(N)="O" THEN 590
-520 A$(N)="O"
-530 R=.592*(1/TAN(Q/N+Q))/SIN(N*2+Q)-COS(N)
-540 N=R-INT(R)
-550 N=INT(10*N)
-560 IF A$(N)="O" THEN 590
-570 A$(N)="O"
-580 GOTO 610
-590 A$(N)="X"
-600 IF M=N THEN 530
-610 PRINT "1 2 3 4 5 6 7 8 9 10"
-620 FOR Z=1 TO 10: PRINT A$(Z);" ";: NEXT Z
-630 C=C+1
-640 PRINT
-650 FOR Z=1 TO 10
-660 IF A$(Z)<>"O" THEN 320
-670 NEXT Z
-680 IF C>12 THEN 710
-690 PRINT "VERY GOOD.  YOU GUESSED IT IN ONLY";C;"GUESSES."
-700 GOTO 720
-710 PRINT "TRY HARDER NEXT TIME.  IT TOOK YOU";C;"GUESSES."
-720 PRINT "DO YOU WANT TO TRY ANOTHER PUZZLE";
-730 INPUT X$
-740 IF LEFT$(X$,1)="N" THEN 780
-760 PRINT
-770 GOTO 180
-780 END
+2 print tab(32);"flipflop"
+4 print tab(15);"creative computing  morristown, new jersey"
+6 print
+10 rem *** created by michael cass
+15 dim a$(20)
+20 print "the object of this puzzle is to change this:"
+30 print
+40 print "x x x x x x x x x x"
+50 print
+60 print "to this:"
+70 print
+80 print "o o o o o o o o o o"
+90 print
+100 print "by typing the number corresponding to the position of the"
+110 print "letter on some numbers, one position will change, on"
+120 print "others, two will change.  to reset line to all x's, type 0"
+130 print "(zero) and to start over in the middle of a game, type "
+140 print "11 (eleven)."
+170 print
+180 rem
+190 q=rnd(1)
+200 print "here is the starting line of x's."
+210 print
+220 c=0
+230 print "1 2 3 4 5 6 7 8 9 10"
+240 print "x x x x x x x x x x"
+250 print
+260 rem
+270 for x=1 to 10
+280 a$(x)="x"
+290 next x
+300 goto 320
+310 print "illegal entry--try again."
+320 print "input the number";
+330 input n
+340 if n<>int(n) then 310
+350 if n=11 then 180
+360 if n>11 then 310
+370 if n=0 then 230
+380 if m=n then 510
+390 m=n
+400 if a$(n)="o" then 480
+410 a$(n)="o"
+420 r=tan(q+n/q-n)-sin(q/n)+336*sin(8*n)
+430 n=r-int(r)
+440 n=int(10*n)
+450 if a$(n)="o" then 480
+460 a$(n)="o"
+470 goto 610
+480 a$(n)="x"
+490 if m=n then 420
+500 goto 610
+510 if a$(n)="o" then 590
+520 a$(n)="o"
+530 r=.592*(1/tan(q/n+q))/sin(n*2+q)-cos(n)
+540 n=r-int(r)
+550 n=int(10*n)
+560 if a$(n)="o" then 590
+570 a$(n)="o"
+580 goto 610
+590 a$(n)="x"
+600 if m=n then 530
+610 print "1 2 3 4 5 6 7 8 9 10"
+620 for z=1 to 10: print a$(z);" ";: next z
+630 c=c+1
+640 print
+650 for z=1 to 10
+660 if a$(z)<>"o" then 320
+670 next z
+680 if c>12 then 710
+690 print "very good.  you guessed it in only";c;"guesses."
+700 goto 720
+710 print "try harder next time.  it took you";c;"guesses."
+720 print "do you want to try another puzzle";
+730 input x$
+740 if left$(x$,1)="n" then 780
+760 print
+770 goto 180
+780 end

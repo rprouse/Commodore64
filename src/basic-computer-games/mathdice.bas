@@ -1,60 +1,60 @@
-10 PRINT TAB(31);"MATH DICE"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-40 PRINT "THIS PROGRAM GENERATES SUCCESSIVE PICTURES OF TWO DICE."
-50 PRINT "WHEN TWO DICE AND AN EQUAL SIGN FOLLOWED BY A QUESTION"
-60 PRINT "MARK HAVE BEEN PRINTED, TYPE YOUR ANSWER AND THE RETURN KEY."
-70 PRINT "TO CONCLUDE THE LESSON, TYPE CONTROL-C AS YOUR ANSWER."
-80 PRINT
-90 PRINT
-100 N=N+1
-110 D=INT(6*RND(1)+1)
-120 PRINT" ----- "
-130 IF D=1 THEN 200
-140 IF D=2 THEN 180
-150 IF D=3 THEN 180
-160 PRINT "I * * I"
-170 GOTO 210
-180 PRINT "I *   I"
-190 GOTO 210
-200 PRINT "I     I"
-210 IF D=2 THEN 260
-220 IF D=4 THEN 260
-230 IF D=6 THEN 270
-240 PRINT "I  *  I"
-250 GOTO 280
-260 PRINT "I     I"
-265 GOTO 280
-270 PRINT "I * * I"
-280 IF D=1 THEN 350
-290 IF D=2 THEN 330
-300 IF D=3 THEN 330
-310 PRINT "I * * I"
-320 GOTO 360
-330 PRINT "I   * I"
-340 GOTO 360
-350 PRINT "I     I"
-360 PRINT " ----- "
-370 PRINT
-375 IF N=2 THEN 500
-380 PRINT "   +"
-381 PRINT
-400 A=D
-410 GOTO 100
-500 T=D+A
-510 PRINT "      =";
-520 INPUT T1
-530 IF T1=T THEN 590
-540 PRINT "NO, COUNT THE SPOTS AND GIVE ANOTHER ANSWER."
-541 PRINT "      =";
-550 INPUT T2
-560 IF T2=T THEN 590
-570 PRINT "NO, THE ANSWER IS";T
-580 GOTO 600
-590 PRINT "RIGHT!"
-600 PRINT
-601 PRINT "THE DICE ROLL AGAIN..."
-610 PRINT
-615 N=0
-620 GOTO 100
-999 END
+10 print tab(31);"math dice"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+40 print "this program generates successive pictures of two dice."
+50 print "when two dice and an equal sign followed by a question"
+60 print "mark have been printed, type your answer and the return key."
+70 print "to conclude the lesson, type control-c as your answer."
+80 print
+90 print
+100 n=n+1
+110 d=int(6*rnd(1)+1)
+120 print" ----- "
+130 if d=1 then 200
+140 if d=2 then 180
+150 if d=3 then 180
+160 print "i * * i"
+170 goto 210
+180 print "i *   i"
+190 goto 210
+200 print "i     i"
+210 if d=2 then 260
+220 if d=4 then 260
+230 if d=6 then 270
+240 print "i  *  i"
+250 goto 280
+260 print "i     i"
+265 goto 280
+270 print "i * * i"
+280 if d=1 then 350
+290 if d=2 then 330
+300 if d=3 then 330
+310 print "i * * i"
+320 goto 360
+330 print "i   * i"
+340 goto 360
+350 print "i     i"
+360 print " ----- "
+370 print
+375 if n=2 then 500
+380 print "   +"
+381 print
+400 a=d
+410 goto 100
+500 t=d+a
+510 print "      =";
+520 input t1
+530 if t1=t then 590
+540 print "no, count the spots and give another answer."
+541 print "      =";
+550 input t2
+560 if t2=t then 590
+570 print "no, the answer is";t
+580 goto 600
+590 print "right!"
+600 print
+601 print "the dice roll again..."
+610 print
+615 n=0
+620 goto 100
+999 end

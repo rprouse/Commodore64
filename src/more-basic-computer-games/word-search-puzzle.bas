@@ -1,132 +1,132 @@
-10 PRINT TAB(20);"WORD SEARCH PUZZLE"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-40 PRINT:PRINT:PRINT
-50 PRINT "  THIS PROGRAM IS A WORD SEARCH PUZZLE GENERATOR!!"
-60 PRINT "THE PROGRAM TAKES A SET OF INPUT STRINGS, PURGES ALL"
-70 PRINT "NON-ALPHABETIC CHARACTERS OUT OF THEM, AND INCORPORATES"
-80 PRINT "THEM INTO A WORD SEARCH PUZZLE."
-90 PRINT
-100 PRINT "  IN THE COURSE OF MAKING THE PUZZLE, THE MACHINE MAY"
-110 PRINT "FIND THAT IT CAN'T PUT A PARTICULAR WORD ANYWHERE, AND"
-120 PRINT "SO WILL ASK YOU IF IT SHOULD START THE WHOLE PUZZLE"
-130 PRINT "OVER. IF YOU DON'T WANT IT TO START OVER, TYPING 'NO'"
-140  PRINT "WILL THROW AWAY THAT PARTICULAR WORD.  IF THIS PERSISTS,"
-150 PRINT "TRY EITHER GIVING LESS WORDS OR BIGGER PUZZLE DIMENSIONS!"
-160 PRINT:PRINT
-280 CLEAR 3000
-300 DEF FNA(Z)=INT(RND(1)*Z+1)
-310 INPUT "HOW MANY COLUMNS DOES YOUR PRINTER HAVE";TW
-320 INPUT "DO YOU WANT A SOLUTION PRINTOUT";X$
-330 INPUT "WHAT IS TO BE THE WIDTH OF THE PUZZLE";W:MD=W
-340 IF W*2<=TW THEN 345
-343 PRINT "THAT WILL NOT FIT IN";TW;" COLUMNS.":GOTO 330
-345 IF W<1 THEN 330
-350 INPUT "THE LENGTH";L:IF L>W THEN HD=L
-355 IF L<1 THEN 350
-360 INPUT "WHAT IS THE MAXIMUM NUMBER OF WORDS IN THE PUZZLE";M
-370 IF M>=2 THEN 380
-375 PRINT "SORRY; THERE MUST BE AT LEAST 2 WORDS.":GOTO 360
-390 DIM A$(L,W),W$(M)
-400 DIM W(M,3),DXY(8,2),DD(28)
-380 PRINT
-410 PRINT "NOW ENTER A HEADING THAT WILL BE PRINTED OVER THE PUZZLE:"
-420 PRINT "(";TW;"CHARACTERS MAXIMUM! )"
-430 INPUT XY$
-440 PRINT "OK . . . ENTER A WORD AT EACH QUESTION MARK."
-450 PRINT "TO REDO THE PREVIOUS WORD, TYPE A HYPHEN (-)."
-460 PRINT "WHEN YOU RUN OUT OF WORDS, TYPE A PERIOD (.)."
-470 FOR I=1 TO M
-480 INPUT T$:IF T$="-" THENI=I-1:PRINT "REDO ";W$(I);". . .":GOTO 480
-490 IF T$="." THEN M=I-1:GOTO 660
-500 IF LEN(T$)=0 THEN PRINT "INPUT ERROR; REDO:":GOTO 480
-510 J=1
-520 TE$=MID$(T$,J,1):IF TE$>="a" AND TE$<="z" THEN   570
-525 IF TE$<"A" OR TE$>"Z" THEN 530
-527 T$=LEFT$(T$,J-1)+CHR$(ASC(MID$(T$,J,1))+32)+RIGHT$(T$,LEN(T$)-J):GOTO570
-530 IF TE$=T$ THEN T$="": GOTO 500
-540 IF J=LEN(T$) THEN T$=LEFT$(T$,J-1):GOTO 580
-550 IF J=1 THEN T$=RIGHT$(T$,LEN(T$)-1):J=J-1:GOTO 570
-560 T$=LEFT$(T$,J-1)+RIGHT$(T$,LEN(T$)-J):J=J-1
-570 J=J+1:IF J<=LEN(T$) THEN 520
-580 PRINT "-";T$;"-"
-600 IF LEN(T$)<=MD THEN 610
-605 PRINT "THAT'S TOO LONG, I'M AFRAID.";
-607 PRINT " TRY ANOTHER ONE:":GOTO 480
-610 FOR IZ=1 TO I-1: IF W$(IZ)<>T$ THEN NEXT:GOTO 630
-620 PRINT "YOU ENTERED THAT ONE ALREADY. TRY ANOTHER:":GOTO 480
-630 W$(I)=T$
-640 NEXT I
-650 PRINT "THAT'S IT...";M;"WORDS."
-660 PRINT "NOW LET ME PONDER THIS......"
-680 FOR I=1 TO M-1
-685 FOR J=I+1 TO M
-690 IF LEN(W$(I)) < LEN(W$(J)) THEN HZ$=W$(I):W$(I)=W$(J):W$(J)=HZ$
-700 NEXT:NEXT
-710 FOR I=1 TO 8:READ DXY(I,1),DXY(I,2):NEXT
-720 FOR I=1 TO 28:READ DD(I):NEXT
-730 DATA 0,1,1,1,1,0,1,-1,0,-1,-1,-1,-1,0,-1,1
-740 DATA 2,4,6,8,2,4,6,8,2,4,6,8,2,4,6,8,2,4,6,8,2,4,6,8,1,3,5,7
-750 FOR I=1 TO M
-760 LN=LEN(W$(I))
-770 NT=0
-790 SD=DD(FNA(28))
-800 SX=FNA(W):X1=SX+(LN-1)*DXY(SD,1):IF X1<1 OR X1>W THEN 790
-810 SY=FNA(L):X1=SY+(LN-1)*DXY(SD,2):IF X1<1 OR X1>L THEN 790
-820 NT=NT+1:IF NT<>W*L*2 THEN 850
-830 PRINT "COULDN'T FIT  '";W$(I);"'  IN THE PUZZLE."
-832 INPUT "DO YOU WANT ME TO START OVER";A$
-834 IF LEFT$(A$,1)="y" THEN 750
-836 W$(I)="":GOTO 950
-850 J=SY:K=SX
-860 FOR P=1 TO LN
-870 IF LEN(A$(J,K)) AND A$(J,K)<>MID$(W$(I),P,1) THEN 790
-880 J=J+DXY(SD,2):K=K+DXY(SD,1):NEXT P
-900 J=SY:K=SX
-910 FOR P=1 TO LN:A$(J,K)=MID$(W$(I),P,1)
-920 J=J+DXY(SD,2):K=K+DXY(SD,1):NEXT
-940 W(I,1)=SX:W(I,2)=SY:W(I,3)=SD
-950 NEXT I
-970 FOR I=1 TO L
-975 FOR J=1 TO W
-980 IF A$(I,J)="" THEN A$(I,J)=CHR$(FNA(26)+96)
-990 NEXT:NEXT
-1010 FOR I=1 TO M-1:FOR J=I+1 TO M
-1020 IF W$(I)<=W$(J) THEN 1030
-1021 HZ$=W$(I):W$(I)=W$(J):W$(J)=HZ$
-1025 FOR K=1 TO 3:HZ=W(I,K):W(I,K)=W(J,K):W(J,K)=HZ:NEXT K
-1030 NEXTJ:NEXT I
-1040 INPUT "HOW MANY COPIES OF THIS PUZZLE DO YOU WANT";N
-1050 PRINT "FOR EACH COPY, HIT RETURN TO BEGIN PRINTING..."
-1060 FOR C=1 TO N:GOSUB 1070:NEXT:GOTO 1230
-1070 INPUT A$:PRINT
-1080 T=(TW-2*W)/2:PRINT
-1090 PRINT
-1100 PRINT TAB((TW-LEN(XY$))/2);XY$
-1110 PRINT:PRINT
-1120 FOR J=1 TO L:PRINT TAB(T);
-1130 FOR K=1 TO W:IF A$(J,K)="." THEN PRINT ". ";:GOTO 1140
-1135 PRINT CHR$(ASC(A$(J,K))-32);" ";
-1140 NEXT:PRINT:NEXT
-1150 PRINT:PRINT
-1160 PRINT "FIND THESE HIDDEN WORDS IN THE ABOVE PUZZLE:"
-1170 PRINT
-1180 FOR J=1 TO M:IF LEN(W$(J))=0 THEN 1210
-1190 IF POS(0) + LEN(W$(J)) > TW-2 THEN PRINT
-1200 PRINT W$(J),
-1210 NEXT:PRINT:PRINT:PRINT:PRINT
-1220 RETURN
-1230 IF LEFT$(X$,1)="Y" OR LEFT$(X$,1)="y" THEN 1250
-1240 END
-1250 REM
-1260 FOR I=1 TO L:FOR J=1 TO W:A$(I,J)=".":NEXTJ:NEXTI
-1270 FOR I=1 TO M
-1280 LN=LEN(W$(I)):J=W(I,2):K=W(I,1)
-1290 FOR P=1 TO LN
-1300 A$(J,K)=MID$(W$(I),P,1)
-1310 J=J+DXY(W(I,3),2):K=K+DXY(W(I,3),1):NEXT P
-1320 NEXT I
-1330 XY$="HERE IS THE ANSWER KEY:"
-1340 GOSUB 1070
-1350 PRINT:PRINT
-1360 END
+10 print tab(20);"word search puzzle"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey"
+40 print:print:print
+50 print "  this program is a word search puzzle generator!!"
+60 print "the program takes a set of input strings, purges all"
+70 print "non-alphabetic characters out of them, and incorporates"
+80 print "them into a word search puzzle."
+90 print
+100 print "  in the course of making the puzzle, the machine may"
+110 print "find that it can't put a particular word anywhere, and"
+120 print "so will ask you if it should start the whole puzzle"
+130 print "over. if you don't want it to start over, typing 'no'"
+140  print "will throw away that particular word.  if this persists,"
+150 print "try either giving less words or bigger puzzle dimensions!"
+160 print:print
+280 clear 3000
+300 def fna(z)=int(rnd(1)*z+1)
+310 input "how many columns does your printer have";tw
+320 input "do you want a solution printout";x$
+330 input "what is to be the width of the puzzle";w:md=w
+340 if w*2<=tw then 345
+343 print "that will not fit in";tw;" columns.":goto 330
+345 if w<1 then 330
+350 input "the length";l:if l>w then hd=l
+355 if l<1 then 350
+360 input "what is the maximum number of words in the puzzle";m
+370 if m>=2 then 380
+375 print "sorry; there must be at least 2 words.":goto 360
+390 dim a$(l,w),w$(m)
+400 dim w(m,3),dxy(8,2),dd(28)
+380 print
+410 print "now enter a heading that will be printed over the puzzle:"
+420 print "(";tw;"characters maximum! )"
+430 input xy$
+440 print "ok . . . enter a word at each question mark."
+450 print "to redo the previous word, type a hyphen (-)."
+460 print "when you run out of words, type a period (.)."
+470 for i=1 to m
+480 input t$:if t$="-" theni=i-1:print "redo ";w$(i);". . .":goto 480
+490 if t$="." then m=i-1:goto 660
+500 if len(t$)=0 then print "input error; redo:":goto 480
+510 j=1
+520 te$=mid$(t$,j,1):if te$>="a" and te$<="z" then   570
+525 if te$<"a" or te$>"z" then 530
+527 t$=left$(t$,j-1)+chr$(asc(mid$(t$,j,1))+32)+right$(t$,len(t$)-j):goto570
+530 if te$=t$ then t$="": goto 500
+540 if j=len(t$) then t$=left$(t$,j-1):goto 580
+550 if j=1 then t$=right$(t$,len(t$)-1):j=j-1:goto 570
+560 t$=left$(t$,j-1)+right$(t$,len(t$)-j):j=j-1
+570 j=j+1:if j<=len(t$) then 520
+580 print "-";t$;"-"
+600 if len(t$)<=md then 610
+605 print "that's too long, i'm afraid.";
+607 print " try another one:":goto 480
+610 for iz=1 to i-1: if w$(iz)<>t$ then next:goto 630
+620 print "you entered that one already. try another:":goto 480
+630 w$(i)=t$
+640 next i
+650 print "that's it...";m;"words."
+660 print "now let me ponder this......"
+680 for i=1 to m-1
+685 for j=i+1 to m
+690 if len(w$(i)) < len(w$(j)) then hz$=w$(i):w$(i)=w$(j):w$(j)=hz$
+700 next:next
+710 for i=1 to 8:read dxy(i,1),dxy(i,2):next
+720 for i=1 to 28:read dd(i):next
+730 data 0,1,1,1,1,0,1,-1,0,-1,-1,-1,-1,0,-1,1
+740 data 2,4,6,8,2,4,6,8,2,4,6,8,2,4,6,8,2,4,6,8,2,4,6,8,1,3,5,7
+750 for i=1 to m
+760 ln=len(w$(i))
+770 nt=0
+790 sd=dd(fna(28))
+800 sx=fna(w):x1=sx+(ln-1)*dxy(sd,1):if x1<1 or x1>w then 790
+810 sy=fna(l):x1=sy+(ln-1)*dxy(sd,2):if x1<1 or x1>l then 790
+820 nt=nt+1:if nt<>w*l*2 then 850
+830 print "couldn't fit  '";w$(i);"'  in the puzzle."
+832 input "do you want me to start over";a$
+834 if left$(a$,1)="y" then 750
+836 w$(i)="":goto 950
+850 j=sy:k=sx
+860 for p=1 to ln
+870 if len(a$(j,k)) and a$(j,k)<>mid$(w$(i),p,1) then 790
+880 j=j+dxy(sd,2):k=k+dxy(sd,1):next p
+900 j=sy:k=sx
+910 for p=1 to ln:a$(j,k)=mid$(w$(i),p,1)
+920 j=j+dxy(sd,2):k=k+dxy(sd,1):next
+940 w(i,1)=sx:w(i,2)=sy:w(i,3)=sd
+950 next i
+970 for i=1 to l
+975 for j=1 to w
+980 if a$(i,j)="" then a$(i,j)=chr$(fna(26)+96)
+990 next:next
+1010 for i=1 to m-1:for j=i+1 to m
+1020 if w$(i)<=w$(j) then 1030
+1021 hz$=w$(i):w$(i)=w$(j):w$(j)=hz$
+1025 for k=1 to 3:hz=w(i,k):w(i,k)=w(j,k):w(j,k)=hz:next k
+1030 nextj:next i
+1040 input "how many copies of this puzzle do you want";n
+1050 print "for each copy, hit return to begin printing..."
+1060 for c=1 to n:gosub 1070:next:goto 1230
+1070 input a$:print
+1080 t=(tw-2*w)/2:print
+1090 print
+1100 print tab((tw-len(xy$))/2);xy$
+1110 print:print
+1120 for j=1 to l:print tab(t);
+1130 for k=1 to w:if a$(j,k)="." then print ". ";:goto 1140
+1135 print chr$(asc(a$(j,k))-32);" ";
+1140 next:print:next
+1150 print:print
+1160 print "find these hidden words in the above puzzle:"
+1170 print
+1180 for j=1 to m:if len(w$(j))=0 then 1210
+1190 if pos(0) + len(w$(j)) > tw-2 then print
+1200 print w$(j),
+1210 next:print:print:print:print
+1220 return
+1230 if left$(x$,1)="y" or left$(x$,1)="y" then 1250
+1240 end
+1250 rem
+1260 for i=1 to l:for j=1 to w:a$(i,j)=".":nextj:nexti
+1270 for i=1 to m
+1280 ln=len(w$(i)):j=w(i,2):k=w(i,1)
+1290 for p=1 to ln
+1300 a$(j,k)=mid$(w$(i),p,1)
+1310 j=j+dxy(w(i,3),2):k=k+dxy(w(i,3),1):next p
+1320 next i
+1330 xy$="here is the answer key:"
+1340 gosub 1070
+1350 print:print
+1360 end

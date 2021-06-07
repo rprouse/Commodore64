@@ -1,68 +1,68 @@
-10 PRINT TAB(33);"WAR"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT: PRINT: PRINT
-100 PRINT "THIS IS THE CARD GAME OF WAR.  EACH CARD IS GIVEN BY SUIT-#"
-110 PRINT "AS S-7 FOR SPADE 7.  ";
-120 PRINT "DO YOU WANT DIRECTIONS";
-130 INPUT B$
-140 IF B$="NO" THEN 210
-150 IF B$="YES" THEN 180
-160 PRINT "YES OR NO, PLEASE.  ";
-170 GOTO 120
-180 PRINT "THE COMPUTER GIVES YOU AND IT A 'CARD'.  THE HIGHER CARD"
-190 PRINT "(NUMERICALLY) WINS.  THE GAME ENDS WHEN YOU CHOOSE NOT TO"
-200 PRINT "CONTINUE OR WHEN YOU HAVE FINISHED THE PACK."
-210 PRINT
-220 PRINT
-230 DIM A$(52),L(54)
-240 FOR I=1 TO 52
-250 READ A$(I)
-260 NEXT I
-270 REM
-280 FOR J=1 TO 52
-290 LET L(J)=INT(52*RND(1))+1
-295 IF J=1 THEN 350
-300 FOR K=1 TO J-1
-310 IF L(K)<>L(J) THEN 340
-320 REM
-330 GOTO 290
-340 NEXT K
-350 NEXT J
-360 P=P+1
-370 M1=L(P)
-380 P=P+1
-390 M2=L(P)
-400 PRINT
-420 PRINT "YOU: ";A$(M1),"COMPUTER: ";A$(M2)
-430 N1=INT((M1-.5)/4)
-440 N2=INT((M2-.5)/4)
-450 IF N1>=N2 THEN 490
-460 A1=A1+1
-470 PRINT "THE COMPUTER WINS!!! YOU HAVE";B1;"AND THE COMPUTER HAS";A1
-480 GOTO 540
-490 IF N1=N2 THEN 530
-500 B1=B1+1
-510 PRINT "YOU WIN. YOU HAVE";B1;"AND THE COMPUTER HAS";A1
-520 GOTO 540
-530 PRINT "TIE.  NO SCORE CHANGE."
-540 IF L(P+1)=0 THEN 610
-550 PRINT "DO YOU WANT TO CONTINUE";
-560 INPUT V$
-570 IF V$="YES" THEN 360
-580 IF V$="NO" THEN 650
-590 PRINT "YES OR NO, PLEASE.  ";
-600 GOTO 540
-610 PRINT
-620 PRINT
-630 PRINT "WE HAVE RUN OUT OF CARDS.  FINAL SCORE:  YOU: ";B1;
-640 PRINT "  THE COMPUTER: ";A1:PRINT
-650 PRINT "THANKS FOR PLAYING.  IT WAS FUN."
-655 PRINT
-660 DATA "S-2","H-2","C-2","D-2","S-3","H-3","C-3","D-3"
-670 DATA "S-4","H-4","C-4","D-4","S-5","H-5","C-5","D-5"
-680 DATA "S-6","H-6","C-6","D-6","S-7","H-7","C-7","D-7"
-690 DATA "S-8","H-8","C-8","D-8","S-9","H-9","C-9","D-9"
-700 DATA "S-10","H-10","C-10","D-10","S-J","H-J","C-J","D-J"
-710 DATA "S-Q","H-Q","C-Q","D-Q","S-K","H-K","C-K","D-K"
-720 DATA "S-A","H-A","C-A","D-A"
-999 END
+10 print tab(33);"war"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print: print: print
+100 print "this is the card game of war.  each card is given by suit-#"
+110 print "as s-7 for spade 7.  ";
+120 print "do you want directions";
+130 input b$
+140 if b$="no" then 210
+150 if b$="yes" then 180
+160 print "yes or no, please.  ";
+170 goto 120
+180 print "the computer gives you and it a 'card'.  the higher card"
+190 print "(numerically) wins.  the game ends when you choose not to"
+200 print "continue or when you have finished the pack."
+210 print
+220 print
+230 dim a$(52),l(54)
+240 for i=1 to 52
+250 read a$(i)
+260 next i
+270 rem
+280 for j=1 to 52
+290 let l(j)=int(52*rnd(1))+1
+295 if j=1 then 350
+300 for k=1 to j-1
+310 if l(k)<>l(j) then 340
+320 rem
+330 goto 290
+340 next k
+350 next j
+360 p=p+1
+370 m1=l(p)
+380 p=p+1
+390 m2=l(p)
+400 print
+420 print "you: ";a$(m1),"computer: ";a$(m2)
+430 n1=int((m1-.5)/4)
+440 n2=int((m2-.5)/4)
+450 if n1>=n2 then 490
+460 a1=a1+1
+470 print "the computer wins!!! you have";b1;"and the computer has";a1
+480 goto 540
+490 if n1=n2 then 530
+500 b1=b1+1
+510 print "you win. you have";b1;"and the computer has";a1
+520 goto 540
+530 print "tie.  no score change."
+540 if l(p+1)=0 then 610
+550 print "do you want to continue";
+560 input v$
+570 if v$="yes" then 360
+580 if v$="no" then 650
+590 print "yes or no, please.  ";
+600 goto 540
+610 print
+620 print
+630 print "we have run out of cards.  final score:  you: ";b1;
+640 print "  the computer: ";a1:print
+650 print "thanks for playing.  it was fun."
+655 print
+660 data "s-2","h-2","c-2","d-2","s-3","h-3","c-3","d-3"
+670 data "s-4","h-4","c-4","d-4","s-5","h-5","c-5","d-5"
+680 data "s-6","h-6","c-6","d-6","s-7","h-7","c-7","d-7"
+690 data "s-8","h-8","c-8","d-8","s-9","h-9","c-9","d-9"
+700 data "s-10","h-10","c-10","d-10","s-j","h-j","c-j","d-j"
+710 data "s-q","h-q","c-q","d-q","s-k","h-k","c-k","d-k"
+720 data "s-a","h-a","c-a","d-a"
+999 end

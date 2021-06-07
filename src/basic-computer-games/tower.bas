@@ -1,125 +1,125 @@
-10 PRINT TAB(33);"TOWERS"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-90 PRINT
-100 REM*** INITIALIZE
-110 DIM T(7,3)
-120 E=0
-130 FOR D=1 TO 7
-140 FOR N=1 TO 3
-150 T(D,N)=0
-160 NEXT N
-170 NEXT D
-180 PRINT "TOWERS OF HANOI PUZZLE.": PRINT
-200 PRINT "YOU MUST TRANSFER THE DISKS FROM THE LEFT TO THE RIGHT"
-205 PRINT "TOWER, ONE AT A TIME, NEVER PUTTING A LARGER DISK ON A"
-210 PRINT "SMALLER DISK.": PRINT
-215 INPUT "HOW MANY DISKS DO YOU WANT TO MOVE (7 IS MAX)";S
-220 PRINT
-230 M=0
-240 FOR Q=1 TO 7
-250 IF Q=S THEN 350
-260 NEXT Q
-270 E=E+1
-280 IF E>2 THEN 310
-290 PRINT "SORRY, BUT I CAN'T DO THAT JOB FOR YOU.": GOTO 215
-310 PRINT "ALL RIGHT, WISE GUY, IF YOU CAN'T PLAY THE GAME RIGHT, I'LL"
-320 PRINT "JUST TAKE MY PUZZLE AND GO HOME.  SO LONG.": STOP
-340 REM *** STORE DISKS FROM SMALLEST TO LARGEST
-350 PRINT "IN THIS PROGRAM, WE SHALL REFER TO DISKS BY NUMERICAL CODE."
-355 PRINT "3 WILL REPRESENT THE SMALLEST DISK, 5 THE NEXT SIZE,"
-360 PRINT "7 THE NEXT, AND SO ON, UP TO 15.  IF YOU DO THE PUZZLE WITH"
-365 PRINT "2 DISKS, THEIR CODE NAMES WOULD BE 13 AND 15.  WITH 3 DISKS"
-370 PRINT "THE CODE NAMES WOULD BE 11, 13 AND 15, ETC.  THE NEEDLES"
-375 PRINT "ARE NUMBERED FROM LEFT TO RIGHT, 1 TO 3.  WE WILL"
-380 PRINT "START WITH THE DISKS ON NEEDLE 1, AND ATTEMPT TO MOVE THEM"
-385 PRINT "TO NEEDLE 3."
-390 PRINT: PRINT "GOOD LUCK!": PRINT
-400 Y=7: D=15
-420 FOR X=S TO 1 STEP -1
-430 T(Y,1)=D: D=D-2: Y=Y-1
-460 NEXT X
-470 GOSUB 1230
-480 PRINT "WHICH DISK WOULD YOU LIKE TO MOVE";:E=0
-500 INPUT D
-510 IF (D-3)*(D-5)*(D-7)*(D-9)*(D-11)*(D-13)*(D-15)=0 THEN 580
-520 PRINT "ILLEGAL ENTRY... YOU MAY ONLY TYPE 3,5,7,9,11,13, OR 15."
-530 E=E+1: IF E>1 THEN 560
-550 GOTO 500
-560 PRINT "STOP WASTING MY TIME.  GO BOTHER SOMEONE ELSE.": STOP
-580 REM *** CHECK IF REQUESTED DISK IS BELOW ANOTHER
-590 FOR R=1 TO 7
-600 FOR C=1 TO 3
-610 IF T(R,C)=D THEN 640
-620 NEXT C: NEXT R
-640 FOR Q=R TO 1 STEP -1
-645 IF T(Q,C)=0 THEN 660
-650 IF T(Q,C)<D THEN 680
-660 NEXT Q
-670 GOTO 700
-680 PRINT "THAT DISK IS BELOW ANOTHER ONE.  MAKE ANOTHER CHOICE."
-690 GOTO 480
-700 E=0
-705 INPUT "PLACE DISK ON WHICH NEEDLE";N
-730 IF (N-1)*(N-2)*(N-3)=0 THEN 800
-735 E=E+1
-740 IF E>1 THEN 780
-750 PRINT "I'LL ASSUME YOU HIT THE WRONG KEY THIS TIME.  BUT WATCH IT,"
-760 PRINT "I ONLY ALLOW ONE MISTAKE.": GOTO 705
-780 PRINT "I TRIED TO WARN YOU, BUT YOU WOULDN'T LISTEN."
-790 PRINT "BYE BYE, BIG SHOT.":STOP
-800 FOR R=1 TO 7
-810 IF T(R,N)<>0 THEN 840
-820 NEXT R
-830 GOTO 880
-835 REM *** CHECK IF DISK TO BE PLACED ON A LARGER ONE
-840 IF D<T(R,N) THEN 880
-850 PRINT "YOU CAN'T PLACE A LARGER DISK ON TOP OF A SMALLER ONE,"
-860 PRINT "IT MIGHT CRUSH IT!": PRINT "NOW THEN, ";:GOTO 480
-875 REM *** MOVE RELOCATED DISK
-880 FOR V=1 TO 7: FOR W=1 TO 3
-900 IF T(V,W)=D THEN 930
-910 NEXT W: NEXT V
-925 REM *** LOCATE EMPTY SPACE ON NEEDLE N
-930 FOR U=1 TO 7
-940 IF T(U,N)<>0 THEN 970
-950 NEXT U
-960 U=7: GOTO 980
-965 REM *** MOVE DISK AND SET OLD LOCATION TO 0
-970 U=U-1
-980 T(U,N)=T(V,W): T(V,W)=0
-995 REM *** PRINT OUT CURRENT STATUS
-1000 GOSUB 1230
-1018 REM *** CHECK IF DONE
-1020 M=M+1
-1030 FOR R=1 TO 7: FOR C=1 TO 2
-1050 IF T(R,C)<>0 THEN 1090
-1060 NEXT C: NEXT R
-1080 GOTO 1120
-1090 IF M<=128 THEN 480
-1100 PRINT "SORRY, BUT I HAVE ORDERS TO STOP IF YOU MAKE MORE THAN"
-1110 PRINT "128 MOVES.": STOP
-1120 IF M<>2^S-1 THEN 1140
-1130 PRINT:PRINT "CONGRATULATIONS!!":PRINT
-1140 PRINT "YOU HAVE PERFORMED THE TASK IN";M;"MOVES."
-1150 PRINT: PRINT "TRY AGAIN (YES OR NO)";: INPUT A$
-1160 IF A$="NO" THEN 1390
-1170 IF A$="YES" THEN 90
-1180 PRINT: PRINT "'YES' OR 'NO' PLEASE";: INPUT A$: GOTO 1160
-1230 REM *** PRINT SUBROUTINE
-1240 FOR K=1 TO 7
-1250 Z=10
-1260 FOR J=1 TO 3
-1270 IF T(K,J)=0 THEN 1330
-1280 PRINT TAB(Z-INT(T(K,J)/2));
-1290 FOR V=1 TO T(K,J)
-1300 PRINT "*";
-1310 NEXT V
-1320 GOTO 1340
-1330 PRINT TAB(Z);"*";
-1340 Z=Z+21
-1350 NEXT J
-1360 PRINT
-1370 NEXT K
-1380 RETURN
-1390 PRINT: PRINT "THANKS FOR THE GAME!": PRINT: END
+10 print tab(33);"towers"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+90 print
+100 rem*** initialize
+110 dim t(7,3)
+120 e=0
+130 for d=1 to 7
+140 for n=1 to 3
+150 t(d,n)=0
+160 next n
+170 next d
+180 print "towers of hanoi puzzle.": print
+200 print "you must transfer the disks from the left to the right"
+205 print "tower, one at a time, never putting a larger disk on a"
+210 print "smaller disk.": print
+215 input "how many disks do you want to move (7 is max)";s
+220 print
+230 m=0
+240 for q=1 to 7
+250 if q=s then 350
+260 next q
+270 e=e+1
+280 if e>2 then 310
+290 print "sorry, but i can't do that job for you.": goto 215
+310 print "all right, wise guy, if you can't play the game right, i'll"
+320 print "just take my puzzle and go home.  so long.": stop
+340 rem *** store disks from smallest to largest
+350 print "in this program, we shall refer to disks by numerical code."
+355 print "3 will represent the smallest disk, 5 the next size,"
+360 print "7 the next, and so on, up to 15.  if you do the puzzle with"
+365 print "2 disks, their code names would be 13 and 15.  with 3 disks"
+370 print "the code names would be 11, 13 and 15, etc.  the needles"
+375 print "are numbered from left to right, 1 to 3.  we will"
+380 print "start with the disks on needle 1, and attempt to move them"
+385 print "to needle 3."
+390 print: print "good luck!": print
+400 y=7: d=15
+420 for x=s to 1 step -1
+430 t(y,1)=d: d=d-2: y=y-1
+460 next x
+470 gosub 1230
+480 print "which disk would you like to move";:e=0
+500 input d
+510 if (d-3)*(d-5)*(d-7)*(d-9)*(d-11)*(d-13)*(d-15)=0 then 580
+520 print "illegal entry... you may only type 3,5,7,9,11,13, or 15."
+530 e=e+1: if e>1 then 560
+550 goto 500
+560 print "stop wasting my time.  go bother someone else.": stop
+580 rem *** check if requested disk is below another
+590 for r=1 to 7
+600 for c=1 to 3
+610 if t(r,c)=d then 640
+620 next c: next r
+640 for q=r to 1 step -1
+645 if t(q,c)=0 then 660
+650 if t(q,c)<d then 680
+660 next q
+670 goto 700
+680 print "that disk is below another one.  make another choice."
+690 goto 480
+700 e=0
+705 input "place disk on which needle";n
+730 if (n-1)*(n-2)*(n-3)=0 then 800
+735 e=e+1
+740 if e>1 then 780
+750 print "i'll assume you hit the wrong key this time.  but watch it,"
+760 print "i only allow one mistake.": goto 705
+780 print "i tried to warn you, but you wouldn't listen."
+790 print "bye bye, big shot.":stop
+800 for r=1 to 7
+810 if t(r,n)<>0 then 840
+820 next r
+830 goto 880
+835 rem *** check if disk to be placed on a larger one
+840 if d<t(r,n) then 880
+850 print "you can't place a larger disk on top of a smaller one,"
+860 print "it might crush it!": print "now then, ";:goto 480
+875 rem *** move relocated disk
+880 for v=1 to 7: for w=1 to 3
+900 if t(v,w)=d then 930
+910 next w: next v
+925 rem *** locate empty space on needle n
+930 for u=1 to 7
+940 if t(u,n)<>0 then 970
+950 next u
+960 u=7: goto 980
+965 rem *** move disk and set old location to 0
+970 u=u-1
+980 t(u,n)=t(v,w): t(v,w)=0
+995 rem *** print out current status
+1000 gosub 1230
+1018 rem *** check if done
+1020 m=m+1
+1030 for r=1 to 7: for c=1 to 2
+1050 if t(r,c)<>0 then 1090
+1060 next c: next r
+1080 goto 1120
+1090 if m<=128 then 480
+1100 print "sorry, but i have orders to stop if you make more than"
+1110 print "128 moves.": stop
+1120 if m<>2^s-1 then 1140
+1130 print:print "congratulations!!":print
+1140 print "you have performed the task in";m;"moves."
+1150 print: print "try again (yes or no)";: input a$
+1160 if a$="no" then 1390
+1170 if a$="yes" then 90
+1180 print: print "'yes' or 'no' please";: input a$: goto 1160
+1230 rem *** print subroutine
+1240 for k=1 to 7
+1250 z=10
+1260 for j=1 to 3
+1270 if t(k,j)=0 then 1330
+1280 print tab(z-int(t(k,j)/2));
+1290 for v=1 to t(k,j)
+1300 print "*";
+1310 next v
+1320 goto 1340
+1330 print tab(z);"*";
+1340 z=z+21
+1350 next j
+1360 print
+1370 next k
+1380 return
+1390 print: print "thanks for the game!": print: end

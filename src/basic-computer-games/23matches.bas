@@ -1,64 +1,64 @@
-20 PRINT TAB(31);"23 MATCHES"
-30 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-40 PRINT:PRINT:PRINT
-80 PRINT " THIS IS A GAME CALLED '23 MATCHES'."
-90 PRINT
-100 PRINT "WHEN IT IS YOUR TURN, YOU MAY TAKE ONE, TWO, OR THREE"
-110 PRINT "MATCHES. THE OBJECT OF THE GAME IS NOT TO HAVE TO TAKE"
-120 PRINT "THE LAST MATCH."
-130 PRINT
-140 PRINT "LET'S FLIP A COIN TO SEE WHO GOES FIRST."
-150 PRINT "IF IT COMES UP HEADS, I WILL WIN THE TOSS."
-155 PRINT
-160 REM
-165 N = 23
-170 Q = INT(2*RND(5))
-180 IF Q = 1 THEN 210
-190 PRINT "TAILS! YOU GO FIRST. "
-195 PRINT
-200 GOTO 300
-210 PRINT "HEADS! I WIN! HA! HA!"
-220 PRINT "PREPARE TO LOSE, MEATBALL-NOSE!!"
-230 PRINT
-250 PRINT "I TAKE 2 MATCHES"
-260 N = N -2
-270 PRINT "THE NUMBER OF MATCHES IS NOW" N
-280 PRINT
-290 PRINT "YOUR TURN -- YOU MAY TAKE 1, 2 OR 3 MATCHES."
-300 PRINT "HOW MANY DO YOU WISH TO REMOVE",
-310 INPUT K
-320 IF K > 3 THEN 430
-330 IF K <= 0 THEN 430
-340 N = N - K
-350 PRINT "THERE ARE NOW";N;"MATCHES REMAINING."
-351 IF N = 4 THEN 381
-352 IF N = 3 THEN 383
-353 IF N = 2 THEN 385
-360 IF N <= 1 THEN  530
-370 Z = 4 - K
-372 GOTO 390
-380 PRINT
-381 Z = 3
-382 GOTO 390
-383 Z = 2
-384 GOTO 390
-385 Z = 1
-390 PRINT "MY TURN ! I REMOVE" Z "MATCHES"
-400 N = N - Z
-410 IF N <= 1 THEN 470
-420 GOTO 270
-430 PRINT "VERY FUNNY! DUMMY!"
-440 PRINT "DO YOU WANT TO PLAY OR GOOF AROUND?"
-450 PRINT "NOW, HOW MANY MATCHES DO YOU WANT",
-460 GOTO 310
-470 PRINT
-480 PRINT"YOU POOR BOOB! YOU TOOK THE LAST MATCH! I GOTCHA!!"
-490 PRINT "HA ! HA ! I BEAT YOU !!!"
-500 PRINT
-510 PRINT "GOOD BYE LOSER!"
-520 GOTO 560
-530 PRINT "YOU WON, FLOPPY EARS !"
-540 PRINT "THINK YOU'RE PRETTY SMART !"
-550 PRINT "LETS PLAY AGAIN AND I'LL BLOW YOUR SHOES OFF !!"
-560 STOP
-570 END
+20 print tab(31);"23 matches"
+30 print tab(15);"creative computing  morristown, new jersey"
+40 print:print:print
+80 print " this is a game called '23 matches'."
+90 print
+100 print "when it is your turn, you may take one, two, or three"
+110 print "matches. the object of the game is not to have to take"
+120 print "the last match."
+130 print
+140 print "let's flip a coin to see who goes first."
+150 print "if it comes up heads, i will win the toss."
+155 print
+160 rem
+165 n = 23
+170 q = int(2*rnd(5))
+180 if q = 1 then 210
+190 print "tails! you go first. "
+195 print
+200 goto 300
+210 print "heads! i win! ha! ha!"
+220 print "prepare to lose, meatball-nose!!"
+230 print
+250 print "i take 2 matches"
+260 n = n -2
+270 print "the number of matches is now" n
+280 print
+290 print "your turn -- you may take 1, 2 or 3 matches."
+300 print "how many do you wish to remove",
+310 input k
+320 if k > 3 then 430
+330 if k <= 0 then 430
+340 n = n - k
+350 print "there are now";n;"matches remaining."
+351 if n = 4 then 381
+352 if n = 3 then 383
+353 if n = 2 then 385
+360 if n <= 1 then  530
+370 z = 4 - k
+372 goto 390
+380 print
+381 z = 3
+382 goto 390
+383 z = 2
+384 goto 390
+385 z = 1
+390 print "my turn ! i remove" z "matches"
+400 n = n - z
+410 if n <= 1 then 470
+420 goto 270
+430 print "very funny! dummy!"
+440 print "do you want to play or goof around?"
+450 print "now, how many matches do you want",
+460 goto 310
+470 print
+480 print"you poor boob! you took the last match! i gotcha!!"
+490 print "ha ! ha ! i beat you !!!"
+500 print
+510 print "good bye loser!"
+520 goto 560
+530 print "you won, floppy ears !"
+540 print "think you're pretty smart !"
+550 print "lets play again and i'll blow your shoes off !!"
+560 stop
+570 end

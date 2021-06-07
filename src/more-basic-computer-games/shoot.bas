@@ -1,173 +1,173 @@
-10 PRINT TAB(26);"SHOOT"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-40 PRINT:PRINT:PRINT
-110 INPUT "DO YOU WANT INSTRUCTIONS";A$
-120 IF LEFT$(A$,1)<>"Y" GOTO 440
-130 PRINT
-140 PRINT " IT IS THE FINAL HOUR OF MAN. YOU AND A WARRING NATION"
-150 PRINT "HAVE ENTERED INTO A LAST CONTEST. ALL THE LIFE NOW LEFT ON"
-160 PRINT "EARTH ARE YOU AND YOUR ENEMY. BOTH HE AND YOU HAVE FOUND THE"
-170 PRINT "LAST REMAINING ATOMIC MISSILE SILO MATRICES ESTABLISHED BY"
-180 PRINT "THE NOW-DEAD SUPERPOWERS. HE, LIKE YOU, WISHES NOT TO DIE"
-190 PRINT "BUT TO LIVE IN PEACE."
-200 PRINT " HOWEVER IT HAS BECOME APPARENT THAT HE FEELS HIS PEACE"
-210 PRINT "THREATENED AND IS PREPARING AN ATTACK. BOTH YOU AND HE HAVE"
-220 PRINT "SCANNERS THAT WILL WARN YOU OF HIS MOVEMENTS AND TRACK THE"
-230 PRINT "FLIGHT OF HIS ATOMIC MISSILES, THUS HE IS WORKING SLOWLY."
-240 PRINT "THE ENEMY, LIKE YOURSELF, HAS A MISSILE GRID NEARLY"
-250 PRINT "IDENTICAL IN STRUCTURE AND OPERATION TO YOURS, BECAUSE YOU"
-260 PRINT "ARE THE ONLY ONE LEFT, IT WILL BE NECESSARY TO FIRE ALL YOUR"
-270 PRINT "MISSILES MANUALLY. ONCE THE FUSE IS SET, YOU MUST FLEE THE"
-280 PRINT "AREA AND GET TWO GRID UNITS AWAY. YOU MAY NEVER RETURN TO"
-290 PRINT "THIS SPOT, OR A SPOT WHERE A MISSILE HAS LANDED; THE"
-300 PRINT "RADIATION IS INTENSE AND WOULD MEAN AN INSTANT, PAINFUL"
-310 PRINT "DEATH."
-320 PRINT " SO THE STAGE HAS BEEN SET. THERE IS PEACE UNTIL THE"
-330 PRINT "SIGN THAT THE ENEMY HAS MOVED TO HIS MISSILE RANGE. HE WILL"
-340 PRINT "FIRE EVERY TIME YOU WILL, AND DO SO UNTIL ONE OF YOU IS"
-350 PRINT "DESTROYED."
-360 PRINT " EACH TIME A ROUND OF MISSILES HAS BEEN FIRED, THE"
-370 PRINT "SCANNERS WILL REPORT THE STATUS OF BOTH YOUR'S AND THE ENEMY'S"
-380 PRINT "GRID TERRITORY. IT WILL SHOW ALL AREAS THAT HAVE HAD EITHER"
-390 PRINT "A MISSILE HIT OR A MISSILE FIRED FROM IT. WITH THIS"
-400 PRINT "CONTINUALLY UPDATED MAP, YOU MAY BE ABLE TO INDUCTIVELY"
-410 PRINT "DISCOVER OR TRAP YOUR OPPONENT. BEWARE, HE WILL BE TRYING TO"
-420 PRINT "DO THE SAME TO YOU."
-430 PRINT
-440 G$="  -12345678910"
-450 C$="SCANNER COMPUTER: "
-460 S$=""
-470 FOR X=1 TO 14
-480 S$=S$+" "
-490 NEXT X
-510 DIM I(10,10),H(10,10),T(8,2),P(8,2)
-520 DATA 10,10 , 1,1 , 10,1 , 1,10 , 10,9 , 9,10 , 1,2 , 2,1
-530 DATA -2,-2 , 0,-2, 2,-2, 2,0 , 2,2 , 0,2 ,-2,2 ,-2,0
-540 R=INT(RND(1)*8+1)
-550 FOR X=1 TO R
-560 READ A,B
-570 NEXT X
-580 FOR X=1 TO 10
-590 FOR Y=1 TO 10
-600 I(X,Y)=0
-610 H(X,Y)=0
-620 NEXT Y
-630 NEXT X
-640 IF A=2 GOTO 690
-650 FOR X=1 TO 8
-660 READ C,D
-670 IF C=2 GOTO 690
-680 NEXT X
-690 FOR X=1 TO 8
-700 FOR Y=1 TO 2
-710 READ P(X,Y)
-720 NEXT Y
-730 NEXT X
-740 PRINT C$;"ENEMY ACTIVITY ON GRID AT";A;",";B
-750 PRINT
-760 INPUT "YOUR STARTING CO-ORDINATES";E,F
-770 IF E<1 OR E>10 OR F<1 OR F>10 GOTO 760
-780 Z=1
-790 I(E,F)=1
-800 H(A,B)=1
-810 PRINT
-820 GOTO 1490
-830 INPUT "MISSILE CO-ORDINATES";M,N
-840 IF M<1 OR M>10 OR N<1 OR N>10 GOTO 830
-850 INPUT "WHERE TO MOVE TO";S,T
-860 IF S<1 OR S>10 OR T<1 OR T>10 GOTO 850
-870 IF I(S,T) = 1 GOTO 850
-880 FOR X=1 TO 8
-890 IF P(X,1)+E=S AND P(X,2)+F=T GOTO 920
-900 NEXT X
-910 GOTO 850
-920 PRINT
-930 L=1
-940 FOR X=1 TO 8
-950 IF P(X,1)+E>10 OR P(X,1)+E<1 OR P(X,2)+F>10 OR P(X,2)+F<1 GOTO 1000
-960 IF  I(P(X,1)+E,P(X,2)+F)=1 GOTO 1000
-970 T(L,1)=P(X,1)+E
-980 T(L,2)=P(X,2)+F
-990 L=L+1
-1000 NEXT X
-1010 L=L-1
-1020 IF L<>1 GOTO 1060
-1030 C=T(L,1)
-1040 D=T(L,2)
-1050 GOTO 1090
-1060 G=INT(RND(1)*L+1)
-1070 C=T(G,1)
-1080 D=T(G,2)
-1090 L=1
-1100 FOR X=1 TO 8
-1110 IF P(X,1)+A>10ORP(X,1)+A<1 OR P(X,2)+B>10ORP(X,2)+B<1 THEN 1160
-1120 IF H(P(X,1)+A,P(X,2)+B)=1 GOTO 1160
-1130 T(L,1)=P(X,1)+A
-1140 T(L,2)=P(X,2)+B
-1150 L=L+1
-1160 NEXT X
-1170 L=L+1
-1180 IF L<>0 GOTO 1220
-1190 PRINT C$;"THE ENEMY HAS CORNERED HIMSELF IN!!"
-1200 Z=0
-1204 C=E
-1207 D=F
-1210 GOTO 1290
-1220 IF L<>1 GOTO 1260
-1230 J=T(1,1)
-1240 K=T(1,2)
-1250 GOTO 1290
-1260 G=INT(RND(1)*L+1)
-1270 J=T(G,1)
-1280 K=T(G,2)
-1290 I(E,F)=1
-1300 H(A,B)=1
-1310 I(C,D)=1
-1320 H(M,N)=1
-1330 IF M<>J OR D<>T GOTO 1390
-1340 PRINT C$J"HEY! YOU GOT HIM!!"
-1350 Z=0
-1360 IF C<>S OR D<>T GOTO 1390
-1370 PRINT C$;"YOU MOVED RIGHT UNDER HIS MISSILE!!"
-1380 Z=0
-1390 E=S
-1400 F=T
-1410 A=J
-1420 B=K
-1430 FOR X=1 TO 8
-1440 IF P(X,1)+E>10ORP(X,1)+E<1 OR P(X,2)+F>10ORP(X,2)+F<1 GOTO 1460
-1450 IF I(P(X,1)+E,P(X,2)+F)=0 GOTO 1490
-1460 NEXT X
-1470 PRINT C$;"FOOL! YOU HAVE BOXED YOURSELF INTO A CORNER!!"
-1480 Z=0
-1490 PRINT " YOUR TERRITORY ","ENEMY TERRITORY"
-1500 PRINT
-1510 PRINT G$;S$;G$
-1520 FOR X=1 TO 10
-1530 IF X=10 GOTO 1560
-1540 PRINT X;
-1550 GOTO 1570
-1560 PRINT "10 ";
-1570 FOR Y=1 TO 10
-1580 IF I(X,Y)=1 GOTO 1610
-1590 PRINT ":";
-1600 GOTO 1620
-1610 PRINT "*";
-1620 NEXT Y
-1630 PRINT " ";S$;
-1640 IF X=10 GOTO 1670
-1650 PRINT X;
-1660 GOTO 1680
-1670 PRINT "10 ";
-1680 FOR Y=1 TO 10
-1690 IF H(X,Y)=1 GOTO 1720
-1700 PRINT ":";
-1710 GOTO 1730
-1720 PRINT "*";
-1730 NEXT Y
-1740 PRINT
-1750 NEXT X
-1760 PRINT
-1770 IF Z=1 GOTO 830
-1780 END
+10 print tab(26);"shoot"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey"
+40 print:print:print
+110 input "do you want instructions";a$
+120 if left$(a$,1)<>"y" goto 440
+130 print
+140 print " it is the final hour of man. you and a warring nation"
+150 print "have entered into a last contest. all the life now left on"
+160 print "earth are you and your enemy. both he and you have found the"
+170 print "last remaining atomic missile silo matrices established by"
+180 print "the now-dead superpowers. he, like you, wishes not to die"
+190 print "but to live in peace."
+200 print " however it has become apparent that he feels his peace"
+210 print "threatened and is preparing an attack. both you and he have"
+220 print "scanners that will warn you of his movements and track the"
+230 print "flight of his atomic missiles, thus he is working slowly."
+240 print "the enemy, like yourself, has a missile grid nearly"
+250 print "identical in structure and operation to yours, because you"
+260 print "are the only one left, it will be necessary to fire all your"
+270 print "missiles manually. once the fuse is set, you must flee the"
+280 print "area and get two grid units away. you may never return to"
+290 print "this spot, or a spot where a missile has landed; the"
+300 print "radiation is intense and would mean an instant, painful"
+310 print "death."
+320 print " so the stage has been set. there is peace until the"
+330 print "sign that the enemy has moved to his missile range. he will"
+340 print "fire every time you will, and do so until one of you is"
+350 print "destroyed."
+360 print " each time a round of missiles has been fired, the"
+370 print "scanners will report the status of both your's and the enemy's"
+380 print "grid territory. it will show all areas that have had either"
+390 print "a missile hit or a missile fired from it. with this"
+400 print "continually updated map, you may be able to inductively"
+410 print "discover or trap your opponent. beware, he will be trying to"
+420 print "do the same to you."
+430 print
+440 g$="  -12345678910"
+450 c$="scanner computer: "
+460 s$=""
+470 for x=1 to 14
+480 s$=s$+" "
+490 next x
+510 dim i(10,10),h(10,10),t(8,2),p(8,2)
+520 data 10,10 , 1,1 , 10,1 , 1,10 , 10,9 , 9,10 , 1,2 , 2,1
+530 data -2,-2 , 0,-2, 2,-2, 2,0 , 2,2 , 0,2 ,-2,2 ,-2,0
+540 r=int(rnd(1)*8+1)
+550 for x=1 to r
+560 read a,b
+570 next x
+580 for x=1 to 10
+590 for y=1 to 10
+600 i(x,y)=0
+610 h(x,y)=0
+620 next y
+630 next x
+640 if a=2 goto 690
+650 for x=1 to 8
+660 read c,d
+670 if c=2 goto 690
+680 next x
+690 for x=1 to 8
+700 for y=1 to 2
+710 read p(x,y)
+720 next y
+730 next x
+740 print c$;"enemy activity on grid at";a;",";b
+750 print
+760 input "your starting co-ordinates";e,f
+770 if e<1 or e>10 or f<1 or f>10 goto 760
+780 z=1
+790 i(e,f)=1
+800 h(a,b)=1
+810 print
+820 goto 1490
+830 input "missile co-ordinates";m,n
+840 if m<1 or m>10 or n<1 or n>10 goto 830
+850 input "where to move to";s,t
+860 if s<1 or s>10 or t<1 or t>10 goto 850
+870 if i(s,t) = 1 goto 850
+880 for x=1 to 8
+890 if p(x,1)+e=s and p(x,2)+f=t goto 920
+900 next x
+910 goto 850
+920 print
+930 l=1
+940 for x=1 to 8
+950 if p(x,1)+e>10 or p(x,1)+e<1 or p(x,2)+f>10 or p(x,2)+f<1 goto 1000
+960 if  i(p(x,1)+e,p(x,2)+f)=1 goto 1000
+970 t(l,1)=p(x,1)+e
+980 t(l,2)=p(x,2)+f
+990 l=l+1
+1000 next x
+1010 l=l-1
+1020 if l<>1 goto 1060
+1030 c=t(l,1)
+1040 d=t(l,2)
+1050 goto 1090
+1060 g=int(rnd(1)*l+1)
+1070 c=t(g,1)
+1080 d=t(g,2)
+1090 l=1
+1100 for x=1 to 8
+1110 if p(x,1)+a>10orp(x,1)+a<1 or p(x,2)+b>10orp(x,2)+b<1 then 1160
+1120 if h(p(x,1)+a,p(x,2)+b)=1 goto 1160
+1130 t(l,1)=p(x,1)+a
+1140 t(l,2)=p(x,2)+b
+1150 l=l+1
+1160 next x
+1170 l=l+1
+1180 if l<>0 goto 1220
+1190 print c$;"the enemy has cornered himself in!!"
+1200 z=0
+1204 c=e
+1207 d=f
+1210 goto 1290
+1220 if l<>1 goto 1260
+1230 j=t(1,1)
+1240 k=t(1,2)
+1250 goto 1290
+1260 g=int(rnd(1)*l+1)
+1270 j=t(g,1)
+1280 k=t(g,2)
+1290 i(e,f)=1
+1300 h(a,b)=1
+1310 i(c,d)=1
+1320 h(m,n)=1
+1330 if m<>j or d<>t goto 1390
+1340 print c$j"hey! you got him!!"
+1350 z=0
+1360 if c<>s or d<>t goto 1390
+1370 print c$;"you moved right under his missile!!"
+1380 z=0
+1390 e=s
+1400 f=t
+1410 a=j
+1420 b=k
+1430 for x=1 to 8
+1440 if p(x,1)+e>10orp(x,1)+e<1 or p(x,2)+f>10orp(x,2)+f<1 goto 1460
+1450 if i(p(x,1)+e,p(x,2)+f)=0 goto 1490
+1460 next x
+1470 print c$;"fool! you have boxed yourself into a corner!!"
+1480 z=0
+1490 print " your territory ","enemy territory"
+1500 print
+1510 print g$;s$;g$
+1520 for x=1 to 10
+1530 if x=10 goto 1560
+1540 print x;
+1550 goto 1570
+1560 print "10 ";
+1570 for y=1 to 10
+1580 if i(x,y)=1 goto 1610
+1590 print ":";
+1600 goto 1620
+1610 print "*";
+1620 next y
+1630 print " ";s$;
+1640 if x=10 goto 1670
+1650 print x;
+1660 goto 1680
+1670 print "10 ";
+1680 for y=1 to 10
+1690 if h(x,y)=1 goto 1720
+1700 print ":";
+1710 goto 1730
+1720 print "*";
+1730 next y
+1740 print
+1750 next x
+1760 print
+1770 if z=1 goto 830
+1780 end

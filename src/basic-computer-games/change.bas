@@ -1,51 +1,51 @@
-2 PRINT TAB(33);"CHANGE"
-4 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-5 PRINT:PRINT:PRINT
-6 PRINT "I, YOUR FRIENDLY MICROCOMPUTER, WILL DETERMINE"
-8 PRINT "THE CORRECT CHANGE FOR ITEMS COSTING UP TO $100."
-9 PRINT:PRINT
-10 PRINT "COST OF ITEM";:INPUT A:PRINT "AMOUNT OF PAYMENT";:INPUT P
-20 C=P-A:M=C:IF C<>0 THEN 90
-25 PRINT "CORRECT AMOUNT, THANK YOU."
-30 GOTO 400
-90 IF C>0 THEN 120
-95 PRINT "SORRY, YOU HAVE SHORT-CHANGED ME $";A-P
-100 GOTO 10
-120 PRINT "YOUR CHANGE, $";C
-130 D=INT(C/10)
-140 IF D=0 THEN 155
-150 PRINT D;"TEN DOLLAR BILL(S)"
-155 C=M-(D*10)
-160 E=INT(C/5)
-170 IF E=0 THEN 185
-180 PRINT E;"FIVE DOLLARS BILL(S)"
-185 C=M-(D*10+E*5)
-190 F=INT(C)
-200 IF F=0 THEN 215
-210 PRINT F;"ONE DOLLAR BILL(S)"
-215 C=M-(D*10+E*5+F)
-220 C=C*100
-225 N=C
-230 G=INT(C/50)
-240 IF G=0 THEN 255
-250 PRINT G;"ONE HALF DOLLAR(S)"
-255 C=N-(G*50)
-260 H=INT(C/25)
-270 IF H=0 THEN 285
-280 PRINT H;"QUARTER(S)"
-285 C=N-(G*50+H*25)
-290 I=INT(C/10)
-300 IF I=0 THEN 315
-310 PRINT I;"DIME(S)"
-315 C=N-(G*50+H*25+I*10)
-320 J=INT(C/5)
-330 IF J=0 THEN 345
-340 PRINT J;"NICKEL(S)"
-345 C=N-(G*50+H*25+I*10+J*5)
-350 K=INT(C+.5)
-360 IF K=0 THEN 380
-370 PRINT K;"PENNY(S)"
-380 PRINT "THANK YOU, COME AGAIN."
-390 PRINT:PRINT
-400 GOTO 10
-410 END
+2 print tab(33);"change"
+4 print tab(15);"creative computing  morristown, new jersey"
+5 print:print:print
+6 print "i, your friendly microcomputer, will determine"
+8 print "the correct change for items costing up to $100."
+9 print:print
+10 print "cost of item";:input a:print "amount of payment";:input p
+20 c=p-a:m=c:if c<>0 then 90
+25 print "correct amount, thank you."
+30 goto 400
+90 if c>0 then 120
+95 print "sorry, you have short-changed me $";a-p
+100 goto 10
+120 print "your change, $";c
+130 d=int(c/10)
+140 if d=0 then 155
+150 print d;"ten dollar bill(s)"
+155 c=m-(d*10)
+160 e=int(c/5)
+170 if e=0 then 185
+180 print e;"five dollars bill(s)"
+185 c=m-(d*10+e*5)
+190 f=int(c)
+200 if f=0 then 215
+210 print f;"one dollar bill(s)"
+215 c=m-(d*10+e*5+f)
+220 c=c*100
+225 n=c
+230 g=int(c/50)
+240 if g=0 then 255
+250 print g;"one half dollar(s)"
+255 c=n-(g*50)
+260 h=int(c/25)
+270 if h=0 then 285
+280 print h;"quarter(s)"
+285 c=n-(g*50+h*25)
+290 i=int(c/10)
+300 if i=0 then 315
+310 print i;"dime(s)"
+315 c=n-(g*50+h*25+i*10)
+320 j=int(c/5)
+330 if j=0 then 345
+340 print j;"nickel(s)"
+345 c=n-(g*50+h*25+i*10+j*5)
+350 k=int(c+.5)
+360 if k=0 then 380
+370 print k;"penny(s)"
+380 print "thank you, come again."
+390 print:print
+400 goto 10
+410 end

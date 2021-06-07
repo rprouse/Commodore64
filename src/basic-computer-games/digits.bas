@@ -1,78 +1,78 @@
-10 PRINT TAB(33);"DIGITS"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-210 PRINT "THIS IS A GAME OF GUESSING."
-220 PRINT "FOR INSTRUCTIONS, TYPE '1', ELSE TYPE '0'";
-230 INPUT E
-240 IF E=0 THEN 360
-250 PRINT
-260 PRINT "PLEASE TAKE A PIECE OF PAPER AND WRITE DOWN"
-270 PRINT "THE DIGITS '0', '1', OR '2' THIRTY TIMES AT RANDOM."
-280 PRINT "ARRANGE THEM IN THREE LINES OF TEN DIGITS EACH."
-290 PRINT "I WILL ASK FOR THEN TEN AT A TIME."
-300 PRINT "I WILL ALWAYS GUESS THEM FIRST AND THEN LOOK AT YOUR"
-310 PRINT "NEXT NUMBER TO SEE IF I WAS RIGHT. BY PURE LUCK,"
-320 PRINT "I OUGHT TO BE RIGHT TEN TIMES. BUT I HOPE TO DO BETTER"
-330 PRINT "THAN THAT *****"
-340 PRINT:PRINT
-360 READ A,B,C
-370 DATA 0,1,3
-380 DIM M(26,2),K(2,2),L(8,2)
-400 FOR I=0 TO 26: FOR J=0 TO 2: M(I,J)=1: NEXT J: NEXT I
-410 FOR I=0 TO 2: FOR J=0 TO 2: K(I,J)=9: NEXT J: NEXT I
-420 FOR I=0 TO 8: FOR J=0 TO 2: L(I,J)=3: NEXT J: NEXT I
-450 L(0,0)=2: L(4,1)=2: L(8,2)=2
-480 Z=26: Z1=8: Z2=2
-510 X=0
-520 FOR T=1 TO 3
-530 PRINT
-540 PRINT "TEN NUMBERS, PLEASE";
-550 INPUT N(1),N(2),N(3),N(4),N(5),N(6),N(7),N(8),N(9),N(10)
-560 FOR I=1 TO 10
-570 W=N(I)-1
-580 IF W=SGN(W) THEN 620
-590 PRINT "ONLY USE THE DIGITS '0', '1', OR '2'."
-600 PRINT "LET'S TRY AGAIN.":GOTO 530
-620 NEXT I
-630 PRINT: PRINT "MY GUESS","YOUR NO.","RESULT","NO. RIGHT":PRINT
-660 FOR U=1 TO 10
-670 N=N(U): S=0
-690 FOR J=0 TO 2
-700 S1=A*K(Z2,J)+B*L(Z1,J)+C*M(Z,J)
-710 IF S>S1 THEN 760
-720 IF S<S1 THEN 740
-730 IF RND(1)<.5 THEN 760
-740 S=S1: G=J
-760 NEXT J
-770 PRINT "  ";G,"   ";N(U),
-780 IF G=N(U) THEN 810
-790 PRINT " WRONG",X
-800 GOTO 880
-810 X=X+1
-820 PRINT " RIGHT",X
-830 M(Z,N)=M(Z,N)+1
-840 L(Z1,N)=L(Z1,N)+1
-850 K(Z2,N)=K(Z2,N)+1
-860 Z=Z-INT(Z/9)*9
-870 Z=3*Z+N(U)
-880 Z1=Z-INT(Z/9)*9
-890 Z2=N(U)
-900 NEXT U
-910 NEXT T
-920 PRINT
-930 IF X>10 THEN 980
-940 IF X<10 THEN 1010
-950 PRINT "I GUESSED EXACTLY 1/3 OF YOUR NUMBERS."
-960 PRINT "IT'S A TIE GAME."
-970 GOTO 1030
-980 PRINT "I GUESSED MORE THAN 1/3 OF YOUR NUMBERS."
-990 PRINT "I WIN.": FOR Q=1 TO 10: PRINT CHR$(7);: NEXT Q
-1000 GOTO 1030
-1010 PRINT "I GUESSED LESS THAN 1/3 OF YOUR NUMBERS."
-1020 PRINT "YOU BEAT ME.  CONGRATULATIONS *****"
-1030 PRINT
-1040 PRINT "DO YOU WANT TO TRY AGAIN (1 FOR YES, 0 FOR NO)";
-1060 INPUT X
-1070 IF X=1 THEN 400
-1080 PRINT:PRINT "THANKS FOR THE GAME."
-1090 END
+10 print tab(33);"digits"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+210 print "this is a game of guessing."
+220 print "for instructions, type '1', else type '0'";
+230 input e
+240 if e=0 then 360
+250 print
+260 print "please take a piece of paper and write down"
+270 print "the digits '0', '1', or '2' thirty times at random."
+280 print "arrange them in three lines of ten digits each."
+290 print "i will ask for then ten at a time."
+300 print "i will always guess them first and then look at your"
+310 print "next number to see if i was right. by pure luck,"
+320 print "i ought to be right ten times. but i hope to do better"
+330 print "than that *****"
+340 print:print
+360 read a,b,c
+370 data 0,1,3
+380 dim m(26,2),k(2,2),l(8,2)
+400 for i=0 to 26: for j=0 to 2: m(i,j)=1: next j: next i
+410 for i=0 to 2: for j=0 to 2: k(i,j)=9: next j: next i
+420 for i=0 to 8: for j=0 to 2: l(i,j)=3: next j: next i
+450 l(0,0)=2: l(4,1)=2: l(8,2)=2
+480 z=26: z1=8: z2=2
+510 x=0
+520 for t=1 to 3
+530 print
+540 print "ten numbers, please";
+550 input n(1),n(2),n(3),n(4),n(5),n(6),n(7),n(8),n(9),n(10)
+560 for i=1 to 10
+570 w=n(i)-1
+580 if w=sgn(w) then 620
+590 print "only use the digits '0', '1', or '2'."
+600 print "let's try again.":goto 530
+620 next i
+630 print: print "my guess","your no.","result","no. right":print
+660 for u=1 to 10
+670 n=n(u): s=0
+690 for j=0 to 2
+700 s1=a*k(z2,j)+b*l(z1,j)+c*m(z,j)
+710 if s>s1 then 760
+720 if s<s1 then 740
+730 if rnd(1)<.5 then 760
+740 s=s1: g=j
+760 next j
+770 print "  ";g,"   ";n(u),
+780 if g=n(u) then 810
+790 print " wrong",x
+800 goto 880
+810 x=x+1
+820 print " right",x
+830 m(z,n)=m(z,n)+1
+840 l(z1,n)=l(z1,n)+1
+850 k(z2,n)=k(z2,n)+1
+860 z=z-int(z/9)*9
+870 z=3*z+n(u)
+880 z1=z-int(z/9)*9
+890 z2=n(u)
+900 next u
+910 next t
+920 print
+930 if x>10 then 980
+940 if x<10 then 1010
+950 print "i guessed exactly 1/3 of your numbers."
+960 print "it's a tie game."
+970 goto 1030
+980 print "i guessed more than 1/3 of your numbers."
+990 print "i win.": for q=1 to 10: print chr$(7);: next q
+1000 goto 1030
+1010 print "i guessed less than 1/3 of your numbers."
+1020 print "you beat me.  congratulations *****"
+1030 print
+1040 print "do you want to try again (1 for yes, 0 for no)";
+1060 input x
+1070 if x=1 then 400
+1080 print:print "thanks for the game."
+1090 end

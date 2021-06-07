@@ -1,47 +1,47 @@
-100 PRINT TAB(22);"UNDER OR OVER"
-110 PRINT TAB(20);"CREATIVE COMPUTING"
-120 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-130 PRINT:PRINT:PRINT
-140 PRINT"THIS IS A GAME OF UNDER AND OVER. IF YOU PICK"
-150 PRINT"UNDER OR OVER SEVEN, YOU WILL WIN EVEN MONEY."
-160 PRINT"IF YOU PICK EVEN YOU WILL WIN MONEY AT FOUR TO ONE"
-170 PRINT"ODDS. YOU HAVE $100 TO START WITH. GOOD LUCK!":PRINT:PRINT
-180 A=100
-190 RESTORE
-200 REM
-210 READ A$,B$,C$
-220 DATA "UNDER","OVER","EVEN"
-230 PRINT"WHAT NUMBER DO YOU WISH TO PLAY AND HOW MUCH"
-240 PRINT"DO YOU WANT TO BET ON THE NUMBER";:INPUT B,C
-250 PRINT:PRINT"THE DICE HAVE NOW BEEN THROWN. THE RESULTS"
-260 PRINT"ARE AS FOLLOWS:"
-270 Q=INT(6*RND(1)+1):R=INT(6*RND(1)+1)
-280 PRINT " DIE #1","DIE #2","SUM","YOUR#","TOSS"
-290 IF Q+R>7 THEN 310
-295 IF Q+R=7 THEN 320
-300 PRINT Q,R,Q+R,B,A$:PRINT
-303 IF B=Q+R THEN 350
-305 IF B<7 THEN 380
-307 GOTO 410
-310 PRINT Q,R,Q+R,B,B$:PRINT
-313 IF B=Q+R THEN 350
-315 IF B>7 THEN 380
-317 GOTO 410
-320 PRINT Q,R,Q+R,B,C$:PRINT
-330 IF B=Q+R THEN 350
-340 GOTO 420
-350 A=A+(4*C)
-360 PRINT TAB(20)"********YOU WIN 4 TO 1********"
-370 PRINT"THE AMOUNT YOU NOW HAVE IS" A :PRINT:GOTO 440
-380 A=A+C
-390 PRINT TAB(20)"********YOU WIN EVEN MONEY********"
-400 PRINT"THE AMOUNT YOU NOW HAVE IS" A :PRINT:GOTO 440
-410 A=A-C
-420 PRINT TAB(20)"!!!!!YOU LOSE!!!!!"
-430 PRINT"THE AMOUNT YOU NOW HAVE IS" A :PRINT
-440 IF A>0 THEN 190
-450 PRINT"THE GAME IS OVER AND YOU ARE FLAT BROKE. SORRY CHARLIE"
-460 PRINT"THIS PROVES THAT IT IS NOT GOOD TO GAMBLE"
-470 PRINT"DO YOU WANT TO PLAY AGAIN";:INPUT W$
-480 IF LEFT$(W$,1)="Y" THEN 180
-490 END
+100 print tab(22);"under or over"
+110 print tab(20);"creative computing"
+120 print tab(18);"morristown, new jersey"
+130 print:print:print
+140 print"this is a game of under and over. if you pick"
+150 print"under or over seven, you will win even money."
+160 print"if you pick even you will win money at four to one"
+170 print"odds. you have $100 to start with. good luck!":print:print
+180 a=100
+190 restore
+200 rem
+210 read a$,b$,c$
+220 data "under","over","even"
+230 print"what number do you wish to play and how much"
+240 print"do you want to bet on the number";:input b,c
+250 print:print"the dice have now been thrown. the results"
+260 print"are as follows:"
+270 q=int(6*rnd(1)+1):r=int(6*rnd(1)+1)
+280 print " die #1","die #2","sum","your#","toss"
+290 if q+r>7 then 310
+295 if q+r=7 then 320
+300 print q,r,q+r,b,a$:print
+303 if b=q+r then 350
+305 if b<7 then 380
+307 goto 410
+310 print q,r,q+r,b,b$:print
+313 if b=q+r then 350
+315 if b>7 then 380
+317 goto 410
+320 print q,r,q+r,b,c$:print
+330 if b=q+r then 350
+340 goto 420
+350 a=a+(4*c)
+360 print tab(20)"********you win 4 to 1********"
+370 print"the amount you now have is" a :print:goto 440
+380 a=a+c
+390 print tab(20)"********you win even money********"
+400 print"the amount you now have is" a :print:goto 440
+410 a=a-c
+420 print tab(20)"!!!!!you lose!!!!!"
+430 print"the amount you now have is" a :print
+440 if a>0 then 190
+450 print"the game is over and you are flat broke. sorry charlie"
+460 print"this proves that it is not good to gamble"
+470 print"do you want to play again";:input w$
+480 if left$(w$,1)="y" then 180
+490 end

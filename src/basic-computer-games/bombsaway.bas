@@ -1,65 +1,65 @@
-8 PRINT "YOU ARE A PILOT IN A WORLD WAR II BOMBER."
-10 INPUT "WHAT SIDE -- ITALY(1), ALLIES(2), JAPAN(3), GERMANY(4)";A
-20 IF A>0 AND A<5 THEN 25
-22 PRINT "TRY AGAIN..." : GOTO 10
-25 ON A GOTO 30, 110, 200, 220
-30 INPUT "YOUR TARGET -- ALBANIA(1), GREECE(2), NORTH AFRICA(3)";B
-40 IF B>0 AND B<4 THEN 45
-42 PRINT "TRY AGAIN..." : GOTO 30
-45 PRINT : ON B GOTO 50, 80,90
-50 PRINT "SHOULD BE EASY -- YOU'RE FLYING A NAZI-MADE PLANE."
-60 GOTO 280
-80 PRINT "BE CAREFUL!!!" : GOTO 280
-90 PRINT "YOU'RE GOING FOR THE OIL, EH?" : GOTO 280
-110 INPUT "AIRCRAFT -- LIBERATOR(1), B-29(2), B-17(3), LANCASTER(4)";G
-120 IF G>0 AND G<5 THEN 125
-122 PRINT "TRY AGAIN..." : GOTO 110
-125 PRINT : ON G GOTO 130, 150, 170, 190
-130 PRINT "YOU'VE GOT 2 TONS OF BOMBS FLYING FOR PLOESTI." : GOTO 280
-150 PRINT "YOU'RE DUMPING THE A-BOMB ON HIROSHIMA." : GOTO 280
-170 PRINT "YOU'RE CHASING THE BISMARK IN THE NORTH SEA." : GOTO 280
-190 PRINT "YOU'RE BUSTING A GERMAN HEAVY WATER PLANT IN THE RUHR."
-195 GOTO 280
-200 PRINT "YOU'RE FLYING A KAMIKAZE MISSION OVER THE USS LEXINGTON."
-205 INPUT "YOUR FIRST KAMIKAZE MISSION(Y OR N)";F$
-207 IF F$="N" THEN S=0 : GOTO 358
-210 PRINT : IF RND(1)>.65 THEN 325
-215 GOTO 380
-220 PRINT "A NAZI, EH?  OH WELL.  ARE YOU GOING FOR RUSSIA(1),"
-230 INPUT "ENGLAND(2), OR FRANCE(3)";M : IF M>0 AND M<4 THEN 235
-232 PRINT "TRY AGAIN..." : GOTO 220
-235 PRINT : ON M GOTO 250, 260, 270
-250 PRINT "YOU'RE NEARING STALINGRAD." : GOTO 280
-260 PRINT "NEARING LONDON.  BE CAREFUL, THEY'VE GOT RADAR." : GOTO 280
-270 PRINT "NEARING VERSAILLES.  DUCK SOUP.  THEY'RE NEARLY DEFENSELESS."
-280 PRINT
-285 INPUT "HOW MANY MISSIONS HAVE YOU FLOWN";D
-290 IF D<160 THEN 300
-292 PRINT "MISSIONS, NOT MILES..." 
-295 PRINT "150 MISSIONS IS HIGH EVEN FOR OLD-TIMERS."
-297 PRINT "NOW THEN, "; : GOTO 285
-300 PRINT:IF D<100 THEN 310
-305 PRINT "THAT'S PUSHING THE ODDS!" : GOTO 320
-310 IF D<25 THEN PRINT "FRESH OUT OF TRAINING, EH?"
-320 PRINT : IF D<160*RND(1) THEN 330
-325 PRINT "DIRECT HIT!!!! "INT(100*RND(1))"KILLED."
-327 PRINT "MISSION SUCCESSFUL." : GOTO 390
-330 PRINT "MISSED TARGET BY"INT(2+30*RND(1))"MILES!"
-335 PRINT "NOW YOU'RE REALLY IN FOR IT !!" : PRINT
-340 INPUT "DOES THE ENEMY HAVE GUNS(1), MISSILES(2), OR BOTH(3)";R
-345 IF R>0 AND R<4 THEN 350
-347 PRINT "TRY AGAIN..." : GOTO 340
-350 PRINT : T=0 : IF R=2 THEN 360
-355 INPUT "WHAT'S THE PERCENT HIT RATE OF ENEMY GUNNERS (10 TO 50)";S
-357 IF S<10 THEN PRINT "YOU LIE, BUT YOU'LL PAY...": GOTO 380
-358 PRINT
-360 PRINT : IF R>1 THEN T=35
-365 IF S+T>100*RND(1) THEN 380
-370 PRINT "YOU MADE IT THROUGH TREMENDOUS FLAK!!" : GOTO 390
-380 PRINT "* * * * BOOM * * * *"
-384 PRINT "YOU HAVE BEEN SHOT DOWN....."
-386 PRINT "DEARLY BELOVED, WE ARE GATHERED HERE TODAY TO PAY OUR"
-387 PRINT "LAST TRIBUTE..."
-390 PRINT:PRINT:PRINT:INPUT "ANOTHER MISSION (Y OR N)";U$
-395 IF U$="Y" THEN 8
-400 PRINT "CHICKEN !!!" : PRINT : END
+8 print "you are a pilot in a world war ii bomber."
+10 input "what side -- italy(1), allies(2), japan(3), germany(4)";a
+20 if a>0 and a<5 then 25
+22 print "try again..." : goto 10
+25 on a goto 30, 110, 200, 220
+30 input "your target -- albania(1), greece(2), north africa(3)";b
+40 if b>0 and b<4 then 45
+42 print "try again..." : goto 30
+45 print : on b goto 50, 80,90
+50 print "should be easy -- you're flying a nazi-made plane."
+60 goto 280
+80 print "be careful!!!" : goto 280
+90 print "you're going for the oil, eh?" : goto 280
+110 input "aircraft -- liberator(1), b-29(2), b-17(3), lancaster(4)";g
+120 if g>0 and g<5 then 125
+122 print "try again..." : goto 110
+125 print : on g goto 130, 150, 170, 190
+130 print "you've got 2 tons of bombs flying for ploesti." : goto 280
+150 print "you're dumping the a-bomb on hiroshima." : goto 280
+170 print "you're chasing the bismark in the north sea." : goto 280
+190 print "you're busting a german heavy water plant in the ruhr."
+195 goto 280
+200 print "you're flying a kamikaze mission over the uss lexington."
+205 input "your first kamikaze mission(y or n)";f$
+207 if f$="n" then s=0 : goto 358
+210 print : if rnd(1)>.65 then 325
+215 goto 380
+220 print "a nazi, eh?  oh well.  are you going for russia(1),"
+230 input "england(2), or france(3)";m : if m>0 and m<4 then 235
+232 print "try again..." : goto 220
+235 print : on m goto 250, 260, 270
+250 print "you're nearing stalingrad." : goto 280
+260 print "nearing london.  be careful, they've got radar." : goto 280
+270 print "nearing versailles.  duck soup.  they're nearly defenseless."
+280 print
+285 input "how many missions have you flown";d
+290 if d<160 then 300
+292 print "missions, not miles..." 
+295 print "150 missions is high even for old-timers."
+297 print "now then, "; : goto 285
+300 print:if d<100 then 310
+305 print "that's pushing the odds!" : goto 320
+310 if d<25 then print "fresh out of training, eh?"
+320 print : if d<160*rnd(1) then 330
+325 print "direct hit!!!! "int(100*rnd(1))"killed."
+327 print "mission successful." : goto 390
+330 print "missed target by"int(2+30*rnd(1))"miles!"
+335 print "now you're really in for it !!" : print
+340 input "does the enemy have guns(1), missiles(2), or both(3)";r
+345 if r>0 and r<4 then 350
+347 print "try again..." : goto 340
+350 print : t=0 : if r=2 then 360
+355 input "what's the percent hit rate of enemy gunners (10 to 50)";s
+357 if s<10 then print "you lie, but you'll pay...": goto 380
+358 print
+360 print : if r>1 then t=35
+365 if s+t>100*rnd(1) then 380
+370 print "you made it through tremendous flak!!" : goto 390
+380 print "* * * * boom * * * *"
+384 print "you have been shot down....."
+386 print "dearly beloved, we are gathered here today to pay our"
+387 print "last tribute..."
+390 print:print:print:input "another mission (y or n)";u$
+395 if u$="y" then 8
+400 print "chicken !!!" : print : end

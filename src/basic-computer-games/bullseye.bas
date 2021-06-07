@@ -1,37 +1,37 @@
-5 PRINT TAB(32);"BULLSEYE"
-10 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-20 PRINT:PRINT:PRINT
-30 PRINT "IN THIS GAME, UP TO 20 PLAYERS THROW DARTS AT A TARGET"
-40 PRINT "WITH 10, 20, 30, AND 40 POINT ZONES.  THE OBJECTIVE IS"
-50 PRINT "TO GET 200 POINTS.": PRINT
-60 PRINT "THROW",TAB(20);"DESCRIPTION";TAB(45);"PROBABLE SCORE"
-70 PRINT" 1";TAB(20);"FAST OVERARM";TAB(45);"BULLSEYE OR COMPLETE MISS"
-80 PRINT" 2";TAB(20);"CONTROLLED OVERARM";TAB(45);"10, 20 OR 30 POINTS"
-90 PRINT" 3";TAB(20);"UNDERARM";TAB(45);"ANYTHING":PRINT
-100 DIM A$(20),S(20),W(10): M=0: R=0: FOR I=1 TO 20: S(I)=0: NEXT I
-110 INPUT "HOW MANY PLAYERS";N: PRINT
-120 FOR I=1 TO N
-130 PRINT "NAME OF PLAYER #";I;:INPUT A$(I)
-140 NEXT I
-150 R=R+1: PRINT: PRINT "ROUND";R:PRINT "---------"
-160 FOR I=1 TO N
-170 PRINT: PRINT A$(I)"'S THROW";: INPUT T
-180 IF T<1 OR T>3 THEN PRINT "INPUT 1, 2, OR 3!": GOTO 170
-190 ON T GOTO 200, 210, 200
-200 P1=.65: P2=.55: P3=.5: P4=.5: GOTO 230
-210 P1=.99: P2=.77: P3=.43: P4=.01: GOTO 230
-220 P1=.95: P2=.75: P3=.45: P4=.05
-230 U=RND(1)
-240 IF U>=P1 THEN PRINT "BULLSEYE!!  40 POINTS!":B=40: GOTO 290
-250 IF U>=P2 THEN PRINT "30-POINT ZONE!":B=30: GOTO 290
-260 IF U>=P3 THEN PRINT "20-POINT ZONE":B=20: GOTO 290
-270 IF U>=P4 THEN PRINT "WHEW!  10 POINTS.":B=10: GOTO 290
-280 PRINT "MISSED THE TARGET!  TOO BAD.": B=0
-290 S(I)=S(I)+B: PRINT "TOTAL SCORE =";S(I): NEXT I
-300 FOR I=1 TO N
-310 IF S(I)>=200 THEN M=M+1: W(M)=I
-320 NEXT I
-330 IF M=0 THEN 150
-340 PRINT: PRINT "WE HAVE A WINNER!!": PRINT
-350 FOR I=1 TO M: PRINT A$(W(I));" SCORED";S(W(I));"POINTS.": NEXT I
-360 PRINT: PRINT "THANKS FOR THE GAME.": END
+5 print tab(32);"bullseye"
+10 print tab(15);"creative computing  morristown, new jersey"
+20 print:print:print
+30 print "in this game, up to 20 players throw darts at a target"
+40 print "with 10, 20, 30, and 40 point zones.  the objective is"
+50 print "to get 200 points.": print
+60 print "throw",tab(20);"description";tab(45);"probable score"
+70 print" 1";tab(20);"fast overarm";tab(45);"bullseye or complete miss"
+80 print" 2";tab(20);"controlled overarm";tab(45);"10, 20 or 30 points"
+90 print" 3";tab(20);"underarm";tab(45);"anything":print
+100 dim a$(20),s(20),w(10): m=0: r=0: for i=1 to 20: s(i)=0: next i
+110 input "how many players";n: print
+120 for i=1 to n
+130 print "name of player #";i;:input a$(i)
+140 next i
+150 r=r+1: print: print "round";r:print "---------"
+160 for i=1 to n
+170 print: print a$(i)"'s throw";: input t
+180 if t<1 or t>3 then print "input 1, 2, or 3!": goto 170
+190 on t goto 200, 210, 200
+200 p1=.65: p2=.55: p3=.5: p4=.5: goto 230
+210 p1=.99: p2=.77: p3=.43: p4=.01: goto 230
+220 p1=.95: p2=.75: p3=.45: p4=.05
+230 u=rnd(1)
+240 if u>=p1 then print "bullseye!!  40 points!":b=40: goto 290
+250 if u>=p2 then print "30-point zone!":b=30: goto 290
+260 if u>=p3 then print "20-point zone":b=20: goto 290
+270 if u>=p4 then print "whew!  10 points.":b=10: goto 290
+280 print "missed the target!  too bad.": b=0
+290 s(i)=s(i)+b: print "total score =";s(i): next i
+300 for i=1 to n
+310 if s(i)>=200 then m=m+1: w(m)=i
+320 next i
+330 if m=0 then 150
+340 print: print "we have a winner!!": print
+350 for i=1 to m: print a$(w(i));" scored";s(w(i));"points.": next i
+360 print: print "thanks for the game.": end

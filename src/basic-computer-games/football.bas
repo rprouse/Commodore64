@@ -1,181 +1,181 @@
-1 PRINT TAB(32);"FOOTBALL"
-2 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-3 PRINT:PRINT:PRINT
-100 REM
-120 DIM A(20),B(20),C(40),H(2),T(2),W(2),X(2),Y(2),Z(2)
-130 DIM M$(2),D(2),P$(20)
-140 PRINT "PRESENTING N.F.U. FOOTBALL (NO FORTRAN USED)"
-145 PRINT:PRINT
-150 INPUT "DO YOU WANT INSTRUCTIONS";A$
-160 IF A$="NO" THEN 290
-165 IF A$<>"YES" THEN 150
-170 PRINT "THIS IS A FOOTBALL GAME FOR TWO TEAMS IN WHICH PLAYERS MUST"
-180 PRINT "PREPARE A TAPE WITH A DATA STATEMENT (1770 FOR TEAM 1,"
-190 PRINT "1780 FOR TEAM 2) IN WHICH EACH TEAM SCRAMBLES NOS. 1-20"
-195 PRINT "THESE NUMBERS ARE THEN ASSIGNED TO TWENTY GIVEN PLAYS."
-200 PRINT"A LIST OF NOS. AND THEIR PLAYS IS PROVIDED WITH"
-210 PRINT "BOTH TEAMS HAVING THE SAME PLAYS. THE MORE SIMILAR THE"
-220 PRINT "PLAYS THE LESS YARDAGE GAINED.  SCORES ARE GIVEN"
-223 PRINT "WHENEVER SCORES ARE MADE. SCORES MAY ALSO BE OBTAINED"
-225 PRINT "BY INPUTTING 99,99 FOR PLAY NOS. TO PUNT OR ATTEMPT A"
-227 PRINT "FIELD GOAL, INPUT 77,77 FOR PLAY NUMBERS. QUESTIONS WILL BE"
-230 PRINT "ASKED THEN. ON 4TH DOWN, YOU WILL ALSO BE ASKED WHETHER"
-240 PRINT "YOU WANT TO PUNT OR ATTEMPT A FIELD GOAL. IF THE ANSWER TO"
-250 PRINT "BOTH QUESTIONS IS NO IT WILL BE ASSUMED YOU WANT TO"
-260 PRINT "TRY AND GAIN YARDAGE. ANSWER ALL QUESTIONS YES OR NO."
-270 PRINT "THE GAME IS PLAYED UNTIL PLAYERS TERMINATE (CONTROL-C)."
-280 PRINT "PLEASE PREPARE A TAPE AND RUN.": STOP
-290 PRINT:PRINT "PLEASE INPUT SCORE LIMIT ON GAME";:INPUT E
-300 FOR I=1 TO 40: READ N: IF I>20 THEN 350
-330 A(N)=I: GOTO 360
-350 B(N)=I-20
-360 C(I)=N: NEXT I
-370 FOR I=1 TO 20: READ P$(I): NEXT I
-380 L=0: T=1
-410 PRINT "TEAM";T;"PLAY CHART"
-420 PRINT "NO.      PLAY"
-430 FOR I=1 TO 20
-440 REM
-450 PRINT C(I+L);TAB(6);P$(I)
-460 NEXT I
-630 L=L+20:T=2
-640 PRINT
-650 PRINT "TEAR OFF HERE----------------------------------------------"
-660 FOR X=1 TO 11: PRINT: NEXT X
-670 FOR Z=1 TO 3000: NEXT Z
-680 IF L=20 THEN 410
-690 D(1)=0: D(2)=3: M$(1)="--->": M$(2)="<---"
-700 H(1)=0: H(2)=0: T(1)=2: T(2)=1
-710 W(1)=-1: W(2)=1: X(1)=100: X(2)=0
-720 Y(1)=1: Y(2)=-1: Z(1)=0: Z(2)=100
-725 GOSUB 1910
-730 PRINT "TEAM 1 DEFENDS 0 YD GOAL -- TEAM 2 DEFENDS 100 YD GOAL."
-740 T=INT(2*RND(1)+1)
-760 PRINT: PRINT "THE COIN IS FLIPPED"
-765 P=X(T)-Y(T)*40
-770 GOSUB 1860: PRINT : PRINT "TEAM";T;"RECEIVES KICK-OFF"
-780 K=INT(26*RND(1)+40)
-790 P=P-Y(T)*K
-794 IF W(T)*P<Z(T)+10 THEN 810
-795 PRINT: PRINT "BALL WENT OUT OF ENDZONE --AUTOMATIC TOUCHBACK--"
-796 GOTO 870 
-810 PRINT "BALL WENT";K;"YARDS.  NOW ON";P:GOSUB 1900
-830 PRINT "TEAM";T;"DO YOU WANT TO RUNBACK";:INPUT A$
-840 IF A$="YES" THEN 1430
-845 IF A$<>"NO" THEN 830
-850 IF W(T)*P<Z(T) THEN 880
-870 P=Z(T)-W(T)*20
-880 D=1: S=P
-885 FOR I=1 TO 72: PRINT "=";: NEXT I
-890 PRINT: PRINT "TEAM";T;"DOWN";D;"ON";P
-893 IF D<>1 THEN 900
-895 IF Y(T)*(P+Y(T)*10)>=X(T) THEN 898
-897 C=4: GOTO 900
-898 C=8
-900 IF C=8 THEN 904
-901 PRINT TAB(27);10-(Y(T)*P-Y(T)*S);"YARDS TO 1ST DOWN"
-902 GOTO 910
-904 PRINT TAB(27);X(T)-Y(T)*P;"YARDS"
-910 GOSUB 1900: IF D=4 THEN 1180
-920 REM
-930 U=INT(3*RND(0)-1): GOTO 940
-936 PRINT "ILLEGAL PLAY NUMBER, CHECK AND"
-940 PRINT "INPUT OFFENSIVE PLAY, DEFENSIVE PLAY";
-950 IF T=2 THEN 970
-960 INPUT P1,P2: GOTO 975
-970 INPUT P2,P1
-975 IF P1=77 THEN 1180
-980 IF P1>20 THEN 1800
-985 IF P1<1 THEN 1800
-990 IF P2>20 THEN 1800
-992 IF P2<1 THEN 1800
-995 P1=INT(P1): P2=INT(P2)
-1000 Y=INT(ABS(A(P1)-B(P2))/19*((X(T)-Y(T)*P+25)*RND(1)-15))
-1005 PRINT: IF T=2 THEN 1015
-1010 IF A(P1)<11 THEN 1048
-1012 GOTO 1020
-1015 IF B(P2)<11 THEN 1048
-1020 IF U<>0 THEN 1035
-1025 PRINT "PASS INCOMPLETE TEAM";T
-1030 Y=0: GOTO 1050
-1035 G=RND(1): IF G>.025 THEN 1040
-1037 IF Y>2 THEN 1045
-1040 PRINT "QUARTERBACK SCRAMBLED": GOTO 1050
-1045 PRINT "PASS COMPLETED": GOTO 1050
-1048 PRINT "THE BALL WAS RUN"
-1050 P=P-W(T)*Y
-1060 PRINT: PRINT "NET YARDS GAINED ON DOWN";D;"ARE ";Y
-1070 G=RND(1): IF G>.025 THEN 1110
-1080 PRINT: PRINT "** LOSS OF POSSESSION FROM TEAM";T;"TO TEAM";T(T)
-1100 GOSUB 1850: PRINT: T=T(T): GOTO 830
-1110 IF Y(T)*P>=X(T) THEN 1320
-1120 IF W(T)*P>=Z(T) THEN 1230
-1130 IF Y(T)*P-Y(T)*S>=10 THEN 880
-1140 D=D+1: IF D<>5 THEN 885
-1160 PRINT: PRINT "CONVERSION UNSUCCESSFUL TEAM";T:T=T(T)
-1170 GOSUB 1850: GOTO 880
-1180 PRINT "DOES TEAM";T;"WANT TO PUNT";: INPUT A$
-1185 IF A$="NO" THEN 1200
-1187 IF A$<>"YES" THEN 1180
-1190 PRINT:PRINT "TEAM";T;"WILL PUNT": G=RND(1): IF G<.025 THEN 1080
-1195 GOSUB 1850: K=INT(25*RND(1)+35): T=T(T): GOTO 790
-1200 PRINT "DOES TEAM";T;"WANT TO ATTEMPT A FIELD GOAL";: INPUT A$
-1210 IF A$="YES" THEN 1640
-1215 IF A$<>"NO" THEN 1200
-1217 GOTO 920
-1230 PRINT: PRINT "SAFETY AGAINST TEAM";T;"**********************OH-OH"
-1240 H(T(T))=H(T(T))+2: GOSUB 1810
-1280 PRINT"TEAM";T;"DO YOU WANT TO PUNT INSTEAD OF A KICKOFF";:INPUT A$
-1290 P=Z(T)-W(T)*20: IF A$="YES" THEN 1190
-1320 PRINT: PRINT "TOUCHDOWN BY TEAM";T;"*********************YEA TEAM"
-1340 Q=7: G=RND(1): IF G>.1 THEN 1380
-1360 Q=6: PRINT "EXTRA POINT NO GOOD": GOTO 1390
-1380 PRINT "EXTRA POINT GOOD"
-1390 H(T)=H(T)+Q: GOSUB 1810
-1420 T=T(T): GOTO 765
-1430 K=INT(9*RND(0)+1)
-1440 R=INT(((X(T)-Y(T)*P+25)*RND(1)-15)/K)
-1460 P=P-W(T)*R
-1480 PRINT:PRINT "RUNBACK TEAM";T;R;"YARDS"
-1485 G=RND(1): IF G<.025 THEN 1080
-1490 IF Y(T)*P>=X(T) THEN 1320
-1500 IF W(T)*P>=Z(T) THEN 1230
-1510 GOTO 880
-1640 PRINT: PRINT "TEAM";T;"WILL ATTEMPT A FIELD GOAL"
-1645 G=RND(1): IF G<.025 THEN 1080
-1650 F=INT(35*RND(1)+20)
-1660 PRINT: PRINT "KICK IS";F;"YARDS LONG"
-1680 P=P-W(T)*F: G=RND(1)
-1690 IF G<.35 THEN 1735
-1700 IF Y(T)*P<X(T) THEN 1740
-1710 PRINT "FIELD GOAL GOOD FOR TEAM";T;"*********************YEA"
-1720 Q=3: GOTO 1390
-1735 PRINT "BALL WENT WIDE"
-1740 PRINT "FIELD GOAL UNSUCCESFUL TEAM";T;"-----------------TOO BAD"
-1742 GOSUB 1850: IF Y(T)*P<X(T)+10 THEN 1745
-1744 T=T(T): GOTO 794
-1745 PRINT: PRINT "BALL NOW ON";P
-1750 T=T(T): GOSUB 1900: GOTO 830
-1770 DATA 17,8,4,14,19,3,10,1,7,11,15,9,5,20,13,18,16,2,12,6
-1780 DATA 20,2,17,5,8,18,12,11,1,4,19,14,10,7,9,15,6,13,16,3
-1790 DATA "PITCHOUT","TRIPLE REVERSE","DRAW","QB SNEAK","END AROUND"
-1792 DATA "DOUBLE REVERSE","LEFT SWEEP","RIGHT SWEEP","OFF TACKLE"
-1794 DATA "WISHBONE OPTION","FLARE PASS","SCREEN PASS"
-1796 DATA "ROLL OUT OPTION","RIGHT CURL","LEFT CURL","WISHBONE OPTION"
-1798 DATA "SIDELINE PASS","HALF-BACK OPTION","RAZZLE-DAZZLE","BOMB!!!!"
-1800 IF P1<>99 THEN 936
-1810 PRINT: PRINT "TEAM 1 SCORE IS";H(1)
-1820 PRINT "TEAM 2 SCORE IS";H(2): PRINT
-1825 IF H(T)<E THEN 1830
-1827 PRINT "TEAM";T;"WINS*******************": GOTO 2000
-1830 IF P1=99 THEN 940
-1835 RETURN
-1850 PRINT
-1860 FOR X=1 TO 72: PRINT "+";: NEXT X: PRINT
-1870 RETURN
-1900 PRINT TAB(D(T)+5+P/2);M$(T)
-1910 PRINT "TEAM 1 [0   10   20   30   40   50   60   70   80   90";
-1915 PRINT "   100] TEAM 2"
-1920 PRINT
-1930 RETURN
-2000 END
+1 print tab(32);"football"
+2 print tab(15);"creative computing  morristown, new jersey"
+3 print:print:print
+100 rem
+120 dim a(20),b(20),c(40),h(2),t(2),w(2),x(2),y(2),z(2)
+130 dim m$(2),d(2),p$(20)
+140 print "presenting n.f.u. football (no fortran used)"
+145 print:print
+150 input "do you want instructions";a$
+160 if a$="no" then 290
+165 if a$<>"yes" then 150
+170 print "this is a football game for two teams in which players must"
+180 print "prepare a tape with a data statement (1770 for team 1,"
+190 print "1780 for team 2) in which each team scrambles nos. 1-20"
+195 print "these numbers are then assigned to twenty given plays."
+200 print"a list of nos. and their plays is provided with"
+210 print "both teams having the same plays. the more similar the"
+220 print "plays the less yardage gained.  scores are given"
+223 print "whenever scores are made. scores may also be obtained"
+225 print "by inputting 99,99 for play nos. to punt or attempt a"
+227 print "field goal, input 77,77 for play numbers. questions will be"
+230 print "asked then. on 4th down, you will also be asked whether"
+240 print "you want to punt or attempt a field goal. if the answer to"
+250 print "both questions is no it will be assumed you want to"
+260 print "try and gain yardage. answer all questions yes or no."
+270 print "the game is played until players terminate (control-c)."
+280 print "please prepare a tape and run.": stop
+290 print:print "please input score limit on game";:input e
+300 for i=1 to 40: read n: if i>20 then 350
+330 a(n)=i: goto 360
+350 b(n)=i-20
+360 c(i)=n: next i
+370 for i=1 to 20: read p$(i): next i
+380 l=0: t=1
+410 print "team";t;"play chart"
+420 print "no.      play"
+430 for i=1 to 20
+440 rem
+450 print c(i+l);tab(6);p$(i)
+460 next i
+630 l=l+20:t=2
+640 print
+650 print "tear off here----------------------------------------------"
+660 for x=1 to 11: print: next x
+670 for z=1 to 3000: next z
+680 if l=20 then 410
+690 d(1)=0: d(2)=3: m$(1)="--->": m$(2)="<---"
+700 h(1)=0: h(2)=0: t(1)=2: t(2)=1
+710 w(1)=-1: w(2)=1: x(1)=100: x(2)=0
+720 y(1)=1: y(2)=-1: z(1)=0: z(2)=100
+725 gosub 1910
+730 print "team 1 defends 0 yd goal -- team 2 defends 100 yd goal."
+740 t=int(2*rnd(1)+1)
+760 print: print "the coin is flipped"
+765 p=x(t)-y(t)*40
+770 gosub 1860: print : print "team";t;"receives kick-off"
+780 k=int(26*rnd(1)+40)
+790 p=p-y(t)*k
+794 if w(t)*p<z(t)+10 then 810
+795 print: print "ball went out of endzone --automatic touchback--"
+796 goto 870 
+810 print "ball went";k;"yards.  now on";p:gosub 1900
+830 print "team";t;"do you want to runback";:input a$
+840 if a$="yes" then 1430
+845 if a$<>"no" then 830
+850 if w(t)*p<z(t) then 880
+870 p=z(t)-w(t)*20
+880 d=1: s=p
+885 for i=1 to 72: print "=";: next i
+890 print: print "team";t;"down";d;"on";p
+893 if d<>1 then 900
+895 if y(t)*(p+y(t)*10)>=x(t) then 898
+897 c=4: goto 900
+898 c=8
+900 if c=8 then 904
+901 print tab(27);10-(y(t)*p-y(t)*s);"yards to 1st down"
+902 goto 910
+904 print tab(27);x(t)-y(t)*p;"yards"
+910 gosub 1900: if d=4 then 1180
+920 rem
+930 u=int(3*rnd(0)-1): goto 940
+936 print "illegal play number, check and"
+940 print "input offensive play, defensive play";
+950 if t=2 then 970
+960 input p1,p2: goto 975
+970 input p2,p1
+975 if p1=77 then 1180
+980 if p1>20 then 1800
+985 if p1<1 then 1800
+990 if p2>20 then 1800
+992 if p2<1 then 1800
+995 p1=int(p1): p2=int(p2)
+1000 y=int(abs(a(p1)-b(p2))/19*((x(t)-y(t)*p+25)*rnd(1)-15))
+1005 print: if t=2 then 1015
+1010 if a(p1)<11 then 1048
+1012 goto 1020
+1015 if b(p2)<11 then 1048
+1020 if u<>0 then 1035
+1025 print "pass incomplete team";t
+1030 y=0: goto 1050
+1035 g=rnd(1): if g>.025 then 1040
+1037 if y>2 then 1045
+1040 print "quarterback scrambled": goto 1050
+1045 print "pass completed": goto 1050
+1048 print "the ball was run"
+1050 p=p-w(t)*y
+1060 print: print "net yards gained on down";d;"are ";y
+1070 g=rnd(1): if g>.025 then 1110
+1080 print: print "** loss of possession from team";t;"to team";t(t)
+1100 gosub 1850: print: t=t(t): goto 830
+1110 if y(t)*p>=x(t) then 1320
+1120 if w(t)*p>=z(t) then 1230
+1130 if y(t)*p-y(t)*s>=10 then 880
+1140 d=d+1: if d<>5 then 885
+1160 print: print "conversion unsuccessful team";t:t=t(t)
+1170 gosub 1850: goto 880
+1180 print "does team";t;"want to punt";: input a$
+1185 if a$="no" then 1200
+1187 if a$<>"yes" then 1180
+1190 print:print "team";t;"will punt": g=rnd(1): if g<.025 then 1080
+1195 gosub 1850: k=int(25*rnd(1)+35): t=t(t): goto 790
+1200 print "does team";t;"want to attempt a field goal";: input a$
+1210 if a$="yes" then 1640
+1215 if a$<>"no" then 1200
+1217 goto 920
+1230 print: print "safety against team";t;"**********************oh-oh"
+1240 h(t(t))=h(t(t))+2: gosub 1810
+1280 print"team";t;"do you want to punt instead of a kickoff";:input a$
+1290 p=z(t)-w(t)*20: if a$="yes" then 1190
+1320 print: print "touchdown by team";t;"*********************yea team"
+1340 q=7: g=rnd(1): if g>.1 then 1380
+1360 q=6: print "extra point no good": goto 1390
+1380 print "extra point good"
+1390 h(t)=h(t)+q: gosub 1810
+1420 t=t(t): goto 765
+1430 k=int(9*rnd(0)+1)
+1440 r=int(((x(t)-y(t)*p+25)*rnd(1)-15)/k)
+1460 p=p-w(t)*r
+1480 print:print "runback team";t;r;"yards"
+1485 g=rnd(1): if g<.025 then 1080
+1490 if y(t)*p>=x(t) then 1320
+1500 if w(t)*p>=z(t) then 1230
+1510 goto 880
+1640 print: print "team";t;"will attempt a field goal"
+1645 g=rnd(1): if g<.025 then 1080
+1650 f=int(35*rnd(1)+20)
+1660 print: print "kick is";f;"yards long"
+1680 p=p-w(t)*f: g=rnd(1)
+1690 if g<.35 then 1735
+1700 if y(t)*p<x(t) then 1740
+1710 print "field goal good for team";t;"*********************yea"
+1720 q=3: goto 1390
+1735 print "ball went wide"
+1740 print "field goal unsuccesful team";t;"-----------------too bad"
+1742 gosub 1850: if y(t)*p<x(t)+10 then 1745
+1744 t=t(t): goto 794
+1745 print: print "ball now on";p
+1750 t=t(t): gosub 1900: goto 830
+1770 data 17,8,4,14,19,3,10,1,7,11,15,9,5,20,13,18,16,2,12,6
+1780 data 20,2,17,5,8,18,12,11,1,4,19,14,10,7,9,15,6,13,16,3
+1790 data "pitchout","triple reverse","draw","qb sneak","end around"
+1792 data "double reverse","left sweep","right sweep","off tackle"
+1794 data "wishbone option","flare pass","screen pass"
+1796 data "roll out option","right curl","left curl","wishbone option"
+1798 data "sideline pass","half-back option","razzle-dazzle","bomb!!!!"
+1800 if p1<>99 then 936
+1810 print: print "team 1 score is";h(1)
+1820 print "team 2 score is";h(2): print
+1825 if h(t)<e then 1830
+1827 print "team";t;"wins*******************": goto 2000
+1830 if p1=99 then 940
+1835 return
+1850 print
+1860 for x=1 to 72: print "+";: next x: print
+1870 return
+1900 print tab(d(t)+5+p/2);m$(t)
+1910 print "team 1 [0   10   20   30   40   50   60   70   80   90";
+1915 print "   100] team 2"
+1920 print
+1930 return
+2000 end

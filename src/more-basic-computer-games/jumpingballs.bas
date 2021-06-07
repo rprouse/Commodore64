@@ -1,63 +1,63 @@
-10 PRINT TAB(22);"JUMPING BALLS"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-40 PRINT:PRINT:PRINT
-1040 DIM Q(9,1)
-1050 PRINT "INSTRUCTIONS";
-1060 INPUT A$
-1070 IF LEFT$(A$,1)="N" THEN 1150
-1080 PRINT "IN THIS GAME YOU ARE GIVEN 8 BALLS ON A 9 HOLE"
-1090 PRINT "BOARD.  THE OBJECT IS TO REVERSE THE ORDER OF THE BALLS"
-1100 PRINT "THE 'S' ARE SILVER BALLS AND THE 'G' ARE GOLD."
-1110 PRINT "YOU MUST SET THE SILVER TO WHERE THE GOLD ARE AND"
-1120 PRINT "THE GOLD TO WHERE THE SILVER ARE.  THE SPACE IS"
-1125 PRINT "A PERIOD ON THE BOARD."
-1130 PRINT "GOOD LUCK!! HERE IS THE BOARD:"
-1140 S=0
-1150 FOR X=1 TO 4
-1160 LET Q(X,1)=1
-1170 NEXT X
-1180 LET Q(5,1)=O
-1190 FOR X=6 TO 9
-1200 LET Q(X,1)=2
-1210 NEXT X
-1220 LET A$=".SG"
-1230 FOR X=1 TO 9
-1240 PRINT MID$(A$,Q(X,1)+1,1);
-1250 PRINT " ";
-1260 NEXT X
-1265 S=S+1
-1270 PRINT "MOVE";
-1280 INPUT M,M1
-1290 IF M<=9 AND M>=1 AND M1<=9 AND M1>=1 THEN 1320
-1300 PRINT "ILLEGAL MOVE"
-1310 GOTO 1270
-1320 REM:      CHECK FOR LEGAL MOVE
-1330 IF M+1=M1 OR M-1=M1 THEN 1430
-1340 REM:     SUBROUTINE FOR CHECKING JUMPS
-1350 IF M=9 THEN 1390
-1360 IF M=1 THEN 1410
-1370 IF Q(M+1,1)=0 OR Q(M-1,1)=0 THEN 1300
-1380 GOTO 1420
-1390 IF Q(M-1,1)=0 THEN 1300
-1400 GOTO 1420
-1410 IF Q(M+1,1)=0 THEN 1300
-1420 IF M+2<>M1 AND M-2<>M1 THEN 1300
-1430 IF Q(M,1)<>0 THEN 1460
-1440 PRINT "NOTHING AT SPACE";M
-1450 GOTO 1270
-1460 IF Q(M1,1)=0 THEN 1490
-1470 PRINT "SPACE";M1;"IS OCCUPIED"
-1480 GOTO 1270
-1490 LET Q(M1,1)=Q(M,1)
-1500 LET Q(M,1)=0
-1510 X9=Q(1,1)+Q(2,1)+Q(3,1)+Q(4,1)
-1512 Y9=Q(6,1)+Q(7,1)+Q(8,1)+Q(9,1)
-1514 IF X9=8 AND Y9=4 THEN 1530
-1520 GOTO 1230
-1530 PRINT "YOU WIN!!!"
-1535 PRINT "YOU COMPLETED THE GAME IN ";S;" MOVES!!!!"
-1540 PRINT "AGAIN";
-1550 INPUT A$
-1560 IF LEFT$(A$,1)="Y" THEN 1130
-1570 END
+10 print tab(22);"jumping balls"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey"
+40 print:print:print
+1040 dim q(9,1)
+1050 print "instructions";
+1060 input a$
+1070 if left$(a$,1)="n" then 1150
+1080 print "in this game you are given 8 balls on a 9 hole"
+1090 print "board.  the object is to reverse the order of the balls"
+1100 print "the 's' are silver balls and the 'g' are gold."
+1110 print "you must set the silver to where the gold are and"
+1120 print "the gold to where the silver are.  the space is"
+1125 print "a period on the board."
+1130 print "good luck!! here is the board:"
+1140 s=0
+1150 for x=1 to 4
+1160 let q(x,1)=1
+1170 next x
+1180 let q(5,1)=o
+1190 for x=6 to 9
+1200 let q(x,1)=2
+1210 next x
+1220 let a$=".sg"
+1230 for x=1 to 9
+1240 print mid$(a$,q(x,1)+1,1);
+1250 print " ";
+1260 next x
+1265 s=s+1
+1270 print "move";
+1280 input m,m1
+1290 if m<=9 and m>=1 and m1<=9 and m1>=1 then 1320
+1300 print "illegal move"
+1310 goto 1270
+1320 rem:      check for legal move
+1330 if m+1=m1 or m-1=m1 then 1430
+1340 rem:     subroutine for checking jumps
+1350 if m=9 then 1390
+1360 if m=1 then 1410
+1370 if q(m+1,1)=0 or q(m-1,1)=0 then 1300
+1380 goto 1420
+1390 if q(m-1,1)=0 then 1300
+1400 goto 1420
+1410 if q(m+1,1)=0 then 1300
+1420 if m+2<>m1 and m-2<>m1 then 1300
+1430 if q(m,1)<>0 then 1460
+1440 print "nothing at space";m
+1450 goto 1270
+1460 if q(m1,1)=0 then 1490
+1470 print "space";m1;"is occupied"
+1480 goto 1270
+1490 let q(m1,1)=q(m,1)
+1500 let q(m,1)=0
+1510 x9=q(1,1)+q(2,1)+q(3,1)+q(4,1)
+1512 y9=q(6,1)+q(7,1)+q(8,1)+q(9,1)
+1514 if x9=8 and y9=4 then 1530
+1520 goto 1230
+1530 print "you win!!!"
+1535 print "you completed the game in ";s;" moves!!!!"
+1540 print "again";
+1550 input a$
+1560 if left$(a$,1)="y" then 1130
+1570 end

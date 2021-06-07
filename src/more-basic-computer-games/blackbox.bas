@@ -1,56 +1,56 @@
-50 DIM B(9,9)
-100 PRINT TAB(25);"BLACKBOX"
-110 PRINT TAB(20);"CREATIVE COMPUTING"
-120 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-130 PRINT:PRINT:PRINT
-140 DEF FNR(Z)=INT(8*RND(1)+1)
-150 PRINT "NO. OF ATOMS";: INPUT N
-160 FOR J=0 TO 9: FOR I=0 TO 9: B(I,J)=0: NEXT I,J
-170 FOR I=1 TO N
-180 X=FNR(1): Y=FNR(1): IF B(X,Y)<>0 THEN 180
-190 B(X,Y)=1: NEXT I
-200 S=0:C=0
-210 PRINT "RAY";: INPUT R: IF R<1 THEN 480
-220 ON (R-1)/8+1 GOTO 240,250,260,270
-230 PRINT "ERROR": GOTO 210
-240 X=0: Y=R: U=1: V=0: GOTO 280
-250 X=R-8: Y=9: U=0: V=-1: GOTO 280
-260 X=9: Y=25-R: U=-1: V=0: GOTO 280
-270 X=33-R: Y=0: U=0: V=1
-280 X1=X+U: Y1=Y+V
-290 IF U=0 THEN X2=X1-1: X3=X1+1: Y2=Y1: Y3=Y1: GOTO 310
-300 Y2=Y1-1: Y3=Y1+1: X2=X1: X3=X1
-310 ON 8*B(X1,Y1)+B(X2,Y2)+2*B(X3,Y3)+1 GOTO 330,340,350,340
-320 PRINT "ABSORBED":S=S+1: GOTO 210
-330 X=X1: Y=Y1: GOTO 380
-340 Z=1: GOTO 360
-350 Z=-1
-360 IF U=0 THEN U=Z: V=0: GOTO 380
-370 U=0: V=Z
-380 ON (X+15)/8 GOTO 420,400,430
-390 STOP
-400 ON (Y+15)/8 GOTO 440,280,450
-410 STOP
-420 Z=Y: GOTO 460
-430 Z=25-Y: GOTO 460
-440 Z=33-X: GOTO 460
-450 Z=8+X
-460 IF Z=R THEN PRINT "REFLECTED":S=S+1: GOTO 210
-470 PRINT "TO";Z:S=S+2: GOTO 210
-480 PRINT "NOW TELL ME, WHERE DO YOU THINK THE ATOMS ARE?"
-490 PRINT "(IN ROW,COLUMN FORMAT PLEASE.)"
-500 FOR Q=1 TO N
-510 PRINT "ATOM # ";Q;
-520 INPUT I,J
-530 IF B(J,I)<>1 THEN S=S+5:GOTO 540
-532 B(J,I)=2
-535 C=C+1
-540 NEXT Q
-550 PRINT: FOR J=1 TO 8: FOR I=1 TO 8
-560 IF B(I,J)=0 THEN PRINT " .";: GOTO 580
-570 PRINT " *";
-580 NEXT I: PRINT: NEXT J: PRINT:
-590 PRINT " YOU GUESSED ";C;" OUT OF ";N;" ATOMS CORRECTLY!!"
-600 PRINT " YOUR SCORE FOR THIS ROUND WAS ";S;" POINTS."
-610 INPUT " CARE TO TRY AGAIN";A$
-620 IF LEFT$(A$,1)="Y" THEN PRINT:GOTO 150
+50 dim b(9,9)
+100 print tab(25);"blackbox"
+110 print tab(20);"creative computing"
+120 print tab(18);"morristown, new jersey"
+130 print:print:print
+140 def fnr(z)=int(8*rnd(1)+1)
+150 print "no. of atoms";: input n
+160 for j=0 to 9: for i=0 to 9: b(i,j)=0: next i,j
+170 for i=1 to n
+180 x=fnr(1): y=fnr(1): if b(x,y)<>0 then 180
+190 b(x,y)=1: next i
+200 s=0:c=0
+210 print "ray";: input r: if r<1 then 480
+220 on (r-1)/8+1 goto 240,250,260,270
+230 print "error": goto 210
+240 x=0: y=r: u=1: v=0: goto 280
+250 x=r-8: y=9: u=0: v=-1: goto 280
+260 x=9: y=25-r: u=-1: v=0: goto 280
+270 x=33-r: y=0: u=0: v=1
+280 x1=x+u: y1=y+v
+290 if u=0 then x2=x1-1: x3=x1+1: y2=y1: y3=y1: goto 310
+300 y2=y1-1: y3=y1+1: x2=x1: x3=x1
+310 on 8*b(x1,y1)+b(x2,y2)+2*b(x3,y3)+1 goto 330,340,350,340
+320 print "absorbed":s=s+1: goto 210
+330 x=x1: y=y1: goto 380
+340 z=1: goto 360
+350 z=-1
+360 if u=0 then u=z: v=0: goto 380
+370 u=0: v=z
+380 on (x+15)/8 goto 420,400,430
+390 stop
+400 on (y+15)/8 goto 440,280,450
+410 stop
+420 z=y: goto 460
+430 z=25-y: goto 460
+440 z=33-x: goto 460
+450 z=8+x
+460 if z=r then print "reflected":s=s+1: goto 210
+470 print "to";z:s=s+2: goto 210
+480 print "now tell me, where do you think the atoms are?"
+490 print "(in row,column format please.)"
+500 for q=1 to n
+510 print "atom # ";q;
+520 input i,j
+530 if b(j,i)<>1 then s=s+5:goto 540
+532 b(j,i)=2
+535 c=c+1
+540 next q
+550 print: for j=1 to 8: for i=1 to 8
+560 if b(i,j)=0 then print " .";: goto 580
+570 print " *";
+580 next i: print: next j: print:
+590 print " you guessed ";c;" out of ";n;" atoms correctly!!"
+600 print " your score for this round was ";s;" points."
+610 input " care to try again";a$
+620 if left$(a$,1)="y" then print:goto 150

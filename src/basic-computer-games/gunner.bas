@@ -1,52 +1,52 @@
-10 PRINT TAB(30);"GUNNER"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-130 PRINT "YOU ARE THE OFFICER-IN-CHARGE, GIVING ORDERS TO A GUN"
-140 PRINT "CREW, TELLING THEM THE DEGREES OF ELEVATION YOU ESTIMATE"
-150 PRINT "WILL PLACE A PROJECTILE ON TARGET.  A HIT WITHIN 100 YARDS"
-160 PRINT "OF THE TARGET WILL DESTROY IT." : PRINT
-170 R=INT(40000*RND(1)+20000)
-180 PRINT "MAXIMUM RANGE OF YOUR GUN IS";R;" YARDS."
-185 Z=0
-190 PRINT
-195 S1=0
-200 T=INT(R*(.1+.8*RND(1)))
-210 S=0
-220 GOTO 370
-230 PRINT "MINIMUM ELEVATION IS ONE DEGREE."
-240 GOTO 390
-250 PRINT "MAXIMUM ELEVATION IS 89 DEGREES."
-260 GOTO 390
-270 PRINT "OVER TARGET BY ";ABS(E);"YARDS."
-280 GOTO 390
-290 PRINT "SHORT OF TARGET BY "ABS(E);"YARDS."
-300 GOTO 390
-320 PRINT "*** TARGET DESTROYED ***  ";S;"ROUNDS OF AMMUNITION EXPENDED."
-325 S1=S1+S
-330 IF Z=4 THEN 490
-340 Z=Z+1
-345 PRINT
-350 PRINT "THE FORWARD OBSERVER HAS SIGHTED MORE ENEMY ACTIVITY..."
-360 GOTO 200
-370 PRINT "DISTANCE TO THE TARGET IS "T;" YARDS."
-380 PRINT
-390 PRINT
-400 INPUT "ELEVATION";B
-420 IF B>89 THEN 250
-430 IF B<1 THEN 230
-440 S=S+1
-442 IF S<6 THEN 450
-444 PRINT:PRINT "BOOM !!!!   YOU HAVE JUST BEEN DESTROYED ";
-446 PRINT "BY THE ENEMY." : PRINT : PRINT : PRINT : GOTO 495
-450 B2=2*B/57.3 : I=R*SIN(B2) : X=T-I : E=INT(X)
-460 IF ABS(E)<100 THEN 320
-470 IF E>100 THEN 290
-480 GOTO 270
-490 PRINT : PRINT : PRINT "TOTAL ROUNDS EXPENDED WERE:";S1
-492 IF S1>18 THEN 495
-493 PRINT "NICE SHOOTING !!" : GOTO 500
-495 PRINT "BETTER GO BACK TO FORT SILL FOR REFRESHER TRAINING!"
-500 PRINT : INPUT "TRY AGAIN (Y OR N)";Z$
-510 IF Z$="Y" THEN 170
-520 PRINT:PRINT "OK.  RETURN TO BASE CAMP."
-999 END
+10 print tab(30);"gunner"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+130 print "you are the officer-in-charge, giving orders to a gun"
+140 print "crew, telling them the degrees of elevation you estimate"
+150 print "will place a projectile on target.  a hit within 100 yards"
+160 print "of the target will destroy it." : print
+170 r=int(40000*rnd(1)+20000)
+180 print "maximum range of your gun is";r;" yards."
+185 z=0
+190 print
+195 s1=0
+200 t=int(r*(.1+.8*rnd(1)))
+210 s=0
+220 goto 370
+230 print "minimum elevation is one degree."
+240 goto 390
+250 print "maximum elevation is 89 degrees."
+260 goto 390
+270 print "over target by ";abs(e);"yards."
+280 goto 390
+290 print "short of target by "abs(e);"yards."
+300 goto 390
+320 print "*** target destroyed ***  ";s;"rounds of ammunition expended."
+325 s1=s1+s
+330 if z=4 then 490
+340 z=z+1
+345 print
+350 print "the forward observer has sighted more enemy activity..."
+360 goto 200
+370 print "distance to the target is "t;" yards."
+380 print
+390 print
+400 input "elevation";b
+420 if b>89 then 250
+430 if b<1 then 230
+440 s=s+1
+442 if s<6 then 450
+444 print:print "boom !!!!   you have just been destroyed ";
+446 print "by the enemy." : print : print : print : goto 495
+450 b2=2*b/57.3 : i=r*sin(b2) : x=t-i : e=int(x)
+460 if abs(e)<100 then 320
+470 if e>100 then 290
+480 goto 270
+490 print : print : print "total rounds expended were:";s1
+492 if s1>18 then 495
+493 print "nice shooting !!" : goto 500
+495 print "better go back to fort sill for refresher training!"
+500 print : input "try again (y or n)";z$
+510 if z$="y" then 170
+520 print:print "ok.  return to base camp."
+999 end

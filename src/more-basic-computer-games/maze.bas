@@ -1,259 +1,259 @@
-10 PRINT TAB(27);"MAZE"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-40 PRINT:PRINT:PRINT
-100 REM  MOUSE IN MAZE - SOLUTION SECTION BY RICHARD SCHAAL FMCC
-110 REM  ORIGINAL MAZE PROGRAM FROM "101 BASIC COMPUTER GAMES"
-120 PRINT "DO YOU NEED INSTRUCTIONS";:INPUT A$
-130 IF LEFT$(A$,1)="Y" THEN 150
-140 GOTO 200
-150 PRINT:PRINT:PRINT "THIS PROGRAM WILL SIMULATE A NEAR-SIGHTED MOUSE IN"
-160 PRINT "A MAZE.  YOU SELECT THE DIFFICULTY FACTOR -SIZE!"
-170 PRINT "YOU MAY HAVE A MAZE OF ANY SIZE PERMITTED BY THE SIZE OF YOUR"
-180 PRINT "SYSTEM. DIMENSIONS LESS THAN 5 ARE TOO TRIVIAL."
-190 PRINT "EACH MAZE IS DIFFERENT, AND HAS ONLY ONE WAY THROUGH IT."
-200 PRINT
-210 PRINT "WHAT ARE YOUR DIMENSIONS (HORIZONTAL, VERTICAL)";
-220 CLEAR 100: REM ERASE ALL ARRAYS AND VARIABLE VALUES
-230 INPUT H,V
-240 H=INT(ABS(H)):V=INT(ABS(V))
-250 IF H>=5 AND V>=5 THEN 270
-260 GOTO 150
-270 DIM W(H,V),V(H,V)
-280 PRINT:PRINT
-290 Q=0:Z=0
-300 X=INT(RND(1)*H+1)
-310 FOR I=1 TO H
-320 IF I=X THEN 350
-330 PRINT ":--";
-340 GOTO 360
-350 PRINT ":  ";
-360 NEXT I
-370 PRINT ":"
-380 C=1:W(X,1)=C:C=C+1:R=X:S=1
-390 GOTO 470
-400 IF R<>H THEN 450
-410 IF S<>V THEN 440
-420 R=1:S=1
-430 GOTO 460
-440 R=1:S=S+1:GOTO 460
-450 R=R+1
-460 IF W(R,S)=0 THEN 400
-470 IF R=1 THEN 830
-480 IF W(R-1,S)>0 THEN 830
-490 IF S=1 THEN 640
-500 IF W(R,S-1)<>0 THEN 640
-510 IF R=H THEN 550
-520 IF W(R+1,S)>0 THEN 550
-530 X=INT(RND(1)*3+1)
-540 ON X GOTO 1200,1240,1280
-550 IF S<>V THEN 590
-560 IF Z=1 THEN 620
-570 Q=1
-580 GOTO 600
-590 IF W(R,S+1)>0 THEN 620
-600 X=INT(RND(1)*3+1)
-610 ON X GOTO 1200,1240,1370
-620 X=INT(RND(1)*2+1)
-630 ON X GOTO 1200,1240
-640 IF R=H THEN 750
-650 IF W(R+1,S)>0 THEN 750
-660 IF S<>V THEN 700
-670 IF Z=1 THEN 730
-680 Q=1
-690 GOTO 710
-700 IF W(R,S+1)>0 THEN 730
-710 X=INT(RND(1)*3+1)
-720 ON X GOTO 1200,1280,1370
-730 X=INT(RND(1)*2+1)
-740 ON X GOTO 1200,1280
-750 IF S<>V THEN 790
-760 IF Z=1 THEN 820
-770 Q=1
-780 GOTO 800
-790 IF W(R,S+1)>0 THEN 820
-800 X=INT(RND(1)*2+1)
-810 ON X GOTO 1200,1370
-820 GOTO 1200
-830 IF S=1 THEN 1040
-840 IF W(R,S-1)>0 THEN 1040
-850 IF R=H THEN 960
-860 IF W(R+1,S)>0 THEN 960
-870 IF S<>V THEN 910
-880 IF Z=1 THEN 940
-890 Q=1
-900 GOTO 920
-910 IF W(R,S+1)>0 THEN 940
-920 X=INT(RND(1)*3+1)
-930 ON X GOTO 1240,1280,1370
-940 X=INT(RND(1)*2+1)
-950 ON X GOTO 1240,1280
-960 IF S<>V THEN 1000
-970 IF Z=1 THEN 1030
-980 Q=1
-990 GOTO 1010
-1000 IF W(R,S+1)>0 THEN 1030
-1010 X=INT(RND(1)*2+1)
-1020 ON X GOTO 1240,1370
-1030 GOTO 1240
-1040 IF R=H THEN 1140
-1050 IF W(R+1,S)>0 THEN 1140
-1060 IF S<>V THEN 1100
-1070 IF Z=1 THEN 1130
-1080 Q=1
-1090 GOTO 1110
-1100 IF W(R,S+1)>0 THEN 1130
-1110 X=INT(RND(1)*2+1)
-1120 ON X GOTO 1280,1370
-1130 GOTO 1280
-1140 IF S<>V THEN 1180
-1150 IF Z=1 THEN 400
-1160 Q=1
-1170 GOTO 1190
-1180 IF W(R,S+1)>0 THEN 400
-1190 GOTO 1370
-1200 W(R-1,S)=C:C=C+1:V(R-1,S)=2:R=R-1
-1210 IF C=H*V+1 THEN 1510
-1220 Q=0
-1230 GOTO 470
-1240 W(R,S-1)=C:C=C+1:V(R,S-1)=1:S=S-1
-1250 IF C=H*V+1 THEN 1510
-1260 Q=0
-1270 GOTO 470
-1280 W(R+1,S)=C:C=C+1
-1290 IF V(R,S)=0 THEN 1320
-1300 V(R,S)=3
-1310 GOTO 1330
-1320 V(R,S)=2
-1330 R=R+1
-1340 IF C=H*V+1 THEN 1510
-1350 Q=0
-1360 GOTO 830
-1370 IF Q=1 THEN 1470
-1380 W(R,S+1)=C
-1390 C=C+1
-1400 IF V(R,S)=0 THEN 1430
-1410 V(R,S)=3
-1420 GOTO 1440
-1430 V(R,S)=1
-1440 S=S+1
-1450 IF C=H*V+1 THEN 1510
-1460 GOTO 470
-1470 Z=1
-1480 IF V(R,S)=0 THEN 1500
-1490 V(R,S)=3:Q=0:GOTO 400
-1500 V(R,S)=1:Q=0:R=1:S=1:GOTO 460
-1510 IF Z=1 THEN 1540
-1520 R=INT(RND(1)*H)+1:S=V
-1530 V(R,S)=V(R,S)+1
-1540 GOSUB 2320
-1550 PRINT "DO YOU WANT THE SOLUTION";:INPUT A$
-1560 IF LEFT$(A$,1)<>"Y" THEN 2620
-1570 PRINT "DO YOU WANT TO SEE EACH STEP";:INPUT A$:PRINT:PRINT
-1580 FOR I=1 TO H:IF W(I,1)=1 THEN S=I:GOTO 1720
-1590 NEXT I
-1600 REM NOW WE CAN CLEAR W ARRAY AS ENTRY POINT IS FOUND.
-1610 REM ELEMENTS IN V ARE EITHER 0,1,2 OR 3
-1620 REM 0 IS CLOSED ON THE RIGHT AND AT THE BOTTOM
-1630 REM 1 IS CLOSED ON THE RIGHT
-1640 REM 2 IS CLOSED ON THE BOTTOM
-1650 REM 3 IS OPEN ON THE RIGHT AND AT THE BOTTOM
-1660 REM DIRECTIONS WILL BE CODED:
-1670 REM  1 : UP
-1680 REM  2 : DOWN
-1690 REM  4 : RIGHT
-1700 REM  8 : LEFT
-1710 REM SCAN V ARRAY FOR POSSIBLE MOVES IN ALL DIRECTIONS
-1720 FOR I=1 TO H:FOR J=1 TO V
-1730 W(I,J)=0
-1740 REM TRY UP
-1750 IF J=1 THEN 1780
-1760 IF V(I,J-1)=1 OR V(I,J-1)=3 THEN W(I,J)=W(I,J)+1
-1770 REM TRY DOWN
-1780 IF J=V THEN 1810
-1790 IF V(I,J)=1 OR V(I,J)=3 THEN W(I,J)=W(I,J)+2
-1800 REM TRY RIGHT
-1810 IF I=H THEN 1840
-1820 IF V(I,J)=2 OR V(I,J)=3 THEN W(I,J)=W(I,J)+4
-1830 REM TRY LEFT
-1840 IF I=1 THEN 1860
-1850 IF V(I-1,J)=2 OR V(I-1,J)=3 THEN W(I,J)=W(I,J)+8
-1860 NEXT J
-1870 NEXT I
-1880 FOR I=1 TO H
-1890 IF V(I,V)=1 OR V(I,V)=3 THEN W(I,V)=W(I,V)+2:E=I:GOTO 1920
-1900 NEXT I
-1910 REM HAVE TO GO DOWN FIRST
-1920 Y=1:X=S
-1930 V(X,Y)=V(X,Y)+4
-1940 REM CHECK FOR POSSIBLE DIRECTIONS NOW...
-1950 IF Y=V AND X=E THEN PRINT:GOSUB 2250:PRINT:PRINT:GOTO 2620
-1960 GOSUB 2230
-1970 REM CHECK POSSIBLE DIRECTIONS
-1980 IF (W(X,Y) AND 2) <> 0 THEN 2030
-1990 IF (W(X,Y) AND 4) <> 0 THEN 2080
-2000 IF (W(X,Y) AND 8) <> 0 THEN 2130
-2010 IF (W(X,Y) AND 1) <> 0 THEN 2180
-2020 GOTO 1950
-2030 IF (V(X,Y+1)>3) AND ((W(X,Y) AND 13)=0) THEN 2060
-2040 IF V(X,Y+1)>3 THEN 1990
-2050 Y=Y+1:V(X,Y)=V(X,Y)+4:GOTO 1950
-2060 V(X,Y)=V(X,Y)-4:W(X,Y)=(W(X,Y) AND 13):Y=Y+1:W(X,Y)=(W(X,Y) AND 14)
-2070 GOTO 1950
-2080 IF (V(X+1,Y)>3) AND ((W(X,Y) AND 11)=0) THEN 2110
-2090 IF V(X+1,Y)>3 THEN 2000
-2100 X=X+1:V(X,Y)=V(X,Y)+4:GOTO 1950
-2110 V(X,Y)=V(X,Y)-4:W(X,Y)=(W(X,Y) AND 11):X=X+1:W(X,Y)=(W(X,Y) AND 7)
-2120 GOTO 1950
-2130 IF (V(X-1,Y)>3) AND ((W(X,Y) AND 7)=0) THEN 2160
-2140 IF V(X-1,Y)>3 THEN 2010
-2150 X=X-1:V(X,Y)=V(X,Y)+4:GOTO 1950
-2160 V(X,Y)=V(X,Y)-4:W(X,Y)=(W(X,Y) AND 7):X=X-1:W(X,Y)=(W(X,Y) AND 11)
-2170 GOTO 1950
-2180 IF (V(X,Y-1)>3) AND ((W(X,Y) AND 14)=0) THEN 2210
-2190 IF V(X,Y-1)>3 THEN 1980
-2200 Y=Y-1:V(X,Y)=V(X,Y)+4:GOTO 1950
-2210 V(X,Y)=V(X,Y)-4:W(X,Y)=(W(X,Y) AND 14):Y=Y-1:W(X,Y)=(W(X,Y) AND 13)
-2220 GOTO 1950
-2230 IF LEFT$(A$,1)<>"Y" THEN RETURN
-2240 PRINT
-2250 FOR I=1 TO H
-2260 IF I=S THEN 2290
-2270 PRINT ":--";
-2280 GOTO 2300
-2290 PRINT ":**";
-2300 NEXT I
-2310 PRINT ":"
-2320 FOR J=1 TO V
-2330 PRINT "I";
-2340 FOR I=1 TO H
-2350 IF V(I,J)>3 THEN Z=V(I,J)-4:GOTO 2370
-2360 Z=V(I,J)
-2370 IF Z<2 THEN 2420
-2380 IF Z<>V(I,J) AND V(I+1,J)>3 THEN PRINT "***";:GOTO 2440
-2390 IF Z<>V(I,J) THEN PRINT "** ";:GOTO 2440
-2400 PRINT "   ";
-2410 GOTO 2440
-2420 IF Z<>V(I,J) THEN PRINT "**I";:GOTO 2440
-2430 PRINT "  I";
-2440 NEXT I
-2450 PRINT
-2460 FOR I=1 TO H
-2470 IF V(I,J)>3 THEN Z=V(I,J)-4:GOTO 2490
-2480 Z=V(I,J)
-2490 IF Z=0 THEN 2560
-2500 IF Z=2 THEN 2560
-2510 IF Z<>V(I,J) AND J=V THEN PRINT ":**";:GOTO 2570
-2520 IF J=V THEN 2540
-2530 IF Z<>V(I,J) AND V(I,J+1)>3 THEN PRINT ":**";:GOTO 2570
-2540 PRINT ":  ";
-2550 GOTO 2570
-2560 PRINT ":--";
-2570 NEXT I
-2580 PRINT ":"
-2590 NEXT J
-2600 PRINT:PRINT
-2610 RETURN
-2620 PRINT:PRINT:PRINT "DO YOU WANT ANOTHER MAZE";:INPUT A$
-2630 IF LEFT$(A$,1)="Y" THEN PRINT : GOTO 210
-2640 PRINT:END
+10 print tab(27);"maze"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey"
+40 print:print:print
+100 rem  mouse in maze - solution section by richard schaal fmcc
+110 rem  original maze program from "101 basic computer games"
+120 print "do you need instructions";:input a$
+130 if left$(a$,1)="y" then 150
+140 goto 200
+150 print:print:print "this program will simulate a near-sighted mouse in"
+160 print "a maze.  you select the difficulty factor -size!"
+170 print "you may have a maze of any size permitted by the size of your"
+180 print "system. dimensions less than 5 are too trivial."
+190 print "each maze is different, and has only one way through it."
+200 print
+210 print "what are your dimensions (horizontal, vertical)";
+220 clear 100: rem erase all arrays and variable values
+230 input h,v
+240 h=int(abs(h)):v=int(abs(v))
+250 if h>=5 and v>=5 then 270
+260 goto 150
+270 dim w(h,v),v(h,v)
+280 print:print
+290 q=0:z=0
+300 x=int(rnd(1)*h+1)
+310 for i=1 to h
+320 if i=x then 350
+330 print ":--";
+340 goto 360
+350 print ":  ";
+360 next i
+370 print ":"
+380 c=1:w(x,1)=c:c=c+1:r=x:s=1
+390 goto 470
+400 if r<>h then 450
+410 if s<>v then 440
+420 r=1:s=1
+430 goto 460
+440 r=1:s=s+1:goto 460
+450 r=r+1
+460 if w(r,s)=0 then 400
+470 if r=1 then 830
+480 if w(r-1,s)>0 then 830
+490 if s=1 then 640
+500 if w(r,s-1)<>0 then 640
+510 if r=h then 550
+520 if w(r+1,s)>0 then 550
+530 x=int(rnd(1)*3+1)
+540 on x goto 1200,1240,1280
+550 if s<>v then 590
+560 if z=1 then 620
+570 q=1
+580 goto 600
+590 if w(r,s+1)>0 then 620
+600 x=int(rnd(1)*3+1)
+610 on x goto 1200,1240,1370
+620 x=int(rnd(1)*2+1)
+630 on x goto 1200,1240
+640 if r=h then 750
+650 if w(r+1,s)>0 then 750
+660 if s<>v then 700
+670 if z=1 then 730
+680 q=1
+690 goto 710
+700 if w(r,s+1)>0 then 730
+710 x=int(rnd(1)*3+1)
+720 on x goto 1200,1280,1370
+730 x=int(rnd(1)*2+1)
+740 on x goto 1200,1280
+750 if s<>v then 790
+760 if z=1 then 820
+770 q=1
+780 goto 800
+790 if w(r,s+1)>0 then 820
+800 x=int(rnd(1)*2+1)
+810 on x goto 1200,1370
+820 goto 1200
+830 if s=1 then 1040
+840 if w(r,s-1)>0 then 1040
+850 if r=h then 960
+860 if w(r+1,s)>0 then 960
+870 if s<>v then 910
+880 if z=1 then 940
+890 q=1
+900 goto 920
+910 if w(r,s+1)>0 then 940
+920 x=int(rnd(1)*3+1)
+930 on x goto 1240,1280,1370
+940 x=int(rnd(1)*2+1)
+950 on x goto 1240,1280
+960 if s<>v then 1000
+970 if z=1 then 1030
+980 q=1
+990 goto 1010
+1000 if w(r,s+1)>0 then 1030
+1010 x=int(rnd(1)*2+1)
+1020 on x goto 1240,1370
+1030 goto 1240
+1040 if r=h then 1140
+1050 if w(r+1,s)>0 then 1140
+1060 if s<>v then 1100
+1070 if z=1 then 1130
+1080 q=1
+1090 goto 1110
+1100 if w(r,s+1)>0 then 1130
+1110 x=int(rnd(1)*2+1)
+1120 on x goto 1280,1370
+1130 goto 1280
+1140 if s<>v then 1180
+1150 if z=1 then 400
+1160 q=1
+1170 goto 1190
+1180 if w(r,s+1)>0 then 400
+1190 goto 1370
+1200 w(r-1,s)=c:c=c+1:v(r-1,s)=2:r=r-1
+1210 if c=h*v+1 then 1510
+1220 q=0
+1230 goto 470
+1240 w(r,s-1)=c:c=c+1:v(r,s-1)=1:s=s-1
+1250 if c=h*v+1 then 1510
+1260 q=0
+1270 goto 470
+1280 w(r+1,s)=c:c=c+1
+1290 if v(r,s)=0 then 1320
+1300 v(r,s)=3
+1310 goto 1330
+1320 v(r,s)=2
+1330 r=r+1
+1340 if c=h*v+1 then 1510
+1350 q=0
+1360 goto 830
+1370 if q=1 then 1470
+1380 w(r,s+1)=c
+1390 c=c+1
+1400 if v(r,s)=0 then 1430
+1410 v(r,s)=3
+1420 goto 1440
+1430 v(r,s)=1
+1440 s=s+1
+1450 if c=h*v+1 then 1510
+1460 goto 470
+1470 z=1
+1480 if v(r,s)=0 then 1500
+1490 v(r,s)=3:q=0:goto 400
+1500 v(r,s)=1:q=0:r=1:s=1:goto 460
+1510 if z=1 then 1540
+1520 r=int(rnd(1)*h)+1:s=v
+1530 v(r,s)=v(r,s)+1
+1540 gosub 2320
+1550 print "do you want the solution";:input a$
+1560 if left$(a$,1)<>"y" then 2620
+1570 print "do you want to see each step";:input a$:print:print
+1580 for i=1 to h:if w(i,1)=1 then s=i:goto 1720
+1590 next i
+1600 rem now we can clear w array as entry point is found.
+1610 rem elements in v are either 0,1,2 or 3
+1620 rem 0 is closed on the right and at the bottom
+1630 rem 1 is closed on the right
+1640 rem 2 is closed on the bottom
+1650 rem 3 is open on the right and at the bottom
+1660 rem directions will be coded:
+1670 rem  1 : up
+1680 rem  2 : down
+1690 rem  4 : right
+1700 rem  8 : left
+1710 rem scan v array for possible moves in all directions
+1720 for i=1 to h:for j=1 to v
+1730 w(i,j)=0
+1740 rem try up
+1750 if j=1 then 1780
+1760 if v(i,j-1)=1 or v(i,j-1)=3 then w(i,j)=w(i,j)+1
+1770 rem try down
+1780 if j=v then 1810
+1790 if v(i,j)=1 or v(i,j)=3 then w(i,j)=w(i,j)+2
+1800 rem try right
+1810 if i=h then 1840
+1820 if v(i,j)=2 or v(i,j)=3 then w(i,j)=w(i,j)+4
+1830 rem try left
+1840 if i=1 then 1860
+1850 if v(i-1,j)=2 or v(i-1,j)=3 then w(i,j)=w(i,j)+8
+1860 next j
+1870 next i
+1880 for i=1 to h
+1890 if v(i,v)=1 or v(i,v)=3 then w(i,v)=w(i,v)+2:e=i:goto 1920
+1900 next i
+1910 rem have to go down first
+1920 y=1:x=s
+1930 v(x,y)=v(x,y)+4
+1940 rem check for possible directions now...
+1950 if y=v and x=e then print:gosub 2250:print:print:goto 2620
+1960 gosub 2230
+1970 rem check possible directions
+1980 if (w(x,y) and 2) <> 0 then 2030
+1990 if (w(x,y) and 4) <> 0 then 2080
+2000 if (w(x,y) and 8) <> 0 then 2130
+2010 if (w(x,y) and 1) <> 0 then 2180
+2020 goto 1950
+2030 if (v(x,y+1)>3) and ((w(x,y) and 13)=0) then 2060
+2040 if v(x,y+1)>3 then 1990
+2050 y=y+1:v(x,y)=v(x,y)+4:goto 1950
+2060 v(x,y)=v(x,y)-4:w(x,y)=(w(x,y) and 13):y=y+1:w(x,y)=(w(x,y) and 14)
+2070 goto 1950
+2080 if (v(x+1,y)>3) and ((w(x,y) and 11)=0) then 2110
+2090 if v(x+1,y)>3 then 2000
+2100 x=x+1:v(x,y)=v(x,y)+4:goto 1950
+2110 v(x,y)=v(x,y)-4:w(x,y)=(w(x,y) and 11):x=x+1:w(x,y)=(w(x,y) and 7)
+2120 goto 1950
+2130 if (v(x-1,y)>3) and ((w(x,y) and 7)=0) then 2160
+2140 if v(x-1,y)>3 then 2010
+2150 x=x-1:v(x,y)=v(x,y)+4:goto 1950
+2160 v(x,y)=v(x,y)-4:w(x,y)=(w(x,y) and 7):x=x-1:w(x,y)=(w(x,y) and 11)
+2170 goto 1950
+2180 if (v(x,y-1)>3) and ((w(x,y) and 14)=0) then 2210
+2190 if v(x,y-1)>3 then 1980
+2200 y=y-1:v(x,y)=v(x,y)+4:goto 1950
+2210 v(x,y)=v(x,y)-4:w(x,y)=(w(x,y) and 14):y=y-1:w(x,y)=(w(x,y) and 13)
+2220 goto 1950
+2230 if left$(a$,1)<>"y" then return
+2240 print
+2250 for i=1 to h
+2260 if i=s then 2290
+2270 print ":--";
+2280 goto 2300
+2290 print ":**";
+2300 next i
+2310 print ":"
+2320 for j=1 to v
+2330 print "i";
+2340 for i=1 to h
+2350 if v(i,j)>3 then z=v(i,j)-4:goto 2370
+2360 z=v(i,j)
+2370 if z<2 then 2420
+2380 if z<>v(i,j) and v(i+1,j)>3 then print "***";:goto 2440
+2390 if z<>v(i,j) then print "** ";:goto 2440
+2400 print "   ";
+2410 goto 2440
+2420 if z<>v(i,j) then print "**i";:goto 2440
+2430 print "  i";
+2440 next i
+2450 print
+2460 for i=1 to h
+2470 if v(i,j)>3 then z=v(i,j)-4:goto 2490
+2480 z=v(i,j)
+2490 if z=0 then 2560
+2500 if z=2 then 2560
+2510 if z<>v(i,j) and j=v then print ":**";:goto 2570
+2520 if j=v then 2540
+2530 if z<>v(i,j) and v(i,j+1)>3 then print ":**";:goto 2570
+2540 print ":  ";
+2550 goto 2570
+2560 print ":--";
+2570 next i
+2580 print ":"
+2590 next j
+2600 print:print
+2610 return
+2620 print:print:print "do you want another maze";:input a$
+2630 if left$(a$,1)="y" then print : goto 210
+2640 print:end

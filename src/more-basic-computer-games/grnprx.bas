@@ -1,246 +1,246 @@
-10 PRINT TAB(26);"GRNPRX"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-40 PRINT:PRINT:PRINT
-1020 DIM P(9),F(4),G(4),H(82)
-1030 REM
-1040 FOR X=1 TO 9
-1043 READ P(X)
-1045 NEXT X
-1050 FOR I=1 TO 4
-1060 READ G(I),F(I)
-1080 LET G(I)=G(I)/2.04545
-1090 LET F(I)=(F(I)+.61/2.04545)
-1100 NEXT I
-1110 FOR X=1 TO 82:READ H(X):NEXT X
-1115 REM
-1120 DEF FNA(X)=INT(X*2.04545+.05)
-1130 DEF FNT(T)=INT(T*10+.5)/10
-1133 DEF FNC(T)=-(INT(T*R)+2)*(INT(T*R)+2<82)-82*(82<INT(T*R)+2)
-1134 DEF FNB(T)=-(INT(T*R)+1)*(INT(T*R)+1<82)-82*(82<INT(T*R)+1)
-1135 DEF FNP(T)=INT(H(FNB(T))+FNQ(T)*FNR(T)+.5)
-1136 DEF FNQ(T)=H(FNC(T))-H(FNB(T))
-1137 DEF FNR(T)=T*R-INT(T*R)
-1140 REM
-1150 LET D=2
-1200 PRINT
-1210 PRINT "WELCOME TO THE PUC GRAN PRIX"
-1220 PRINT
-1250 REM
-1260 PRINT "DO YOU WANT A COURSE DESCRIPTION";
-1270 INPUT A$
-1280 IF LEFT$(A$,1)<>"Y" THEN 1910
-1300 PRINT
-1320 PRINT TAB(23);"2";TAB(66);"1"
-1330 PRINT TAB(21);"CC0XPXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX0CC"
-1340 PRINT TAB(12);"85-100 CC (800)";TAB(69);"C"
-1350 PRINT TAB(18);"C";TAB(70);"C"
-1360 PRINT TAB(15);"3 0";TAB(21);"PUC GRAN PRIX RACE";TAB(70);"C"
-1370 PRINT TAB(16);"X";TAB(69);"C"
-1375 PRINT TAB(15);"X";TAB(67);"CC"
-1380 PRINT TAB(14);"X";TAB(38);"SS";TAB(59);"(2800) C 50-"
-1390 PRINT TAB(13);"X";TAB(22);"SSSSSSS    SSS  SSSOXXXXXXXXXXXXXXXX";
-1395 PRINT "XPXXOC   70"
-1400 PRINT TAB(12);"X       SS       SSSSSSS       7";
-1405 PRINT TAB(64);"8"
-1410 PRINT TAB(11);"X (1900)0 6    90-110"
-1420 PRINT TAB(10);"X       X"
-1430 PRINT TAB(9);"X       X"
-1433 PRINT TAB(28);"DISTANCES IN YARDS, EG. ";
-1435 PRINT "(800) = 800 YDS."
-1440 PRINT TAB(8);"X       X";TAB(20);"SPEEDS IN MPH, ";
-1445 PRINT "EG. 85 TO 100 MPH."
-1450 PRINT "       P     X"
-1460 PRINT "      X       X"
-1470 PRINT "     X       X"
-1480 PRINT "   X       X"
-1490 PRINT " 4 0(1500) X"
-1500 PRINT "  H       X"
-1510 PRINT "  H      X"
-1520 PRINT "20-H   0 5"
-1530 PRINT " 35 H  H"
-1535 PRINT "     HH"
-1540 PRINT
-1550 PRINT
-1560 PRINT "1 TO 2 IS A STRAIGHTAWAY 800 YARDS LONG"
-1570 PRINT "2 TO 3 IS A CURVE 200 YARDS LONG"
-1580 PRINT "     THE BREAKAWAY SPEED RANGE IS 85 TO 100 MPH"
-1590 PRINT "3 TO 4 IS A STRAIGHTAWAY 500 YARDS LONG"
-1600 PRINT "     IT ENDS AT POSITION 1500 YARDS FROM STARTING";
-1605 PRINT " GRID"
-1610 PRINT "4 TO 5 IS A HAIRPIN CURVE 100 YARDS LONG"
-1620 PRINT "     THE BREAKAWAY SPEED RANGE IS 20 TO 35 MPH"
-1630 PRINT "5 TO 6 IS ANOTHER STRAIGHTAWAY 300 YARDS LONG"
-1640 PRINT "     IT ENDS AT POSITION 1900 YARDS FROM THE GRID"
-1650 PRINT "6 TO 7 IS A SET OF 'S' CURVES 500 YARDS LONG"
-1660 PRINT "     THE SPEED RANGE IS 90-110 MPH"
-1670 PRINT "7 TO 8 IS THE FINAL STRAIGHTAWAY OF 400 YARDS"
-1680 PRINT "     IT ENTERS THE LAST CURVE AT 2800 YARDS"
-1690 PRINT "8 TO 9 IS THE FINAL CURVE OF 400 YARDS"
-1700 PRINT "     THE BREAKAWAY SPEED RANGE IS 50 TO 70 MPH"
-1710 PRINT
-1720 PRINT "THE TOTAL LENGTH OF ONE LAP IS 3200 YARDS"
-1730 PRINT
-1820 PRINT "DURING THE STRAIGHTAWAYS YOU WILL BE ABLE TO CONTROL THE"
-1830 PRINT "ACCELERATION AND BRAKING OF THE CAR.  THE CURVES WILL BE";
-1835 PRINT " TAKEN"
-1840 PRINT "AT WHATEVER SPEED YOU ENTER THEM."
-1842 PRINT "BELOW THE BREAKAWAY SPEED, THE CURVES MAY BE TAKEN WITH ";
-1844 PRINT "NO DIFFICULTY."
-1850 PRINT "ABOVE THE FASTEST SPEED INDICATED, YOU WILL CRASH!!"
-1860 PRINT "WITHIN THE SPEED RANGE, THERE IS THE POSSIBILITY THAT YOU";
-1865 PRINT " MIGHT"
-1870 PRINT "LOSE TIME OR SPEED BY SWINGING UIDE OR BY SPINNING OUT."
-1880 PRINT "THE FASTER YOU TAKE THE CURVES, THE GREATER THE RISKS--"
-1890 PRINT "AND THE LESS THE TIME!!!!"
-1905 PRINT
-1906 PRINT
-1907 PRINT "YOUR TASK IS TO TRANSVERSE THE TRACK IN A MINIMUM OF TIME"
-1908 PRINT "WITHOUT CRASHING!!!"
-1909 PRINT
-1910 PRINT "YOUR CAR MAY BE ONE OF THE FOLLOWING:"
-1911 PRINT "1. PORSCHE"
-1912 PRINT "2. FERRARI"
-1913 PRINT "3. MASERATI"
-1914 PRINT "4. LOTUS FORD"
-1915 PRINT "WHICH CAR WOULD YOU LIKE";
-1916 INPUT Z
-1917 ON Z GOTO 1920,1923,1926,1929
-1918 PRINT "WE DON'T HAVE THAT CAR IN STOCK, PLEASE CHOOSE AGAIN.";
-1919 GOTO 1916
-1920 M=15
-1921 LET B=-20
-1922 GOTO 1931
-1923 M=10
-1924 B=-25
-1925 GOTO 1931
-1926 M=12
-1927 B=-22
-1928 GOTO 1931
-1929 M=8
-1930 B=-30
-1931 PRINT "YOUR CAR HAS A MAXIMUM ACCELERATION OF ";M;"MPH/SEC."
-1932 PRINT "AND A MAXIMUM BRAKING OF ";B;"MPH/SEC."
-1933 PRINT "YOU WILL RACE AGAINST ONE OF THE FOLLOWING:"
-1934 PRINT "1. U.S. POSTAL DELIVERY TRUCK"
-1935 PRINT "2. 1970 BEAT PONTIAC GTO"
-1936 PRINT "3. 1966 WELL USED FORD MUSTANG"
-1937 PRINT "4. LOTUS FORD"
-1938 PRINT "5. 1974 FERRARA"
-1939 PRINT "6. THE PHYSICS SUPERCHARGED LIGHTBEAM SPECIAL"
-1940 PRINT "CHOOSE ONE OPPONENT BY ENTERING NUMBER";
-1941 INPUT R1
-1942 IF R1>0 AND R1<6 THEN 1946
-1943 IF R1=6 THEN 1948
-1944 PRINT "WHICH CAR DID YOU SAY";
-1945 GOTO 1941
-1946 LET R=2*R1-5
-1947 GOTO 1949
-1948 LET R=2.5E+08
-1949 LET R=(90+2*R)/100+7*RND(1)/100
-1950 PRINT
-3000 REM
-3002 REM           BEGIN THE RACE!!
-3004 REM
-3010 LET J=1
-3020 PRINT "ELAPSED TIME","SPEED","POSITION","OPPONENT'S","ACC";
-3025 PRINT "ELERATION"
-3030 PRINT "  SECONDS"," MPH"," YARDS"," POSITION"
-3040 PRINT
-3070 X=0:S=0:T=0:T9=0:X9=0
-3080 REM
-3100 IF J<9 THEN 3200
-3130 PRINT
-3160 PRINT "COMPLETED LAP";",ELAPSED TIME";FNT(T);"SEC."
-3166 PRINT "YOUR OPPONENT FINISHED IN ";80/R;"SECONDS"
-3167 LET K1=FNT(T)-80/R
-3168 IF K1>0 THEN 3171
-3169 PRINT "CONGRATULATIONS, YOU WON BY "J-K1;"SECONDS"
-3170 GOTO 8600
-3171 PRINT "SORRY, YOU LOST BY ";K1;"SECONDS"
-3172 GOTO 8600
-3200 IF FNP(T)>3200 THEN 3203
-3201 PRINT "  ";FNT(T),"  ";FNA(S),"  ";INT(X),"  ";FNP(T),"  ";
-3202 GOTO 3210
-3203 PRINT "  ";FNT(T),"  ";FNA(S),"  ";INT(X),"  FINISH","  ";
-3210 INPUT A1
-3220 LET A=A1/2.04545
-3230 IF A1>=0 THEN 3600
-3240 IF A1>=B THEN 3300
-3250 PRINT "MAXIMUM BRAKING IS ";B;"MPH/SEC"
-3260 GOTO 3200
-3300 LET T1=-S/A
-3310 IF T1>D THEN 3500
-3320 LET X1=X+S*T1+A/2+T1*T1
-3330 IF X1>P(J+1) THEN 3400
-3340 PRINT "YOU STOPPED";INT(P(J+1)-X1);"YARDS FROM POINT";J+1
-3350 LET S=0
-3360 LET X=X1
-3370 LET T=T+T1
-3380 GOTO 3100
-3400 LET Y=P(J+1)-X
-3402 IF A<>0 THEN 3410
-3404 LET T=T+Y/S
-3406 GOTO 3440
-3410 LET S1=SQR(S*S+2*A*Y)
-3420 LET T=T-(S-S1)/A
-3430 LET S=S1
-3440 LET J=J+1
-3450 GOTO 8000
-3500 LET X1=X+S*D+A/2*D*D
-3510 IF X1>P(J+1) THEN 3400
-3520 LET T=T+D
-3530 LET S=S+A*D
-3540 LET X=X1
-3550 GOTO 3100
-3600 IF A1 <= M THEN 3700
-3610 PRINT "MAXIMUM ACCELERATION IS ";M;"MPH/SEC"
-3620 GOTO 3200
-3700 LET X1=X+S*D+A/2*D*D
-3710 IF X1>P(J+1) THEN 3400
-3720 GOTO 3500
-8000 REM *** SUB CURVE ***
-8010 REM
-8020 LET I=INT(J/2)
-8030 LET T1=(P(J+1)-P(J))/S
-8040 LET S1=G(I)+(F(I)-G(I))*RND(1)
-8050 IF S>S1 THEN 8100
-8055 PRINT "CURVE";J;-J-I;", SPEED";FNA(S);"MPH"
-8060 LET J=J+1
-8070 LET X=P(J)
-8080 LET T=T+T1
-8090 GOTO 3100
-8100 IF S>S1+(F(I)-S1)/2 THEN 8200
-8110 LET T2=T1*RND(1)*.4
-8120 PRINT "SPEED IN CURVE";FNA(S);"MPH, TOOK CURVE WIDE, LOST";
-8125 PRINT FNT(T2);"SEC."
-8130 LET T1=T1+T2
-8140 GOTO 8060
-8200 IF S>F(I) THEN 8300
-8210 LET S2=S-S*RND(1)+.9
-8220 LET T1=T1*S/S2
-8230 PRINT "SPUN OUT AT";FNA(S);"MPH, LOST SPEED AND TIME"
-8240 LET S=S2
-8250 GOTO 8060
-8300 PRINT "LOST CONTROL AT";FNA(S);"MPH.  YOUR CAR CRASHED!!"
-8305 PRINT "YOUR OPPONENT FINISHED IN ";82/R;"SECONDS!"
-8330 REM
-8600 PRINT
-8605 PRINT "DO YOU WISH TO TRY AGAIN";
-8610 INPUT A$
-8620 IF LEFT$(A$,1)="Y" THEN 1910
-9000 REM
-9010 DATA 0,800,1000,1500,1600,1900,2400,2800,3200
-9020 DATA 85,100
-9030 DATA 20,35
-9040 DATA 90,110
-9050 DATA 50,70
-9060 REM
-9070 DATA 0,1,3,9,21,39,62,87,120,156,196,244,293,351,410
-9080 DATA 479,550,625,700,758,800,847,894,942,990,1030,1080
-9090 DATA 1135,1200,1260,1330,1382,1425,1470,1490,1505,1519
-9100 DATA 1539,1548,1563,1578,1512,1610,1632,1658,1683,1718
-9110 DATA 1758,1800,1850,1890,1943,1997,2050,2104,2057,2210
-9120 DATA 2294,2317,2370,2420,2480,2535,2600,2670,2725,2768,2799,2830
-9130 DATA 2861,2892,2920,2951,2982,3013,3044,3075,3106,3137,3168,3199
-9140 DATA 10000
+10 print tab(26);"grnprx"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey"
+40 print:print:print
+1020 dim p(9),f(4),g(4),h(82)
+1030 rem
+1040 for x=1 to 9
+1043 read p(x)
+1045 next x
+1050 for i=1 to 4
+1060 read g(i),f(i)
+1080 let g(i)=g(i)/2.04545
+1090 let f(i)=(f(i)+.61/2.04545)
+1100 next i
+1110 for x=1 to 82:read h(x):next x
+1115 rem
+1120 def fna(x)=int(x*2.04545+.05)
+1130 def fnt(t)=int(t*10+.5)/10
+1133 def fnc(t)=-(int(t*r)+2)*(int(t*r)+2<82)-82*(82<int(t*r)+2)
+1134 def fnb(t)=-(int(t*r)+1)*(int(t*r)+1<82)-82*(82<int(t*r)+1)
+1135 def fnp(t)=int(h(fnb(t))+fnq(t)*fnr(t)+.5)
+1136 def fnq(t)=h(fnc(t))-h(fnb(t))
+1137 def fnr(t)=t*r-int(t*r)
+1140 rem
+1150 let d=2
+1200 print
+1210 print "welcome to the puc gran prix"
+1220 print
+1250 rem
+1260 print "do you want a course description";
+1270 input a$
+1280 if left$(a$,1)<>"y" then 1910
+1300 print
+1320 print tab(23);"2";tab(66);"1"
+1330 print tab(21);"cc0xpxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx0cc"
+1340 print tab(12);"85-100 cc (800)";tab(69);"c"
+1350 print tab(18);"c";tab(70);"c"
+1360 print tab(15);"3 0";tab(21);"puc gran prix race";tab(70);"c"
+1370 print tab(16);"x";tab(69);"c"
+1375 print tab(15);"x";tab(67);"cc"
+1380 print tab(14);"x";tab(38);"ss";tab(59);"(2800) c 50-"
+1390 print tab(13);"x";tab(22);"sssssss    sss  sssoxxxxxxxxxxxxxxxx";
+1395 print "xpxxoc   70"
+1400 print tab(12);"x       ss       sssssss       7";
+1405 print tab(64);"8"
+1410 print tab(11);"x (1900)0 6    90-110"
+1420 print tab(10);"x       x"
+1430 print tab(9);"x       x"
+1433 print tab(28);"distances in yards, eg. ";
+1435 print "(800) = 800 yds."
+1440 print tab(8);"x       x";tab(20);"speeds in mph, ";
+1445 print "eg. 85 to 100 mph."
+1450 print "       p     x"
+1460 print "      x       x"
+1470 print "     x       x"
+1480 print "   x       x"
+1490 print " 4 0(1500) x"
+1500 print "  h       x"
+1510 print "  h      x"
+1520 print "20-h   0 5"
+1530 print " 35 h  h"
+1535 print "     hh"
+1540 print
+1550 print
+1560 print "1 to 2 is a straightaway 800 yards long"
+1570 print "2 to 3 is a curve 200 yards long"
+1580 print "     the breakaway speed range is 85 to 100 mph"
+1590 print "3 to 4 is a straightaway 500 yards long"
+1600 print "     it ends at position 1500 yards from starting";
+1605 print " grid"
+1610 print "4 to 5 is a hairpin curve 100 yards long"
+1620 print "     the breakaway speed range is 20 to 35 mph"
+1630 print "5 to 6 is another straightaway 300 yards long"
+1640 print "     it ends at position 1900 yards from the grid"
+1650 print "6 to 7 is a set of 's' curves 500 yards long"
+1660 print "     the speed range is 90-110 mph"
+1670 print "7 to 8 is the final straightaway of 400 yards"
+1680 print "     it enters the last curve at 2800 yards"
+1690 print "8 to 9 is the final curve of 400 yards"
+1700 print "     the breakaway speed range is 50 to 70 mph"
+1710 print
+1720 print "the total length of one lap is 3200 yards"
+1730 print
+1820 print "during the straightaways you will be able to control the"
+1830 print "acceleration and braking of the car.  the curves will be";
+1835 print " taken"
+1840 print "at whatever speed you enter them."
+1842 print "below the breakaway speed, the curves may be taken with ";
+1844 print "no difficulty."
+1850 print "above the fastest speed indicated, you will crash!!"
+1860 print "within the speed range, there is the possibility that you";
+1865 print " might"
+1870 print "lose time or speed by swinging uide or by spinning out."
+1880 print "the faster you take the curves, the greater the risks--"
+1890 print "and the less the time!!!!"
+1905 print
+1906 print
+1907 print "your task is to transverse the track in a minimum of time"
+1908 print "without crashing!!!"
+1909 print
+1910 print "your car may be one of the following:"
+1911 print "1. porsche"
+1912 print "2. ferrari"
+1913 print "3. maserati"
+1914 print "4. lotus ford"
+1915 print "which car would you like";
+1916 input z
+1917 on z goto 1920,1923,1926,1929
+1918 print "we don't have that car in stock, please choose again.";
+1919 goto 1916
+1920 m=15
+1921 let b=-20
+1922 goto 1931
+1923 m=10
+1924 b=-25
+1925 goto 1931
+1926 m=12
+1927 b=-22
+1928 goto 1931
+1929 m=8
+1930 b=-30
+1931 print "your car has a maximum acceleration of ";m;"mph/sec."
+1932 print "and a maximum braking of ";b;"mph/sec."
+1933 print "you will race against one of the following:"
+1934 print "1. u.s. postal delivery truck"
+1935 print "2. 1970 beat pontiac gto"
+1936 print "3. 1966 well used ford mustang"
+1937 print "4. lotus ford"
+1938 print "5. 1974 ferrara"
+1939 print "6. the physics supercharged lightbeam special"
+1940 print "choose one opponent by entering number";
+1941 input r1
+1942 if r1>0 and r1<6 then 1946
+1943 if r1=6 then 1948
+1944 print "which car did you say";
+1945 goto 1941
+1946 let r=2*r1-5
+1947 goto 1949
+1948 let r=2.5e+08
+1949 let r=(90+2*r)/100+7*rnd(1)/100
+1950 print
+3000 rem
+3002 rem           begin the race!!
+3004 rem
+3010 let j=1
+3020 print "elapsed time","speed","position","opponent's","acc";
+3025 print "eleration"
+3030 print "  seconds"," mph"," yards"," position"
+3040 print
+3070 x=0:s=0:t=0:t9=0:x9=0
+3080 rem
+3100 if j<9 then 3200
+3130 print
+3160 print "completed lap";",elapsed time";fnt(t);"sec."
+3166 print "your opponent finished in ";80/r;"seconds"
+3167 let k1=fnt(t)-80/r
+3168 if k1>0 then 3171
+3169 print "congratulations, you won by "j-k1;"seconds"
+3170 goto 8600
+3171 print "sorry, you lost by ";k1;"seconds"
+3172 goto 8600
+3200 if fnp(t)>3200 then 3203
+3201 print "  ";fnt(t),"  ";fna(s),"  ";int(x),"  ";fnp(t),"  ";
+3202 goto 3210
+3203 print "  ";fnt(t),"  ";fna(s),"  ";int(x),"  finish","  ";
+3210 input a1
+3220 let a=a1/2.04545
+3230 if a1>=0 then 3600
+3240 if a1>=b then 3300
+3250 print "maximum braking is ";b;"mph/sec"
+3260 goto 3200
+3300 let t1=-s/a
+3310 if t1>d then 3500
+3320 let x1=x+s*t1+a/2+t1*t1
+3330 if x1>p(j+1) then 3400
+3340 print "you stopped";int(p(j+1)-x1);"yards from point";j+1
+3350 let s=0
+3360 let x=x1
+3370 let t=t+t1
+3380 goto 3100
+3400 let y=p(j+1)-x
+3402 if a<>0 then 3410
+3404 let t=t+y/s
+3406 goto 3440
+3410 let s1=sqr(s*s+2*a*y)
+3420 let t=t-(s-s1)/a
+3430 let s=s1
+3440 let j=j+1
+3450 goto 8000
+3500 let x1=x+s*d+a/2*d*d
+3510 if x1>p(j+1) then 3400
+3520 let t=t+d
+3530 let s=s+a*d
+3540 let x=x1
+3550 goto 3100
+3600 if a1 <= m then 3700
+3610 print "maximum acceleration is ";m;"mph/sec"
+3620 goto 3200
+3700 let x1=x+s*d+a/2*d*d
+3710 if x1>p(j+1) then 3400
+3720 goto 3500
+8000 rem *** sub curve ***
+8010 rem
+8020 let i=int(j/2)
+8030 let t1=(p(j+1)-p(j))/s
+8040 let s1=g(i)+(f(i)-g(i))*rnd(1)
+8050 if s>s1 then 8100
+8055 print "curve";j;-j-i;", speed";fna(s);"mph"
+8060 let j=j+1
+8070 let x=p(j)
+8080 let t=t+t1
+8090 goto 3100
+8100 if s>s1+(f(i)-s1)/2 then 8200
+8110 let t2=t1*rnd(1)*.4
+8120 print "speed in curve";fna(s);"mph, took curve wide, lost";
+8125 print fnt(t2);"sec."
+8130 let t1=t1+t2
+8140 goto 8060
+8200 if s>f(i) then 8300
+8210 let s2=s-s*rnd(1)+.9
+8220 let t1=t1*s/s2
+8230 print "spun out at";fna(s);"mph, lost speed and time"
+8240 let s=s2
+8250 goto 8060
+8300 print "lost control at";fna(s);"mph.  your car crashed!!"
+8305 print "your opponent finished in ";82/r;"seconds!"
+8330 rem
+8600 print
+8605 print "do you wish to try again";
+8610 input a$
+8620 if left$(a$,1)="y" then 1910
+9000 rem
+9010 data 0,800,1000,1500,1600,1900,2400,2800,3200
+9020 data 85,100
+9030 data 20,35
+9040 data 90,110
+9050 data 50,70
+9060 rem
+9070 data 0,1,3,9,21,39,62,87,120,156,196,244,293,351,410
+9080 data 479,550,625,700,758,800,847,894,942,990,1030,1080
+9090 data 1135,1200,1260,1330,1382,1425,1470,1490,1505,1519
+9100 data 1539,1548,1563,1578,1512,1610,1632,1658,1683,1718
+9110 data 1758,1800,1850,1890,1943,1997,2050,2104,2057,2210
+9120 data 2294,2317,2370,2420,2480,2535,2600,2670,2725,2768,2799,2830
+9130 data 2861,2892,2920,2951,2982,3013,3044,3075,3106,3137,3168,3199
+9140 data 10000

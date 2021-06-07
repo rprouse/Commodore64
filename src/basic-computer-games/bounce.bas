@@ -1,53 +1,53 @@
-10 PRINT TAB(33);"BOUNCE"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-90 DIM T(20)
-100 PRINT "THIS SIMULATION LETS YOU SPECIFY THE INITIAL VELOCITY"
-110 PRINT "OF A BALL THROWN STRAIGHT UP, AND THE COEFFICIENT OF"
-120 PRINT "ELASTICITY OF THE BALL.  PLEASE USE A DECIMAL FRACTION"
-130 PRINT "COEFFICIENCY (LESS THAN 1)."
-131 PRINT
-132 PRINT "YOU ALSO SPECIFY THE TIME INCREMENT TO BE USED IN"
-133 PRINT "'STROBING' THE BALL'S FLIGHT (TRY .1 INITIALLY)."
-134 PRINT
-135 INPUT "TIME INCREMENT (SEC)";S2
-140 PRINT
-150 INPUT "VELOCITY (FPS)";V
-160 PRINT
-170 INPUT "COEFFICIENT";C
-180 PRINT
-182 PRINT "FEET"
-184 PRINT
-186 S1=INT(70/(V/(16*S2)))
-190 FOR I=1 TO S1
-200 T(I)=V*C^(I-1)/16
-210 NEXT I
-220 FOR H=INT(-16*(V/32)^2+V^2/32+.5) TO 0 STEP -.5
-221 IF INT(H)<>H THEN 225
-222 PRINT H;
-225 L=0
-230 FOR I=1 TO S1
-240 FOR T=0 TO T(I) STEP S2
-245 L=L+S2
-250 IF ABS(H-(.5*(-32)*T^2+V*C^(I-1)*T))>.25 THEN 270
-260 PRINT TAB(L/S2);"0";
-270 NEXT T
-275 T=T(I+1)/2
-276 IF -16*T^2+V*C^(I-1)*T<H THEN 290
-280 NEXT I
-290 PRINT
-300 NEXT H
-310 PRINT TAB(1);
-320 FOR I=1 TO INT(L+1)/S2+1
-330 PRINT ".";
-340 NEXT I
-350 PRINT
-355 PRINT " 0";
-360 FOR I=1 TO INT(L+.9995)
-380 PRINT TAB(INT(I/S2));I;
-390 NEXT I
-400 PRINT
-410 PRINT TAB(INT(L+1)/(2*S2)-2);"SECONDS"
-420 PRINT
-430 GOTO 135
-440 END
+10 print tab(33);"bounce"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+90 dim t(20)
+100 print "this simulation lets you specify the initial velocity"
+110 print "of a ball thrown straight up, and the coefficient of"
+120 print "elasticity of the ball.  please use a decimal fraction"
+130 print "coefficiency (less than 1)."
+131 print
+132 print "you also specify the time increment to be used in"
+133 print "'strobing' the ball's flight (try .1 initially)."
+134 print
+135 input "time increment (sec)";s2
+140 print
+150 input "velocity (fps)";v
+160 print
+170 input "coefficient";c
+180 print
+182 print "feet"
+184 print
+186 s1=int(70/(v/(16*s2)))
+190 for i=1 to s1
+200 t(i)=v*c^(i-1)/16
+210 next i
+220 for h=int(-16*(v/32)^2+v^2/32+.5) to 0 step -.5
+221 if int(h)<>h then 225
+222 print h;
+225 l=0
+230 for i=1 to s1
+240 for t=0 to t(i) step s2
+245 l=l+s2
+250 if abs(h-(.5*(-32)*t^2+v*c^(i-1)*t))>.25 then 270
+260 print tab(l/s2);"0";
+270 next t
+275 t=t(i+1)/2
+276 if -16*t^2+v*c^(i-1)*t<h then 290
+280 next i
+290 print
+300 next h
+310 print tab(1);
+320 for i=1 to int(l+1)/s2+1
+330 print ".";
+340 next i
+350 print
+355 print " 0";
+360 for i=1 to int(l+.9995)
+380 print tab(int(i/s2));i;
+390 next i
+400 print
+410 print tab(int(l+1)/(2*s2)-2);"seconds"
+420 print
+430 goto 135
+440 end

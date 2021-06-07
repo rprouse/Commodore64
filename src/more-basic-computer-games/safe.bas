@@ -1,104 +1,104 @@
-1 PRINT TAB(28)"SAFE"
-2 PRINT TAB(20)"CREATIVE CONFUTING"
-3 PRINT TAB(18)"MORRISTOWN, NEW JERSEY"
-4 PRINT
-5 PRINT
-6 PRINT
-10 DIM A1(4)
-20 PRINT"DO YOU WANT DIRECTIONS";
-30 INPUT A$
-40 IF A$="YES" THEN 80
-50 IF A$="NO" THEN 250
-60 PRINT"ANSWER YES OR NO"
-70 GOTO 20
-80 PRINT
-90 PRINT
-100 PRINT"YOU ARE A BURGULAR AND HAVE ENCOUNTERED A SAFE.  YOU  MUST"
-110 PRINT"OPEN THE SAFE TO GET THE SECRET PLANS THAT YOU CAME FOR."
-120 PRINT"TO DO THIS , YOU MUST ENTER THE NUMBER OF WHAT YOU WANT THE"
-130 PRINT" DIAL TURNED TO, THE COMPUTER WILL ACT AS THE SAFE AND WILL"
-140 PRINT"HELP YOU BY GIVING A SORT OF CLUE, THAT IS YOU WILL'HEAR'"
-150 PRINT"A CLICK AT EVENLY SPACED NOTCHES AS YOU MOVE TO THE PROPER"
-160 PRINT"NUMBER.  THERE ARE FOUR OF THEM BEFORE THE FINAL CLICK IS"
-170 PRINT"'HEARD'. AFTER THE FINAL ONE IS HEARD, YOU WILL GO ON TO"
-180 PRINT"THE NEXT NUMBER. THE COMPUTER WILL'SAY' 'CLICK' FOR EACH"
-190 PRINT"NOTCH THAT YOU PASS AND '**CLICK**' WHEN YOU REACH THE"
-200 PRINT"PROPER NUMBER.  IF YOU PASS IT OR TAKE LONGER THAN TEN TRIES"
-210 PRINT "ON ANY ONE NUMBER, YOU WILL ACTIVATE THE ALARM."
-220 PRINT"REMEMBER THAT WHEN YOU TURN THE DIAL TO THE LEFT, THE"
-230 PRINT"NUMBERS GO FROM 1 -99 ,AND WHEN YOU GO TO THE RIGHT, THE"
-240 PRINT"NUMBERS GO FROM 99-1"
-250 PRINT"OKAY, START TO THE RIGHT,  SHHHHHH!!!!!!!!!!!!!!"
-260 A=INT(RND(1)*81)+10
-270 B=INT(RND(1)*81)+10
-280 C=INT(RND(1)*81)+10
-290 PRINT"ARE YOU READY";
-300 INPUT A$
-310 IF A$="YES" THEN 340
-320 IF A$<>"WHAT"THEN 990
-330 PRINTA;B;C
-340 L=100-A
-350 FOR M=1 TO 4
-360 A1(M)=(5-M)*L/5+A
-370 NEXT M
-380 J=1
-390 PRINT"OKAY, THEN LET'S START"
-400 INPUT M
-410 ON SGN(M-A)+2 GOTO 500,570,420
-420 FOR K=1 TO 4
-430 IF M>A1(K) THEN 460
-440 PRINT"CLICK"
-460 NEXT K
-470 IF J>=10 THEN 500
-480 J=J+1
-490 GOTO 400
-500 PRINT"THE SENSOR HAS BEEN TRI6GERED"
-510 PRINT"LEAVE WHILE YOU CAN BEFORE THE"
-520 PRINT"POLICE GET HERE."
-530 PRINT"WANT TO TRY THE SAME SAFE";
-540 INPUT A$
-550 IF A$="YES" THEN 280
-560 GOTO 250
-570 PRINT"** CLICK **"
-580 L=L+B
-590 FOR K=1 TO 4
-600 A1(K)=K*L/5+B
-610 NEXT K
-620 PRINT"AND NOW TO THE LEFT"
-630 J=1
-640 INPUT M
-650 ON SGN(M-A)+2 GOTO 660,500,680
-660 ON SGN(M-B)+2 GOTO 670,760,500
-670 M=M+100
-680 FOR K=1 TO 4
-690 IF M<A1(K) THEN 720
-700 PRINT"CLICK"
-710 A1(K)=200
-720 NEXT K
-730 IF J>=10 THEN 500
-740 J=J+1
-750 GOTO 640
-760 PRINT"** CLICK **"
-770 L=(100-C)+B
-780 FOR K=1 TO 4
-790 A1(K)=B+100-K*L/5
-800 NEXT K
-810 PRINT"AND NOW TO THE RIGHT AGAIN"
-820 J=1
-830 INPUT M
-840 ON SGN(M-B)+2 GOTO 860,500,850
-850 ONSGN(M-C)+2 GOTO 500,950,870
-860 M=M+100
-870 FOR K=1 TO 4
-880 IF M>A1(K) THEN 910
-890 PRINT"CLICK"
-900 A1(K)=-200
-910 NEXT K
-920 IF J>=10 THEN 500
-930 J=J+1
-940 GOTO 830
-950 PRINT"** CLICK **...YOU OPENED IT"
-960 PRINT"BUT OH,OH, HE MUST HAVE MOVED IT"
-970 PRINT"TRY THE ONE OVER THERE"
-980 GOTO 250
-990 END
+1 print tab(28)"safe"
+2 print tab(20)"creative confuting"
+3 print tab(18)"morristown, new jersey"
+4 print
+5 print
+6 print
+10 dim a1(4)
+20 print"do you want directions";
+30 input a$
+40 if a$="yes" then 80
+50 if a$="no" then 250
+60 print"answer yes or no"
+70 goto 20
+80 print
+90 print
+100 print"you are a burgular and have encountered a safe.  you  must"
+110 print"open the safe to get the secret plans that you came for."
+120 print"to do this , you must enter the number of what you want the"
+130 print" dial turned to, the computer will act as the safe and will"
+140 print"help you by giving a sort of clue, that is you will'hear'"
+150 print"a click at evenly spaced notches as you move to the proper"
+160 print"number.  there are four of them before the final click is"
+170 print"'heard'. after the final one is heard, you will go on to"
+180 print"the next number. the computer will'say' 'click' for each"
+190 print"notch that you pass and '**click**' when you reach the"
+200 print"proper number.  if you pass it or take longer than ten tries"
+210 print "on any one number, you will activate the alarm."
+220 print"remember that when you turn the dial to the left, the"
+230 print"numbers go from 1 -99 ,and when you go to the right, the"
+240 print"numbers go from 99-1"
+250 print"okay, start to the right,  shhhhhh!!!!!!!!!!!!!!"
+260 a=int(rnd(1)*81)+10
+270 b=int(rnd(1)*81)+10
+280 c=int(rnd(1)*81)+10
+290 print"are you ready";
+300 input a$
+310 if a$="yes" then 340
+320 if a$<>"what"then 990
+330 printa;b;c
+340 l=100-a
+350 for m=1 to 4
+360 a1(m)=(5-m)*l/5+a
+370 next m
+380 j=1
+390 print"okay, then let's start"
+400 input m
+410 on sgn(m-a)+2 goto 500,570,420
+420 for k=1 to 4
+430 if m>a1(k) then 460
+440 print"click"
+460 next k
+470 if j>=10 then 500
+480 j=j+1
+490 goto 400
+500 print"the sensor has been tri6gered"
+510 print"leave while you can before the"
+520 print"police get here."
+530 print"want to try the same safe";
+540 input a$
+550 if a$="yes" then 280
+560 goto 250
+570 print"** click **"
+580 l=l+b
+590 for k=1 to 4
+600 a1(k)=k*l/5+b
+610 next k
+620 print"and now to the left"
+630 j=1
+640 input m
+650 on sgn(m-a)+2 goto 660,500,680
+660 on sgn(m-b)+2 goto 670,760,500
+670 m=m+100
+680 for k=1 to 4
+690 if m<a1(k) then 720
+700 print"click"
+710 a1(k)=200
+720 next k
+730 if j>=10 then 500
+740 j=j+1
+750 goto 640
+760 print"** click **"
+770 l=(100-c)+b
+780 for k=1 to 4
+790 a1(k)=b+100-k*l/5
+800 next k
+810 print"and now to the right again"
+820 j=1
+830 input m
+840 on sgn(m-b)+2 goto 860,500,850
+850 onsgn(m-c)+2 goto 500,950,870
+860 m=m+100
+870 for k=1 to 4
+880 if m>a1(k) then 910
+890 print"click"
+900 a1(k)=-200
+910 next k
+920 if j>=10 then 500
+930 j=j+1
+940 goto 830
+950 print"** click **...you opened it"
+960 print"but oh,oh, he must have moved it"
+970 print"try the one over there"
+980 goto 250
+990 end

@@ -1,26 +1,26 @@
-10 PRINT TAB(26);"BUZZWORD GENERATOR"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-40 PRINT "THIS PROGRAM PRINTS HIGHLY ACCEPTABLE PHRASES IN"
-50 PRINT "'EDUCATOR-SPEAK' THAT YOU CAN WORK INTO REPORTS"
-60 PRINT "AND SPEECHES.  WHENEVER A QUESTION MARK IS PRINTED,"
-70 PRINT "TYPE A 'Y' FOR ANOTHER PHRASE OR 'N' TO QUIT."
-80 PRINT:PRINT:PRINT "HERE'S THE FIRST PHRASE:"
-90 DIM A$(40)
-100 FOR I=1 TO 39 : READ A$(I) : NEXT I
-110 PRINT A$(INT(13*RND(1)+1));" ";
-120 PRINT A$(INT(13*RND(1)+14));" ";
-130 PRINT A$(INT(13*RND(1)+27)) : PRINT
-150 INPUT Y$ : IF Y$="Y" THEN 110
-160 GOTO 999
-200 DATA "ABILITY","BASAL","BEHAVIORAL","CHILD-CENTERED"
-210 DATA "DIFFERENTIATED","DISCOVERY","FLEXIBLE","HETEROGENEOUS"
-220 DATA "HOMOGENEOUS","MANIPULATIVE","MODULAR","TAVISTOCK"
-230 DATA "INDIVIDUALIZED","LEARNING","EVALUATIVE","OBJECTIVE"
-240 DATA "COGNITIVE","ENRICHMENT","SCHEDULING","HUMANISTIC"
-250 DATA "INTEGRATED","NON-GRADED","TRAINING","VERTICAL AGE"
-260 DATA "MOTIVATIONAL","CREATIVE","GROUPING","MODIFICATION"
-270 DATA "ACCOUNTABILITY","PROCESS","CORE CURRICULUM","ALGORITHM"
-280 DATA "PERFORMANCE","REINFORCEMENT","OPEN CLASSROOM","RESOURCE"
-290 DATA "STRUCTURE","FACILITY","ENVIRONMENT"
-999 PRINT "COME BACK WHEN YOU NEED HELP WITH ANOTHER REPORT!":END
+10 print tab(26);"buzzword generator"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+40 print "this program prints highly acceptable phrases in"
+50 print "'educator-speak' that you can work into reports"
+60 print "and speeches.  whenever a question mark is printed,"
+70 print "type a 'y' for another phrase or 'n' to quit."
+80 print:print:print "here's the first phrase:"
+90 dim a$(40)
+100 for i=1 to 39 : read a$(i) : next i
+110 print a$(int(13*rnd(1)+1));" ";
+120 print a$(int(13*rnd(1)+14));" ";
+130 print a$(int(13*rnd(1)+27)) : print
+150 input y$ : if y$="y" then 110
+160 goto 999
+200 data "ability","basal","behavioral","child-centered"
+210 data "differentiated","discovery","flexible","heterogeneous"
+220 data "homogeneous","manipulative","modular","tavistock"
+230 data "individualized","learning","evaluative","objective"
+240 data "cognitive","enrichment","scheduling","humanistic"
+250 data "integrated","non-graded","training","vertical age"
+260 data "motivational","creative","grouping","modification"
+270 data "accountability","process","core curriculum","algorithm"
+280 data "performance","reinforcement","open classroom","resource"
+290 data "structure","facility","environment"
+999 print "come back when you need help with another report!":end

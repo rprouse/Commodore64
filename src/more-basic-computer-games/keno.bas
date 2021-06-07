@@ -1,121 +1,121 @@
-1 PRINT TAB(34)"KENO"
-2 PRINT TAB(15)" CREATIVE COMPUTING,MORRISTOWN, NEW JERSEY"
-3 DIM N(21),M(23),A(8)
-9 PRINT:PRINT:PRINT
-10 PRINT"KENO IS PLAYED IN MANY CASINOS IN LAS VEGAS."
-13 PRINT "PLAY KENO BY COMPUTER.  ONE VARIATION OF THE GAME, UTILIZES"
-16 PRINT"THE RANDOM NUMBER GENERATOR."
-19 PRINT
-20 PRINT"THE PLAYER CHOOSES 8 DIFFERENT NUMBERS FROM 1 TO 80"
-23 PRINT"INCLUSIVE, AND BETS $1.20.  THE COMPUTER WILL SELECT"
-26 PRINT"20 NUMBERS AT RANDOM AND WILL ELIMINATE DUPLICATES WHICH"
-29 PRINT"MAY OCCUR .  ANOTHER NUMBER  WILL BE INSERTED IN ITS PLACE"
-32 PRINT"SO THAT THE COMPUTER WILL OUTPUT 20 DIFFERENT NUMBERS."
-35 PRINT:PRINT
-38 PRINT:PRINT:PRINT "HERE WE GO!!!"
-40 PRINT"THE COMPUTER WILL OUTPUT A ? MARK.  TYPE A NUMBER FROM "
-43 PRINT"1 TO 80, INCLUSIVE, AND PRESS THE RETURN KEY. REPEAT THIS"
-46 PRINT"PROCESS UNTIL THE ? MARK IS NO LONGER SHOWN."
-48 FOR I=1 TO 8
-50 INPUT A(I)
-51 IF A(I)>80 THEN 56
-53 IF A(I)=0 THEN 56
-54 IF A(I)<0 THEN 56
-55 GOTO 57
-56 PRINT"TYPE A NUMBER FROM 1 TO 80 , INCLUSIVE, PLEASE.": GOTO 50
-57 NEXT I
-58 C=0:FOR K=1 TO7
-59 FOR J=K TO 7
-60 X=A(K):Y=A(J+1)
-61 IF X<>Y THEN 72
-62 C=C+1
-63 PRINT"A DUPLICATE NUMBER HAS BEEN DETECTED IN YOUR INPUT."
-64 PRINT"TYPE ANOTHER NUMBER, PLEASE.":INPUT Y
-65 IF Y=0 THEN 70
-66 IF Y>80 THEN 70
-67 IF Y<0 THEN 70
-68 A(J+1)=Y
-69 GOTO 61
-70 PRINT "TYPE A NUMBER FROM 1 TO 80, INCLUSIVE, PLEASE."
-71 GOTO 64
-72 NEXT J
-73 NEXT K :PRINT:PRINT
-75 IF C=0 THEN 88
-76 GOTO 58
-88 PRINT" THE COMPUTER WILL SELECT 20 NUMBERS AT RANDOM.  THE BELL "
-91 PRINT"TONE INDICATES IT IS IN THE PROCESS OF SELECTING THE NUMBERS."
-100 FOR L=1 TO 20
-103 N(L)=INT(80*RND(80)+1)
-106 M(L)=N(L)
-109 NEXT L
-110 L=21
-112 FOR K=1 TO 20
-115 FOR J=K TO L-1
-118 X=M(K)
-121 Y=M(J+1)
-124 IF X<>Y THEN 139
-130 M(J+1)=INT(80+RND(1)+1)
-133 Y=M(J+1)
-136 GOTO 124
-139 PRINT CHR$(7);
-142 NEXT J
-145 NEXT K
-147 PRINT:PRINT
-148 PRINT "YOUR NUMBERS ARE:"
-151 FOR I=1 TO 8
-154 PRINT A(I);
-157 NEXT I: PRINT:PRINT:PRINT
-160 PRINT" THE COMPUTER HAS SELECTED THE FOLLOWING  NUMBERS:"
-163 FOR L=1 TO 20
-167 PRINT M(L);
-170 NEXT L:PRINT:PRINT
-173 PRINT"THE PROGRAM WILL COMPARE YOUR NUMBERS WITH THE "
-176 PRINT"NUMBERS THE COMPUTER HAS SELECTED."
-179 PRINT:PRINT
-182 PRINT"LISTEN FOR THE BELL TONE--- EACH RING INDICATES ANOTHER"
-185 PRINT "CORRECT GUESS BY YOU.":
-188 PRINT "YOU HAVE GUESSED THE FOLLOWED NUMBERS:"
-191 G=0
-194 I=1
-197 FOR J=1 TO 20
-200 X=A(I)
-203 Y=M(J)
-206 IF X=Y THEN 213
-209 NEXT J
-210 GOTO 225
-213 PRINT CHR$(7);
-216 FOR V1=1 TO 3976:NEXT V1
-219 PRINT A(I);
-222 G=G+1
-225 I=I+1:PRINT:IF I<>8 THEN 197
-228 IF G<5 THEN 242
-231 IF G=5 THEN 261
-234 IF G=6 THEN 267
-237 IF G=7 THEN 273
-240 IF G=8 THEN 279
-242 PRINT "YOU CAUGHT";G;"NUMBERS OUT OF 8--"
-243 PRINT "NOT ENOUGH CORRECT GUESSES-- 'SO SOLLY', NO PAYOFF."
-245 PRINT:PRINT
-246 PRINT "DO YOU WANT TO PLAY KENO AGAIN?"
-249 PRINT "TYPE 'YES' OR 'NO'"
-250 C=0
-251 INPUT X$
-252 IF X$="YES" THEN 38
-253 IF X$="NO" THEN 299
-254 C=C+1
-255 IF C=3 THEN 299
-256 PRINT "TYPE 'YES' OR 'NO'"
-257 GOTO 251
-258 IF X$="NO" THEN 299
-259 PRINT "TYPE YES OR NO PLEASE!!"
-261 PRINT "YOU  CAUGHT";G;"NUMBERS OUT OF 8--YOU WIN $10.00"
-264 PRINT:PRINT:GOTO 246
-267 PRINT "YOU CAUGHT";G;"NUMBERS OUT OF 8--YOU WIN $100.00"
-270 PRINT:PRINT:GOTO 246
-273 PRINT "YOU CAUGHT ";G;"NUMBERS OUT OF 8--YOU WIN $2200.00"
-276 PRINT:PRINT:GOTO246
-279 PRINT "YOU CAUGHT ";G;"NUMBERS OUT OF 8--YOU WIN $25000.00"
-282 PRINT "8 OUT OF 8 DOES NOT OCCUR TOO OFTEN, LUCKY."
-285 PRINT:PRINT:GOTO 246
-299 PRINT "THAT'S ALL FOR NOW.  PLAY KENO AGAIN, BE SEEING YOU."
-300 END
+1 print tab(34)"keno"
+2 print tab(15)" creative computing,morristown, new jersey"
+3 dim n(21),m(23),a(8)
+9 print:print:print
+10 print"keno is played in many casinos in las vegas."
+13 print "play keno by computer.  one variation of the game, utilizes"
+16 print"the random number generator."
+19 print
+20 print"the player chooses 8 different numbers from 1 to 80"
+23 print"inclusive, and bets $1.20.  the computer will select"
+26 print"20 numbers at random and will eliminate duplicates which"
+29 print"may occur .  another number  will be inserted in its place"
+32 print"so that the computer will output 20 different numbers."
+35 print:print
+38 print:print:print "here we go!!!"
+40 print"the computer will output a ? mark.  type a number from "
+43 print"1 to 80, inclusive, and press the return key. repeat this"
+46 print"process until the ? mark is no longer shown."
+48 for i=1 to 8
+50 input a(i)
+51 if a(i)>80 then 56
+53 if a(i)=0 then 56
+54 if a(i)<0 then 56
+55 goto 57
+56 print"type a number from 1 to 80 , inclusive, please.": goto 50
+57 next i
+58 c=0:for k=1 to7
+59 for j=k to 7
+60 x=a(k):y=a(j+1)
+61 if x<>y then 72
+62 c=c+1
+63 print"a duplicate number has been detected in your input."
+64 print"type another number, please.":input y
+65 if y=0 then 70
+66 if y>80 then 70
+67 if y<0 then 70
+68 a(j+1)=y
+69 goto 61
+70 print "type a number from 1 to 80, inclusive, please."
+71 goto 64
+72 next j
+73 next k :print:print
+75 if c=0 then 88
+76 goto 58
+88 print" the computer will select 20 numbers at random.  the bell "
+91 print"tone indicates it is in the process of selecting the numbers."
+100 for l=1 to 20
+103 n(l)=int(80*rnd(80)+1)
+106 m(l)=n(l)
+109 next l
+110 l=21
+112 for k=1 to 20
+115 for j=k to l-1
+118 x=m(k)
+121 y=m(j+1)
+124 if x<>y then 139
+130 m(j+1)=int(80+rnd(1)+1)
+133 y=m(j+1)
+136 goto 124
+139 print chr$(7);
+142 next j
+145 next k
+147 print:print
+148 print "your numbers are:"
+151 for i=1 to 8
+154 print a(i);
+157 next i: print:print:print
+160 print" the computer has selected the following  numbers:"
+163 for l=1 to 20
+167 print m(l);
+170 next l:print:print
+173 print"the program will compare your numbers with the "
+176 print"numbers the computer has selected."
+179 print:print
+182 print"listen for the bell tone--- each ring indicates another"
+185 print "correct guess by you.":
+188 print "you have guessed the followed numbers:"
+191 g=0
+194 i=1
+197 for j=1 to 20
+200 x=a(i)
+203 y=m(j)
+206 if x=y then 213
+209 next j
+210 goto 225
+213 print chr$(7);
+216 for v1=1 to 3976:next v1
+219 print a(i);
+222 g=g+1
+225 i=i+1:print:if i<>8 then 197
+228 if g<5 then 242
+231 if g=5 then 261
+234 if g=6 then 267
+237 if g=7 then 273
+240 if g=8 then 279
+242 print "you caught";g;"numbers out of 8--"
+243 print "not enough correct guesses-- 'so solly', no payoff."
+245 print:print
+246 print "do you want to play keno again?"
+249 print "type 'yes' or 'no'"
+250 c=0
+251 input x$
+252 if x$="yes" then 38
+253 if x$="no" then 299
+254 c=c+1
+255 if c=3 then 299
+256 print "type 'yes' or 'no'"
+257 goto 251
+258 if x$="no" then 299
+259 print "type yes or no please!!"
+261 print "you  caught";g;"numbers out of 8--you win $10.00"
+264 print:print:goto 246
+267 print "you caught";g;"numbers out of 8--you win $100.00"
+270 print:print:goto 246
+273 print "you caught ";g;"numbers out of 8--you win $2200.00"
+276 print:print:goto246
+279 print "you caught ";g;"numbers out of 8--you win $25000.00"
+282 print "8 out of 8 does not occur too often, lucky."
+285 print:print:goto 246
+299 print "that's all for now.  play keno again, be seeing you."
+300 end

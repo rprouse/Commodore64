@@ -1,51 +1,51 @@
-2 PRINT TAB(30) "CHIEF"
-4 PRINT TAB(15) "CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-6 PRINT:PRINT:PRINT
-10 PRINT "I AM CHIEF NUMBERS FREEK, THE GREAT INDIAN MATH GOD."
-20 PRINT "ARE YOU READY TO TAKE THE TEST YOU CALLED ME OUT FOR";
-30 INPUT A$
-40 IF A$="YES" THEN 60
-50 PRINT "SHUT UP, PALE FACE WITH WISE TONGUE."
-60 PRINT " TAKE A NUMBER AND ADD 3. DIVIDE THIS NUMBER BY 5 AND"
-70 PRINT "MULTIPLY BY 8. DIVIDE BY 5 AND ADD THE SAME. SUBTRACT 1."
-80 PRINT "  WHAT DO YOU HAVE";
-90 INPUT B
-100 LET C = (B+1-5)*5/8*5-3
-110 PRINT "I BET YOUR NUMBER WAS" C". AM I RIGHT";
-120 INPUT D$
-130 IF D$="YES" THEN 500
-140 PRINT "WHAT WAS YOUR ORIGINAL NUMBER";
-150 INPUT K
-155 LET F=K+3
-160 LET G=F/5
-170 LET H=G*8
-180 LET I=H/5+5
-190 LET J=I-1
-200 PRINT "SO YOU THINK YOU'RE SO SMART, EH?"
-210 PRINT "NOW WATCH."
-230 PRINT K"PLUS 3 EQUALS"F". THIS DIVIDED BY 5 EQUALS"G";"
-240 PRINT "THIS TIMES 8 EQUALS"H". IF WE DIVIDE BY 5 AND ADD 5,"
-250 PRINT "WE GET"I", WHICH, MINUS 1, EQUALS"J"."
-260 PRINT "NOW DO YOU BELIEVE ME";
-270 INPUT Z$
-290 IF Z$="YES" THEN 500
-295 PRINT "YOU HAVE MADE ME MAD!!!"
-300 PRINT "THERE MUST BE A GREAT LIGHTNING BOLT!"
-310 PRINT:PRINT
-330 FOR X=30 TO 22 STEP -1
-340 PRINT TAB(X) "X X"
-350 NEXT X
-360 PRINT TAB(21) "X XXX"
-370 PRINT TAB(20) "X   X"
-380 PRINT TAB(19) "XX X"
-390 FOR Y=20 TO 13 STEP -1
-400 PRINT TAB(Y) "X X"
-410 NEXT Y
-420 PRINT TAB(12) "XX"
-430 PRINT TAB(11) "X"
-440 PRINT TAB(10) "*"
-450 PRINT:PRINT"#########################":PRINT
-470 PRINT "I HOPE YOU BELIEVE ME NOW, FOR YOUR SAKE!!"
-480 GOTO 520
-500 PRINT "BYE!!!"
-520 END
+2 print tab(30) "chief"
+4 print tab(15) "creative computing  morristown, new jersey"
+6 print:print:print
+10 print "i am chief numbers freek, the great indian math god."
+20 print "are you ready to take the test you called me out for";
+30 input a$
+40 if a$="yes" then 60
+50 print "shut up, pale face with wise tongue."
+60 print " take a number and add 3. divide this number by 5 and"
+70 print "multiply by 8. divide by 5 and add the same. subtract 1."
+80 print "  what do you have";
+90 input b
+100 let c = (b+1-5)*5/8*5-3
+110 print "i bet your number was" c". am i right";
+120 input d$
+130 if d$="yes" then 500
+140 print "what was your original number";
+150 input k
+155 let f=k+3
+160 let g=f/5
+170 let h=g*8
+180 let i=h/5+5
+190 let j=i-1
+200 print "so you think you're so smart, eh?"
+210 print "now watch."
+230 print k"plus 3 equals"f". this divided by 5 equals"g";"
+240 print "this times 8 equals"h". if we divide by 5 and add 5,"
+250 print "we get"i", which, minus 1, equals"j"."
+260 print "now do you believe me";
+270 input z$
+290 if z$="yes" then 500
+295 print "you have made me mad!!!"
+300 print "there must be a great lightning bolt!"
+310 print:print
+330 for x=30 to 22 step -1
+340 print tab(x) "x x"
+350 next x
+360 print tab(21) "x xxx"
+370 print tab(20) "x   x"
+380 print tab(19) "xx x"
+390 for y=20 to 13 step -1
+400 print tab(y) "x x"
+410 next y
+420 print tab(12) "xx"
+430 print tab(11) "x"
+440 print tab(10) "*"
+450 print:print"#########################":print
+470 print "i hope you believe me now, for your sake!!"
+480 goto 520
+500 print "bye!!!"
+520 end

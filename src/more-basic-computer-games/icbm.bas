@@ -1,51 +1,51 @@
-10 PRINT TAB(26);"ICBM"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-40 PRINT:PRINT:PRINT
-110 X1=0:Y1=0
-120 X=INT(RND(1)*800)+200:Y=INT(RND(1)*800)+200
-130 S=INT(RND(1)*20+50):S1=INT(RND(1)*20+50)
-170 PRINT "-------MISSILE-----         ";
-175 PRINT "--------SAM--------         ------"
-180 PRINT "MILES","MILES","MILES","MILES","HEADING"
-190 PRINT "NORTH","EAST","NORTH","EAST","?"
-200 PRINT "----------------------------------";
-205 PRINT "---------------------------"
-210 FOR N=1 TO 50
-220 PRINT Y,X,Y1,X1,
-230 IF X=0 THEN 550
-240 INPUT T1
-250 T1=T1/57.296
-260 H=INT(RND(1)*200+1)
-270 IF H>4 THEN 290
-280 ON H GOTO 470,490,510,530
-290 X1=INT(X1+S1*SIN(T1)):Y1=INT(Y1+S1*COS(T1))
-310 IF SQR(X^2+Y^2)>S THEN 350
-320 X=0:Y=0
-340 GOTO 430
-350 B=SQR(X^2+Y^2)/1000
-360 T=ATN(Y/X)
-370 X=INT(X-S*COS(T)+RND(1)*20+R)
-380 Y=INT(Y-S*SIN(T)+RND(1)*20+R)
-390 D=SQR((X-X1)^2+(Y-Y1)^2)
-400 IF D<=5 THEN 440
-410 D=INT(D)
-420 PRINT "ICBM & SAM NOW"; D; "MILES APART"
-430 NEXT N
-440 PRINT "CONGRATULATIONS!  YOUR SAM CAME WITHIN";D;"MILES OF"
-450 PRINT "THE ICBM AND DESTROYED IT!"
-460 GOTO 560
-470 PRINT "TOO BAD.  YOUR SAM FELL TO THE GROUND!"
-480 GOTO 560
-490 PRINT "YOUR SAM EXPLODED IN MIDAIR!"
-500 GOTO 560
-510 PRINT "GOOD LUCK-THE ICBM EXPLODED HARMLESSLY IN MIDAIR!"
-520 GOTO 560
-530 PRINT "GOOD LUCK-THE ICBM TURNED OUT TO BE A FRIENDLY AIRCRAFT!"
-540 GOTO 560
-550 PRINT "TOO BAD!"
-555 PRINT "THE ICBM JUST HIT YOUR LOCATION!!"
-560 PRINT "DO YOU WANT TO PLAY MORE? (Y OR N)";
-570 INPUT A$
-580 IF A$="Y" THEN 130
-590 END
+10 print tab(26);"icbm"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey"
+40 print:print:print
+110 x1=0:y1=0
+120 x=int(rnd(1)*800)+200:y=int(rnd(1)*800)+200
+130 s=int(rnd(1)*20+50):s1=int(rnd(1)*20+50)
+170 print "-------missile-----         ";
+175 print "--------sam--------         ------"
+180 print "miles","miles","miles","miles","heading"
+190 print "north","east","north","east","?"
+200 print "----------------------------------";
+205 print "---------------------------"
+210 for n=1 to 50
+220 print y,x,y1,x1,
+230 if x=0 then 550
+240 input t1
+250 t1=t1/57.296
+260 h=int(rnd(1)*200+1)
+270 if h>4 then 290
+280 on h goto 470,490,510,530
+290 x1=int(x1+s1*sin(t1)):y1=int(y1+s1*cos(t1))
+310 if sqr(x^2+y^2)>s then 350
+320 x=0:y=0
+340 goto 430
+350 b=sqr(x^2+y^2)/1000
+360 t=atn(y/x)
+370 x=int(x-s*cos(t)+rnd(1)*20+r)
+380 y=int(y-s*sin(t)+rnd(1)*20+r)
+390 d=sqr((x-x1)^2+(y-y1)^2)
+400 if d<=5 then 440
+410 d=int(d)
+420 print "icbm & sam now"; d; "miles apart"
+430 next n
+440 print "congratulations!  your sam came within";d;"miles of"
+450 print "the icbm and destroyed it!"
+460 goto 560
+470 print "too bad.  your sam fell to the ground!"
+480 goto 560
+490 print "your sam exploded in midair!"
+500 goto 560
+510 print "good luck-the icbm exploded harmlessly in midair!"
+520 goto 560
+530 print "good luck-the icbm turned out to be a friendly aircraft!"
+540 goto 560
+550 print "too bad!"
+555 print "the icbm just hit your location!!"
+560 print "do you want to play more? (y or n)";
+570 input a$
+580 if a$="y" then 130
+590 end

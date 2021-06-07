@@ -1,49 +1,49 @@
-1 PRINT TAB(34);"TRAP"
-2 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-3 PRINT:PRINT:PRINT
-10 G=6
-20 N=100
-30 REM-TRAP
-40 REM-STEVE ULLMAN, 8-1-72
-50 PRINT "INSTRUCTIONS";
-60 INPUT Z$
-70 IF LEFT$(Z$,1)<>"Y" THEN 180
-80 PRINT "I AM THINKING OF A NUMBER BETWEEN 1 AND";N
-90 PRINT "TRY TO GUESS MY NUMBER. ON EACH GUESS,"
-100 PRINT "YOU ARE TO ENTER 2 NUMBERS, TRYING TO TRAP"
-110 PRINT "MY NUMBER BETWEEN THE TWO NUMBERS. I WILL"
-120 PRINT "TELL YOU IF YOU HAVE TRAPPED MY NUMBER, IF MY"
-130 PRINT "NUMBER IS LARGER THAN YOUR TWO NUMBERS, OR IF"
-140 PRINT "MY NUMBER IS SMALLER THAN YOUR TWO NUMBERS."
-150 PRINT "IF YOU WANT TO GUESS ONE SINGLE NUMBER, TYPE"
-160 PRINT "YOUR GUESS FOR BOTH YOUR TRAP NUMBERS."
-170 PRINT "YOU GET";G;"GUESSES TO GET MY NUMBER."
-180 X=INT(N*RND(1))+1
-190 FOR Q=1 TO G
-200 PRINT 
-210 PRINT "GUESS #";Q;
-220 INPUT A,B
-230 IF A=B AND X=A THEN 400
-240 IF A <= B THEN 260
-250 GOSUB 360
-260 IF A <= X AND X <= B THEN 320
-270 IF X<A THEN 300
-280 PRINT "MY NUMBER IS LARGER THAN YOUR TRAP NUMBERS."
-290 GOTO 330
-300 PRINT "MY NUMBER IS SMALLER THAN YOUR TRAP NUMBERS."
-310 GOTO 330
-320 PRINT "YOU HAVE TRAPPED MY NUMBER."
-330 NEXT Q
-340 PRINT "SORRY, THAT'S";G;"GUESSES. THE NUMBER WAS";X
-345 PRINT
-350 GOTO 410
-360 R=A
-370 A=B
-380 B=R
-390 RETURN 
-400 PRINT "YOU GOT IT!!!"
-410 PRINT 
-420 PRINT "TRY AGAIN."
-430 PRINT
-440 GOTO 180
-450 END
+1 print tab(34);"trap"
+2 print tab(15);"creative computing  morristown, new jersey"
+3 print:print:print
+10 g=6
+20 n=100
+30 rem-trap
+40 rem-steve ullman, 8-1-72
+50 print "instructions";
+60 input z$
+70 if left$(z$,1)<>"y" then 180
+80 print "i am thinking of a number between 1 and";n
+90 print "try to guess my number. on each guess,"
+100 print "you are to enter 2 numbers, trying to trap"
+110 print "my number between the two numbers. i will"
+120 print "tell you if you have trapped my number, if my"
+130 print "number is larger than your two numbers, or if"
+140 print "my number is smaller than your two numbers."
+150 print "if you want to guess one single number, type"
+160 print "your guess for both your trap numbers."
+170 print "you get";g;"guesses to get my number."
+180 x=int(n*rnd(1))+1
+190 for q=1 to g
+200 print 
+210 print "guess #";q;
+220 input a,b
+230 if a=b and x=a then 400
+240 if a <= b then 260
+250 gosub 360
+260 if a <= x and x <= b then 320
+270 if x<a then 300
+280 print "my number is larger than your trap numbers."
+290 goto 330
+300 print "my number is smaller than your trap numbers."
+310 goto 330
+320 print "you have trapped my number."
+330 next q
+340 print "sorry, that's";g;"guesses. the number was";x
+345 print
+350 goto 410
+360 r=a
+370 a=b
+380 b=r
+390 return 
+400 print "you got it!!!"
+410 print 
+420 print "try again."
+430 print
+440 goto 180
+450 end

@@ -1,114 +1,114 @@
-2 PRINT TAB(30);"TIC-TAC-TOE"
-4 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-6 PRINT:PRINT:PRINT
-8 PRINT "THE BOARD IS NUMBERED:"
-10 PRINT " 1  2  3"
-12 PRINT " 4  5  6"
-14 PRINT " 7  8  9"
-16 PRINT:PRINT:PRINT
-20 DIM S(9)
-50 INPUT"DO YOU WANT 'X' OR 'O'";C$
-55 IF C$="X"THEN 475
-60 P$="O":Q$="X"
-100 G=-1:H=1:IF S(5)<>0 THEN 103
-102 S(5)=-1:GOTO 195
-103 IF S(5)<>1 THEN 106
-104 IF S(1)<>0 THEN 110
-105 S(1)=-1:GOTO 195
-106 IF S(2)=1 AND S(1)=0 THEN 181
-107 IF S(4)=1 AND S(1)=0 THEN 181
-108 IF S(6)=1 AND S(9)=0 THEN 189
-109 IF S(8)=1 AND S(9)=0 THEN 189
-110 IF G=1 THEN 112
-111 GOTO 118
-112 J=3*INT((M-1)/3)+1
-113 IF 3*INT((M-1)/3)+1=M THEN K=1
-114 IF 3*INT((M-1)/3)+2=M THEN K=2
-115 IF 3*INT((M-1)/3)+3=M THEN K=3
-116 GOTO 120
-118 FOR J=1 TO 7 STEP 3:FOR K=1 TO 3
-120 IF S(J)<>G THEN 130
-122 IF S(J+2)<>G THEN 135
-126 IF S(J+1)<>0 THEN 150
-128 S(J+1)=-1:GOTO 195
-130 IF S(J)=H THEN 150
-131 IF S(J+2)<>G THEN 150
-132 IF S(J+1)<>G THEN 150
-133 S(J)=-1:GOTO 195
-135 IF S(J+2)<>0 THEN 150
-136 IF S(J+1)<>G THEN 150
-138 S(J+2)=-1:GOTO 195
-150 IF S(K)<>G THEN 160
-152 IF S(K+6)<>G THEN 165
-156 IF S(K+3)<>0 THEN 170
-158 S(K+3)=-1:GOTO 195
-160 IF S(K)=H THEN 170
-161 IF S(K+6)<>G THEN 170
-162 IF S(K+3)<>G THEN 170
-163 S(K)=-1:GOTO 195
-165 IF S(K+6)<>0 THEN 170
-166 IF S(K+3)<>G THEN 170
-168 S(K+6)=-1:GOTO 195
-170 GOTO 450
-171 IF S(3)=G AND S(7)=0 THEN 187
-172 IF S(9)=G AND S(1)=0 THEN 181
-173 IF S(7)=G AND S(3)=0 THEN 183
-174 IF S(9)=0 AND S(1)=G THEN 189
-175 IF G=-1 THEN G=1:H=-1:GOTO 110
-176 IF S(9)=1 AND S(3)=0 THEN 182
-177 FOR I=2 TO 9:IF S(I)<>0 THEN 179
-178 S(I)=-1:GOTO 195
-179 NEXT I
-181 S(1)=-1:GOTO 195
-182 IF S(1)=1 THEN 177
-183 S(3)=-1:GOTO 195
-187 S(7)=-1:GOTO 195
-189 S(9)=-1
-195 PRINT:PRINT"THE COMPUTER MOVES TO..."
-202 GOSUB 1000
-205 GOTO 500
-450 IF G=1 THEN 465
-455 IF J=7 AND K=3 THEN 465
-460 NEXT K,J
-465 IF S(5)=G THEN 171
-467 GOTO 175
-475 P$="X":Q$="O"
-500 PRINT:INPUT"WHERE DO YOU MOVE";M
-502 IF M=0 THEN PRINT"THANKS FOR THE GAME.":GOTO 2000
-503 IF M>9 THEN 506
-505 IF S(M)=0 THEN 510
-506 PRINT"THAT SQUARE IS OCCUPIED.":PRINT:PRINT:GOTO 500
-510 G=1:S(M)=1
-520 GOSUB 1000
-530 GOTO 100
-1000 PRINT:FOR I=1 TO 9:PRINT" ";:IF S(I)<>-1 THEN 1014
-1012 PRINT Q$" ";:GOTO 1020
-1014 IF S(I)<>0 THEN 1018
-1016 PRINT"  ";:GOTO 1020
-1018 PRINT P$" ";
-1020 IF I<>3 AND I<>6 THEN 1050
-1030 PRINT:PRINT"---+---+---"
-1040 GOTO 1080
-1050 IF I=9 THEN 1080
-1060 PRINT"!";
-1080 NEXT I:PRINT:PRINT:PRINT
-1095 FOR I=1 TO 7 STEP 3
-1100 IF S(I)<>S(I+1)THEN 1115
-1105 IF S(I)<>S(I+2)THEN 1115
-1110 IF S(I)=-1 THEN 1350
-1112 IF S(I)=1 THEN 1200
-1115 NEXT I:FOR I=1 TO 3:IF S(I)<>S(I+3)THEN 1150
-1130 IF S(I)<>S(I+6)THEN 1150
-1135 IF S(I)=-1 THEN 1350
-1137 IF S(I)=1 THEN 1200
-1150 NEXT I:FOR I=1 TO 9:IF S(I)=0 THEN 1155
-1152 NEXT I:GOTO 1400
-1155 IF S(5)<>G THEN 1170
-1160 IF S(1)=G AND S(9)=G THEN 1180
-1165 IF S(3)=G AND S(7)=G THEN 1180
-1170 RETURN
-1180 IF G=-1 THEN 1350
-1200 PRINT"YOU BEAT ME!! GOOD GAME.":GOTO 2000
-1350 PRINT"I WIN, TURKEY!!!":GOTO 2000
-1400 PRINT"IT'S A DRAW. THANK YOU."
-2000 END
+2 print tab(30);"tic-tac-toe"
+4 print tab(15);"creative computing  morristown, new jersey"
+6 print:print:print
+8 print "the board is numbered:"
+10 print " 1  2  3"
+12 print " 4  5  6"
+14 print " 7  8  9"
+16 print:print:print
+20 dim s(9)
+50 input"do you want 'x' or 'o'";c$
+55 if c$="x"then 475
+60 p$="o":q$="x"
+100 g=-1:h=1:if s(5)<>0 then 103
+102 s(5)=-1:goto 195
+103 if s(5)<>1 then 106
+104 if s(1)<>0 then 110
+105 s(1)=-1:goto 195
+106 if s(2)=1 and s(1)=0 then 181
+107 if s(4)=1 and s(1)=0 then 181
+108 if s(6)=1 and s(9)=0 then 189
+109 if s(8)=1 and s(9)=0 then 189
+110 if g=1 then 112
+111 goto 118
+112 j=3*int((m-1)/3)+1
+113 if 3*int((m-1)/3)+1=m then k=1
+114 if 3*int((m-1)/3)+2=m then k=2
+115 if 3*int((m-1)/3)+3=m then k=3
+116 goto 120
+118 for j=1 to 7 step 3:for k=1 to 3
+120 if s(j)<>g then 130
+122 if s(j+2)<>g then 135
+126 if s(j+1)<>0 then 150
+128 s(j+1)=-1:goto 195
+130 if s(j)=h then 150
+131 if s(j+2)<>g then 150
+132 if s(j+1)<>g then 150
+133 s(j)=-1:goto 195
+135 if s(j+2)<>0 then 150
+136 if s(j+1)<>g then 150
+138 s(j+2)=-1:goto 195
+150 if s(k)<>g then 160
+152 if s(k+6)<>g then 165
+156 if s(k+3)<>0 then 170
+158 s(k+3)=-1:goto 195
+160 if s(k)=h then 170
+161 if s(k+6)<>g then 170
+162 if s(k+3)<>g then 170
+163 s(k)=-1:goto 195
+165 if s(k+6)<>0 then 170
+166 if s(k+3)<>g then 170
+168 s(k+6)=-1:goto 195
+170 goto 450
+171 if s(3)=g and s(7)=0 then 187
+172 if s(9)=g and s(1)=0 then 181
+173 if s(7)=g and s(3)=0 then 183
+174 if s(9)=0 and s(1)=g then 189
+175 if g=-1 then g=1:h=-1:goto 110
+176 if s(9)=1 and s(3)=0 then 182
+177 for i=2 to 9:if s(i)<>0 then 179
+178 s(i)=-1:goto 195
+179 next i
+181 s(1)=-1:goto 195
+182 if s(1)=1 then 177
+183 s(3)=-1:goto 195
+187 s(7)=-1:goto 195
+189 s(9)=-1
+195 print:print"the computer moves to..."
+202 gosub 1000
+205 goto 500
+450 if g=1 then 465
+455 if j=7 and k=3 then 465
+460 next k,j
+465 if s(5)=g then 171
+467 goto 175
+475 p$="x":q$="o"
+500 print:input"where do you move";m
+502 if m=0 then print"thanks for the game.":goto 2000
+503 if m>9 then 506
+505 if s(m)=0 then 510
+506 print"that square is occupied.":print:print:goto 500
+510 g=1:s(m)=1
+520 gosub 1000
+530 goto 100
+1000 print:for i=1 to 9:print" ";:if s(i)<>-1 then 1014
+1012 print q$" ";:goto 1020
+1014 if s(i)<>0 then 1018
+1016 print"  ";:goto 1020
+1018 print p$" ";
+1020 if i<>3 and i<>6 then 1050
+1030 print:print"---+---+---"
+1040 goto 1080
+1050 if i=9 then 1080
+1060 print"!";
+1080 next i:print:print:print
+1095 for i=1 to 7 step 3
+1100 if s(i)<>s(i+1)then 1115
+1105 if s(i)<>s(i+2)then 1115
+1110 if s(i)=-1 then 1350
+1112 if s(i)=1 then 1200
+1115 next i:for i=1 to 3:if s(i)<>s(i+3)then 1150
+1130 if s(i)<>s(i+6)then 1150
+1135 if s(i)=-1 then 1350
+1137 if s(i)=1 then 1200
+1150 next i:for i=1 to 9:if s(i)=0 then 1155
+1152 next i:goto 1400
+1155 if s(5)<>g then 1170
+1160 if s(1)=g and s(9)=g then 1180
+1165 if s(3)=g and s(7)=g then 1180
+1170 return
+1180 if g=-1 then 1350
+1200 print"you beat me!! good game.":goto 2000
+1350 print"i win, turkey!!!":goto 2000
+1400 print"it's a draw. thank you."
+2000 end

@@ -1,73 +1,73 @@
-100 PRINT TAB(26);"INKBLOT"
-105 PRINT TAB(20);"CREATIVE COMPUTING"
-110 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-115 PRINT:PRINT:PRINT
-120 REM *** WORKS BY PLOTTING ELLIPSES AND THEIR MIRROR IMAGES
-130 DIM A (12,13),B$(36),A$(36)
-140 REM *** CHOOSE FROM 5 TO 12 ELLIPSES
-150 M=INT(8*RND(1))+5
-160 REM *** CREATE SIZE, LOCATION AND ANGLE OF M ELLIPSES
-170 FOR L = 1 TO M
-180 A(L,1) = 34*RND(1)
-190 A(L,2) = 80*RND(1)
-200 A(L,3) = (15*RND(1)+2)^2
-210 A(L,4) = (15*RND(1)+2)^2
-220 T=3.14159*RND(1)
-230 A(L,5) = COS(T)
-240 A(L,6) = SIN(T)
-250 A(L,7) = A(L,5)*A(L,6)
-260 A(L,5) = A(L,5)*A(L,5)
-270 A(L,6) = A(L,6)*A(L,6)
-280 A(L,8) = A(L,1)*A(L,1)*A(L,6)
-290 A(L,9) = A(L,1)*A(L,1)*A(L,5)
-300 A(L,10) = A(L,1)*A(L,7)
-310 A(L,11) = -2*A(L,1)*A(L,6)
-320 A(L,12) = -2*A(L,1)*A(L,5)
-330 A(L,13) = A(L,6)/A(L,4)+A(L,5)/A(L,3)
-340 NEXT L
-350 REM *** PRINT TOP BORDER; B$ CONTAINS 36 DOLLAR SIGNS
-360 B$="$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
-370 PRINT B$;B$
-380 PRINT B$;B$
-390 REM *** LOOP Y IS Y-COORDINATE OF PLOT; EACH TIME Y LOOP
-400 REM *** IS EXECUTED, A LINE IS PRINTED
-410 FOR Y = 79.9 TO 0 STEP -1.6
-420 A$="$$                                  "
-430 REM *** LOOP E CHECKS THE EQUATION OF EACH ELLIPSE TO SEE
-440 REM *** IF IT INTERSECTS THE LINE TO BE PRINTED
-450 FOR E=1 TO M
-460 Y1=Y-A(E,2)
-470 Y2=Y1*Y1
-480 Y3=Y1*A(E,10)
-490 Y4=Y1*A(E,7)
-500 B=(A(E,12)+Y4)/A(E,3)+(-Y4+A(E,11))/A(E,4)
-510 C=(Y2*A(E,6)+A(E,9)-Y3)/A(E,3)+(Y2*A(E,5)+A(E,8)+Y3)/A(E,4)-1
-520 REM *** R IS THE RADICAL IN THE STANDARD QUADRATIC FORMULA
-530 R=B*B-4*A(E,13)*C
-540 IF R<0 THEN 690
-550 R=SQR(R)
-560 REM *** FIND WHERE THE LINE INTERSECTS IN THE ELLIPSE
-570 R1=INT(-(B+R)/2/A(E,13)+1)
-580 IF R1>34 THEN 690
-590 R2=INT((R-B)/2/A(E,13))
-600 IF R2<1 THEN 690
-610 IF R2<35 THEN 630
-620 R2=34
-630 IF R1>0 THEN 660
-640 R1=1
-650 REM *** FILL IN THE LINE WHERE IT CROSSES THE ELLIPSE
-660 FOR J=R1+2 TO R2+2
-670 A$=LEFT$(A$,J-1)+"$"+RIGHT$(A$,LEN(A$)-J)
-680 NEXT J
-690 NEXT E
-700 REM *** PRINT LINE
-710 PRINT A$;
-720 FOR K=36 TO 1 STEP -1
-730 PRINT MID$(A$,K,1);
-740 NEXT K
-745 PRINT
-750 NEXT Y
-760 REM *** PRINT BOTTOM BORDER
-770 PRINT B$;B$
-780 PRINT B$;B$
-790 END
+100 print tab(26);"inkblot"
+105 print tab(20);"creative computing"
+110 print tab(18);"morristown, new jersey"
+115 print:print:print
+120 rem *** works by plotting ellipses and their mirror images
+130 dim a (12,13),b$(36),a$(36)
+140 rem *** choose from 5 to 12 ellipses
+150 m=int(8*rnd(1))+5
+160 rem *** create size, location and angle of m ellipses
+170 for l = 1 to m
+180 a(l,1) = 34*rnd(1)
+190 a(l,2) = 80*rnd(1)
+200 a(l,3) = (15*rnd(1)+2)^2
+210 a(l,4) = (15*rnd(1)+2)^2
+220 t=3.14159*rnd(1)
+230 a(l,5) = cos(t)
+240 a(l,6) = sin(t)
+250 a(l,7) = a(l,5)*a(l,6)
+260 a(l,5) = a(l,5)*a(l,5)
+270 a(l,6) = a(l,6)*a(l,6)
+280 a(l,8) = a(l,1)*a(l,1)*a(l,6)
+290 a(l,9) = a(l,1)*a(l,1)*a(l,5)
+300 a(l,10) = a(l,1)*a(l,7)
+310 a(l,11) = -2*a(l,1)*a(l,6)
+320 a(l,12) = -2*a(l,1)*a(l,5)
+330 a(l,13) = a(l,6)/a(l,4)+a(l,5)/a(l,3)
+340 next l
+350 rem *** print top border; b$ contains 36 dollar signs
+360 b$="$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$"
+370 print b$;b$
+380 print b$;b$
+390 rem *** loop y is y-coordinate of plot; each time y loop
+400 rem *** is executed, a line is printed
+410 for y = 79.9 to 0 step -1.6
+420 a$="$$                                  "
+430 rem *** loop e checks the equation of each ellipse to see
+440 rem *** if it intersects the line to be printed
+450 for e=1 to m
+460 y1=y-a(e,2)
+470 y2=y1*y1
+480 y3=y1*a(e,10)
+490 y4=y1*a(e,7)
+500 b=(a(e,12)+y4)/a(e,3)+(-y4+a(e,11))/a(e,4)
+510 c=(y2*a(e,6)+a(e,9)-y3)/a(e,3)+(y2*a(e,5)+a(e,8)+y3)/a(e,4)-1
+520 rem *** r is the radical in the standard quadratic formula
+530 r=b*b-4*a(e,13)*c
+540 if r<0 then 690
+550 r=sqr(r)
+560 rem *** find where the line intersects in the ellipse
+570 r1=int(-(b+r)/2/a(e,13)+1)
+580 if r1>34 then 690
+590 r2=int((r-b)/2/a(e,13))
+600 if r2<1 then 690
+610 if r2<35 then 630
+620 r2=34
+630 if r1>0 then 660
+640 r1=1
+650 rem *** fill in the line where it crosses the ellipse
+660 for j=r1+2 to r2+2
+670 a$=left$(a$,j-1)+"$"+right$(a$,len(a$)-j)
+680 next j
+690 next e
+700 rem *** print line
+710 print a$;
+720 for k=36 to 1 step -1
+730 print mid$(a$,k,1);
+740 next k
+745 print
+750 next y
+760 rem *** print bottom border
+770 print b$;b$
+780 print b$;b$
+790 end

@@ -1,34 +1,34 @@
-10 PRINT TAB(33);"KINEMA"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT: PRINT: PRINT
-100 PRINT
-105 PRINT
-106 Q=0
-110 V=5+INT(35*RND(1))
-111 PRINT "A BALL IS THROWN UPWARDS AT";V;"METERS PER SECOND."
-112 PRINT
-115 A=.05*V^2
-116 PRINT "HOW HIGH WILL IT GO (IN METERS)";
-117 GOSUB 500
-120 A=V/5
-122 PRINT "HOW LONG UNTIL IT RETURNS (IN SECONDS)";
-124 GOSUB 500
-130 T=1+INT(2*V*RND(1))/10
-132 A=V-10*T
-134 PRINT "WHAT WILL ITS VELOCITY BE AFTER";T;"SECONDS";
-136 GOSUB 500
-140 PRINT
-150 PRINT Q;"RIGHT OUT OF 3.";
-160 IF Q<2 THEN 100
-170 PRINT "  NOT BAD."
-180 GOTO 100
-500 INPUT G
-502 IF ABS((G-A)/A)<.15 THEN 510
-504 PRINT "NOT EVEN CLOSE...."
-506 GOTO 512
-510 PRINT "CLOSE ENOUGH."
-511 Q=Q+1
-512 PRINT "CORRECT ANSWER IS ";A
-520 PRINT
-530 RETURN
-999 END
+10 print tab(33);"kinema"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print: print: print
+100 print
+105 print
+106 q=0
+110 v=5+int(35*rnd(1))
+111 print "a ball is thrown upwards at";v;"meters per second."
+112 print
+115 a=.05*v^2
+116 print "how high will it go (in meters)";
+117 gosub 500
+120 a=v/5
+122 print "how long until it returns (in seconds)";
+124 gosub 500
+130 t=1+int(2*v*rnd(1))/10
+132 a=v-10*t
+134 print "what will its velocity be after";t;"seconds";
+136 gosub 500
+140 print
+150 print q;"right out of 3.";
+160 if q<2 then 100
+170 print "  not bad."
+180 goto 100
+500 input g
+502 if abs((g-a)/a)<.15 then 510
+504 print "not even close...."
+506 goto 512
+510 print "close enough."
+511 q=q+1
+512 print "correct answer is ";a
+520 print
+530 return
+999 end

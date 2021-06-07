@@ -1,173 +1,173 @@
-10 PRINT TAB(26);"CAMEL"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-35 PRINT:PRINT:PRINT
-110 PRINT "WOULD YOU LIKE INSTRUCTIONS";
-120 INPUT D$
-130 IF LEFT$(D$,1)="N" THEN 320
-140 PRINT:PRINT "   WELCOME TO CAMEL.  THE QBJEST IS TO TRAVEL"
-150 PRINT "200 MILES ACROSS THE GREAT GOBI DESERT."
-160 PRINT "A TRIBE OF KNOCKED KNEED PIGMIES WILL BE CHASING YOU."
-170 PRINT "YOU WILL BE ASKED FOR COMMANDS EVERY SO OFTEN."
-180 PRINT
-190 PRINT
-200 PRINT
-210 PRINT "C O M M A N D S :"
-220 PRINT "#1 DRINK FROM YOUR CANTEEN"
-230 PRINT "#2 AHEAD MODERATE SPEED"
-240 PRINT "#3 AHEAD FULL SPEED"
-250 PRINT "#4 STOP FOR THE NIGHT"
-260 PRINT "#5 STATUS CHECK"
-270 PRINT "#6 HOPE FOR HELP"
-275 PRINT
-276 PRINT
-277 PRINT
-278 PRINT
-279 PRINT
-280 PRINT "YOU HAVE ONE QUART OF WATER WHICH WILL LAST YOU SIX DRINKS."
-290 PRINT "YOU MAVE RENEW YOUR WATER SUPPLY COMPLETELY AT AN OASES."
-300 PRINT "YOU GET A HALF A QUART IF FOUND BY HELP."
-310 PRINT "IF HELP DOES NOT FIND YOU AFTER COMMAND SIX, YOU LOSE."
-320 PRINT "GOOD LUCK AND GOOD CAMELING !!"
-330 PRINT "YOU ARE IN THE MIDDLE OF THE DESERT AT AN OASIS."
-335 GOSUB 2000
-340 IF C>199 THEN 1210
-350 Z=Z-1
-355 IF Z=1 THEN PRINT "----------W A R N I N G---------- GET A DRINK"
-360 IF Z<0 THEN 1630
-370 P=P+1
-380 X2=INT(10*RND(1)+2.5)
-390 IF Q>0 THEN 940
-400 IF P<4 THEN 470
-410 C1=C1+X2
-420 IF C1<C THEN 460
-430 PRINT "THE PYGMIES HAVE CAPTURED YOU.  CAMEL AND PEOPLE SOUP IS"
-440 PRINT "THEIR FAVORITE DISH !!!!!"
-450 GOTO 1560
-460 PRINT "THE PYGMIES ARE "C-C1;" MILES BEHIND YOU."
-470 PRINT "YOU HAVE TRAVELLED ";C;" MILES ALTOGETHER."
-480 PRINT "WHAT IS YOUR COMMAND";
-490 INPUT Y
-500 ON Y GOTO 830,610,680,760,790
-550 T=INT(10*RND(1))
-560 IF T<>1 THEN 1200
-570 PRINT "HELP HAS FOUND YOU IN A STATE OF UNCONSCIOUSNESS."
-580 S=3
-590 Z=4
-600 GOTO 340
-610 F=F+1
-620 IF F=8 THEN 1190
-630 GOSUB 880
-640 X1=INT(10*RND(1))
-650 C=C+X1
-660 PRINT "YOUR CAMEL LIKES THIS PACE."
-670 GOTO 340
-680 F=F+3
-690 IF F>7 THEN 1190
-700 GOSUB 880
-710 X1=2*INT(10*RND(1))
-720 C=C+X1
-730 PRINT "YOUR CAMEL IS BURNING ACROSS THE DESERT SANDS."
-740 PRINT
-750 GOTO 340
-760 PRINT "YOUR CAMEL THANKS YOU!"
-770 F=0
-780 GOTO 350
-790 PRINT "YOUR CAMEL HAS ";7-F;" GOOD DAYS LEFT."
-800 PRINT "YOU HAVE ";S;" DRINKS LEFT IN YOUR CANTEEN."
-810 PRINT "YOU CAN GO ";Z;" COMMANDS WITHOUT DRINKING."
-830 S=S-1
-840 IF S<0 THEN 1200
-850 PRINT "BETTER WATCH FOR AN OASES !"
-860 Z=4
-870 GOTO 480
-880 A=INT(100*RND(1))
-890 IF A>5 THEN 1120
-900 PRINT "WILD BERBERS HIDDEN IN THE SAND HAVE CAPTURED YOU."
-910 PRINT "LUCKILY THE LOCAL SHEIK HAS AGREED TO THEIR RANSOM-"
-920 PRINT "DEMANDS.......BUT........WATCH FOR THE PYGMIES !!!"
-930 PRINT "YOU HAVE A NEW CHOICE OF SUB-COMMANDS:"
-940 PRINT "#7 ATTEMPT AN ESCAPE"
-950 PRINT "#8 WAIT FOR PAYMENT"
-960 PRINT "YOUR SUB-COMMAND ";
-970 INPUT X
-980 IF X=8 THEN 1060
-990 X1 = INT(10 * RND(1))
-1000 IF X1<5 THEN 1040
-1010 PRINT "CONGRADULATIONS, YOU SUCCESSFULLY ESCAPED !!!!"
-1020 Q=0
-1030 GOTO 340
-1040 PRINT "YOU WERE MORTALLY WOUNDED BY A PIG STABBER WHILE ESCAPING."
-1050 GOTO 1410
-1060 X1=INT(100*RND(1))
-1070 REM
-1080 IF X1>24 THEN 1100
-1090 PRINT "YOUR RANSOM HAS BEEN PAID AND YOU ARE FREE TO GO."
-1095 Q=0
-1096 GOTO 340
-1100 PRINT "THE LOCAL SULTAN IS COLLECTING......JUST WAIT......."
-1110 GOTO 340
-1120 A=INT(10*RND(1))
-1130 IF A>2 THEN 1240
-1140 PRINT "YOU HAVE ARRIVED AT AN OASES--------YOUR CAMEL IS"
-1150 PRINT "FILLING YOUR CANTEEN AND EATING FIGS."
-1160 Z=4
-1170 S=6
-1180 RETURN
-1190 PRINT "YOU DIRTY RAPSCALLION! YOU RAN YOUR POOR CAMEL TO DEATH !!"
-1200 GOTO 1410
-1210 PRINT "YOU WIN, A PARTY IS BEING GIVEN IN YOUR HONOR......."
-1220 PRINT ".......THE PYGMIES ARE PLANNING TO ATTEND......."
-1230 GOTO 1560
-1240 X1=INT(100*RND(1))
-1250 IF X1>5 THEN 1350
-1260 PRINT "YOU HAVE BEEN CAUGHT IN A SANDSTORM.....GOOD LUCK!"
-1270 X5=INT(10*RND(1))
-1280 X6=INT(10*RND(1))
-1290 IF X6<5 THEN 1320
-1300 C=C+X5
-1310 GOTO 1330
-1320 C=C-X5
-1330 PRINT "YOUR NEW POSITION IS ";C;" MILES SO FAR!"
-1340 RETURN
-1350 X1=INT(100*RND(1))
-1360 IF X1>5 THEN RETURN
-1370 C1=C1+1
-1380 PRINT "YOUR CAMEL HURT HIS HUMP."
-1390 PRINT "LUCKILY THE PYGMIES WERE FOOTWEARY !!!"
-1400 RETURN
-1410 U=INT(10*RND(1))
-1420 PRINT "YOU DIED IN THE DESERT."
-1430 IF U>1 THEN 1460
-1440 PRINT "THE NATIONAL CAMEL'S UNION IS NOT ATTENDING YOUR FUNERAL!!!"
-1450 GOTO 1560
-1460 IF U>3 THEN 1490
-1470 PRINT "YOUR BODY WAS EATEN BY VULTURES AND IMPORTED CANNINBALS !!!"
-1480 GOTO 1560
-1490 IF U>5 THEN 1520
-1500 PRINT "THE LOCAL SHEIK NOW USES YOUR SKULL FOR A CHANGE PURSE !!!"
-1510 GOTO 1560
-1520 IF U>7 THEN 1550
-1530 PRINT "PEOPLE WITH LITTLE INTELLIGENCE SHOULD STAY OUT OF THE DESERT!!!"
-1540 GOTO 1560
-1550 PRINT "TURKEYS SHOULD FLY, NOT RIDE CAMELS !!!!!!!"
-1560 PRINT
-1570 PRINT
-1580 PRINT "WANT A NEW CAMEL AND A NEW GAME ";
-1590 INPUT D$
-1600 IF LEFT$(D$,1)="Y" THEN 320
-1620 GOTO 1650
-1630 PRINT "YOU RAN OUT OF WATER......SORRY CHUM!!!"
-1640 GOTO 1410
-1650 PRINT "------------------"
-1655 PRINT "     CHICKEN"
-1657 PRINT "------------------"
-1660 END
-2000 Z=4
-2010 S=6
-2020 C=0
-2030 C1=0
-2040 Q=0
-2050 F=0
-2060 P=0
-2070 RETURN
+10 print tab(26);"camel"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey"
+35 print:print:print
+110 print "would you like instructions";
+120 input d$
+130 if left$(d$,1)="n" then 320
+140 print:print "   welcome to camel.  the qbjest is to travel"
+150 print "200 miles across the great gobi desert."
+160 print "a tribe of knocked kneed pigmies will be chasing you."
+170 print "you will be asked for commands every so often."
+180 print
+190 print
+200 print
+210 print "c o m m a n d s :"
+220 print "#1 drink from your canteen"
+230 print "#2 ahead moderate speed"
+240 print "#3 ahead full speed"
+250 print "#4 stop for the night"
+260 print "#5 status check"
+270 print "#6 hope for help"
+275 print
+276 print
+277 print
+278 print
+279 print
+280 print "you have one quart of water which will last you six drinks."
+290 print "you mave renew your water supply completely at an oases."
+300 print "you get a half a quart if found by help."
+310 print "if help does not find you after command six, you lose."
+320 print "good luck and good cameling !!"
+330 print "you are in the middle of the desert at an oasis."
+335 gosub 2000
+340 if c>199 then 1210
+350 z=z-1
+355 if z=1 then print "----------w a r n i n g---------- get a drink"
+360 if z<0 then 1630
+370 p=p+1
+380 x2=int(10*rnd(1)+2.5)
+390 if q>0 then 940
+400 if p<4 then 470
+410 c1=c1+x2
+420 if c1<c then 460
+430 print "the pygmies have captured you.  camel and people soup is"
+440 print "their favorite dish !!!!!"
+450 goto 1560
+460 print "the pygmies are "c-c1;" miles behind you."
+470 print "you have travelled ";c;" miles altogether."
+480 print "what is your command";
+490 input y
+500 on y goto 830,610,680,760,790
+550 t=int(10*rnd(1))
+560 if t<>1 then 1200
+570 print "help has found you in a state of unconsciousness."
+580 s=3
+590 z=4
+600 goto 340
+610 f=f+1
+620 if f=8 then 1190
+630 gosub 880
+640 x1=int(10*rnd(1))
+650 c=c+x1
+660 print "your camel likes this pace."
+670 goto 340
+680 f=f+3
+690 if f>7 then 1190
+700 gosub 880
+710 x1=2*int(10*rnd(1))
+720 c=c+x1
+730 print "your camel is burning across the desert sands."
+740 print
+750 goto 340
+760 print "your camel thanks you!"
+770 f=0
+780 goto 350
+790 print "your camel has ";7-f;" good days left."
+800 print "you have ";s;" drinks left in your canteen."
+810 print "you can go ";z;" commands without drinking."
+830 s=s-1
+840 if s<0 then 1200
+850 print "better watch for an oases !"
+860 z=4
+870 goto 480
+880 a=int(100*rnd(1))
+890 if a>5 then 1120
+900 print "wild berbers hidden in the sand have captured you."
+910 print "luckily the local sheik has agreed to their ransom-"
+920 print "demands.......but........watch for the pygmies !!!"
+930 print "you have a new choice of sub-commands:"
+940 print "#7 attempt an escape"
+950 print "#8 wait for payment"
+960 print "your sub-command ";
+970 input x
+980 if x=8 then 1060
+990 x1 = int(10 * rnd(1))
+1000 if x1<5 then 1040
+1010 print "congradulations, you successfully escaped !!!!"
+1020 q=0
+1030 goto 340
+1040 print "you were mortally wounded by a pig stabber while escaping."
+1050 goto 1410
+1060 x1=int(100*rnd(1))
+1070 rem
+1080 if x1>24 then 1100
+1090 print "your ransom has been paid and you are free to go."
+1095 q=0
+1096 goto 340
+1100 print "the local sultan is collecting......just wait......."
+1110 goto 340
+1120 a=int(10*rnd(1))
+1130 if a>2 then 1240
+1140 print "you have arrived at an oases--------your camel is"
+1150 print "filling your canteen and eating figs."
+1160 z=4
+1170 s=6
+1180 return
+1190 print "you dirty rapscallion! you ran your poor camel to death !!"
+1200 goto 1410
+1210 print "you win, a party is being given in your honor......."
+1220 print ".......the pygmies are planning to attend......."
+1230 goto 1560
+1240 x1=int(100*rnd(1))
+1250 if x1>5 then 1350
+1260 print "you have been caught in a sandstorm.....good luck!"
+1270 x5=int(10*rnd(1))
+1280 x6=int(10*rnd(1))
+1290 if x6<5 then 1320
+1300 c=c+x5
+1310 goto 1330
+1320 c=c-x5
+1330 print "your new position is ";c;" miles so far!"
+1340 return
+1350 x1=int(100*rnd(1))
+1360 if x1>5 then return
+1370 c1=c1+1
+1380 print "your camel hurt his hump."
+1390 print "luckily the pygmies were footweary !!!"
+1400 return
+1410 u=int(10*rnd(1))
+1420 print "you died in the desert."
+1430 if u>1 then 1460
+1440 print "the national camel's union is not attending your funeral!!!"
+1450 goto 1560
+1460 if u>3 then 1490
+1470 print "your body was eaten by vultures and imported canninbals !!!"
+1480 goto 1560
+1490 if u>5 then 1520
+1500 print "the local sheik now uses your skull for a change purse !!!"
+1510 goto 1560
+1520 if u>7 then 1550
+1530 print "people with little intelligence should stay out of the desert!!!"
+1540 goto 1560
+1550 print "turkeys should fly, not ride camels !!!!!!!"
+1560 print
+1570 print
+1580 print "want a new camel and a new game ";
+1590 input d$
+1600 if left$(d$,1)="y" then 320
+1620 goto 1650
+1630 print "you ran out of water......sorry chum!!!"
+1640 goto 1410
+1650 print "------------------"
+1655 print "     chicken"
+1657 print "------------------"
+1660 end
+2000 z=4
+2010 s=6
+2020 c=0
+2030 c1=0
+2040 q=0
+2050 f=0
+2060 p=0
+2070 return

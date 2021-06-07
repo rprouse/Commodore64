@@ -1,51 +1,51 @@
-10 PRINT TAB(33);"HURKLE"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT:PRINT:PRINT
-110 N=5
-120 G=10
-210 PRINT
-220 PRINT "A HURKLE IS HIDING ON A";G;"BY";G;"GRID. HOMEBASE"
-230 PRINT "ON THE GRID IS POINT 0,0 IN THE SOUTHWEST CORNER,"
-235 PRINT "AND ANY POINT ON THE GRID IS DESIGNATED BY A"
-240 PRINT "PAIR OF WHOLE NUMBERS SEPERATED BY A COMMA. THE FIRST"
-245 PRINT "NUMBER IS THE HORIZONTAL POSITION AND THE SECOND NUMBER"
-246 PRINT "IS THE VERTICAL POSITION. YOU MUST TRY TO"
-250 PRINT "GUESS THE HURKLE'S GRIDPOINT. YOU GET";N;"TRIES."
-260 PRINT "AFTER EACH TRY, I WILL TELL YOU THE APPROXIMATE"
-270 PRINT "DIRECTION TO GO TO LOOK FOR THE HURKLE."
-280 PRINT
-285 A=INT(G*RND(1))
-286 B=INT(G*RND(1))
-310 FOR K=1 TO N
-320 PRINT "GUESS #";K;
-330 INPUT X,Y
-340 IF ABS(X-A)+ABS(Y-B)=0 THEN 500
-350 REM PRINT INFO
-360 GOSUB 610
-370 PRINT
-380 NEXT K
-410 PRINT
-420 PRINT "SORRY, THAT'S";N;"GUESSES."
-430 PRINT "THE HURKLE IS AT ";A;",";B
-440 PRINT
-450 PRINT "LET'S PLAY AGAIN, HURKLE IS HIDING."
-460 PRINT
-470 GOTO 285
-500 REM
-510 PRINT
-520 PRINT "YOU FOUND HIM IN";K;"GUESSES!"
-540 GOTO 440
-610 PRINT "GO ";
-620 IF Y=B THEN 670
-630 IF Y<B THEN 660
-640 PRINT "SOUTH";
-650 GOTO 670
-660 PRINT "NORTH";
-670 IF X=A THEN 720
-680 IF X<A THEN 710
-690 PRINT "WEST";
-700 GOTO 720
-710 PRINT "EAST";
-720 PRINT
-730 RETURN
-999 END
+10 print tab(33);"hurkle"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print:print:print
+110 n=5
+120 g=10
+210 print
+220 print "a hurkle is hiding on a";g;"by";g;"grid. homebase"
+230 print "on the grid is point 0,0 in the southwest corner,"
+235 print "and any point on the grid is designated by a"
+240 print "pair of whole numbers seperated by a comma. the first"
+245 print "number is the horizontal position and the second number"
+246 print "is the vertical position. you must try to"
+250 print "guess the hurkle's gridpoint. you get";n;"tries."
+260 print "after each try, i will tell you the approximate"
+270 print "direction to go to look for the hurkle."
+280 print
+285 a=int(g*rnd(1))
+286 b=int(g*rnd(1))
+310 for k=1 to n
+320 print "guess #";k;
+330 input x,y
+340 if abs(x-a)+abs(y-b)=0 then 500
+350 rem print info
+360 gosub 610
+370 print
+380 next k
+410 print
+420 print "sorry, that's";n;"guesses."
+430 print "the hurkle is at ";a;",";b
+440 print
+450 print "let's play again, hurkle is hiding."
+460 print
+470 goto 285
+500 rem
+510 print
+520 print "you found him in";k;"guesses!"
+540 goto 440
+610 print "go ";
+620 if y=b then 670
+630 if y<b then 660
+640 print "south";
+650 goto 670
+660 print "north";
+670 if x=a then 720
+680 if x<a then 710
+690 print "west";
+700 goto 720
+710 print "east";
+720 print
+730 return
+999 end

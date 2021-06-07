@@ -1,209 +1,209 @@
-1 PRINT TAB(26);"ELIZA"
-2 PRINT TAB(20);"CREATIVE COMPUTING"
-3 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-4 PRINT:PRINT:PRINT
-80 REM     -----INITIALIZATION-----
-100 DIM S(36),R(36),N(36)
-110 N1=36:N2=14:N3=112
-120 FOR X = 1 TO N1+N2+N3:READ Z$:NEXT X:REM SAME AS RESTORE
-130 FOR X=1 TO N1
-140 READ S(X),L:R(X)=S(X):N(X)=S(X)+L-1
-150 NEXT X
-160 PRINT "HI!  I'M ELIZA.  WHAT'S YOUR PROBLEM?"
-170 REM
-180 REM     -----USER INPUT SECTION-----
-190 REM
-200 INPUT I$
-201 I$="  "+I$+"  "
-210 REM  GET RID OF APOSTROPHES
-220 FOR L=1 TO LEN(I$)
-230 IF MID$(I$,L,1)="'" THEN I$=LEFT$(I$,L-1)+RIGHT$(I$,LEN(I$)-L):GOTO 230
-240 IF L+4<=LEN(I$) THEN IF MID$(I$,L,4) = "SHUT" THEN PRINT "SHUT UP...":END
-250 NEXT L
-255 IF I$=P$ THEN PRINT "PLEASE DON'T REPEAT YOURSELF!":GOTO 170
-260 REM
-270 REM     -----FIND KEYWORD IN I$-----
-280 REM
-290 RESTORE
-295 S=0
-300 FOR K=1 TO N1
-310 READ K$
-315 IF S>0 THEN 360
-320 FOR L=1 TO LEN(I$)-LEN(K$)+1
-340 IF MID$(I$,L,LEN(K$))=K$ THEN S=K:T=L:F$=K$
-350 NEXT L
-360 NEXT K
-365 IF S>0 THEN K=S:L=T:GOTO 390
-370 K=36: GOTO 570:REM  WE DIDN'T FIND ANY KEYWORDS
-380 REM
-390 REM      TAKE RIGHT PART OF STRING AND CONJUGATE IT
-400 REM      USING THE LIST OF STRINGS TO BE SWAPPED
-410 REM
-420 RESTORE:FOR X=1 TO N1:READ Z$:NEXT X:REM SKIP OVER KEYWORDS
-430 C$=" "+RIGHT$(I$,LEN(I$)-LEN(F$)-L+1)+" "
-440 FOR X=1 TO N2/2
-450 READ S$,R$
-460 FOR L=1 TO LEN(C$)
-470 IF L+LEN(S$)>LEN(C$) THEN 510
-480 IF MID$(C$,L,LEN(S$))<>S$ THEN 510
-490 C$=LEFT$(C$,L-1)+R$+RIGHT$(C$,LEN(C$)-L-LEN(S$)+1)
-495 L=L+LEN(R$)
-500 GOTO 540
-510 IF L+LEN(R$)>LEN(C$)THEN 540
-520 IF MID$(C$,L,LEN(R$))<>R$ THEN 540
-530 C$=LEFT$(C$,L-1)+S$+RIGHT$(C$,LEN(C$)-L-LEN(R$)+1)
-535 L=L+LEN(R$)
-540 NEXT L
-550 NEXT X
-555 IF MID$(C$,2,1)=" "THEN C$=RIGHT$(C$,LEN(C$)-1):REM ONLY 1 SPACE
-556 FOR L=1 TO LEN(C$)
-557 IF MID$(C$,L,1)="!" THEN C$=LEFT$(C$,L-1)+RIGHT$(C$,LEN(C$)-L):GOTO 557
-558 NEXT L
-560 REM
-570 REM    NOW USING THE KEYWORD NUMBER (K) GET REPLY
-580 REM
-590 RESTORE:FOR X= 1 TO N1+N2:READ Z$:NEXT X
-600 FOR X=1 TO R(K):READ F$:NEXT X:REM READ RIGHT REPLY
-610 R(K)=R(K)+1:IF R(K)>N(K) THEN R(K)=S(K)
-620 IF RIGHT$(F$,1)<>"*" THEN PRINT F$:P$=I$:GOTO 170
-630 PRINT LEFT$(F$,LEN(F$)-1);C$
-640 P$=I$:GOTO 170
-1000 REM
-1010 REM     -----PROGRAM DATA FOLLOWS-----
-1020 REM
-1030 REM     KEYWORDS
-1049 REM
-1050 DATA "CAN YOU ","CAN I ","YOU ARE ","YOURE ","I DONT ","I FEEL "
-1060 DATA "WHY DONT YOU ","WHY CANT I ","ARE YOU ","I CANT ","I AM ","IM "
-1070 DATA "YOU ","I WANT ","WHAT ","HOW ","WHO ","WHERE ","WHEN ","WHY"
-1080 DATA "NAME","CAUSE","SORRY","DREAM","HELLO","HI ","MAYBE"
-1090 DATA " NO","YOUR","ALWAYS","THINK","ALIKE","YES","FRIEND"
-1100 DATA "COMPUTER", "NOKEYFOUND"
-1200 REM
-1210 REM     STRING DATA FOR CONJUGATIONS
-1220 REM
-1230 DATA " ARE "," AM "," WERE "," WAS "," YOU "," I ","YOUR "," MY "
-1235 DATA " IVE "," YOUVE "," IM "," YOURE "
-1240 DATA " ME "," !YOU "
-1300 REM
-1310 REM     REPLIES
-1320 REM
-1330 DATA "DON'T YOU BELIEVE THAT I CAN*"
-1340 DATA "PERHAPS YOU WOULD LIKE TO BE LIKE ME*"
-1350 DATA "YOU WANT ME TO BE ABLE TO*"
-1360 DATA "PERHAPS YOU DON'T WANT TO*"
-1365 DATA "DO YOU WANT TO BE ABLE TO*"
-1370 DATA "WHAT MAKES YOU THINK I AM*"
-1380 DATA "DOES IT PLEASE YOU TO BELIEVE I AM*"
-1390 DATA "PERHAPS YOU WOULD LIKE TO BE*"
-1400 DATA "DO YOU SOMETIMES WISH YOU WERE*"
-1410 DATA "DON'T YOU REALLY*"
-1420 DATA "WHY DON'T YOU*"
-1430 DATA "DO YOU WISH TO BE ABLE TO*"
-1440 DATA "DOES THAT TROUBLE YOU*"
-1450 DATA "DO YOU OFTEN FEEL*"
-1460 DATA "DO YOU OFTEN FEEL*"
-1470 DATA "DO YOU ENJOY FEELING*"
-1480 DATA "DO YOU REALLY BELIEVE I DON'T*"
-1490 DATA "PERHAPS IN GOOD TIME I WILL*"
-1500 DATA "DO YOU WANT ME TO*"
-1510 DATA "DO YOU THINK YOU SHOULD BE ABLE TO*"
-1520 DATA "WHY CAN'T YOU*"
-1530 DATA "WHY ARE YOU INTERESTED IN WHETHER OR NOT I AM*"
-1540 DATA "WOULD YOU PREFER IF I WERE NOT*"
-1550 DATA "PERHAPS IN YOUR FANTASIES I AM*"
-1560 DATA "HOW DO YOU KNOW YOU CAN'T*"
-1570 DATA "HAVE YOU TRIED?"
-1580 DATA "PERHAPS YOU CAN NOW*"
-1590 DATA "DID YOU COME TO ME BECAUSE YOU ARE*"
-1600 DATA "HOW LONG HAVE YOU BEEN*"
-1610 DATA "DO YOU BELIEVE IT IS NORMAL TO BE*"
-1620 DATA "DO YOU ENJOY BEING*"
-1630 DATA "WE WERE DISCUSSING YOU--NOT ME."
-1640 DATA "OH, I*"
-1650 DATA "YOU'RE NOT REALLY TALKING ABOUT ME, ARE YOU?"
-1660 DATA "WHAT WOULD IT MEAN TO YOU IF YOU GOT*"
-1670 DATA "WHY DO YOU WANT*"
-1680 DATA "SUPPOSE YOU SOON GOT*"
-1690 DATA "WHAT IF YOU NEVER GOT*"
-1700 DATA "I SOMETIMES ALSO WANT*"
-1710 DATA "WHY DO YOU ASK?"
-1720 DATA "DOES THAT QUESTION INTEREST YOU?"
-1730 DATA "WHAT ANSWER WOULD PLEASE YOU THE MOST?"
-1740 DATA "WHAT DO YOU THINK?"
-1750 DATA "ARE SUCH QUESTIONS ON YOUR MIND OFTEN?"
-1760 DATA "WHAT IS IT THAT YOU REALLY WANT TO KNOW?"
-1770 DATA "HAVE YOU ASKED ANYONE ELSE?"
-1780 DATA "HAVE YOU ASKED SUCH QUESTIONS BEFORE?"
-1790 DATA "WHAT ELSE COMES TO MIND WHEN YOU ASK THAT?"
-1800 DATA "NAMES DON'T INTEREST ME."
-1810 DATA "I DON'T CARE ABOUT NAMES --PLEASE GO ON."
-1820 DATA "IS THAT THE REAL REASON?"
-1830 DATA "DON'T ANY OTHER REASONS COME TO MIND?"
-1840 DATA "DOES THAT REASON EXPLAIN ANYTHING ELSE?"
-1850 DATA "WHAT OTHER REASONS MIGHT THERE BE?"
-1860 DATA "PLEASE DON'T APOLOGIZE!"
-1870 DATA "APOLOGIES ARE NOT NECESSARY."
-1880 DATA "WHAT FEELINGS DO YOU HAVE WHEN YOU APOLOGIZE?"
-1890 DATA "DON'T BE SO DEFENSIVE!"
-1900 DATA "WHAT DOES THAT DREAM SUGGEST TO YOU?"
-1910 DATA "DO YOU DREAM OFTEN?"
-1920 DATA "WHAT PERSONS APPEAR IN YOUR DREAMS?"
-1930 DATA "ARE YOU DISTURBED BY YOUR DREAMS?"
-1940 DATA "HOW DO YOU DO ...PLEASE STATE YOUR PROBLEM."
-1950 DATA "YOU DON'T SEEM QUITE CERTAIN."
-1960 DATA "WHY THE UNCERTAIN TONE?"
-1970 DATA "CAN'T YOU BE MORE POSITIVE?"
-1980 DATA "YOU AREN'T SURE?"
-1990 DATA "DON'T YOU KNOW?"
-2000 DATA "ARE YOU SAYING NO JUST TO BE NEGATIVE?"
-2010 DATA "YOU ARE BEING A BIT NEGATIVE."
-2020 DATA "WHY NOT?"
-2030 DATA "ARE YOU SURE?"
-2040 DATA "WHY NO?"
-2050 DATA "WHY ARE YOU CONCERNED ABOUT MY*"
-2060 DATA "WHAT ABOUT YOUR OWN*"
-2070 DATA "CAN YOU THINK OF A SPECIFIC EXAMPLE?"
-2080 DATA "WHEN?"
-2090 DATA "WHAT ARE YOU THINKING OF?"
-2100 DATA "REALLY, ALWAYS?"
-2110 DATA "DO YOU REALLY THINK SO?"
-2120 DATA "BUT YOU ARE NOT SURE YOU*"
-2130 DATA "DO YOU DOUBT YOU*"
-2140 DATA "IN WHAT WAY?"
-2150 DATA "WHAT RESEMBLANCE DO YOU SEE?"
-2160 DATA "WHAT DOES THE SIMILARITY SUGGEST TO YOU?"
-2170 DATA "WHAT OTHER CONNECTIONS DO YOU SEE?"
-2180 DATA "COULD THERE REALLY BE SOME CONNECTION?"
-2190 DATA "HOW?"
-2200 DATA "YOU SEEM QUITE POSITIVE."
-2210 DATA "ARE YOU SURE?"
-2220 DATA "I SEE."
-2230 DATA "I UNDERSTAND."
-2240 DATA "WHY DO YOU BRING UP THE TOPIC OF FRIENDS?"
-2250 DATA "DO YOUR FRIENDS WORRY YOU?"
-2260 DATA "DO YOUR FRIENDS PICK ON YOU?"
-2270 DATA "ARE YOU SURE YOU HAVE ANY FRIENDS?"
-2280 DATA "DO YOU IMPOSE ON YOUR FRIENDS?"
-2290 DATA "PERHAPS YOUR LOVE FOR FRIENDS WORRIES YOU."
-2300 DATA "DO COMPUTERS WORRY YOU?"
-2310 DATA "ARE YOU TALKING ABOUT ME IN PARTICULAR?"
-2320 DATA "ARE YOU FRIGHTENED BY MACHINES?"
-2330 DATA "WHY DO YOU MENTION COMPUTERS?"
-2340 DATA "WHAT DO YOU THINK MACHINES HAVE TO DO WITH YOUR PROBLEM?"
-2350 DATA "DON'T YOU THINK COMPUTERS CAN HELP PEOPLE?"
-2360 DATA "WHAT IS IT ABOUT MACHINES THAT WORRIES YOU?"
-2370 DATA "SAY, DO YOU HAVE ANY PSYCHOLOGICAL PROBLEMS?"
-2380 DATA "WHAT DOES THAT SUGGEST TO YOU?"
-2390 DATA "I SEE."
-2400 DATA "I'M NOT SURE I UNDERSTAND YOU FULLY."
-2410 DATA "COME COME ELUCIDATE YOUR THOUGHTS."
-2420 DATA "CAN YOU ELABORATE ON THAT?"
-2430 DATA "THAT IS QUITE INTERESTING."
-2500 REM
-2510 REM     DATA FOR FINDING RIGHT REPLIES
-2520 REM
-2530 DATA 1,3,4,2,6,4,6,4,10,4,14,3,17,3,20,2,22,3,25,3
-2540 DATA 28,4,28,4,32,3,35,5,40,9,40,9,40,9,40,9,40,9,40,9
-2550 DATA 49,2,51,4,55,4,59,4,63,1,63,1,64,5,69,5,74,2,76,4
-2560 DATA 80,3,83,7,90,3,93,6,99,7,106,6
+1 print tab(26);"eliza"
+2 print tab(20);"creative computing"
+3 print tab(18);"morristown, new jersey"
+4 print:print:print
+80 rem     -----initialization-----
+100 dim s(36),r(36),n(36)
+110 n1=36:n2=14:n3=112
+120 for x = 1 to n1+n2+n3:read z$:next x:rem same as restore
+130 for x=1 to n1
+140 read s(x),l:r(x)=s(x):n(x)=s(x)+l-1
+150 next x
+160 print "hi!  i'm eliza.  what's your problem?"
+170 rem
+180 rem     -----user input section-----
+190 rem
+200 input i$
+201 i$="  "+i$+"  "
+210 rem  get rid of apostrophes
+220 for l=1 to len(i$)
+230 if mid$(i$,l,1)="'" then i$=left$(i$,l-1)+right$(i$,len(i$)-l):goto 230
+240 if l+4<=len(i$) then if mid$(i$,l,4) = "shut" then print "shut up...":end
+250 next l
+255 if i$=p$ then print "please don't repeat yourself!":goto 170
+260 rem
+270 rem     -----find keyword in i$-----
+280 rem
+290 restore
+295 s=0
+300 for k=1 to n1
+310 read k$
+315 if s>0 then 360
+320 for l=1 to len(i$)-len(k$)+1
+340 if mid$(i$,l,len(k$))=k$ then s=k:t=l:f$=k$
+350 next l
+360 next k
+365 if s>0 then k=s:l=t:goto 390
+370 k=36: goto 570:rem  we didn't find any keywords
+380 rem
+390 rem      take right part of string and conjugate it
+400 rem      using the list of strings to be swapped
+410 rem
+420 restore:for x=1 to n1:read z$:next x:rem skip over keywords
+430 c$=" "+right$(i$,len(i$)-len(f$)-l+1)+" "
+440 for x=1 to n2/2
+450 read s$,r$
+460 for l=1 to len(c$)
+470 if l+len(s$)>len(c$) then 510
+480 if mid$(c$,l,len(s$))<>s$ then 510
+490 c$=left$(c$,l-1)+r$+right$(c$,len(c$)-l-len(s$)+1)
+495 l=l+len(r$)
+500 goto 540
+510 if l+len(r$)>len(c$)then 540
+520 if mid$(c$,l,len(r$))<>r$ then 540
+530 c$=left$(c$,l-1)+s$+right$(c$,len(c$)-l-len(r$)+1)
+535 l=l+len(r$)
+540 next l
+550 next x
+555 if mid$(c$,2,1)=" "then c$=right$(c$,len(c$)-1):rem only 1 space
+556 for l=1 to len(c$)
+557 if mid$(c$,l,1)="!" then c$=left$(c$,l-1)+right$(c$,len(c$)-l):goto 557
+558 next l
+560 rem
+570 rem    now using the keyword number (k) get reply
+580 rem
+590 restore:for x= 1 to n1+n2:read z$:next x
+600 for x=1 to r(k):read f$:next x:rem read right reply
+610 r(k)=r(k)+1:if r(k)>n(k) then r(k)=s(k)
+620 if right$(f$,1)<>"*" then print f$:p$=i$:goto 170
+630 print left$(f$,len(f$)-1);c$
+640 p$=i$:goto 170
+1000 rem
+1010 rem     -----program data follows-----
+1020 rem
+1030 rem     keywords
+1049 rem
+1050 data "can you ","can i ","you are ","youre ","i dont ","i feel "
+1060 data "why dont you ","why cant i ","are you ","i cant ","i am ","im "
+1070 data "you ","i want ","what ","how ","who ","where ","when ","why"
+1080 data "name","cause","sorry","dream","hello","hi ","maybe"
+1090 data " no","your","always","think","alike","yes","friend"
+1100 data "computer", "nokeyfound"
+1200 rem
+1210 rem     string data for conjugations
+1220 rem
+1230 data " are "," am "," were "," was "," you "," i ","your "," my "
+1235 data " ive "," youve "," im "," youre "
+1240 data " me "," !you "
+1300 rem
+1310 rem     replies
+1320 rem
+1330 data "don't you believe that i can*"
+1340 data "perhaps you would like to be like me*"
+1350 data "you want me to be able to*"
+1360 data "perhaps you don't want to*"
+1365 data "do you want to be able to*"
+1370 data "what makes you think i am*"
+1380 data "does it please you to believe i am*"
+1390 data "perhaps you would like to be*"
+1400 data "do you sometimes wish you were*"
+1410 data "don't you really*"
+1420 data "why don't you*"
+1430 data "do you wish to be able to*"
+1440 data "does that trouble you*"
+1450 data "do you often feel*"
+1460 data "do you often feel*"
+1470 data "do you enjoy feeling*"
+1480 data "do you really believe i don't*"
+1490 data "perhaps in good time i will*"
+1500 data "do you want me to*"
+1510 data "do you think you should be able to*"
+1520 data "why can't you*"
+1530 data "why are you interested in whether or not i am*"
+1540 data "would you prefer if i were not*"
+1550 data "perhaps in your fantasies i am*"
+1560 data "how do you know you can't*"
+1570 data "have you tried?"
+1580 data "perhaps you can now*"
+1590 data "did you come to me because you are*"
+1600 data "how long have you been*"
+1610 data "do you believe it is normal to be*"
+1620 data "do you enjoy being*"
+1630 data "we were discussing you--not me."
+1640 data "oh, i*"
+1650 data "you're not really talking about me, are you?"
+1660 data "what would it mean to you if you got*"
+1670 data "why do you want*"
+1680 data "suppose you soon got*"
+1690 data "what if you never got*"
+1700 data "i sometimes also want*"
+1710 data "why do you ask?"
+1720 data "does that question interest you?"
+1730 data "what answer would please you the most?"
+1740 data "what do you think?"
+1750 data "are such questions on your mind often?"
+1760 data "what is it that you really want to know?"
+1770 data "have you asked anyone else?"
+1780 data "have you asked such questions before?"
+1790 data "what else comes to mind when you ask that?"
+1800 data "names don't interest me."
+1810 data "i don't care about names --please go on."
+1820 data "is that the real reason?"
+1830 data "don't any other reasons come to mind?"
+1840 data "does that reason explain anything else?"
+1850 data "what other reasons might there be?"
+1860 data "please don't apologize!"
+1870 data "apologies are not necessary."
+1880 data "what feelings do you have when you apologize?"
+1890 data "don't be so defensive!"
+1900 data "what does that dream suggest to you?"
+1910 data "do you dream often?"
+1920 data "what persons appear in your dreams?"
+1930 data "are you disturbed by your dreams?"
+1940 data "how do you do ...please state your problem."
+1950 data "you don't seem quite certain."
+1960 data "why the uncertain tone?"
+1970 data "can't you be more positive?"
+1980 data "you aren't sure?"
+1990 data "don't you know?"
+2000 data "are you saying no just to be negative?"
+2010 data "you are being a bit negative."
+2020 data "why not?"
+2030 data "are you sure?"
+2040 data "why no?"
+2050 data "why are you concerned about my*"
+2060 data "what about your own*"
+2070 data "can you think of a specific example?"
+2080 data "when?"
+2090 data "what are you thinking of?"
+2100 data "really, always?"
+2110 data "do you really think so?"
+2120 data "but you are not sure you*"
+2130 data "do you doubt you*"
+2140 data "in what way?"
+2150 data "what resemblance do you see?"
+2160 data "what does the similarity suggest to you?"
+2170 data "what other connections do you see?"
+2180 data "could there really be some connection?"
+2190 data "how?"
+2200 data "you seem quite positive."
+2210 data "are you sure?"
+2220 data "i see."
+2230 data "i understand."
+2240 data "why do you bring up the topic of friends?"
+2250 data "do your friends worry you?"
+2260 data "do your friends pick on you?"
+2270 data "are you sure you have any friends?"
+2280 data "do you impose on your friends?"
+2290 data "perhaps your love for friends worries you."
+2300 data "do computers worry you?"
+2310 data "are you talking about me in particular?"
+2320 data "are you frightened by machines?"
+2330 data "why do you mention computers?"
+2340 data "what do you think machines have to do with your problem?"
+2350 data "don't you think computers can help people?"
+2360 data "what is it about machines that worries you?"
+2370 data "say, do you have any psychological problems?"
+2380 data "what does that suggest to you?"
+2390 data "i see."
+2400 data "i'm not sure i understand you fully."
+2410 data "come come elucidate your thoughts."
+2420 data "can you elaborate on that?"
+2430 data "that is quite interesting."
+2500 rem
+2510 rem     data for finding right replies
+2520 rem
+2530 data 1,3,4,2,6,4,6,4,10,4,14,3,17,3,20,2,22,3,25,3
+2540 data 28,4,28,4,32,3,35,5,40,9,40,9,40,9,40,9,40,9,40,9
+2550 data 49,2,51,4,55,4,59,4,63,1,63,1,64,5,69,5,74,2,76,4
+2560 data 80,3,83,7,90,3,93,6,99,7,106,6

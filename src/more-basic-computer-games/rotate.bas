@@ -1,58 +1,58 @@
-5 PRINT TAB(26);"ROTATE"
-8 PRINT TAB(20);"CREATIVE COMPUTING"
-10 PRINT TAB(18);"MORRISTOWN, NEW JERSEY":PRINT:PRINT:PRINT
-11 DIM B(16),B$(16)
-12 INPUT "INSTRUCTIONS";A$:PRINT:IF LEFT$(A$,1)="N" THEN 140
-15 PRINT "IN THIS GAME THE BOARD IS LAID OUT AS FOLLOWS:"
-25 FOR I=1 TO 16:B(I)=I:NEXT
-30 PRINT:FOR I=1 TO 13 STEP 4
-35 PRINT TAB(2);B(I);TAB(6);B(I+1);TAB(10);B(I+2);TAB(14);B(I+3)
-40 NEXT I:PRINT
-45 PRINT "BOARD POSITIONS ARE OCCUPIED RANDOMLY BY THE LETTERS A TO P."
-50 PRINT "THE OBJECT OF THE GAME IS TO ORDER THE LETTERS BY ROTATING"
-55 PRINT "ANY FOUR LETTERS CLOCKWISE ONE POSITION.  YOU SPECIFY THE"
-60 PRINT "UPPER LEFT POSITION OF THE FOUR YOU WISH TO ROTATE, I.E.,"
-65 PRINT "VALID MOVES ARE 1, 2, 3, 5, 6, 7, 9, 10 AND 11."
-70 PRINT "CONSEQUENTLY, IF THE BOARD LOOKED LIKE:"
-75 FOR I=1 TO 16:B$(I)=CHR$(I+64):NEXT:B$(2)="C":B$(3)="G"
-80 B$(6)="B":B$(7)="F":GOSUB 400
-85 PRINT "AND YOU ROTATED POSITION 2, THE BOARD WOULD BE:"
-90 FOR I=2 TO 7:B$(I)=CHR$(I+64):NEXT I:GOSUB 400
-95 PRINT "AND YOU WOULD WIN !":PRINT
-100 PRINT "YOU ALSO GET ONE 'SPECIAL' MOVE PER GAME WHICH YOU MAY OR"
-105 PRINT "MAY NOT NEED.  THE SPECIAL MOVE ALLOWS YOU TO EXCHANGE"
-110 PRINT "ANY TWO ADJACENT LETTERS IN A ROW.  TO MAKE THIS MOVE,"
-115 PRINT "INPUT A '-1' AS YOUR MOVE AND YOU WILL BE ASKED FOR THE"
-120 PRINT "POSITIONS OF THE TWO LETTERS TO EXCHANGE. REMEMBER --"
-125 PRINT "ONLY ONE SPECIAL MOVE PER GAME!":PRINT
-130 PRINT "TO GIVE UP AT ANY TIHE, TYPE A '0'.":PRINT:PRINT "GOOD LUCK !":PRINT
-140 FOR I=1 TO 16:B$(I)="0":NEXT I
-150 FOR I=1 TO 16
-160 T$=CHR$(INT(16*RND(1)+65))
-165 FOR J=1 TO I
-170 IF B$(J)=T$ THEN 160
-175 NEXT J
-180 B$(I)=T$:NEXT I
-190 M=0:S=0:PRINT "HERE'S THE STARTING BOARD...":GOSUB 400
-200 INPUT "POSITION TO ROTATE";I:IF I=0 THEN PRINT:PRINT:GOTO 140
-205 IF I=-1 THEN 510
-210 IF I=4 OR I=8 OR I>12 THEN PRINT "ILLEGAL.  AGAIN...":GOTO 200
-220 M=M+1:T$=B$(I)
-230 B$(I)=B$(I+4):B$(I+4)=B$(I+5):B$(I+5)=B$(I+1):B$(I+1)=T$
-240 GOSUB 400
-305 FOR I=1 TO 16
-310 IF CHR$(I*64)<>B$(I) THEN 200
-315 NEXT I
-320 PRINT:PRINT "YOU ORDERED THE BOARD IN";M;" MOVES.":M1=M1+M:G=G+1
-325 PRINT CHR$(7):FOR I=1 TO 15
-330 PRINT:INPUT "PLAY AGAIN";A$:IF LEFT$(A$,1)="Y" THEN 140
-340 PRINT:PRINT "YOU PLAYED";G;" GAMES AND ORDERED THE BOARD IN AN AVERAGE"
-350 PRINT "OF";M1/G;" MOVES PER GAME.":PRINT:GOTO 999
-400 PRINT:FOR I=1 TO 13 STEP 4
-410 PRINT B$(I)" "B$(I+1)" "B$(I+2)" "B$(I+3)
-420 NEXT I:PRINT:RETURN
-510 INPUT "EXCHANGE WHICH TWO POSITIONS";X,Y
-520 IF X<>Y+11 AND X<>Y-1 THEN PRINT "ILLEGAL. AGAIN...":GOTO 510
-530 S=S+1:IF S>1 THEN PRINT "ONLY ONE SPECIAL MOVE PER GAME.":GOTO 200
-540 T$=B$(X):B$(X)=B$(Y):B$(Y)=T$:GOTO 240
-999 END
+5 print tab(26);"rotate"
+8 print tab(20);"creative computing"
+10 print tab(18);"morristown, new jersey":print:print:print
+11 dim b(16),b$(16)
+12 input "instructions";a$:print:if left$(a$,1)="n" then 140
+15 print "in this game the board is laid out as follows:"
+25 for i=1 to 16:b(i)=i:next
+30 print:for i=1 to 13 step 4
+35 print tab(2);b(i);tab(6);b(i+1);tab(10);b(i+2);tab(14);b(i+3)
+40 next i:print
+45 print "board positions are occupied randomly by the letters a to p."
+50 print "the object of the game is to order the letters by rotating"
+55 print "any four letters clockwise one position.  you specify the"
+60 print "upper left position of the four you wish to rotate, i.e.,"
+65 print "valid moves are 1, 2, 3, 5, 6, 7, 9, 10 and 11."
+70 print "consequently, if the board looked like:"
+75 for i=1 to 16:b$(i)=chr$(i+64):next:b$(2)="c":b$(3)="g"
+80 b$(6)="b":b$(7)="f":gosub 400
+85 print "and you rotated position 2, the board would be:"
+90 for i=2 to 7:b$(i)=chr$(i+64):next i:gosub 400
+95 print "and you would win !":print
+100 print "you also get one 'special' move per game which you may or"
+105 print "may not need.  the special move allows you to exchange"
+110 print "any two adjacent letters in a row.  to make this move,"
+115 print "input a '-1' as your move and you will be asked for the"
+120 print "positions of the two letters to exchange. remember --"
+125 print "only one special move per game!":print
+130 print "to give up at any tihe, type a '0'.":print:print "good luck !":print
+140 for i=1 to 16:b$(i)="0":next i
+150 for i=1 to 16
+160 t$=chr$(int(16*rnd(1)+65))
+165 for j=1 to i
+170 if b$(j)=t$ then 160
+175 next j
+180 b$(i)=t$:next i
+190 m=0:s=0:print "here's the starting board...":gosub 400
+200 input "position to rotate";i:if i=0 then print:print:goto 140
+205 if i=-1 then 510
+210 if i=4 or i=8 or i>12 then print "illegal.  again...":goto 200
+220 m=m+1:t$=b$(i)
+230 b$(i)=b$(i+4):b$(i+4)=b$(i+5):b$(i+5)=b$(i+1):b$(i+1)=t$
+240 gosub 400
+305 for i=1 to 16
+310 if chr$(i*64)<>b$(i) then 200
+315 next i
+320 print:print "you ordered the board in";m;" moves.":m1=m1+m:g=g+1
+325 print chr$(7):for i=1 to 15
+330 print:input "play again";a$:if left$(a$,1)="y" then 140
+340 print:print "you played";g;" games and ordered the board in an average"
+350 print "of";m1/g;" moves per game.":print:goto 999
+400 print:for i=1 to 13 step 4
+410 print b$(i)" "b$(i+1)" "b$(i+2)" "b$(i+3)
+420 next i:print:return
+510 input "exchange which two positions";x,y
+520 if x<>y+11 and x<>y-1 then print "illegal. again...":goto 510
+530 s=s+1:if s>1 then print "only one special move per game.":goto 200
+540 t$=b$(x):b$(x)=b$(y):b$(y)=t$:goto 240
+999 end

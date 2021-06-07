@@ -1,105 +1,105 @@
-10 PRINT TAB(26);"JOUST"
-20 PRINT TAB(20);"CREATIVE COMPUTING"
-30 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-40 PRINT:PRINT:PRINT
-100 INPUT"WHAT IS YOUR NAME, PLEASE";A$
-120 PRINT"SIR ";A$;", YOU ARE A MEDIEVAL KNIGHT IN A JOUSTING TOURNAMENT."
-121 PRINT"THE PRIZE TO THE WINNER IS THE PRINCESS' HAND IN MARRIAGE."
-122 PRINT "TO WIN, YOU MUST BEAT FOUR OTHER KNIGHTS."
-125 PRINT "TO JOUST, YOU PICK AN AIMING POINT FOR THE LANCE,"
-128 PRINT "AND THEN ONE OF FROM 3 TO 6 DIFFERENT POSSIBLE DEFENSE POSITIONS."
-130 PRINT "THE AIMING POINTS ARE:"
-150 PRINT "1- HELM"
-200 PRINT "2- UPPER LEFT (OF SHIELD)"
-250 PRINT "3- UPPER MIDDLE"
-300 PRINT "4- UPPER RIGHT"
-350 PRINT "5- LOWER LEFT"
-400 PRINT "6- LOWER MIDDLE"
-450 PRINT "7- LOWER RIGHT"
-500 PRINT "8- BASE OF SHIELD"
-520 PRINT
-530 PRINT "IF YOU BREAK A LANCE OR LOSE A HELM, YOU WILL BE GIVEN ANOTHER."
-550 PRINT "GOOD LUCK, SIR!"
-555 PRINT
-600 FOR A = 1 TO 4
-650 ON A GOTO 800, 950, 1100, 1250
-700 REM OFF YOU GO TO THE FOUR JOUSTS.
-750 REM ------------------------------
-800 PRINT "THIS IS YOUR FIRST JOUST. YOU ARE UP AGAINST THE GOLD KNIGHT."
-850 GOTO 1400
-950 PRINT "THIS IS YOUR SECOND JOUST. YOUR OPPONENT IS THE SILVER KNIGHT."
-1000 GOTO 1400
-1100 PRINT "YOU ARE DOING WELL! YOUR THIRD JOUST IS AGAINST THE RED KNIGHT."
-1150 GOTO 1400
-1250 PRINT "THIS IS YOUR FINAL TEST!! IF YOU WIN THIS ONE THE PRINCESS"
-1270 PRINT "IS YOURS!!! THIS FIGHT IS AGAINST THE FIERCE BLACK KNIGHT!!!!"
-1400 INPUT "YOUR AIMING POINT(1-8)";B
-1450 IF B <1 OR B>8 THEN 1400
-1470 PRINT "YOU MAY USE ONE OF THESE DEFENSES:"
-1500 ON B GOTO 1550, 1650, 1750, 1850, 1550, 1750, 1550, 1950
-1550 PRINT " 4-STEADY SEAT, 5-SHIELD HIGH, 6-SHIELD LOW."
-1600 GOTO 2000
-1650 PRINT " 3-LEFT LEAN, 4-STEADY SEAT, 5-SHIELD HIGH, 6-SHIELD LOW."
-1700 GOTO 2000
-1750 PRINT " 1-LOWER HELM, 2-RIGHT LEAN, 3-LEFT LEAN, 4-STEADY SEAT, "
-1755 PRINT " 5-SHIELD HIGH, 6-SHIELD LOW."
-1800 GOTO 2000
-1850 PRINT " 2-RIGHT LEAN, 4-STEADY SEAT, 5-SHIELD HIGH, 6-SHIELD LOW."
-1900 GOTO 2000
-1950 PRINT " 1-LOWER HELM, 4-STEADY SEAT, 5-SHIELD HIGH, 6-SHIELD LOW."
-2000 INPUT "WHAT IS YOUR CHOICE"; C
-2050 D = INT(RND(1)*8) + 1
-2100 ON D GOTO 2150, 2200, 2250, 2300, 2350, 2400, 2450, 2500
-2150 ON C GOTO 2600, 2600, 2600, 2700, 2800, 2600
-2200 ON C GOTO 2800, 2750, 2600, 2750, 2750, 2600
-2250 ON C GOTO 2850, 2800, 2650, 2750, 2950, 2900
-2300 ON C GOTO 2650, 2600, 2750, 2650, 2650, 2800
-2350 ON C GOTO 2750, 2950, 2600, 2750, 2600, 2750
-2400 ON C GOTO 2950, 2650, 2750, 2950, 2850, 2750
-2450 ON C GOTO 2650, 2600, 2950, 2650, 2650, 2650
-2500 ON C GOTO 2750, 2650, 2850, 2750, 2850, 2750
-2600 PRINT "HE MISSED YOU!":S=0:GOTO 3000
-2650 PRINT "HE HIT YOUR SHIELD BUT IT GLANCED OFF.":S=0:GOTO 3000
-2700 PRINT "HE KNOCKED OFF YOUR HELM!":S=0:GOTO 3000
-2750 PRINT "HE BROKE HIS LANCE.":S=0:GOTO 3000
-2800 PRINT "HE HAS UNSEATED YOU(THUD!)":S=5:GOTO 3000
-2850 PRINT "HE HAS BROKEN HIS LANCE, INJURED AND UNSEATED YOU (OUCH!)"
-2855 S=5:GOTO 3000
-2900 PRINT "HE HAS INJURED AND UNSEATED YOU (CRASH!)":S=5:GOTO 3000
-2950 PRINT "HE HAS BROKEN HIS LANCE AND UNSEATED YOU (CLANG! )":S=5
-3000 E = INT(RND(1)*6) + 1
-3050 ON D GOTO 3100,3150,3200,3250,3100,3200,3100,3300
-3100 IF E<4 THEN 3000 ELSE 3350
-3150 IF E<3 THEN 3000 ELSE 3350
-3200 GOTO 3350
-3250 IF E=1 OR E=3 THEN 3000 ELSE 3350
-3300 IF E = 2 OR E = 3 THEN 3000
-3350 ON E GOTO 3400, 3450, 3500, 3550, 3600, 3650
-3400 ON B GOTO 3700, 3900, 3950, 3750, 3850, 4050, 3750, 3850
-3450 ON B GOTO 3700, 3850, 3900, 3700, 4050, 3750, 3700, 3750
-3500 ON B GOTO 3700, 3700, 3750, 3850, 3700, 3850, 4050, 3900
-3550 ON B GOTO 3800, 3850, 3850, 3750, 3850, 4050, 3750, 3850
-3600 ON B GOTO 3900, 3850, 4050, 3750, 3700, 3950, 3750, 3950
-3650 ON B GOTO 3700, 3700, 4000, 3900, 3850, 3850, 3750, 3850
-3700 PRINT "YOU MISSED HIM (HISS!)":T=O:GOTO 4100
-3750 PRINT "YOU HIT HIS SHIELD BUT GLANCED OFF.":T=0:GOTO 4100
-3800 PRINT "YOU KNOCKED OFF HIS HELM!(CHEERS!)":T=0:GOTO 4100
-3850 PRINT "YOU BROKE YOUR LANCE(CRACK...)":T=0:GOTO 4100
-3900 PRINT "YOU UNSEATED HIM (LOUD CHEERS AND HUZZAHS!!)":T=5:GOTO 4100
-3950 PRINT "YOU BROKE YOUR LANCE, BUT UNSEATED AND INJURED YOUR FOE."
-3955 T=5:GOTO 4100
-4000 PRINT "YOU INJURED AND UNSEATED YOUR OPPONENT.":T=5:GOTO 4100
-4050 PRINT "YOU BROKE YOUR LANCE BUT UNSEATED YOUR OPPONENT.":T=5:GOTO 4100
-4100 IF S = T AND S = 0 THEN 4450
-4150 IF S = T GOTO 4400
-4200 IF S<T GOTO 4300
-4250 IF S>T GOTO 4350
-4300 PRINT "YOU HAVE WON THIS JOUST.":PRINT:GOTO 4320
-4320 NEXT A
-4330 GOTO 4550
-4350 PRINT "TOO BAD, YOU LOST. HOPE YOUR INSURANCE WAS PAID UP.":GOTO 4500
-4400 PRINT "TOO BAD, YOU BOTH LOST. AT LEAST YOUR HONOR IS INTACT.":GOTO 4500
-4450 PRINT "YOU ARE NOW READY TO TRY AGAIN.":GOTO 1400
-4500 PRINT "SORRY, BETTER LUCK NEXT JOUST.":GOTO 9999
-4550 PRINT "HOORAY! YOU ARE THE WINNER. HERE COMES THE BRIDE!"
-9999 END
+10 print tab(26);"joust"
+20 print tab(20);"creative computing"
+30 print tab(18);"morristown, new jersey"
+40 print:print:print
+100 input"what is your name, please";a$
+120 print"sir ";a$;", you are a medieval knight in a jousting tournament."
+121 print"the prize to the winner is the princess' hand in marriage."
+122 print "to win, you must beat four other knights."
+125 print "to joust, you pick an aiming point for the lance,"
+128 print "and then one of from 3 to 6 different possible defense positions."
+130 print "the aiming points are:"
+150 print "1- helm"
+200 print "2- upper left (of shield)"
+250 print "3- upper middle"
+300 print "4- upper right"
+350 print "5- lower left"
+400 print "6- lower middle"
+450 print "7- lower right"
+500 print "8- base of shield"
+520 print
+530 print "if you break a lance or lose a helm, you will be given another."
+550 print "good luck, sir!"
+555 print
+600 for a = 1 to 4
+650 on a goto 800, 950, 1100, 1250
+700 rem off you go to the four jousts.
+750 rem ------------------------------
+800 print "this is your first joust. you are up against the gold knight."
+850 goto 1400
+950 print "this is your second joust. your opponent is the silver knight."
+1000 goto 1400
+1100 print "you are doing well! your third joust is against the red knight."
+1150 goto 1400
+1250 print "this is your final test!! if you win this one the princess"
+1270 print "is yours!!! this fight is against the fierce black knight!!!!"
+1400 input "your aiming point(1-8)";b
+1450 if b <1 or b>8 then 1400
+1470 print "you may use one of these defenses:"
+1500 on b goto 1550, 1650, 1750, 1850, 1550, 1750, 1550, 1950
+1550 print " 4-steady seat, 5-shield high, 6-shield low."
+1600 goto 2000
+1650 print " 3-left lean, 4-steady seat, 5-shield high, 6-shield low."
+1700 goto 2000
+1750 print " 1-lower helm, 2-right lean, 3-left lean, 4-steady seat, "
+1755 print " 5-shield high, 6-shield low."
+1800 goto 2000
+1850 print " 2-right lean, 4-steady seat, 5-shield high, 6-shield low."
+1900 goto 2000
+1950 print " 1-lower helm, 4-steady seat, 5-shield high, 6-shield low."
+2000 input "what is your choice"; c
+2050 d = int(rnd(1)*8) + 1
+2100 on d goto 2150, 2200, 2250, 2300, 2350, 2400, 2450, 2500
+2150 on c goto 2600, 2600, 2600, 2700, 2800, 2600
+2200 on c goto 2800, 2750, 2600, 2750, 2750, 2600
+2250 on c goto 2850, 2800, 2650, 2750, 2950, 2900
+2300 on c goto 2650, 2600, 2750, 2650, 2650, 2800
+2350 on c goto 2750, 2950, 2600, 2750, 2600, 2750
+2400 on c goto 2950, 2650, 2750, 2950, 2850, 2750
+2450 on c goto 2650, 2600, 2950, 2650, 2650, 2650
+2500 on c goto 2750, 2650, 2850, 2750, 2850, 2750
+2600 print "he missed you!":s=0:goto 3000
+2650 print "he hit your shield but it glanced off.":s=0:goto 3000
+2700 print "he knocked off your helm!":s=0:goto 3000
+2750 print "he broke his lance.":s=0:goto 3000
+2800 print "he has unseated you(thud!)":s=5:goto 3000
+2850 print "he has broken his lance, injured and unseated you (ouch!)"
+2855 s=5:goto 3000
+2900 print "he has injured and unseated you (crash!)":s=5:goto 3000
+2950 print "he has broken his lance and unseated you (clang! )":s=5
+3000 e = int(rnd(1)*6) + 1
+3050 on d goto 3100,3150,3200,3250,3100,3200,3100,3300
+3100 if e<4 then 3000 else 3350
+3150 if e<3 then 3000 else 3350
+3200 goto 3350
+3250 if e=1 or e=3 then 3000 else 3350
+3300 if e = 2 or e = 3 then 3000
+3350 on e goto 3400, 3450, 3500, 3550, 3600, 3650
+3400 on b goto 3700, 3900, 3950, 3750, 3850, 4050, 3750, 3850
+3450 on b goto 3700, 3850, 3900, 3700, 4050, 3750, 3700, 3750
+3500 on b goto 3700, 3700, 3750, 3850, 3700, 3850, 4050, 3900
+3550 on b goto 3800, 3850, 3850, 3750, 3850, 4050, 3750, 3850
+3600 on b goto 3900, 3850, 4050, 3750, 3700, 3950, 3750, 3950
+3650 on b goto 3700, 3700, 4000, 3900, 3850, 3850, 3750, 3850
+3700 print "you missed him (hiss!)":t=o:goto 4100
+3750 print "you hit his shield but glanced off.":t=0:goto 4100
+3800 print "you knocked off his helm!(cheers!)":t=0:goto 4100
+3850 print "you broke your lance(crack...)":t=0:goto 4100
+3900 print "you unseated him (loud cheers and huzzahs!!)":t=5:goto 4100
+3950 print "you broke your lance, but unseated and injured your foe."
+3955 t=5:goto 4100
+4000 print "you injured and unseated your opponent.":t=5:goto 4100
+4050 print "you broke your lance but unseated your opponent.":t=5:goto 4100
+4100 if s = t and s = 0 then 4450
+4150 if s = t goto 4400
+4200 if s<t goto 4300
+4250 if s>t goto 4350
+4300 print "you have won this joust.":print:goto 4320
+4320 next a
+4330 goto 4550
+4350 print "too bad, you lost. hope your insurance was paid up.":goto 4500
+4400 print "too bad, you both lost. at least your honor is intact.":goto 4500
+4450 print "you are now ready to try again.":goto 1400
+4500 print "sorry, better luck next joust.":goto 9999
+4550 print "hooray! you are the winner. here comes the bride!"
+9999 end

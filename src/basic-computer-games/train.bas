@@ -1,24 +1,24 @@
-1 PRINT TAB(33);"TRAIN"
-2 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-3 PRINT: PRINT: PRINT
-4 PRINT "TIME - SPEED DISTANCE EXERCISE": PRINT
-10 C=INT(25*RND(1))+40
-15 D=INT(15*RND(1))+5
-20 T=INT(19*RND(1))+20
-25 PRINT " A CAR TRAVELING";C;"MPH CAN MAKE A CERTAIN TRIP IN"
-30 PRINT D;"HOURS LESS THAN A TRAIN TRAVELING AT";T;"MPH."
-35 PRINT "HOW LONG DOES THE TRIP TAKE BY CAR";
-40 INPUT A
-45 V=D*T/(C-T)
-50 E=INT(ABS((V-A)*100/A)+.5)
-55 IF E>5 THEN 70
-60 PRINT "GOOD! ANSWER WITHIN";E;"PERCENT."
-65 GOTO 80
-70 PRINT "SORRY.  YOU WERE OFF BY";E;"PERCENT."
-80 PRINT "CORRECT ANSWER IS";V;"HOURS."
-90 PRINT
-95 PRINT "ANOTHER PROBLEM (YES OR NO)";
-100 INPUT A$
-105 PRINT
-110 IF A$="YES" THEN 10
-999 END
+1 print tab(33);"train"
+2 print tab(15);"creative computing  morristown, new jersey"
+3 print: print: print
+4 print "time - speed distance exercise": print
+10 c=int(25*rnd(1))+40
+15 d=int(15*rnd(1))+5
+20 t=int(19*rnd(1))+20
+25 print " a car traveling";c;"mph can make a certain trip in"
+30 print d;"hours less than a train traveling at";t;"mph."
+35 print "how long does the trip take by car";
+40 input a
+45 v=d*t/(c-t)
+50 e=int(abs((v-a)*100/a)+.5)
+55 if e>5 then 70
+60 print "good! answer within";e;"percent."
+65 goto 80
+70 print "sorry.  you were off by";e;"percent."
+80 print "correct answer is";v;"hours."
+90 print
+95 print "another problem (yes or no)";
+100 input a$
+105 print
+110 if a$="yes" then 10
+999 end

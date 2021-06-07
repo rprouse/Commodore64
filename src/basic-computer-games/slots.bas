@@ -1,134 +1,134 @@
-10 PRINT TAB(30);"SLOTS"
-20 PRINT TAB(15);"CREATIVE COMPUTING  MORRISTOWN, NEW JERSEY"
-30 PRINT: PRINT: PRINT
-100 REM PRODUCED BY FRED MIRABELLE AND BOB HARPER ON JAN 29, 1973
-110 REM IT SIMULATES THE SLOT MACHINE.
-120 PRINT "YOU ARE IN THE H&M CASINO,IN FRONT OF ONE OF OUR"
-130 PRINT "ONE-ARM BANDITS. BET FROM $1 TO $100."
-140 PRINT "TO PULL THE ARM, PUNCH THE RETURN KEY AFTER MAKING YOUR BET."
-150 LET P=0
-160 PRINT: PRINT"YOUR BET";
-170 INPUT M
-180 IF M>100 THEN 860
-190 IF M<1 THEN 880
-200 M=INT(M)
-210 GOSUB 1270 
-220 PRINT
-230 LET X=INT(6*RND(1)+1)
-240 LET Y=INT(6*RND(1)+1)
-250 LET Z=INT(6*RND(1)+1)
-260 PRINT
-270 IF X=1 THEN 910
-280 IF X=2 THEN 930
-290 IF X=3 THEN 950
-300 IF X=4 THEN 970
-310 IF X=5 THEN 990
-320 IF X=6 THEN 1010
-330 IF Y=1 THEN 1030
-340 IF Y=2 THEN 1050
-350 IF Y=3 THEN 1070
-360 IF Y=4 THEN 1090
-370 IF Y=5 THEN 1110
-380 IF Y=6 THEN 1130
-390 IF Z=1 THEN 1150
-400 IF Z=2 THEN 1170
-410 IF Z=3 THEN 1190
-420 IF Z=4 THEN 1210
-430 IF Z=5 THEN 1230
-440 IF Z=6 THEN 1250
-450 IF X=Y THEN 600
-460 IF X=Z THEN 630
-470 IF Y=Z THEN 650
-480 PRINT
-490 PRINT "YOU LOST."
-500 LET P=P-M
-510 PRINT "YOUR STANDINGS ARE $"P
-520 PRINT "AGAIN";
-530 INPUT A$
-540 IF A$="Y" THEN 160
-550 PRINT
-560 IF P<0 THEN 670
-570 IF P=0 THEN 690
-580 IF P>0 THEN 710
-590 GOTO 1350
-600 IF Y=Z THEN 730
-610 IF Y=1 THEN 820
-620 GOTO 1341
-630 IF Z=1 THEN 820
-640 GOTO 470
-650 IF Z=1 THEN 820
-660 GOTO 1341
-670 PRINT "PAY UP!  PLEASE LEAVE YOUR MONEY ON THE TERMINAL."
-680 GOTO 1350
-690 PRINT"HEY, YOU BROKE EVEN."
-700 GOTO 1350
-710 PRINT "COLLECT YOUR WINNINGS FROM THE H&M CASHIER."
-720 GOTO 1350
-730 IF Z=1 THEN 780
-740 PRINT: PRINT"**TOP DOLLAR**"
-750 PRINT "YOU WON!"
-760 P=(((10*M)+M)+P)
-770 GOTO 510
-780 PRINT:PRINT"***JACKPOT***"
-790 PRINT "YOU WON!"
-800 P=(((100*M)+M)+P)
-810 GOTO 510
-820 PRINT:PRINT"*DOUBLE BAR*"
-830 PRINT"YOU WON!"
-840 P=(((5*M)+M)+P)
-850 GOTO 510
-860 PRINT"HOUSE LIMITS ARE $100"
-870 GOTO 160
-880 PRINT"MINIMUM BET IS $1"
-890 GOTO 160
-900 GOTO 220
-910 PRINT"BAR";:GOSUB 1310
-920 GOTO 330
-930 PRINT"BELL";:GOSUB 1310
-940 GOTO 330
-950 PRINT"ORANGE";:GOSUB 1310
-960 GOTO 330
-970 PRINT"LEMON";:GOSUB 1310
-980 GOTO 330
-990 PRINT"PLUM";:GOSUB 1310
-1000 GOTO 330
-1010 PRINT"CHERRY";:GOSUB 1310
-1020 GOTO 330
-1030 PRINT" BAR";:GOSUB 1310
-1040 GOTO 390
-1050 PRINT" BELL";:GOSUB 1310
-1060 GOTO 390
-1070 PRINT" ORANGE";:GOSUB 1310
-1080 GOTO 390
-1090 PRINT" LEMON";:GOSUB 1310
-1100 GOTO 390
-1110 PRINT" PLUM";:GOSUB 1310
-1120 GOTO 390
-1130 PRINT" CHERRY";:GOSUB 1310
-1140 GOTO 390
-1150 PRINT" BAR"
-1160 GOTO 450
-1170 PRINT" BELL"
-1180 GOTO 450
-1190 PRINT" ORANGE"
-1200 GOTO 450
-1210 PRINT" LEMON"
-1220 GOTO 450
-1230 PRINT" PLUM"
-1240 GOTO 450
-1250 PRINT" CHERRY"
-1260 GOTO 450
-1270 FOR Q4=1 TO 10 
-1280 PRINT CHR$(7);
-1290 NEXT Q4
-1300 RETURN
-1310 FOR T8=1 TO 5
-1320 PRINT CHR$(7);
-1330 NEXT T8
-1340 RETURN
-1341 PRINT: PRINT "DOUBLE!!"
-1342 PRINT"YOU WON!"
-1343 P=(((2*M)+M)+P)
-1344 GOTO 510
-1350 STOP
-9999 END
+10 print tab(30);"slots"
+20 print tab(15);"creative computing  morristown, new jersey"
+30 print: print: print
+100 rem produced by fred mirabelle and bob harper on jan 29, 1973
+110 rem it simulates the slot machine.
+120 print "you are in the h&m casino,in front of one of our"
+130 print "one-arm bandits. bet from $1 to $100."
+140 print "to pull the arm, punch the return key after making your bet."
+150 let p=0
+160 print: print"your bet";
+170 input m
+180 if m>100 then 860
+190 if m<1 then 880
+200 m=int(m)
+210 gosub 1270 
+220 print
+230 let x=int(6*rnd(1)+1)
+240 let y=int(6*rnd(1)+1)
+250 let z=int(6*rnd(1)+1)
+260 print
+270 if x=1 then 910
+280 if x=2 then 930
+290 if x=3 then 950
+300 if x=4 then 970
+310 if x=5 then 990
+320 if x=6 then 1010
+330 if y=1 then 1030
+340 if y=2 then 1050
+350 if y=3 then 1070
+360 if y=4 then 1090
+370 if y=5 then 1110
+380 if y=6 then 1130
+390 if z=1 then 1150
+400 if z=2 then 1170
+410 if z=3 then 1190
+420 if z=4 then 1210
+430 if z=5 then 1230
+440 if z=6 then 1250
+450 if x=y then 600
+460 if x=z then 630
+470 if y=z then 650
+480 print
+490 print "you lost."
+500 let p=p-m
+510 print "your standings are $"p
+520 print "again";
+530 input a$
+540 if a$="y" then 160
+550 print
+560 if p<0 then 670
+570 if p=0 then 690
+580 if p>0 then 710
+590 goto 1350
+600 if y=z then 730
+610 if y=1 then 820
+620 goto 1341
+630 if z=1 then 820
+640 goto 470
+650 if z=1 then 820
+660 goto 1341
+670 print "pay up!  please leave your money on the terminal."
+680 goto 1350
+690 print"hey, you broke even."
+700 goto 1350
+710 print "collect your winnings from the h&m cashier."
+720 goto 1350
+730 if z=1 then 780
+740 print: print"**top dollar**"
+750 print "you won!"
+760 p=(((10*m)+m)+p)
+770 goto 510
+780 print:print"***jackpot***"
+790 print "you won!"
+800 p=(((100*m)+m)+p)
+810 goto 510
+820 print:print"*double bar*"
+830 print"you won!"
+840 p=(((5*m)+m)+p)
+850 goto 510
+860 print"house limits are $100"
+870 goto 160
+880 print"minimum bet is $1"
+890 goto 160
+900 goto 220
+910 print"bar";:gosub 1310
+920 goto 330
+930 print"bell";:gosub 1310
+940 goto 330
+950 print"orange";:gosub 1310
+960 goto 330
+970 print"lemon";:gosub 1310
+980 goto 330
+990 print"plum";:gosub 1310
+1000 goto 330
+1010 print"cherry";:gosub 1310
+1020 goto 330
+1030 print" bar";:gosub 1310
+1040 goto 390
+1050 print" bell";:gosub 1310
+1060 goto 390
+1070 print" orange";:gosub 1310
+1080 goto 390
+1090 print" lemon";:gosub 1310
+1100 goto 390
+1110 print" plum";:gosub 1310
+1120 goto 390
+1130 print" cherry";:gosub 1310
+1140 goto 390
+1150 print" bar"
+1160 goto 450
+1170 print" bell"
+1180 goto 450
+1190 print" orange"
+1200 goto 450
+1210 print" lemon"
+1220 goto 450
+1230 print" plum"
+1240 goto 450
+1250 print" cherry"
+1260 goto 450
+1270 for q4=1 to 10 
+1280 print chr$(7);
+1290 next q4
+1300 return
+1310 for t8=1 to 5
+1320 print chr$(7);
+1330 next t8
+1340 return
+1341 print: print "double!!"
+1342 print"you won!"
+1343 p=(((2*m)+m)+p)
+1344 goto 510
+1350 stop
+9999 end

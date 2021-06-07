@@ -1,82 +1,82 @@
-1 PRINT TAB(20);"MAN-EATING RABBIT"
-2 PRINT TAB(20);"CREATIVE COMPUTING"
-3 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-4 PRINT:PRINT:PRINT
-10 PRINT "YOU ARE IN A PIT WITH A MAN-EATING RABBIT."
-15 PRINT "THE CENTER IS (0,0) AND IT HAS A RADIUS OF 10"
-20 PRINT "IF YOU CAN AVOID THE RABBIT FOR 10 MOVES YOU WILL BE"
-25 PRINT "RELEASED.  YOU AND THE RABBIT CAN MOVE ONLY 1 SPACE EACH"
-26 PRINT "HOWEVER THE RABBIT CAN DO MULTIPLE JUMPS."
-27 PRINT "YOU CAN TRAVEL AT THESE ANGLES"
-28 PRINT "0,45,90,135,180,225,270,315,340"
-40 X=INT(21*RND(1)-10)
-41 Y=INT(21*RND(1)-10)
-45 D=SQR(ABS((X-X1)^2+(Y-Y1)^2))
-46 IF D>10 THEN 40
-47 PRINT
-48 PRINT
-50 PRINT "WHERE WOULD YOU LIKE TO BE DROPPED";
-51 INPUT X1,Y1
-60 IF SQR(ABS(X1^2+Y1^2))>10 THEN 50
-65 IF X<>X1 THEN 70
-66 IF Y<>Y1 THEN 70
-67 PRINT "*****SQUISH*****"
-69 PRINT "THE RABBIT IS DEAD!  YOU ARE SET FREE!":GOTO 340
-70 FOR G=1 TO 10
-71 D=SQR(ABS((X-X1)^2+(Y-Y1)^2))
-80 PRINT "RABBIT AT (";X;",";Y;") AND DISTANCE ";D
-90 IF D=0 THEN 330
-91 PRINT:PRINT "TURN #";G;" HUMAN AT (";X1;",";Y1;")"
-100 PRINT "AT WHAT ANGLE WILL YOU RUN ";
-101 INPUT A
-110 IF A/45<>INT(A/45) THEN 100
-111 PRINT "RUNNING ......";:P1=1
-112 M=1:IF ABS((INT(A/10)*10)-A)<>5 THEN 120
-113 M=SQR(2)
-120 X2=(M*COS(A*(3.14159/180)))
-121 Y2=(M*SIN(A*(3.14159/180)))
-125 IF SQR(((X1+X2)^2+(Y1+Y2)^2))<=10 THEN 130
-126 PRINT "YOU CAN'T GO INTO A WALL!"
-127 GOTO 100
-130 X1=INT(X1*1000)/1000+X2
-131 Y1=INT(Y1*1000)/1000+Y2
-132 X1=INT(X1+.5)
-133 Y1=INT(Y1+.5)
-135 PRINT "HUMAN YOU ARE NOW AT (";X1;",";Y1;")"
-136 IF X<>X1 THEN 140
-137 IF Y<>Y1 THEN 140
-138 PRINT "YOU RAN RIGHT INTO THE RABBIT!!"
-139 GOTO 330
-140 PRINT "THE RABBIT IS POUNCING AT ANGLE.....";:P1=P1+1
-150 X2=X1-X:Y2=Y1-Y
-151 IF X2=0 THEN 280
-152 IF Y2=0 THEN 300
-160 B=INT(ATN(ABS((Y2/X2)))/(3.14159/180))
-170 ON SGN(X2)+2 GOTO 190,10,180
-180 ON SGN(Y2)+2 GOTO 240,10,250
-190 ON SGN(Y2)+2 GOTO 230,10,220
-220 B=180-B:GOTO 250
-230 B=B+180:GOTO 250
-240 B=360-B
-250 B=INT(B/45+.5)*45:PRINT B
-255 M=1
-256 IF ABS((INT(B/10)*10)-B)<>5 THEN 260
-257 M=1.5
-260 X2=(M*COS(B*(3.14159/180)))
-261 Y2=(M*SIN(B*(3.14159/180)))
-270 X=INT(X+X2+.5)
-271 Y=INT(Y+Y2+.5)
-272 GOTO 315
-280 IF Y2<0 THEN 290
-281 B=90:GOTO 315
-290 B=270:GOTO 250
-300 IF X2<0 THEN 310
-301 B=1:GOTO 250
-310 B=180:GOTO 250
-315 IF SQR((X-X1)^2+(Y-Y1)^2)=0 THEN 323
-320 P=INT(P1*RND(1)+1)
-321 IF P<>1 THEN 323
-322 GOTO 140
-323 NEXT G:PRINT "YOU ARE RELEASED!":GOTO 340
-330 PRINT "**CRUNCH** WELL R.I.P."
-340 END
+1 print tab(20);"man-eating rabbit"
+2 print tab(20);"creative computing"
+3 print tab(18);"morristown, new jersey"
+4 print:print:print
+10 print "you are in a pit with a man-eating rabbit."
+15 print "the center is (0,0) and it has a radius of 10"
+20 print "if you can avoid the rabbit for 10 moves you will be"
+25 print "released.  you and the rabbit can move only 1 space each"
+26 print "however the rabbit can do multiple jumps."
+27 print "you can travel at these angles"
+28 print "0,45,90,135,180,225,270,315,340"
+40 x=int(21*rnd(1)-10)
+41 y=int(21*rnd(1)-10)
+45 d=sqr(abs((x-x1)^2+(y-y1)^2))
+46 if d>10 then 40
+47 print
+48 print
+50 print "where would you like to be dropped";
+51 input x1,y1
+60 if sqr(abs(x1^2+y1^2))>10 then 50
+65 if x<>x1 then 70
+66 if y<>y1 then 70
+67 print "*****squish*****"
+69 print "the rabbit is dead!  you are set free!":goto 340
+70 for g=1 to 10
+71 d=sqr(abs((x-x1)^2+(y-y1)^2))
+80 print "rabbit at (";x;",";y;") and distance ";d
+90 if d=0 then 330
+91 print:print "turn #";g;" human at (";x1;",";y1;")"
+100 print "at what angle will you run ";
+101 input a
+110 if a/45<>int(a/45) then 100
+111 print "running ......";:p1=1
+112 m=1:if abs((int(a/10)*10)-a)<>5 then 120
+113 m=sqr(2)
+120 x2=(m*cos(a*(3.14159/180)))
+121 y2=(m*sin(a*(3.14159/180)))
+125 if sqr(((x1+x2)^2+(y1+y2)^2))<=10 then 130
+126 print "you can't go into a wall!"
+127 goto 100
+130 x1=int(x1*1000)/1000+x2
+131 y1=int(y1*1000)/1000+y2
+132 x1=int(x1+.5)
+133 y1=int(y1+.5)
+135 print "human you are now at (";x1;",";y1;")"
+136 if x<>x1 then 140
+137 if y<>y1 then 140
+138 print "you ran right into the rabbit!!"
+139 goto 330
+140 print "the rabbit is pouncing at angle.....";:p1=p1+1
+150 x2=x1-x:y2=y1-y
+151 if x2=0 then 280
+152 if y2=0 then 300
+160 b=int(atn(abs((y2/x2)))/(3.14159/180))
+170 on sgn(x2)+2 goto 190,10,180
+180 on sgn(y2)+2 goto 240,10,250
+190 on sgn(y2)+2 goto 230,10,220
+220 b=180-b:goto 250
+230 b=b+180:goto 250
+240 b=360-b
+250 b=int(b/45+.5)*45:print b
+255 m=1
+256 if abs((int(b/10)*10)-b)<>5 then 260
+257 m=1.5
+260 x2=(m*cos(b*(3.14159/180)))
+261 y2=(m*sin(b*(3.14159/180)))
+270 x=int(x+x2+.5)
+271 y=int(y+y2+.5)
+272 goto 315
+280 if y2<0 then 290
+281 b=90:goto 315
+290 b=270:goto 250
+300 if x2<0 then 310
+301 b=1:goto 250
+310 b=180:goto 250
+315 if sqr((x-x1)^2+(y-y1)^2)=0 then 323
+320 p=int(p1*rnd(1)+1)
+321 if p<>1 then 323
+322 goto 140
+323 next g:print "you are released!":goto 340
+330 print "**crunch** well r.i.p."
+340 end

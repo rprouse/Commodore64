@@ -1,347 +1,347 @@
-3 PRINT TAB(25);"WUMPUS 2"
-4 PRINT TAB(20);"CREATIVE COMPUTING"
-5 PRINT TAB(18);"MORRISTOWN  NEW JERSEY"
-7 PRINT
-10 PRINT
-15 PRINT
-20 REM- WUMPUS VERSION 2
-30 DIM S(20,3)
-40 DIM L(6),M(6),P(5)
-50 PRINT "INSTRUCTIONS";
-60 INPUT I$
-70 PRINT
-80 IF LEFT$(I$,1) <> "Y" THEN 130
-100 GOSUB 700
-110 REM- CHOOSE AND SET UP CAVE
-130 GOSUB 2530
-140 DEF FNA(X)=INT(20*RND(1))+1
-150 DEF FNB(X)=INT(3*RND(1))+1
-160 DEF FNC(X)=INT(4*RND(1))+1
-170 REM LOCATE L ARRAY ITEMS
-180 REM 1-YOU, 2-WUMPUS, 3&4-PITS, 5&6-BATS
-210 FOR J=1 TO 6
-220 L(J)=FNA(0)
-230 H(J)=L(J)
-240 NEXT J
-250 REM CHECK FOR CROSSOVERS (IE L(1)=L<2) ETC)
-260 FOR J=1 TO 6
-270 FOR K=J TO 6
-280 IF J=K THEN 300
-290 IF L(J)=L(K) THEN 210
-300 NEXT K
-310 NEXT J
-320 REM SET # ARROWS
-330 A=5
-340 L=L(1)
-350 REM- RUN THE GAME
-360 PRINT "HUNT THE WUMPUS"
-370 REM-HAZARDS WARNINGS AND LOCATION
-380 GOSUB 1230
-390 REM MOVE OR SHOOT
-400 GOSUB 1400
-410 ON O GOTO 430,470
-420 REM SHOOT
-430 GOSUB 1550
-440 IF F=0 THEN 400
-450 GOTO 490
-460 REM MOVE
-470 GOSUB 2150
-480 IF F=0 THEN 380
-490 IF F > 0 THEN 540
-500 REM LOSE
-510 PRINT "HA HA HA - YOU LOOSE!"
-520 GOTO 550
-530 REM WIN
-540 PRINT "HEE HEE HEE - THE WUMPUS'LL GET YOU NEXT TIME!!"
-550 FOR J=1 TO 6
-560 L(J)=M(J)
-570 NEXT J
-580 PRINT "PLAY AGAIN";
-590 INPUT I$
-595 PRINT
-600 PRINT
-620 IF LEFT$(I$,1) <> "Y" THEN 3310
-640 PRINT "SAME SET-UP ";
-650 INPUT I$
-660 PRINT
-670 IF LEFT$(I$,1) <> "Y" THEN 130
-680 GOTO 330
-700 REM- INSTRUCTIONS
-710 PRINT "WELCOME TO WUMPUS II"
-720 PRINT "THIS VERSION HAS THE SAME RULES AS 'HUNT THE WUMPUS'."
-730 PRINT "HOWEVER, YOU NOU HAVE A CHOICE OF CAVES TO PLAY IN."
-740 PRINT "SOME CAVES ARE EASIER THAN OTHERS. ALL CAVES HAVE 20"
-750 PRINT "ROOMS AND 3 TUNNELS LEADING FROM ONE ROOM TO OTHER ROOMS."
-760 PRINT "THE CAVES ARE:"
-770 PRINT "  0  -  DODECAHEDRON   THE ROOMS OF THIS CAVE ARE ON A"
-780 PRINT "        12-SIDED OBJECT, EACH FORMING A PENTAGON."
-790 PRINT "        THE ROOMS ARE AT THE CORNERS OF THE PENTAGONS."
-800 PRINT "        EACH ROOM HAVING TUNNELS THAT LEAD TO 3 OTHER ROOMS"
-805 PRINT
-810 PRINT "  1  -  MOBIUS STRIP   THIS CAVE IS TWO ROOMS"
-820 PRINT "        WIDE AND 10 ROOMS AROUND (LIKE A BELT)"
-830 PRINT "        YOU WILL NOTICE THERE IS A HALF TWIST"
-840 PRINT "        SOMEWHERE."
-850 PRINT
-860 PRINT "  2  -  STRING OF BEADS   FIVE BEADS IN A CIRCLE."
-870 PRINT "        EACH BEAD IS A DIAMOND WITH A VERTICAL"
-880 PRINT "        CROSS-BAR. THE RIGHT & LEFT CORNERS LEAD"
-890 PRINT "        TO NEIGHBORING BEADS. (THIS ONE IS DIFFICULT"
-900 PRINT "        TO PLAY)"
-910 PRINT
-920 PRINT "  3  -  HEX NEWORK   IMAGINE A HEX TILE FLOOR. TAKE"
-930 PRINT "        A RECTANGLE WITH 20 POINTS (INTERSECTIONS)"
-940 PRINT "        INSIDE (4X4). JOIN RIGHT 2 LEFT SIDES TO MAKE A"
-950 PRINT "        CYLINDER. THEN JOIN TOP & BOTTOM TO FORM A"
-960 PRINT "        TORUS (DOUGHNUT)."
-970 PRINT "        HAVE FUN IMAGINING THIS ONE!!"
-980 PRINT
-990 PRINT "  CAVES 1-3 ARE REGULAR IN A SENSE THAT EACH ROOM"
-1000 PRINT "GOES TO THREE OTHER ROOMS & TUNNELS ALLOW TWO-"
-1010 PRINT "WAY TRAFFIC. HERE ARE SOME 'IRREGULAR' CAVES:"
-1020 PRINT
-1030 PRINT "  4  -  DENDRITE WITH DEGENERACIES   PULL A PLANT FROM"
-1040 PRINT "        THE GROUND. THE ROOTS & BRANCHES FORM A "
-1050 PRINT "        DENDRITE - IE., THERE ARE NO LOOPING PATHS"
-1060 PRINT "        DEGENERACY MEANS A) SOME ROOMS CONNECT TO"
-1070 PRINT "        THEMSELVES AND B) SOME ROOMS HAVE MORE THAN ONE"
-1080 PRINT "        TUNNEL TO THE SAME OTHER ROOM IE, 12 HAS "
-1090 PRINT "        TWO TUNNELS TO 13."
-1100 PRINT
-1110 PRINT "  5  -  ONE WAY LATTICE     HERE ALL TUNNELS GO ONE"
-1120 PRINT "        WAY ONLY. TO RETURN, YOU MUST GO AROUND THE CAVE"
-1130 PRINT "        (ABOUT 5 MOVES)."
-1140 PRINT
-1160 PRINT "  6  -  ENTER YOUR OWN CAVE    THE COMPUTER WILL ASK YOU"
-1170 PRINT "        THE ROOMS NEXT TO EACH ROOM IN THE CAVE."
-1180 PRINT "          FOR EXAMPLE:"
-1190 PRINT "           ROOM #1     ? 2,3,4       - YOUR REPLY OF 2,3,4"
-1200 PRINT "            MEANS ROOM 1 HAS TUNNELS GOING TO ROOMS:"
-1210 PRINT "            2, 3, & 4."
-1220 PRINT "  HAPPY HUNTING!"
-1225 RETURN
-1230 REM
-1240 PRINT
-1250 FOR J=2 TO 6
-1260 FOR K=1 TO 3
-1270 IF S(L(1),K) <> L(J) THEN 1340
-1280 ON J-1 GOTO 1290,1310,1310,1330,1330
-1290 PRINT "I SHELL A WUMPUS!"
-1300 GOTO 1340
-1310 PRINT "I FEEL A DRAFT!"
-1320 GOTO 1340
-1330 PRINT "BATS NEARBY!"
-1340 NEXT K
-1350 NEXT J
-1360 PRINT "YOU ARE IN ROOM ";L(1);
-1370 PRINT " TUNNELS LEAD TO ";S(L,1);S(L,2);S(L,3)
-1380 PRINT
-1390 RETURN
-1400 REM- CHOOSE OPTION
-1410 GOTO 1450
-1420 PRINT "ERROR   ";
-1430 INPUT Z9
-1440 PRINT "";
-1450 PRINT "SHOOT OR MOVE ";
-1460 INPUT I$
-1470 PRINT
-1490 IF LEFT$(I$,1) <> "S" THEN 1520
-1500 O=1
-1510 RETURN
-1520 IF LEFT$(I$,1) <> "M" THEN 1420
-1530 O=2
-1540 RETURN
-1550 REM- ARROW ROUTINE
-1560 F=0
-1570 REM- PATH OF ARROW
-1590 GOTO 1630
-1600 PRINT "ERROR   ";
-1610 INPUT Z9
-1620 PRINT "";
-1630 PRINT "NO. OF ROOMS ";
-1640 INPUT J9
-1650 PRINT
-1670 IF J9 < 1 OR J9 > 5 OR INT(J9) <> ABS(J9) THEN 1600
-1680 FOR K=1 TO J9
-1690 PRINT "ROOM #";
-1700 INPUT P(K)
-1710 PRINT
-1730 IF P(K) > 0 AND P(K) < 21 AND INT(P(K))=ABS(P(K)) THEN 1780
-1740 PRINT "ERROR  ";
-1750 INPUT Z9
-1760 PRINT "";
-1770 GOTO 1690
-1780 NEXT K
-1790 PRINT
-1800 REM -  SHOOT ARROW
-1810 A=A-J9
-1820 A9=L(1)
-1830 FOR K=1 TO J9
-1840 FOR K1=1 TO 3
-1850 IF S(A9,K1)=P(K) THEN 1990
-1860 NEXT K1
-1870 REM -  NO TUNNEL FOR THE ARROW
-1880 A9=S(A9,FNB(1))
-1890 GOTO 2000
-1900 NEXT K
-1910 PRINT "MISSED"
-1920 REM -  MOVE WUMPUS
-1930 GOSUB 2070
-1940 REM -  AMMO CHECK
-1950 IF A > 0 THEN 1970
-1955 PRINT "YOU HAVE USED ALL OF YOUR ARROWS."
-1960 F=-1
-1970 RETURN
-1980 REM -  SEE IF ARROW IS AT L[1] OT L[2]
-1990 A9=P(K)
-2000 IF A9 <> L(2) THEN 2040
-2010 PRINT "AHA! YOU GOT THE WUMPUS! HE WAS IN ROOM";L(2)
-2020 F=1
-2030 RETURN
-2040 IF A9 <> L(1) THEN 1900
-2050 PRINT "OUCH! ARROW GOT YOU!"
-2060 GOTO 1960
-2070 REM -  MOVE WUMPUS ROUTINE
-2080 K=FNC(0)
-2090 IF K=4 THEN 2140
-2100 L(2)=S(L(2),K)
-2110 IF L(2) <> L THEN 2140
-2120 PRINT "TSK TSK TSK- WUMPUS GOT YOU!"
-2130 F=-1
-2140 RETURN
-2150 REM -  MOVE ROUTINE
-2160 F=0
-2170 GOTO 2210
-2180 PRINT "ERROR   ";
-2190 INPUT Z9
-2200 PRINT "";
-2210 PRINT "WHERE TO ";
-2220 INPUT L
-2230 PRINT
-2240 IF L < 1 OR L > 20 OR ABS(L) <> INT(L) THEN 2180
-2250 FOR K=1 TO 3
-2260 REM -  CHECK IF LEGAL MOVE
-2270 IF S(L(1),K)=L THEN 2350
-2280 NEXT K
-2290 IF L=L(1) THEN 2350
-2300 PRINT "NOT POSSIBLE - ";
-2310 INPUT Z9
-2320 PRINT "";
-2330 GOTO 2210
-2340 REM -  CHECK FOR HAZARDS
-2350 L(1)=L
-2360 REM -  WUMPUS
-2370 IF L <> L(2) THEN 2430
-2380 PRINT "... OOPS! BUMPED A WUMPUS!"
-2390 REM -  MOVE A WUMPUS
-2400 GOSUB 2080
-2410 IF F=0 THEN 2430
-2420 REM -  PIT
-2430 IF L <> L(3) AND L <> L(4) THEN 2480
-2440 PRINT "YYYIIIEEEE . . . FELL IN A PIT"
-2450 F=-1
-2460 RETURN
-2470 REM -  BATS
-2480 IF L <> L(5) AND L <> L(6) THEN 2520
-2490 PRINT "ZAP--SUPER BAT SNATCH! ELSEWHERESVILLE FOR YOU!"
-2500 L=FNA(1)
-2510 GOTO 2350
-2520 RETURN
-2530 REM -  SELECT CAVE
-2540 GOTO 2580
-2550 PRINT "ERROR   ";
-2560 INPUT Z9
-2570 PRINT "";
-2580 PRINT "CAVE #(0-6) ";
-2585 RESTORE
-2590 INPUT N
-2600 PRINT
-2620 IF N<0 OR N>6 OR INT(N) <> ABS(N) THEN 2550
-2630 ON N+1 GOSUB 2650,2730,2810,2890,2970,3050,3130
-2640 RETURN
-2650 REM -  DODECAHEDRON
-2670 DATA 2,5,8,1,3,10,2,4,12,3,5,14,1,4,6
-2680 DATA 5,7,15,6,8,17,1,7,9,8,10,18,2,9,11
-2690 DATA 10,12,19,3,11,13,12,14,20,4,13,15,6,4,16
-2700 DATA 15,17,20,7,16,18,9,17,19,11,18,20,13,16,19
-2710 GOSUB 3240
-2720 RETURN
-2730 REM -  MOBIUS STRIP
-2735 FOR B1=1 TO 1
-2737 FOR B2=1 TO 60
-2740 READ B0
-2742 NEXT B2
-2744 NEXT B1
-2750 DATA 20,2,3,19,1,4,1,4,5,2,3,6,3,6,7
-2760 DATA 4,5,8,5,8,9,6,7,10,7,10,11,8,9,12
-2770 DATA 9,12,13,10,11,14,11,14,15,12,13,16,12,16,17
-2780 DATA 14,15,18,15,18,19,16,17,20,2,17,20,1,18,19
-2790 GOSUB 3240
-2800 RETURN
-2810 REM -  STRING OF BEADS
-2815 FOR B1=1 TO 2
-2817 FOR B2=1 TO 60
-2820 READ B0
-2822 NEXT B2
-2824 NEXT B1
-2830 DATA 2,3,20,1,3,4,1,2,4,2,3,5,4,6,7
-2840 DATA 5,7,8,5,6,8,6,7,9,8,10,11,9,11,12
-2850 DATA 9,10,12,10,11,13,12,14,15,13,15,16,13,14,16
-2860 DATA 14,15,17,16,18,19,17,19,20,17,18,20,1,18,19
-2870 GOSUB 3240
-2880 RETURN
-2890 REM - HEX NUT ON TORUS
-2895 FOR B1=1 TO 3
-2897 FOR B2=1 TO 60
-2900 READ B0
-2902 NEXT B2
-2904 NEXT B1
-2910 DATA 6,10,16,6,7,17,7,8,18,8,9,19,9,10,20
-2920 DATA 1,2,15,2,3,11,3,4,12,4,5,13,5,6,14
-2930 DATA 7,16,20,8,16,17,9,17,18,10,18,19,6,19,20
-2940 DATA 1,11,12,2,12,13,3,13,14,4,14,15,5,11,15
-2950 GOSUB 3240
-2960 RETURN
-2970 REM -  DENDRITE W/ DEGENERACIES
-2975 FOR B1=1 TO 4
-2977 FOR B2=1 TO 60
-2980 READ B0
-2982 NEXT B2
-2984 NEXT B1
-2990 DATA 1,1,5,2,2,5,3,3,6,4,4,6,1,2,7
-3000 DATA 3,4,7,5,6,10,8,9,9,8,8,10,7,9,11
-3010 DATA 10,13,14,12,13,13,11,12,12,11,15,16,14,17,18
-3020 DATA 14,19,20,15,17,17,15,18,18,16,19,19,16,20,20
-3030 GOSUB 3240
-3040 RETURN
-3050 REM -  ONE WAY LATTICE
-3055 FOR B1=1 TO 5
-3057 FOR B2=1 TO 60
-3060 READ B0
-3062 NEXT B2
-3064 NEXT B1
-3070 DATA 5,4,8,1,5,6,2,6,7,3,7,8,8,9,12
-3080 DATA 5,9,10,6,10,11,7,11,12,12,13,16,9,13,14
-3090 DATA 10,14,15,11,15,16,16,17,20,13,17,18,14,18,19
-3100 DATA 15,19,20,1,4,20,1,2,17,2,3,18,3,4,19
-3110 GOSUB 3240
-3120 RETURN
-3130 REM -  INPUT YOUR OWN CAVE
-3140 FOR J=1 TO 20
-3150 PRINT "ROOM #";J;
-3160 INPUT S(J,1),S(J,2),S(J,3)
-3170 FOR K=1 TO 3
-3180 IF S(J,K) > 0 AND S(J,K) < 21 AND ABS(S(J,K))=ABS(S(J,K)) THEN3210
-3190 PRINT "***** ERROR!!!!!"
-3200 GOTO 3150
-3210 NEXT K
-3220 NEXT J
-3230 RETURN
-3240 REM -  INPUT CAVE
-3250 FOR J=1 TO 20
-3260 FOR K=1 TO 3
-3270 READ S(J,K)
-3280 NEXT K
-3290 NEXT J
-3300 RETURN
-3310 END
+3 print tab(25);"wumpus 2"
+4 print tab(20);"creative computing"
+5 print tab(18);"morristown  new jersey"
+7 print
+10 print
+15 print
+20 rem- wumpus version 2
+30 dim s(20,3)
+40 dim l(6),m(6),p(5)
+50 print "instructions";
+60 input i$
+70 print
+80 if left$(i$,1) <> "y" then 130
+100 gosub 700
+110 rem- choose and set up cave
+130 gosub 2530
+140 def fna(x)=int(20*rnd(1))+1
+150 def fnb(x)=int(3*rnd(1))+1
+160 def fnc(x)=int(4*rnd(1))+1
+170 rem locate l array items
+180 rem 1-you, 2-wumpus, 3&4-pits, 5&6-bats
+210 for j=1 to 6
+220 l(j)=fna(0)
+230 h(j)=l(j)
+240 next j
+250 rem check for crossovers (ie l(1)=l<2) etc)
+260 for j=1 to 6
+270 for k=j to 6
+280 if j=k then 300
+290 if l(j)=l(k) then 210
+300 next k
+310 next j
+320 rem set # arrows
+330 a=5
+340 l=l(1)
+350 rem- run the game
+360 print "hunt the wumpus"
+370 rem-hazards warnings and location
+380 gosub 1230
+390 rem move or shoot
+400 gosub 1400
+410 on o goto 430,470
+420 rem shoot
+430 gosub 1550
+440 if f=0 then 400
+450 goto 490
+460 rem move
+470 gosub 2150
+480 if f=0 then 380
+490 if f > 0 then 540
+500 rem lose
+510 print "ha ha ha - you loose!"
+520 goto 550
+530 rem win
+540 print "hee hee hee - the wumpus'll get you next time!!"
+550 for j=1 to 6
+560 l(j)=m(j)
+570 next j
+580 print "play again";
+590 input i$
+595 print
+600 print
+620 if left$(i$,1) <> "y" then 3310
+640 print "same set-up ";
+650 input i$
+660 print
+670 if left$(i$,1) <> "y" then 130
+680 goto 330
+700 rem- instructions
+710 print "welcome to wumpus ii"
+720 print "this version has the same rules as 'hunt the wumpus'."
+730 print "however, you nou have a choice of caves to play in."
+740 print "some caves are easier than others. all caves have 20"
+750 print "rooms and 3 tunnels leading from one room to other rooms."
+760 print "the caves are:"
+770 print "  0  -  dodecahedron   the rooms of this cave are on a"
+780 print "        12-sided object, each forming a pentagon."
+790 print "        the rooms are at the corners of the pentagons."
+800 print "        each room having tunnels that lead to 3 other rooms"
+805 print
+810 print "  1  -  mobius strip   this cave is two rooms"
+820 print "        wide and 10 rooms around (like a belt)"
+830 print "        you will notice there is a half twist"
+840 print "        somewhere."
+850 print
+860 print "  2  -  string of beads   five beads in a circle."
+870 print "        each bead is a diamond with a vertical"
+880 print "        cross-bar. the right & left corners lead"
+890 print "        to neighboring beads. (this one is difficult"
+900 print "        to play)"
+910 print
+920 print "  3  -  hex nework   imagine a hex tile floor. take"
+930 print "        a rectangle with 20 points (intersections)"
+940 print "        inside (4x4). join right 2 left sides to make a"
+950 print "        cylinder. then join top & bottom to form a"
+960 print "        torus (doughnut)."
+970 print "        have fun imagining this one!!"
+980 print
+990 print "  caves 1-3 are regular in a sense that each room"
+1000 print "goes to three other rooms & tunnels allow two-"
+1010 print "way traffic. here are some 'irregular' caves:"
+1020 print
+1030 print "  4  -  dendrite with degeneracies   pull a plant from"
+1040 print "        the ground. the roots & branches form a "
+1050 print "        dendrite - ie., there are no looping paths"
+1060 print "        degeneracy means a) some rooms connect to"
+1070 print "        themselves and b) some rooms have more than one"
+1080 print "        tunnel to the same other room ie, 12 has "
+1090 print "        two tunnels to 13."
+1100 print
+1110 print "  5  -  one way lattice     here all tunnels go one"
+1120 print "        way only. to return, you must go around the cave"
+1130 print "        (about 5 moves)."
+1140 print
+1160 print "  6  -  enter your own cave    the computer will ask you"
+1170 print "        the rooms next to each room in the cave."
+1180 print "          for example:"
+1190 print "           room #1     ? 2,3,4       - your reply of 2,3,4"
+1200 print "            means room 1 has tunnels going to rooms:"
+1210 print "            2, 3, & 4."
+1220 print "  happy hunting!"
+1225 return
+1230 rem
+1240 print
+1250 for j=2 to 6
+1260 for k=1 to 3
+1270 if s(l(1),k) <> l(j) then 1340
+1280 on j-1 goto 1290,1310,1310,1330,1330
+1290 print "i shell a wumpus!"
+1300 goto 1340
+1310 print "i feel a draft!"
+1320 goto 1340
+1330 print "bats nearby!"
+1340 next k
+1350 next j
+1360 print "you are in room ";l(1);
+1370 print " tunnels lead to ";s(l,1);s(l,2);s(l,3)
+1380 print
+1390 return
+1400 rem- choose option
+1410 goto 1450
+1420 print "error   ";
+1430 input z9
+1440 print "";
+1450 print "shoot or move ";
+1460 input i$
+1470 print
+1490 if left$(i$,1) <> "s" then 1520
+1500 o=1
+1510 return
+1520 if left$(i$,1) <> "m" then 1420
+1530 o=2
+1540 return
+1550 rem- arrow routine
+1560 f=0
+1570 rem- path of arrow
+1590 goto 1630
+1600 print "error   ";
+1610 input z9
+1620 print "";
+1630 print "no. of rooms ";
+1640 input j9
+1650 print
+1670 if j9 < 1 or j9 > 5 or int(j9) <> abs(j9) then 1600
+1680 for k=1 to j9
+1690 print "room #";
+1700 input p(k)
+1710 print
+1730 if p(k) > 0 and p(k) < 21 and int(p(k))=abs(p(k)) then 1780
+1740 print "error  ";
+1750 input z9
+1760 print "";
+1770 goto 1690
+1780 next k
+1790 print
+1800 rem -  shoot arrow
+1810 a=a-j9
+1820 a9=l(1)
+1830 for k=1 to j9
+1840 for k1=1 to 3
+1850 if s(a9,k1)=p(k) then 1990
+1860 next k1
+1870 rem -  no tunnel for the arrow
+1880 a9=s(a9,fnb(1))
+1890 goto 2000
+1900 next k
+1910 print "missed"
+1920 rem -  move wumpus
+1930 gosub 2070
+1940 rem -  ammo check
+1950 if a > 0 then 1970
+1955 print "you have used all of your arrows."
+1960 f=-1
+1970 return
+1980 rem -  see if arrow is at l[1] ot l[2]
+1990 a9=p(k)
+2000 if a9 <> l(2) then 2040
+2010 print "aha! you got the wumpus! he was in room";l(2)
+2020 f=1
+2030 return
+2040 if a9 <> l(1) then 1900
+2050 print "ouch! arrow got you!"
+2060 goto 1960
+2070 rem -  move wumpus routine
+2080 k=fnc(0)
+2090 if k=4 then 2140
+2100 l(2)=s(l(2),k)
+2110 if l(2) <> l then 2140
+2120 print "tsk tsk tsk- wumpus got you!"
+2130 f=-1
+2140 return
+2150 rem -  move routine
+2160 f=0
+2170 goto 2210
+2180 print "error   ";
+2190 input z9
+2200 print "";
+2210 print "where to ";
+2220 input l
+2230 print
+2240 if l < 1 or l > 20 or abs(l) <> int(l) then 2180
+2250 for k=1 to 3
+2260 rem -  check if legal move
+2270 if s(l(1),k)=l then 2350
+2280 next k
+2290 if l=l(1) then 2350
+2300 print "not possible - ";
+2310 input z9
+2320 print "";
+2330 goto 2210
+2340 rem -  check for hazards
+2350 l(1)=l
+2360 rem -  wumpus
+2370 if l <> l(2) then 2430
+2380 print "... oops! bumped a wumpus!"
+2390 rem -  move a wumpus
+2400 gosub 2080
+2410 if f=0 then 2430
+2420 rem -  pit
+2430 if l <> l(3) and l <> l(4) then 2480
+2440 print "yyyiiieeee . . . fell in a pit"
+2450 f=-1
+2460 return
+2470 rem -  bats
+2480 if l <> l(5) and l <> l(6) then 2520
+2490 print "zap--super bat snatch! elsewheresville for you!"
+2500 l=fna(1)
+2510 goto 2350
+2520 return
+2530 rem -  select cave
+2540 goto 2580
+2550 print "error   ";
+2560 input z9
+2570 print "";
+2580 print "cave #(0-6) ";
+2585 restore
+2590 input n
+2600 print
+2620 if n<0 or n>6 or int(n) <> abs(n) then 2550
+2630 on n+1 gosub 2650,2730,2810,2890,2970,3050,3130
+2640 return
+2650 rem -  dodecahedron
+2670 data 2,5,8,1,3,10,2,4,12,3,5,14,1,4,6
+2680 data 5,7,15,6,8,17,1,7,9,8,10,18,2,9,11
+2690 data 10,12,19,3,11,13,12,14,20,4,13,15,6,4,16
+2700 data 15,17,20,7,16,18,9,17,19,11,18,20,13,16,19
+2710 gosub 3240
+2720 return
+2730 rem -  mobius strip
+2735 for b1=1 to 1
+2737 for b2=1 to 60
+2740 read b0
+2742 next b2
+2744 next b1
+2750 data 20,2,3,19,1,4,1,4,5,2,3,6,3,6,7
+2760 data 4,5,8,5,8,9,6,7,10,7,10,11,8,9,12
+2770 data 9,12,13,10,11,14,11,14,15,12,13,16,12,16,17
+2780 data 14,15,18,15,18,19,16,17,20,2,17,20,1,18,19
+2790 gosub 3240
+2800 return
+2810 rem -  string of beads
+2815 for b1=1 to 2
+2817 for b2=1 to 60
+2820 read b0
+2822 next b2
+2824 next b1
+2830 data 2,3,20,1,3,4,1,2,4,2,3,5,4,6,7
+2840 data 5,7,8,5,6,8,6,7,9,8,10,11,9,11,12
+2850 data 9,10,12,10,11,13,12,14,15,13,15,16,13,14,16
+2860 data 14,15,17,16,18,19,17,19,20,17,18,20,1,18,19
+2870 gosub 3240
+2880 return
+2890 rem - hex nut on torus
+2895 for b1=1 to 3
+2897 for b2=1 to 60
+2900 read b0
+2902 next b2
+2904 next b1
+2910 data 6,10,16,6,7,17,7,8,18,8,9,19,9,10,20
+2920 data 1,2,15,2,3,11,3,4,12,4,5,13,5,6,14
+2930 data 7,16,20,8,16,17,9,17,18,10,18,19,6,19,20
+2940 data 1,11,12,2,12,13,3,13,14,4,14,15,5,11,15
+2950 gosub 3240
+2960 return
+2970 rem -  dendrite w/ degeneracies
+2975 for b1=1 to 4
+2977 for b2=1 to 60
+2980 read b0
+2982 next b2
+2984 next b1
+2990 data 1,1,5,2,2,5,3,3,6,4,4,6,1,2,7
+3000 data 3,4,7,5,6,10,8,9,9,8,8,10,7,9,11
+3010 data 10,13,14,12,13,13,11,12,12,11,15,16,14,17,18
+3020 data 14,19,20,15,17,17,15,18,18,16,19,19,16,20,20
+3030 gosub 3240
+3040 return
+3050 rem -  one way lattice
+3055 for b1=1 to 5
+3057 for b2=1 to 60
+3060 read b0
+3062 next b2
+3064 next b1
+3070 data 5,4,8,1,5,6,2,6,7,3,7,8,8,9,12
+3080 data 5,9,10,6,10,11,7,11,12,12,13,16,9,13,14
+3090 data 10,14,15,11,15,16,16,17,20,13,17,18,14,18,19
+3100 data 15,19,20,1,4,20,1,2,17,2,3,18,3,4,19
+3110 gosub 3240
+3120 return
+3130 rem -  input your own cave
+3140 for j=1 to 20
+3150 print "room #";j;
+3160 input s(j,1),s(j,2),s(j,3)
+3170 for k=1 to 3
+3180 if s(j,k) > 0 and s(j,k) < 21 and abs(s(j,k))=abs(s(j,k)) then3210
+3190 print "***** error!!!!!"
+3200 goto 3150
+3210 next k
+3220 next j
+3230 return
+3240 rem -  input cave
+3250 for j=1 to 20
+3260 for k=1 to 3
+3270 read s(j,k)
+3280 next k
+3290 next j
+3300 return
+3310 end

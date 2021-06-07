@@ -1,36 +1,36 @@
-100 PRINT TAB(23);"CHUCK-A-LUCK"
-110 PRINT TAB(20);"CREATIVE COMPUTING"
-120 PRINT TAB(18);"MORRISTOWN, NEW JERSEY"
-130 PRINT:PRINT:PRINT
-140 PRINT "CHOOSE A NUMBER FROM 1 TO 6. I WILL ROLL 3 DICE."
-150 PRINT "IF YOUR NUMBER MATCHES 1 DIE, I PAY OFF EVEN MONEY."
-160 PRINT "TWO DICE, 2:1    3 DICE, 3:1"
-170 PRINT:PRINT:M=500
-180 PRINT "YOU HAVE $";M;". MAKE A BET."
-190 INPUT B
-200 IF B > M THEN 410
-210 IF B > 0 THEN IF B*100=INT(B*100) THEN 230
-220 GOTO 420
-230 PRINT "CHOOSE A NUMBER";
-240 INPUT N
-250 IF INT(N)=N AND N > 0 AND N < 7 THEN 270
-260 PRINT "CHEATER'!!!!!":GOTO 230
-270 A=INT(RND(1)*6)+1:PRINT A;"    ";:D=INT(RND(1)*6)+1:PRINT D;"    ";
-280 C=INT(RND(1)*6)+1:PRINT C;"     "
-290 T=0
-300 IF A=N THEN T=T+1
-310 IF D=N THEN T=T+1
-320 IF C=N THEN T=T+1
-330 PRINT "YOU'VE MATCHED ";T;" TIMES."
-340 ON T GOTO 380,390,400
-350 PRINT "YOU LOOSE $";B
-360 M=M-B:IF M<= 0 THEN 430
-370 GOTO 180
-380 PRINT "YOU'VE WON $";B:M=M+B:GOTO 180
-390 PRINT "YOU'VE WON $";B*2:M=M+2*B:GOTO 180
-400 PRINT "YOU'VE WON $";B*3:M=M+3*B:GOTO 180
-410 PRINT "I DON'T TAKE I.O.U's !!!!":GOTO 180
-420 PRINT "DON'T GET CUTE!!!":GOTO 180
-430 PRINT
-440 PRINT
-450 END
+100 print tab(23);"chuck-a-luck"
+110 print tab(20);"creative computing"
+120 print tab(18);"morristown, new jersey"
+130 print:print:print
+140 print "choose a number from 1 to 6. i will roll 3 dice."
+150 print "if your number matches 1 die, i pay off even money."
+160 print "two dice, 2:1    3 dice, 3:1"
+170 print:print:m=500
+180 print "you have $";m;". make a bet."
+190 input b
+200 if b > m then 410
+210 if b > 0 then if b*100=int(b*100) then 230
+220 goto 420
+230 print "choose a number";
+240 input n
+250 if int(n)=n and n > 0 and n < 7 then 270
+260 print "cheater'!!!!!":goto 230
+270 a=int(rnd(1)*6)+1:print a;"    ";:d=int(rnd(1)*6)+1:print d;"    ";
+280 c=int(rnd(1)*6)+1:print c;"     "
+290 t=0
+300 if a=n then t=t+1
+310 if d=n then t=t+1
+320 if c=n then t=t+1
+330 print "you've matched ";t;" times."
+340 on t goto 380,390,400
+350 print "you loose $";b
+360 m=m-b:if m<= 0 then 430
+370 goto 180
+380 print "you've won $";b:m=m+b:goto 180
+390 print "you've won $";b*2:m=m+2*b:goto 180
+400 print "you've won $";b*3:m=m+3*b:goto 180
+410 print "i don't take i.o.u's !!!!":goto 180
+420 print "don't get cute!!!":goto 180
+430 print
+440 print
+450 end
