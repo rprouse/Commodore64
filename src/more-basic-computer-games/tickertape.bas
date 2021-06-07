@@ -14,11 +14,11 @@
 45 goto 50
 47 b=27
 50 for s=0 to (b-1)*5:read a:next s
-60 for s=1 to 5:read a:print chr$(a);:next s
-65 print chr$(0);:restore
+60 for s=1 to 5:read a:gosub 1000:next s
+65 a=0:gosub 1000:restore
 70 next n
 75 gosub 80:end
-80 for n=1 to 30:print chr$(0);:next n
+80 for n=1 to 30:a=0:gosub 1000:next n
 90 return
 110 data 0,254,9,9,9,254,255,137,137,137,118,126,129,129,129,129
 120 data 255,129,129,129,126,255,137,137,137,137,255,9,9,9,1
@@ -33,3 +33,10 @@
 230 data 137,134,66,137,137,137,118,12,10,137,255,136,199,137,137,137
 240 data 248,126,137,137,137,114,1,1,249,5,2,118,137,137,137,118
 250 data 70,137,137,137,126
+1000 for i = 1 to 8
+1010 if a < 128 then print " ";:goto 1030
+1020 print "*";:a=a-128
+1030 a = a * 2
+1040 next i
+1050 print
+1060 return
