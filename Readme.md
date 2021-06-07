@@ -8,6 +8,7 @@ will also run on the [Vice Emulator](https://vice-emu.sourceforge.io/)
 
 - `src/basic-computer-games` - Games from the best selling computer book [BASIC Computer Games](https://en.wikipedia.org/wiki/BASIC_Computer_Games) by David H. Ahl.
 - `src/more-basic-computer-games` - Games from the followup book [More BASIC Computer Games](https://archive.org/details/More_BASIC_Computer_Games_1980_Creative_Computing) by David H. Ahl.
+- `src/utilities/bas2lowercase` - Converts all BASIC `*.bas` files in a given directory to lowercase. Even though the files appear to be UPPERCASE on the C64, they need to be lowercase when converting.
 
 ## Prerequisites
 
