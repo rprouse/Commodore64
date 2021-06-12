@@ -20,7 +20,7 @@ check:
 $(BUILD_FOLDER):
 	$(MKDIR_BINARY) $(MKDIR_FLAGS) $(@)
 
-# Compiles all BASIC files in a given
+# Compiles all BASIC files in a given folder
 $(INPUTS) : $(BUILD_FOLDER)
 	$(PETCAT_BINARY) $(PETCAT_FLAGS) $(patsubst $(DIR)/%.bas,$(BUILD_FOLDER)/%.prg,$(@)) -- $@
 
