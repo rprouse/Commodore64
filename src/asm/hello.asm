@@ -1,7 +1,6 @@
   jmp start
 
-message: .byte "hello, world!"
-end_msg:
+message: .asciiz "hello, world!"
 
 ZP_PTR_1 = $7E
 CHROUT := $FFD2
@@ -9,27 +8,22 @@ NEWLINE = $0D
 UPPERCASE = $8E
 
 start:
-   ; force uppercase
-   lda #UPPERCASE
+   lda #UPPERCASE          ; force uppercase
    jsr CHROUT
-
-   ; print message
-   lda #<message
+   lda #<message           ; print message
    sta ZP_PTR_1
    lda #>message
    sta ZP_PTR_1+1
    ldy #0
 
 @loop:
-   cpy #(end_msg-message)
-   beq @end
    lda (ZP_PTR_1),y
+   beq @end
    jsr CHROUT
    iny
    jmp @loop
 
 @end:
-   ; print newline
-   lda #NEWLINE
+   lda #NEWLINE            ; print newline
    jsr CHROUT
    rts
