@@ -34,6 +34,15 @@
 - DCX - Decrement X
 - DCY - Decrement Y
 
+## Arithmetic
+
+- ADC - Add with carry
+- SBC - Subtract with carry
+- ASL - Arithmetic left shift (multiply by 2), 0 is shifted in and high bit sets the C flag. Works on the A register with no operand or directly on memory.
+- ROL - Rotate left, like ASL but C flag is shifted into low bit
+- LSR - Logical shift right (divide by 2), 0 is shifted into the high bit and low bit is set to the carry. Carry is the remainder. Works on the A register with no operand or directly on memory.
+- ROR - Rotate right. Same as LSR except C is shifted into the high bit.
+
 ### Logical operators
 
 - AND - Logical AND with A (turns bits off)
@@ -100,3 +109,73 @@
 
 - $033C - Cassette Buffer
 - $0400-$07E7 - Screen memory, 40x25 chars, each line is $28 long
+
+## Arithmetic
+
+|   | Unsigned  | Signed  |
+|---|---|---|
+| 1 byte  | 0 to 255 | -128 to 127 |
+| 2 bytes | 0 to 65,535 | -32768 to 32767 |
+| 3 bytes | 0 to 16,777,215 | -8,388,608 to 8,388,607 |
+| 4 bytes | to over 4 billion | -2 billion to 2 billion |
+
+### Addition
+
+1. Clear the carry with CLC
+2. If the number is more than one byte, start at low byte and work up. The carry flag will take care of any carries.
+3. After the high byte, check for overflow.
+    - If unsigned, set C indicates overflow
+    - If signed, set V indicates overflow
+
+For example to add numbers at $0380 and $0381 and save at $0382
+
+```
+CLC
+LDA $0380
+ADC $0381
+STA $0382
+BCS overflow
+```
+
+To add a two byte numbers at $03A0 (low) and $03A1 (high) to $03B0 (low) and $03B1 (high) and store to $03C0/1
+
+```
+CLC
+LDA $03A0
+ADC $03B0
+STA $03C0
+LDA $03A1
+ADC $03B1
+STB $03C1
+BCS overflow
+```
+
+If we were using signed numbers it is the same except we use BVS for the overflow check.
+
+### Subtraction
+
+1. Set carry with SEC
+2. If more than one byte, start with the low byte, the C flag will track borrows.
+3. When complete, check for overflow
+    - If unsigned, C flag indicates overflow
+    - If signed, V flag indicates overflow
+
+```
+SEC
+LDA $0380
+SBC $0381
+STA $0382
+BCC
+```
+
+### Comparison
+
+For one byte numbers just use CMP, CPX or CPY.
+
+For multibyte numbers subtract and look at the carry flag. If the first number is greater than or equal, the C flag will be set.
+
+### Multiplication
+
+You can ASL the low order byte and ROL the high bytes to multiply by two. Repeat to multiply by 4 then 8, etc.
+
+To multiply by ten multiply by 2 twice, then add the original number (bringing you to 5x) then multiply by two once more.
