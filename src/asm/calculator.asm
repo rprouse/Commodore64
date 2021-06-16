@@ -14,10 +14,19 @@ start:
   jsr CHROUT
   txa
   clc
-  adc sum
-  sta sum
-  ora #$30
+  adc sum       ; Add the numbers
+  cmp #$0A
+  bcc @out      ; If we are less than 10, jump
+  tax
+  lda #'1'      ; Print the 1
   jsr CHROUT
+  txa
+  sec
+  sbc #$0A      ; Subtract 10
+
+@out:
+  ora #$30      ; Convert num to ascii
+  jsr CHROUT    ; Print the 0 to 9 digit
   lda #NEWLINE
   jsr CHROUT
   rts
