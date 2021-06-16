@@ -1,16 +1,5 @@
-  jmp start
-
-CHROUT := $FFD2
-GETIN  := $FFE4
-STOP   := $FFE1
-
-CLRSCRN = $93
-NEWLINE = $0D
-UPPERCASE = $8E
-CHAR_0 = $30
-CHAR_9 = $39
-CHAR_A = $41
-CHAR_Z = $5A
+.include "kernal.inc"
+.include "petscii.inc"
 
 start:
   lda #CLRSCRN

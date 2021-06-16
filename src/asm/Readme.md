@@ -49,6 +49,13 @@
 - ORA - Logical OR with A (turns bits on)
 - EOR - Exclusive OR (XOR) with A (flips specific bits)
 
+### Transfer
+
+- TAX - Transfer A to X
+- TXA - Transfer X to A
+- TAY - Transfer A to Y
+- TYA - Transfer Y to A
+
 ### Set and clear status bits
 
 - SEC - Set carry bit

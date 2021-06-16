@@ -1,0 +1,3 @@
+CHROUT := $FFD2
+GETIN  := $FFE4
+STOP   := $FFE1

@@ -1,0 +1,8 @@
+CLRSCRN = $93
+NEWLINE = $0D
+UPPERCS = $8E
+
+CHAR_0  = $30
+CHAR_9  = $39
+CHAR_A  = $41
+CHAR_Z  = $5A
