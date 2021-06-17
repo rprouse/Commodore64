@@ -31,8 +31,10 @@
 
 - INX - Increment X
 - INY - Increment Y
+- INC - Increment memory address
 - DCX - Decrement X
 - DCY - Decrement Y
+- DEC - Decrement membory address
 
 ## Arithmetic
 
@@ -70,7 +72,22 @@
 
 - JSR - Jump to subroutine
 - BRK - Break to the monitor
+- NOP - Do nothing. Useful for reserving space or toggleing with a BRK for debugging
 - RTS - Return from subroutine
+
+## Addressing Modes
+
+- Implied - There is no address, it is implied by the instruction
+- Accumulator - Effectively the same as implied but works on the accumulator
+- Immediate - Provide a constant value (#$32)
+- Absolute - Provide a full memory address ($0804)
+- Zero-Page - Provide one byte in the zero page ($00 to $FF)
+- Absolute, Indexed - An absolute address offset by the X or Y register ($8084,x)
+- Zero-Page, Indexed - A zero-page address offset by the X or Y register. ($E0,x) Supports negative indexes when the register is negative.
+- Relative - Jump a relative distance forward or backward from branch commands.
+- Indirect - JMP to the address stored at an address JMP ($1234)
+- Indirect, Indexed - The indirect address must be in the zero page, two bytes, low byte first. Then indexed with the Y register to form the final effective address. LDA ($C0),Y
+- Indexed, Indirect - Uses the X register and the indexing takes place first. LDA ($C0,X)
 
 ## Status Flags
 
@@ -114,8 +131,11 @@
 
 ## Memory Map
 
+- $00-$FF - Zero-page. (see below)
 - $033C - Cassette Buffer
 - $0400-$07E7 - Screen memory, 40x25 chars, each line is $28 long
+
+Zero-page - most of the ZP is used by the ROM. The C64 has four bytes available at $FC to $FF. You can also search the memory map for "work areas" or "utility pointers".
 
 ## Arithmetic
 
