@@ -5,28 +5,18 @@ start:
   lda #CLRSCRN  ; Clear the screen
   jsr CHROUT
   jsr @getnum   ; Get the number
-  lsr
-  bcs @odd
-  lda #' '
-  jsr CHROUT
-  lda #'e'
-  jsr CHROUT
-  lda #'v'
-  jsr CHROUT
-  lda #'e'
-  jsr CHROUT
-  lda #'n'
+  cmp #5
+  bcs @greater
+  asl           ; Less than five, multiply by 2
+  sta num
+  lda #'*'
   jsr CHROUT
   jmp @end
 
-@odd:
-  lda #' '
-  jsr CHROUT
-  lda #'o'
-  jsr CHROUT
-  lda #'d'
-  jsr CHROUT
-  lda #'d'
+@greater:       ; Greater than or equal to five
+  lsr           ; Divide by 2
+  sta num
+  lda #'/'
   jsr CHROUT
   jmp @end
 
@@ -43,6 +33,13 @@ start:
   rts
 
 @end:
+  lda #'2'
+  jsr CHROUT
+  lda #'='
+  jsr CHROUT
+  lda num
+  ora #$30      ; Convert num to ascii
+  jsr CHROUT    ; Print the 0 to 9 digit
   lda #NEWLINE
   jsr CHROUT
   rts
