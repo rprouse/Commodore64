@@ -8,16 +8,13 @@ start:
 
   ldx #$00
 lines:
-  ldy #$04
+  ldy #$00
 columns:
-  lda ($BB),y
-  cmp #SPACE  ; Skip spaces
-  beq skip
-  eor #$80    ; Flip the high bit
+  lda #SPACE
   sta ($BB),y
-skip:
+
   iny
-  cpy #$12    ; We are only working from $04 to $12 on each row
+  cpy width   ; We are only working from $04 to $12 on each row
   bcc columns
 
   clc         ; Add the width to the ZP pointer
@@ -29,9 +26,10 @@ skip:
   sta $BC
 
   inx
-  cpx #$0E    ; Have we done 14 lines?
+  cpx #$19    ; Have we done 25 lines?
   bne lines
   rts
+
 
 width:
   .byte $28   ; C64 screen width
