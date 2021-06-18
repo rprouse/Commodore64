@@ -1,6 +1,7 @@
 CLRSCRN = $93
 NEWLINE = $0D
 UPPERCS = $8E
+SPACE   = $20
 
 CHAR_0  = $30
 CHAR_9  = $39
