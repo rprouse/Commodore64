@@ -1,6 +1,9 @@
-  jmp start
+.segment "DATA"
 
 message: .asciiz "hello, world!"
+
+.segment "CODE"
+   jmp start
 
 ZP_PTR_1 = $7E
 CHROUT := $FFD2
