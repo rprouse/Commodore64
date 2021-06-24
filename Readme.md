@@ -8,6 +8,7 @@ I've also been writing [6502 Assembly Notes](src/asm/Readme.md) as I've been lea
 
 ## Contents
 
+- `prg` - Pre-compiled Commodore 64 programs either from the Internet or written directly on the C64 and saved here.
 - `src/asm` - Simple programs that I am writing as exercises while learning 6502 assembly from Jim Butterfield's book [Machine Language for the Commodore 64 and Other Commodore Computers](http://www.1000bit.it/support/manuali/commodore/c64/ML_for_the_C64_and_Other_Commodore_Computers.pdf)
 - `src/basic-computer-games` - Games from the best selling computer book [BASIC Computer Games](https://en.wikipedia.org/wiki/BASIC_Computer_Games) by David H. Ahl.
 - `src/more-basic-computer-games` - Games from the followup book [More BASIC Computer Games](https://archive.org/details/More_BASIC_Computer_Games_1980_Creative_Computing) by David H. Ahl.

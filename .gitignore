@@ -3,8 +3,3 @@
 bin/
 obj/
 out/
-
-*.prg
-*.list
-*.o
-*.d64
