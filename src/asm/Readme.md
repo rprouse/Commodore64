@@ -126,8 +126,20 @@
 - A 033C LDA $0380 - Assemble at address 033C
 - R - Display registers
 - G 033C - Go to 033C and start running the program
-- S - Save
-- L - Load
+- `S "PROGRAM",08,033C,0361` - Save
+- `L "PROGRAM",08,033C,0361` - Load
+
+## Vice Monitor Commands
+
+- `Alt-H` - Load monitor
+- `>C:002b 12` - Update memory
+- `break 033c` - Set a breakpoint, also `bk 033c`
+- `break` - List breakpoints, also `bk`
+- `disable 1` - Disable breakpoint, also `dis 1`
+- `enable 1` - Enable breakpoint, also `en 1`
+- `delete 1` - Delete breakpoint, also `del 1`
+- `save "<filename>" <device> <address> <address>`
+- `load "<filename>" <device> <address> <address>`
 
 ## Memory Map
 
