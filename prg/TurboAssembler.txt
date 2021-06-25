@@ -1,0 +1,155 @@
+Load Turbo Assembler like this LOAD"TURBO-ASM. V6.0",8,1
+and start it with (if not packed) SYS(9*4096) or SYS 36864
+
+"{" is the backarrow key in document.
+
+
+CURSOR MOVEMENT
+---------------
+
+CRSR LEFT/RIGHT  - move left/right one position in line
+CRSR UP/DOWN     - go up/down a line
+RETURN           - insert a line (if insert line mode) and go to this line
+SHIFT+RETURN     - jump to next line
+F1/F7            - scroll 20 lines up/down
+F2/F8            - jump to source-code start/end
+{CRSR UP/DOWN    - scroll 200 lines up/down
+{Q               - goto to beginning of line
+{N               - goto line #
+{Y               - goto bottom line
+DEL              - delete character left cursor
+INST             - auto insert char mode on/off
+{DEL             - delete actual line
+{INST            - auto insert line mode on/off
+{RETURN          - insert a line from cursor position
+
+NOTE: after you leave line TURBO-ASM automatically checks its syntax.
+
+
+SETTING TABULATORS
+------------------
+{7  - set cursor tab (e.g. where cursor jump to after RETURN)
+{8  - set sourcecode tab (max.11)
+
+
+LINE OPERATIONS
+---------------
+{2      - writes ';---------------------------------------' line
+{/      - delete from cursor to end of line
+{SPACE  - fill up line with SPACE
+{^      - (up arrow) copy line
+{=      - cut line
+{~      - (pound) paste line
+{Z      - undo line (imediately after {2, {/, {SPACE, {~)
+
+
+BLOCK AND MARK OPERATIONS
+-------------------------
+{M  - set mark (#0-9), blocks start (#s) or block end (#e)
+{G  - goto mark (#0-9)
+{;  - kill mark (0-9)
+{:  - list all marks
+{B  - block operations: write (to ASCII SEQ file), kill, copy.
+{E  - insert (IMPORT ASCII SEQ) file from disk to current position
+
+NOTE: never mark first line of source-code as block start
+
+
+SEARCH & REPLACE
+----------------
+{F   - search a string
+{H   - search next occurance
+{R   - replace string1 with string2, search first ocurrance
+{T   - replace & search next replace
+{Y   - replace all occurances
+
+FUNCTION KEY PROGRAMMING
+------------------------
+{F1  - Reset funcion keys (F3=.word, F4=assemble&run, F5=.byte, F6=del line)
+{A   - Input all characters (exit with "{"); to get "{" press "{" twice;
+       useful when define F-keys
+{K   - press F-key (F3-F6) to redefine
+
+
+DISK OPERATIONS
+---------------
+{*  - disk directory
+{@  - disk status
+{D  - disk command
+{P  - set EOR-code for coding source-code
+{W  - writes all source-code to ASCII SEQ file (EXPORT)
+{L  - load source-code
+{S  - save source-code (possible overwrite with @: prefix)
+
+NOTE: 1. TURBO-ASM  loads  its  source from top ($8FEB) to bottom
+         ($0800)  of memory and crunches its opcodes, numbers by own
+         (like BASIC tokens).
+
+      2. By  saving  and  loading  source-code TURBO-ASM. also saves
+         and loads configurations like colors, F-keys, marks and
+         actual cursor position.
+
+MEMORY OPERATIONS
+-----------------
+{6        - converts memory block between addr's to source-code data
+{J        - dump memory block between addr's
+{SHIFT+F  - fill memory block between addr's with code
+{SHIFT+L  - load to memory addr
+{SHIFT+S  - save memory block between addr's
+
+
+ASSEMBLING
+----------
+{3  - assemble to memory
+{4  - list assembled file to: ?=printer, *=screen, filename=file
+{5  - assemble to object (executable) file
+{U  - list labels to: ?=printer, *=screen, filename=file
+
+
+MISCELLANEOUS
+-------------
+{C        - cold start (init TURBO-ASM. and clears source-code)
+{I        - init TURBO-ASM & clear unused memory
+{+        - add two hex numbers
+{-        - subtract two hex numbers
+{V        - display memory usage: - free blocks, + used blocks
+{O        - change colors
+{SHIFT+K  - keyclick on/off
+{1        - exit from TURBO-ASM. (SYS 36864 or SYS 333 to restart)
+
+NOTE: {V works incorrectly in range $E000-$FFFF, b'coz reads I/O & KERNAL
+      (with Action Replay's crashes quite nicely)
+
+
+EXPRESSIONS
+-----------
+The assembler works with 8 and 16 bit numbers with following notations:
+$            - for hex numbers
+%            - for binary numbers
+! (or none)  - for decimal numbers
+"x"          - for characters
+
+Allowed operations in expressions (in high-to-low hierarcy order):
+( )          - brackets
+* /          - multiple, divide
++ -          - plus, minus
+: & .        - EOR, AND, OR operations
+
+Special operations:
+<            - lower byte of 16 bit expression
+>            - higher byte of 16 bit expression
+*            - actual assembling addr or define object-code start (*=start)
+
+NOTE: 1. Never use label after label=* or likewise combination.
+      2. Don't use area between $E000-$FFFF (reserved for TURBO-ASM labels).
+
+Labels:
+The first 8 characters recognized and all remain truncated.
+
+PSEUDO OPS
+----------
+.OFFS addr                - set object-code displacement (by adding addr)
+.BYTE byte1,byte2,...     - convert bytes
+.WORD word1,word2,...     - convert words
+.TEXT "text1","text2",... - convert text strings
+;                         - comments following
