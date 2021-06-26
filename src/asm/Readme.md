@@ -68,6 +68,36 @@
 - SEI - Set interupt disable
 - CLI - Clear interupt disable
 
+### Stack
+
+- PHA - Push A to the stack
+- PLA - Pull from the stack to A
+- PHP - Push processor status to the stack
+- PLP - Pull processor status from the stack
+
+### Interupts
+
+- IRQ - Interupt request, calls routine at $FFFE/F
+- NMI - Non-maskable interupt, calls routine at $FFFA/B.
+- BRK - Software interupt, calls routine at $FFFE/F.
+- RTI - Return from Interupt
+- SEI - Set interupt disable, does not work for NMI
+- CLI - Clear interupt disable
+
+NMI is used for the RESTORE key and RS-232 communication on the C64.
+
+Bit 4 of the status register distinguishes a software BRK from a hardware IRQ.
+The default interupt vector on a C64 is $0314 and $0315
+
+On the C64 we can also temporaily disable interupts at the source in the IA chip
+by setting $7F to address $DC0D then renabling by setting $81 to the same address.
+This can also be done in BASIC,
+
+```basic
+POKE 56333,127
+POKE 56333,129
+```
+
 ### Misc
 
 - JSR - Jump to subroutine
