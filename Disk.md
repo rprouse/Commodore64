@@ -13,6 +13,20 @@ LIST
 
 The one at the end forces it to load at the same memory address as it was saved.
 
+Or to load the first program on the disk.
+
+`LOAD "*",8`
+
+## Save a program
+
+If the file is not on the disk yet,
+
+`SAVE "PROGRAM",8`
+
+or to overwrite an existing program,
+
+`SAVE "@0:PROGRAM",8`
+
 ## Format a disk
 
 `OPEN 1,8,15,"N0:Diskname,ID": CLOSE 1`
