@@ -1,6 +1,6 @@
 ; This program reads in up to one line of text, stores it in memory, then
 ; prints the line back to the screen when the user its enter.
-.include "kernal.inc"
+.include "cbm_kernal.inc"
 .include "petscii.inc"
 
 ZP_X := $BB

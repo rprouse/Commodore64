@@ -1,4 +1,4 @@
-.include "kernal.inc"
+.include "cbm_kernal.inc"
 .include "petscii.inc"
 
 start:
