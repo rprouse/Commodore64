@@ -4,93 +4,93 @@
 
 ### Load, Store and Compare
 
-- LDA - Load into A ($0380 absolute, #$00 immediate, $0380,X effective)
-- LDX - Load into X
-- LDY - Load into Y
-- STA - Store A to memory
-- STX - Store X to memory
-- STY - Store Y to memory
-- CMP - Compare A
-- CPX - Compare X
-- CPY - Compare Y
+- `LDA` - Load into A ($0380 absolute, #$00 immediate, $0380,X effective)
+- `LDX` - Load into X
+- `LDY` - Load into Y
+- `STA` - Store A to memory
+- `STX` - Store X to memory
+- `STY` - Store Y to memory
+- `CMP` - Compare A
+- `CPX` - Compare X
+- `CPY` - Compare Y
 
 ### Branching
 
-- BEQ - Branch if the two bytes are equal
-- BNE - Branch if the two bytes are not equal
-- BCS - Branch carry set or if register >= value
-- BCC - Branch carry clear or if register < value
-- BMI - Branch minus or < 0 or high bit set
-- BPL - Branch Plus or >= 0 or high bit not set
-- BIT - Bit test, tests bit 6 of an address and sets V flag
-- BVS - Branch overflow set
-- BVC - Branch overflow clear
+- `BEQ` - Branch if the two bytes are equal
+- `BNE` - Branch if the two bytes are not equal
+- `BCS` - Branch carry set or if register >= value
+- `BCC` - Branch carry clear or if register < value
+- `BMI` - Branch minus or < 0 or high bit set
+- `BPL` - Branch Plus or >= 0 or high bit not set
+- `BIT` - Bit test, tests bit 6 of an address and sets V flag
+- `BVS` - Branch overflow set
+- `BVC` - Branch overflow clear
 - ! - (branches can only jump a hundred or so bytes)
 
 ### Increment and decrement
 
-- INX - Increment X
-- INY - Increment Y
-- INC - Increment memory address
-- DCX - Decrement X
-- DCY - Decrement Y
-- DEC - Decrement membory address
+- `INX` - Increment X
+- `INY` - Increment Y
+- `INC` - Increment memory address
+- `DCX` - Decrement X
+- `DCY` - Decrement Y
+- `DEC` - Decrement membory address
 
 ## Arithmetic
 
-- ADC - Add with carry
-- SBC - Subtract with carry
-- ASL - Arithmetic left shift (multiply by 2), 0 is shifted in and high bit sets the C flag. Works on the A register with no operand or directly on memory.
-- ROL - Rotate left, like ASL but C flag is shifted into low bit
-- LSR - Logical shift right (divide by 2), 0 is shifted into the high bit and low bit is set to the carry. Carry is the remainder. Works on the A register with no operand or directly on memory.
-- ROR - Rotate right. Same as LSR except C is shifted into the high bit.
+- `ADC` - Add with carry
+- `SBC` - Subtract with carry
+- `ASL` - Arithmetic left shift (multiply by 2), 0 is shifted in and high bit sets the C flag. Works on the A register with no operand or directly on memory.
+- `ROL` - Rotate left, like `ASL` but C flag is shifted into low bit
+- `LSR` - Logical shift right (divide by 2), 0 is shifted into the high bit and low bit is set to the carry. Carry is the remainder. Works on the A register with no operand or directly on memory.
+- `ROR` - Rotate right. Same as `LSR` except C is shifted into the high bit.
 
 ### Logical operators
 
-- AND - Logical AND with A (turns bits off)
-- ORA - Logical OR with A (turns bits on)
-- EOR - Exclusive OR (XOR) with A (flips specific bits)
+- `AND` - Logical AND with A (turns bits off)
+- `ORA` - Logical OR with A (turns bits on)
+- `EOR` - Exclusive OR (XOR) with A (flips specific bits)
 
 ### Transfer
 
-- TAX - Transfer A to X
-- TXA - Transfer X to A
-- TAY - Transfer A to Y
-- TYA - Transfer Y to A
+- `TAX` - Transfer A to X
+- `TXA` - Transfer X to A
+- `TAY` - Transfer A to Y
+- `TYA` - Transfer Y to A
 
 ### Set and clear status bits
 
-- SEC - Set carry bit
-- CLC - Clear carry bit
-- CLV - Clear overflow
-- SED - Set decimal (always off on Commodore machines)
-- CLD - Clear decimal
-- SEI - Set interupt disable
-- CLI - Clear interupt disable
+- `SEC` - Set carry bit
+- `CLC` - Clear carry bit
+- `CLV` - Clear overflow
+- `SED` - Set decimal (always off on Commodore machines)
+- `CLD` - Clear decimal
+- `SEI` - Set interupt disable
+- `CLI` - Clear interupt disable
 
 ### Stack
 
-- PHA - Push A to the stack
-- PLA - Pull from the stack to A
-- PHP - Push processor status to the stack
-- PLP - Pull processor status from the stack
+- `PHA` - Push A to the stack
+- `PLA` - Pull from the stack to A
+- `PHP` - Push processor status to the stack
+- `PLP` - Pull processor status from the stack
 
 ### Interupts
 
-- IRQ - Interupt request, calls routine at $FFFE/F
-- NMI - Non-maskable interupt, calls routine at $FFFA/B.
-- BRK - Software interupt, calls routine at $FFFE/F.
-- RTI - Return from Interupt
-- SEI - Set interupt disable, does not work for NMI
-- CLI - Clear interupt disable
+- `IRQ` - Interupt request, calls routine at $FFFE/F
+- `NMI` - Non-maskable interupt, calls routine at $FFFA/B.
+- `BRK` - Software interupt, calls routine at $FFFE/F.
+- `RTI` - Return from Interupt
+- `SEI` - Set interupt disable, does not work for NMI
+- `CLI` - Clear interupt disable
 
-NMI is used for the RESTORE key and RS-232 communication on the C64.
+`NMI` is used for the RESTORE key and RS-232 communication on the C64.
 
-Bit 4 of the status register distinguishes a software BRK from a hardware IRQ.
-The default interupt vector on a C64 is $0314 and $0315
+Bit 4 of the status register distinguishes a software `BRK` from a hardware `IRQ`.
+The default interupt vector on a C64 is `$0314` and `$0315`
 
 On the C64 we can also temporaily disable interupts at the source in the IA chip
-by setting $7F to address $DC0D then renabling by setting $81 to the same address.
+by setting `$7F` to address `$DC0D` then renabling by setting `$81` to the same address.
 This can also be done in BASIC,
 
 ```basic
@@ -100,32 +100,32 @@ POKE 56333,129
 
 ### Misc
 
-- JSR - Jump to subroutine
-- BRK - Break to the monitor
-- NOP - Do nothing. Useful for reserving space or toggleing with a BRK for debugging
-- RTS - Return from subroutine
+- `JSR` - Jump to subroutine
+- `BRK` - Break to the monitor
+- `NOP` - Do nothing. Useful for reserving space or toggleing with a BRK for debugging
+- `RTS` - Return from subroutine
 
 ## Addressing Modes
 
-- Implied - There is no address, it is implied by the instruction
-- Accumulator - Effectively the same as implied but works on the accumulator
-- Immediate - Provide a constant value (#$32)
-- Absolute - Provide a full memory address ($0804)
-- Zero-Page - Provide one byte in the zero page ($00 to $FF)
-- Absolute, Indexed - An absolute address offset by the X or Y register ($8084,x)
-- Zero-Page, Indexed - A zero-page address offset by the X or Y register. ($E0,x) Supports negative indexes when the register is negative.
-- Relative - Jump a relative distance forward or backward from branch commands.
-- Indirect - JMP to the address stored at an address JMP ($1234)
-- Indirect, Indexed - The indirect address must be in the zero page, two bytes, low byte first. Then indexed with the Y register to form the final effective address. LDA ($C0),Y
-- Indexed, Indirect - Uses the X register and the indexing takes place first. LDA ($C0,X)
+- **Implied** - There is no address, it is implied by the instruction
+- **Accumulator** - Effectively the same as implied but works on the accumulator
+- **Immediate** - Provide a constant value (#$32)
+- **Absolute** - Provide a full memory address ($0804)
+- **Zero-Page** - Provide one byte in the zero page ($00 to $FF)
+- **Absolute, Indexed** - An absolute address offset by the X or Y register ($8084,x)
+- **Zero-Page, Indexed** - A zero-page address offset by the X or Y register. ($E0,x) Supports negative indexes when the register is negative.
+- **Relative** - Jump a relative distance forward or backward from branch commands.
+- **Indirect** - JMP to the address stored at an address JMP ($1234)
+- **Indirect, Indexed** - The indirect address must be in the zero page, two bytes, low byte first. Then indexed with the Y register to form the final effective address. LDA ($C0),Y
+- **Indexed, Indirect** - Uses the X register and the indexing takes place first. LDA ($C0,X)
 
 ## Status Flags
 
-- Z - Zero or equals because after a compare it is set on if equal
-- C - Carry or greater/equal because after a compare it is set if register is >=. If we are using unsigned numbers, C indicates overflow.
-- N - Negative or high bit set
-- V - oVerflow (signed arithmetic overflow), seldom used. If we are using signed numbers, V indicates overflow.
-- SR - Status Registers, the above flags and three others, B - Break, D - Decimal Mode, I - Interupt disable.
+- `Z` - Zero or equals because after a compare it is set on if equal
+- `C` - Carry or greater/equal because after a compare it is set if register is >=. If we are using unsigned numbers, C indicates overflow.
+- `N` - Negative or high bit set
+- `V` - oVerflow (signed arithmetic overflow), seldom used. If we are using signed numbers, V indicates overflow.
+- `SR` - Status Registers, the above flags and three others, B - Break, D - Decimal Mode, I - Interupt disable.
 
 |   |   |   |   |   |   |   |   |
 |---|---|---|---|---|---|---|---|
@@ -144,18 +144,18 @@ POKE 56333,129
 - $8E - Switch to uppercase mode
 - $93 - Clear screen
 
-- ASCII number AND $0F = Decimal Number
-- Decimal number OR $30 = ASCII character
+ASCII number `AND $0F` changes it to a Decimal Number. In the other direction,
+Decimal number `ORA $30` turns it into an ASCII character.
 
 ## Monitor Commands
 
-- SYS 8 - Load monitor from BASIC
-- X - Exit to BASIC
-- M 1000 1010 - Display memory from 1000 to 1010
-- D 1000 1010 - Disassemble memory from 1000 to 1010
-- A 033C LDA $0380 - Assemble at address 033C
-- R - Display registers
-- G 033C - Go to 033C and start running the program
+- `SYS 8` - Load monitor from BASIC
+- `X` - Exit to BASIC
+- `M 1000 1010` - Display memory from 1000 to 1010
+- `D 1000 1010` - Disassemble memory from 1000 to 1010
+- `A 033C LDA $0380` - Assemble at address 033C
+- `R` - Display registers
+- `G 033C` - Go to 033C and start running the program
 - `S "PROGRAM",08,033C,0361` - Save
 - `L "PROGRAM",08,033C,0361` - Load
 
@@ -173,9 +173,9 @@ POKE 56333,129
 
 ## Memory Map
 
-- $00-$FF - Zero-page. (see below)
-- $033C - Cassette Buffer
-- $0400-$07E7 - Screen memory, 40x25 chars, each line is $28 long
+- `$00-$FF` - Zero-page. (see below)
+- `$033C` - Cassette Buffer
+- `$0400-$07E7` - Screen memory, 40x25 chars, each line is $28 long
 
 Zero-page - most of the ZP is used by the ROM. The C64 has four bytes available at $FC to $FF. You can also search the memory map for "work areas" or "utility pointers".
 
@@ -248,3 +248,5 @@ For multibyte numbers subtract and look at the carry flag. If the first number i
 You can ASL the low order byte and ROL the high bytes to multiply by two. Repeat to multiply by 4 then 8, etc.
 
 To multiply by ten multiply by 2 twice, then add the original number (bringing you to 5x) then multiply by two once more.
+
+For a deeper look at multiplication and division, see [Multiplying and Dividing on the 6502](https://llx.com/Neil/a2/mult.html).

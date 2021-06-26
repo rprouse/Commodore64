@@ -9,6 +9,7 @@ I've also been writing [6502 Assembly Notes](src/asm/Readme.md) as I've been lea
 ## Contents
 
 - [6502 Assembly Notes](Assembly.md)
+- [Commodore 64 Tips](Commodore64.md)
 - [1514 Disk Commands](Disk.md)
 
 ## Source
