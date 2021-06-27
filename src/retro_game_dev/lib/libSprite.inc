@@ -14,6 +14,8 @@ SpriteAnimsMax := 8
 ;===============================================================================
 ; Variables
 
+.segment "DATA"
+
 spriteAnimsActive:       .fill SpriteAnimsMax, 0
 spriteAnimsStartFrame:   .fill SpriteAnimsMax, 0
 spriteAnimsFrame:        .fill SpriteAnimsMax, 0
@@ -32,6 +34,7 @@ spriteNumberMask:  .byte %00000001, %00000010, %00000100, %00001000, %00010000, 
 ;===============================================================================
 ; Macros/Subroutines
 
+.segment "CODE"
 
 .macro LIBSPRITE_DIDCOLLIDEWITHSPRITE_A sprite
         ; /1 = Sprite Number (Address)

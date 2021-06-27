@@ -33,6 +33,8 @@ LightGrey       := $0F
 ;===============================================================================
 ; Variables
 
+.segment "DATA"
+
 ;Operator Calc
 
 ; ScreenRAMRowStartLow: ;  SCREENRAM + 40*0, 40*1, 40*2 ... 40*24
@@ -86,6 +88,9 @@ screenScrollXValue: .byte 0
 
 ;===============================================================================
 ; Macros/Subroutines
+
+.segment "CODE"
+
 .ifdef HASMAP
 .macro LIBSCREEN_COPYMAPROW_VVA maprow, scrow, offset
                         ; /1 = Map Row          (Value)

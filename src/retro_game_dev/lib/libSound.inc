@@ -102,6 +102,8 @@ CmdEnd                  := 8
 ;===============================================================================
 ; Variables
 
+.segment "DATA"
+
 soundVoiceActive:       .byte 0, 0, 0
 soundVoiceCmdPtrHigh:   .byte 0, 0, 0
 soundVoiceCmdPtrLow:    .byte 0, 0, 0
@@ -191,6 +193,8 @@ soundEndingLow:  .byte <soundEnding
 
 ;===============================================================================
 ; Macros/Subroutines
+
+.segment "CODE"
 
 libSoundInit:
         ; Clear all the SID registers

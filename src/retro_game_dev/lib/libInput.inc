@@ -24,6 +24,8 @@ FireDelayMax            := 30
 ;===============================================================================
 ; Variables
 
+.segment "DATA"
+
 gameportLastFrame:      .byte 0
 gameportThisFrame:      .byte 0
 gameportDiff:           .byte 0
@@ -79,6 +81,8 @@ notheld:
 .endmacro ; test with bne on return
 
 ;===============================================================================
+
+.segment "CODE"
 
 libInputUpdate:
 

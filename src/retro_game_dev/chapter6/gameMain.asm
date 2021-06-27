@@ -11,6 +11,9 @@
 
 ;===============================================================================
 ; Initialize
+
+.segment "CODE"
+
 gameMainInit:
         ; Turn off interrupts to stop LIBSCREEN_WAIT failing every so
         ; often when the kernal interrupt syncs up with the scanline test
