@@ -19,6 +19,10 @@ gameMainInit:
         ; often when the kernal interrupt syncs up with the scanline test
         sei
 
+        ; Switch to lowercase mode
+        lda $17 ; UPPERCASE MODE is $25
+        sta VMCSB
+
         ; Disable run/stop + restore keys
         lda #$FC
         sta $0328
