@@ -11,13 +11,15 @@ endif
 $(BUILD_FOLDER):
 	$(MKDIR_BINARY) $(MKDIR_FLAGS) $(@)
 
-# Compiles all ASM files in a given
 chapter6 : $(BUILD_FOLDER)
 	$(CL65_BINARY) $(CL65_FLAGS) -o $(BUILD_FOLDER)/chapter6.prg -l $(BUILD_FOLDER)/chapter6.list chapter6/gameMain.asm
 
+chapter7 : $(BUILD_FOLDER)
+	$(CL65_BINARY) $(CL65_FLAGS) -o $(BUILD_FOLDER)/chapter7.prg -l $(BUILD_FOLDER)/chapter7.list chapter7/gameMain.asm
+
 default: clean all
 
-all: chapter6
+all: chapter6 chapter7
 
 clean:
 	$(RM_BINARY) $(RM_FLAGS) $(BUILD_FOLDER)
