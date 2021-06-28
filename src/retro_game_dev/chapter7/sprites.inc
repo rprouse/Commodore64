@@ -5,7 +5,7 @@
 .segment "DATA"
 
 ; sprite 0 / singlecolor / color: $03
-sprite_0:
+playerSprite:
 .byte $00,$00,$00,$00,$18,$00,$00,$18
 .byte $00,$00,$18,$00,$00,$3c,$00,$00
 .byte $24,$00,$00,$24,$00,$00,$24,$00
@@ -16,7 +16,7 @@ sprite_0:
 .byte $3c,$00,$3c,$00,$00,$3c,$00,$03
 
 ; sprite 1 / multicolor / color: $03
-sprite_1:
+playerSpriteMC:
 .byte $00,$00,$00,$00,$20,$00,$00,$20
 .byte $00,$00,$20,$00,$00,$a8,$00,$00
 .byte $b8,$00,$00,$b8,$00,$00,$b8,$00
