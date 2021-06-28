@@ -29,13 +29,13 @@ gameMainInit:
 
         ; Set border and background colors
         ; The last 3 parameters are not used yet
-        LIBSCREEN_SETCOLORS Blue, White, Black, Black, Black
+        LIBSCREEN_SETCOLORS Black, Black, Black, Black, Black
 
         ; Fill 1000 .bytes (40x25) of screen memory
         LIBSCREEN_SET1000 SCREENRAM, 'a' ; 'a' maps to char 1
 
         ; Fill 1000 .bytes (40x25) of color memory
-        LIBSCREEN_SET1000 COLORRAM, Black
+        LIBSCREEN_SET1000 COLORRAM, Red
 
 ;===============================================================================
 ; Update
@@ -46,8 +46,3 @@ gMLoop:
         ; Game update code goes here
         ;dec EXTCOL ; end code timer reset border color
         jmp gMLoop
-
-
-
-
-
