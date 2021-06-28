@@ -6,9 +6,14 @@
 ;==============================================================================
 ; Includes
 
+.ifndef _LIB_INCLUDES_
+_LIB_INCLUDES_ = 1
+
 .include "libMemory.inc"
 .include "libMath.inc"
 .include "libInput.inc"
 .include "libScreen.inc"
 .include "libSound.inc"
 .include "libSprite.inc"
+
+.endif ; _LIB_INCLUDES_

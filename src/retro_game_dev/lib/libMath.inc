@@ -6,7 +6,10 @@
 ;==============================================================================
 ; Includes
 
-; .include "libMemory.inc"
+.ifndef _LIB_MATH_
+_LIB_MATH_ = 1
+
+.include "libMemory.inc"
 
 ;===============================================================================
 ; Macros/Subroutines
@@ -214,3 +217,5 @@ skip:
         sbc #num2h      ; Subtract borrow and MSB of NUM2
         sta subh        ; Store sum in MSB of sum
 .endmacro
+
+.endif ; _LIB_MATH_

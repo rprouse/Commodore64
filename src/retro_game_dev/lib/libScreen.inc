@@ -6,8 +6,11 @@
 ;==============================================================================
 ; Includes
 
-; .include "libMemory.inc"
-; .include "libMath.inc"
+.ifndef _LIB_SCREEN_
+_LIB_SCREEN_ = 1
+
+.include "libMemory.inc"
+.include "libMath.inc"
 
 ;===============================================================================
 ; Constants
@@ -690,3 +693,5 @@ loop:   lda #line               ; Scanline -> A
         cmp RASTER              ; Compare A to current raster line
         bne loop               ; Loop if raster line not reached 255
 .endmacro
+
+.endif ; _LIB_SCREEN_

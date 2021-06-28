@@ -6,6 +6,11 @@
 ;==============================================================================
 ; Includes
 
+.ifndef _LIB_SPRITES_
+_LIB_SPRITES_ = 1
+
+.include "../lib/libMemory.inc"
+
 ;===============================================================================
 ; Constants
 
@@ -16,14 +21,14 @@ SpriteAnimsMax := 8
 
 .segment "DATA"
 
-spriteAnimsActive:       .fill SpriteAnimsMax, 0
-spriteAnimsStartFrame:   .fill SpriteAnimsMax, 0
-spriteAnimsFrame:        .fill SpriteAnimsMax, 0
-spriteAnimsEndFrame:     .fill SpriteAnimsMax, 0
-spriteAnimsStopFrame:    .fill SpriteAnimsMax, 0
-spriteAnimsSpeed:        .fill SpriteAnimsMax, 0
-spriteAnimsDelay:        .fill SpriteAnimsMax, 0
-spriteAnimsLoop:         .fill SpriteAnimsMax, 0
+spriteAnimsActive:       .res SpriteAnimsMax, 0
+spriteAnimsStartFrame:   .res SpriteAnimsMax, 0
+spriteAnimsFrame:        .res SpriteAnimsMax, 0
+spriteAnimsEndFrame:     .res SpriteAnimsMax, 0
+spriteAnimsStopFrame:    .res SpriteAnimsMax, 0
+spriteAnimsSpeed:        .res SpriteAnimsMax, 0
+spriteAnimsDelay:        .res SpriteAnimsMax, 0
+spriteAnimsLoop:         .res SpriteAnimsMax, 0
 
 spriteAnimsCurrent:             .byte 0
 spriteAnimsFrameCurrent:        .byte 0
@@ -194,10 +199,12 @@ done:
 .macro LIBSPRITE_SETMULTICOLORS_VV color1, color2
                 ; /1 = Color 1          (Value)
                 ; /2 = Color 2          (Value)
+
         lda #color1
         sta SPMC0
         lda #color2
         sta SPMC1
+
 .endmacro
 
 ;===============================================================================
@@ -312,7 +319,7 @@ lSoUActive:
         lda spriteAnimsEndFrame,X
         sta spriteAnimsEndFrameCurrent
 
-        LIBSPRITE_SETFRAME_AA(spriteAnimsCurrent, spriteAnimsFrameCurrent)
+        LIBSPRITE_SETFRAME_AA spriteAnimsCurrent, spriteAnimsFrameCurrent
 
         dec spriteAnimsDelay,X
         bne lSoUSkip
@@ -342,7 +349,7 @@ lSoUDestroy:
         ; turn off
         lda #False
         sta spriteAnimsActive,X
-        LIBSPRITE_ENABLE_AV(spriteAnimsCurrent, False)
+        LIBSPRITE_ENABLE_AV spriteAnimsCurrent, False
 
 lSoUSkip:
         ; loop for each sprite anim
@@ -354,3 +361,5 @@ lSoUSkip:
 lSoUFinished:
 
         rts
+
+.endif ; _LIB_SPRITES_

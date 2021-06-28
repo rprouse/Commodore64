@@ -6,7 +6,10 @@
 ;==============================================================================
 ; Includes
 
-; .include "libMemory.inc"
+.ifndef _LIB_INPUT_
+_LIB_INPUT_ = 1
+
+.include "libMemory.inc"
 
 ;===============================================================================
 ; Constants
@@ -102,3 +105,5 @@ lIUDelayZero:
         sta gameportLastFrame
 
         rts
+
+.endif ; _LIB_INPUT_

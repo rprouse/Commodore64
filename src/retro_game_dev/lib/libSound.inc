@@ -6,8 +6,11 @@
 ;==============================================================================
 ; Includes
 
-; .include "libMemory.inc"
-; .include "libMath.inc"
+.ifndef LIB_SOUND
+LIB_SOUND = 1
+
+.include "libMemory.inc"
+.include "libMath.inc"
 
 ;===============================================================================
 ; Constants
@@ -529,3 +532,5 @@ lSUEnd:
         jmp lSUDone
 skip:
 .endmacro
+
+.endif ; _LIB_SOUND_
