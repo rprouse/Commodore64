@@ -1,6 +1,6 @@
 ;==============================================================================
 ; RetroGameDev Library C64 v1
-;   (C)2017 by Derek Morris <https:;retrogamedev.com>
+;   (C)2017 by Derek Morris <https://retrogamedev.com>
 ;   Conversion to KickAss 5.x by Marcelo Lv Cabral <http://lvcabral.com>
 ;   Conversion to ca65 by Rob Prouse <https://alteridem.net>
 ;==============================================================================
@@ -38,72 +38,74 @@ fireBlip:               .byte 1 ; reversed logic to match other input
 ;===============================================================================
 ; Macros/Subroutines
 
-.macro LIBINPUT_GETHELD mask ; (buttonMask)
+.segment "CODE"
 
-        lda gameportThisFrame
-        and #mask
+;===============================================================================
+; /1 (buttonMask)
+.macro LIBINPUT_GETHELD mask
+    lda gameportThisFrame
+    and #mask
 .endmacro ; test with bne on return
 
 ;===============================================================================
-
 .macro LIBINPUT_GETFIREPRESSED
+.local held
+.local notfirst
+.local notheld
+    lda #1
+    sta fireBlip ; clear Fire flag
 
-        lda #1
-        sta fireBlip ; clear Fire flag
-
-        ; is fire held?
-        lda gameportThisFrame
-        and #GameportFireMask
-        bne notheld
+    ; is fire held?
+    lda gameportThisFrame
+    and #GameportFireMask
+    bne notheld
 
 held:
-        ; is this 1st frame?
-        lda gameportDiff
-        and #GameportFireMask
+    ; is this 1st frame?
+    lda gameportDiff
+    and #GameportFireMask
 
-        beq notfirst
-        lda #0
-        sta fireBlip ; Fire
+    beq notfirst
+    lda #0
+    sta fireBlip ; Fire
 
-        ; reset delay
-        lda #FireDelayMax
-        sta fireDelay
+    ; reset delay
+    lda #FireDelayMax
+    sta fireDelay
 notfirst:
 
-        ; is the delay zero?
-        lda fireDelay
-        bne notheld
-        lda #0
-        sta fireBlip ; Fire
-        ; reset delay
-        lda #FireDelayMax
-        sta fireDelay
+    ; is the delay zero?
+    lda fireDelay
+    bne notheld
+    lda #0
+    sta fireBlip ; Fire
+    ; reset delay
+    lda #FireDelayMax
+    sta fireDelay
 
 notheld:
-        lda fireBlip
+    lda fireBlip
 .endmacro ; test with bne on return
 
 ;===============================================================================
-
-.segment "CODE"
 
 libInputUpdate:
 
-        lda JoystickRegister
-        sta gameportThisFrame
+    lda JoystickRegister
+    sta gameportThisFrame
 
-        eor gameportLastFrame
-        sta gameportDiff
+    eor gameportLastFrame
+    sta gameportDiff
 
 
-        lda fireDelay
-        beq lIUDelayZero
-        dec fireDelay
-lIUDelayZero:
+    lda fireDelay
+    beq @lIUDelayZero
+    dec fireDelay
+@lIUDelayZero:
 
-        lda gameportThisFrame
-        sta gameportLastFrame
+    lda gameportThisFrame
+    sta gameportLastFrame
 
-        rts
+    rts
 
 .endif ; _LIB_INPUT_

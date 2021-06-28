@@ -1,6 +1,6 @@
 ;==============================================================================
 ; RetroGameDev Library C64 v1
-;   (C)2017 by Derek Morris <https:;retrogamedev.com>
+;   (C)2017 by Derek Morris <https://retrogamedev.com>
 ;   Conversion to KickAss 5.x by Marcelo Lv Cabral <http://lvcabral.com>
 ;   Conversion to ca65 by Rob Prouse <https://alteridem.net>
 ;==============================================================================
@@ -116,81 +116,85 @@ soundVoiceDelay:        .byte 0, 0, 0
 ;===============================================================================
 ; Pre-made sound effect comand buffers
 
-soundFiring:    .byte CmdAttackDecay, Attack_2ms+Decay_6ms
-                .byte CmdSustainRelease, Sustain_Vol10+Release_6ms
-                .byte CmdWave, SawtoothStart
-                .byte CmdFrequencyHigh, 18
-                .byte CmdFrequencyLow, 209
-                .byte CmdDelay, 5
-                .byte CmdWave, SawtoothEnd
+soundFiring:
+    .byte CmdAttackDecay, Attack_2ms+Decay_6ms
+    .byte CmdSustainRelease, Sustain_Vol10+Release_6ms
+    .byte CmdWave, SawtoothStart
+    .byte CmdFrequencyHigh, 18
+    .byte CmdFrequencyLow, 209
+    .byte CmdDelay, 5
+    .byte CmdWave, SawtoothEnd
 
-                .byte CmdAttackDecay, Attack_2ms+Decay_6ms
-                .byte CmdSustainRelease, Sustain_Vol10+Release_6ms
-                .byte CmdWave, SawtoothStart
-                .byte CmdFrequencyHigh, 22
-                .byte CmdFrequencyLow, 96
-                .byte CmdDelay, 5
-                .byte CmdWave, SawtoothEnd
-                .byte CmdEnd
+    .byte CmdAttackDecay, Attack_2ms+Decay_6ms
+    .byte CmdSustainRelease, Sustain_Vol10+Release_6ms
+    .byte CmdWave, SawtoothStart
+    .byte CmdFrequencyHigh, 22
+    .byte CmdFrequencyLow, 96
+    .byte CmdDelay, 5
+    .byte CmdWave, SawtoothEnd
+    .byte CmdEnd
 soundFiringHigh: .byte >soundFiring
 soundFiringLow:  .byte <soundFiring
 
 ; --------------------------------------------------------
 
-soundExplosion: .byte CmdWave, NoiseEnd
-                .byte CmdAttackDecay, Attack_38ms+Decay_114ms
-                .byte CmdSustainRelease, Sustain_Vol10+Release_300ms
-                .byte CmdFrequencyHigh, 21
-                .byte CmdFrequencyLow, 31
-                .byte CmdWave, NoiseStart
-                .byte CmdDelay, 20
-                .byte CmdWave, NoiseEnd
-                .byte CmdEnd
+soundExplosion:
+    .byte CmdWave, NoiseEnd
+    .byte CmdAttackDecay, Attack_38ms+Decay_114ms
+    .byte CmdSustainRelease, Sustain_Vol10+Release_300ms
+    .byte CmdFrequencyHigh, 21
+    .byte CmdFrequencyLow, 31
+    .byte CmdWave, NoiseStart
+    .byte CmdDelay, 20
+    .byte CmdWave, NoiseEnd
+    .byte CmdEnd
 soundExplosionHigh: .byte >soundExplosion
 soundExplosionLow:  .byte <soundExplosion
 
 ; --------------------------------------------------------
 
-soundPickup:    .byte CmdAttackDecay, Attack_2ms+Decay_6ms
-                .byte CmdSustainRelease, Sustain_Vol10+Release_6ms
-                .byte CmdFrequencyHigh, 84
-                .byte CmdFrequencyLow, 125
-                .byte CmdWave, SawtoothStart
-                .byte CmdDelay, 5
-                .byte CmdWave, SawtoothEnd
+soundPickup:
+    .byte CmdAttackDecay, Attack_2ms+Decay_6ms
+    .byte CmdSustainRelease, Sustain_Vol10+Release_6ms
+    .byte CmdFrequencyHigh, 84
+    .byte CmdFrequencyLow, 125
+    .byte CmdWave, SawtoothStart
+    .byte CmdDelay, 5
+    .byte CmdWave, SawtoothEnd
 
-                .byte CmdAttackDecay, Attack_2ms+Decay_6ms
-                .byte CmdSustainRelease, Sustain_Vol10+Release_300ms
-                .byte CmdFrequencyHigh, 100
-                .byte CmdFrequencyLow, 121
-                .byte CmdWave, SawtoothStart
-                .byte CmdDelay, 5
-                .byte CmdWave, SawtoothEnd
-                .byte CmdEnd
+    .byte CmdAttackDecay, Attack_2ms+Decay_6ms
+    .byte CmdSustainRelease, Sustain_Vol10+Release_300ms
+    .byte CmdFrequencyHigh, 100
+    .byte CmdFrequencyLow, 121
+    .byte CmdWave, SawtoothStart
+    .byte CmdDelay, 5
+    .byte CmdWave, SawtoothEnd
+    .byte CmdEnd
 soundPickupHigh: .byte >soundPickup
 soundPickupLow:  .byte <soundPickup
 
 ; --------------------------------------------------------
 
-soundEnding:    .byte CmdPulseWidthHigh, 8
-                .byte CmdPulseWidthLow, 128
-                .byte CmdFrequencyHigh, 56
-                .byte CmdFrequencyLow, 99
+soundEnding:
+    .byte CmdPulseWidthHigh, 8
+    .byte CmdPulseWidthLow, 128
+    .byte CmdFrequencyHigh, 56
+    .byte CmdFrequencyLow, 99
 
-                .byte CmdAttackDecay, Attack_2ms+Decay_6ms
-                .byte CmdSustainRelease, Sustain_Vol10+Release_6ms
-                .byte CmdWave, PulseStart
-                .byte CmdDelay, 5
-                .byte CmdWave, PulseEnd
+    .byte CmdAttackDecay, Attack_2ms+Decay_6ms
+    .byte CmdSustainRelease, Sustain_Vol10+Release_6ms
+    .byte CmdWave, PulseStart
+    .byte CmdDelay, 5
+    .byte CmdWave, PulseEnd
 
-                .byte CmdDelay, 1
+    .byte CmdDelay, 1
 
-                .byte CmdAttackDecay, Attack_2ms+Decay_6ms
-                .byte CmdSustainRelease, Sustain_Vol10+Release_750ms
-                .byte CmdWave, PulseStart
-                .byte CmdDelay, 30
-                .byte CmdWave, PulseEnd
-                .byte CmdEnd
+    .byte CmdAttackDecay, Attack_2ms+Decay_6ms
+    .byte CmdSustainRelease, Sustain_Vol10+Release_750ms
+    .byte CmdWave, PulseStart
+    .byte CmdDelay, 30
+    .byte CmdWave, PulseEnd
+    .byte CmdEnd
 soundEndingHigh: .byte >soundEnding
 soundEndingLow:  .byte <soundEnding
 
@@ -201,335 +205,363 @@ soundEndingLow:  .byte <soundEnding
 
 libSoundInit:
         ; Clear all the SID registers
-        ldx #0
-        lda #0
+    ldx #0
+    lda #0
 @loop1:  sta FRELO1,X
-        inx
-        cpx #$19
-        bcc @loop1
+    inx
+    cpx #$19
+    bcc @loop1
 
-        ldx #0
-        lda #0
+    ldx #0
+    lda #0
 @loop2:  sta FRELO2,X
-        inx
-        cpx #$19
-        bcc @loop2
+    inx
+    cpx #$19
+    bcc @loop2
 
-        ldx #0
-        lda #0
+    ldx #0
+    lda #0
 @loop3:  sta FRELO3,X
-        inx
-        cpx #$19
-        bcc @loop3
+    inx
+    cpx #$19
+    bcc @loop3
 
-        ; Volume & Filter Select
-        lda #15
-        sta SIGVOL
+    ; Volume & Filter Select
+    lda #15
+    sta SIGVOL
 
-        rts
+    rts
 
 ;===============================================================================
-
+; /1 = Voice                   (Value)
+; /2 = Command Buffer Ptr High (Address)
+; /3 = Command Buffer Ptr Low  (Address)
 .macro LIBSOUND_PLAY_VAA voice, ptrh, ptrl
-                ; /1 = Voice                   (Value)
-                ; /2 = Command Buffer Ptr High (Address)
-                ; /3 = Command Buffer Ptr Low  (Address)
+    ldx #voice
 
-        ldx #voice
+    lda ptrh
+    sta soundVoiceCmdPtrHigh,X
 
-        lda ptrh
-        sta soundVoiceCmdPtrHigh,X
+    lda ptrl
+    sta soundVoiceCmdPtrLow,X
 
-        lda ptrl
-        sta soundVoiceCmdPtrLow,X
+    lda #True
+    sta soundVoiceActive,X
 
-        lda #True
-        sta soundVoiceActive,X
-
-        lda #0
-        sta soundVoiceCmdIndex,X
+    lda #0
+    sta soundVoiceCmdIndex,X
 .endmacro
 
 ;===============================================================================
 
 libSoundUpdate:
 
-        ldx #0
-lSULoop:
-        lda soundVoiceActive,X
-        bne lSUActive
-        jmp lSUDone
-lSUActive:
-        lda soundVoiceDelay,X
-        beq lSUProcess
-        dec soundVoiceDelay,X
-        jmp lSUDone
+    ldx #0
+@lSULoop:
+    lda soundVoiceActive,X
+    bne @lSUActive
+    jmp @lSUDone
+@lSUActive:
+    lda soundVoiceDelay,X
+    beq lSUProcess
+    dec soundVoiceDelay,X
+    jmp lSUDone
 lSUProcess:
 
-        lda soundVoiceCmdPtrLow,X ; load low address byte
-        sta ZeroPageLow
+    lda soundVoiceCmdPtrLow,X ; load low address byte
+    sta ZeroPageLow
 
-        lda soundVoiceCmdPtrHigh,X ; load high address byte
-        sta ZeroPageHigh
+    lda soundVoiceCmdPtrHigh,X ; load high address byte
+    sta ZeroPageHigh
 
-        ldy soundVoiceCmdIndex,X ; load x position into Y register
-        lda (ZeroPageLow),Y     ; load the command
+    ldy soundVoiceCmdIndex,X ; load x position into Y register
+    lda (ZeroPageLow),Y     ; load the command
 
 
-lSUProcessLoop:
-        ; process the command
-        LIBSOUND_PROCESSWAVE()
-        LIBSOUND_PROCESSATTACKDECAY()
-        LIBSOUND_PROCESSSUSTAINRELEASE()
-        LIBSOUND_PROCESSFREQUENCYHIGH()
-        LIBSOUND_PROCESSFREQUENCYLOW()
-        LIBSOUND_PROCESSPULSEWIDTHHIGH()
-        LIBSOUND_PROCESSPULSEWIDTHLOW()
-        LIBSOUND_PROCESSDELAY()
-        LIBSOUND_PROCESSEND()
-        jmp lSUProcessLoop
+@lSUProcessLoop:
+    ; process the command
+    LIBSOUND_PROCESSWAVE()
+    LIBSOUND_PROCESSATTACKDECAY()
+    LIBSOUND_PROCESSSUSTAINRELEASE()
+    LIBSOUND_PROCESSFREQUENCYHIGH()
+    LIBSOUND_PROCESSFREQUENCYLOW()
+    LIBSOUND_PROCESSPULSEWIDTHHIGH()
+    LIBSOUND_PROCESSPULSEWIDTHLOW()
+    LIBSOUND_PROCESSDELAY()
+    LIBSOUND_PROCESSEND()
+    jmp @lSUProcessLoop
 
-lSUDone:
-        inx
-        cpx #3
-        beq lSUFinished
-        jmp lSULoop
-lSUFinished:
+@lSUDone:
+    inx
+    cpx #3
+    beq @lSUFinished
+    jmp @lSULoop
+@lSUFinished:
 
-        rts
+    rts
 
 ;===============================================================================
-
 .macro LIBSOUND_PROCESSWAVE
+.local lSUWave
+.local reg2
+.local reg3
+.local regdone
+.local skip
 
 lSUWave:
-        cmp #CmdWave
-        bne skip
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    cmp #CmdWave
+    bne skip
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 
-        cpx #0
-        bne reg2
-        sta VCREG1
-        jmp regdone
+    cpx #0
+    bne reg2
+    sta VCREG1
+    jmp regdone
 reg2:
-        cpx #1
-        bne reg3
-        sta VCREG2
-        jmp regdone
+    cpx #1
+    bne reg3
+    sta VCREG2
+    jmp regdone
 reg3:
-        sta VCREG3
+    sta VCREG3
 regdone:
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 skip:
 .endmacro
 
 ;===============================================================================
-
 .macro LIBSOUND_PROCESSATTACKDECAY
+.local lSUAttackDecay
+.local reg2
+.local reg3
+.local regdone
+.local skip
 
 lSUAttackDecay:
-        cmp #CmdAttackDecay
-        bne skip
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    cmp #CmdAttackDecay
+    bne skip
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 
-        cpx #0
-        bne reg2
-        sta ATDCY1
-        jmp regdone
+    cpx #0
+    bne reg2
+    sta ATDCY1
+    jmp regdone
 reg2:
-        cpx #1
-        bne reg3
-        sta ATDCY2
-        jmp regdone
+    cpx #1
+    bne reg3
+    sta ATDCY2
+    jmp regdone
 reg3:
-        sta ATDCY3
+    sta ATDCY3
 regdone:
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 skip:
 .endmacro
 
 ;===============================================================================
-
 .macro LIBSOUND_PROCESSSUSTAINRELEASE
+.local lSUSustainRelease
+.local reg2
+.local reg3
+.local regdone
+.local skip
 
 lSUSustainRelease:
-        cmp #CmdSustainRelease
-        bne skip
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    cmp #CmdSustainRelease
+    bne skip
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 
-        cpx #0
-        bne reg2
-        sta SUREL1
-        jmp regdone
+    cpx #0
+    bne reg2
+    sta SUREL1
+    jmp regdone
 reg2:
-        cpx #1
-        bne reg3
-        sta SUREL2
-        jmp regdone
+    cpx #1
+    bne reg3
+    sta SUREL2
+    jmp regdone
 reg3:
-        sta SUREL3
+    sta SUREL3
 regdone:
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 skip:
 .endmacro
 
 ;===============================================================================
-
 .macro LIBSOUND_PROCESSFREQUENCYHIGH
+.local lSUFrequencyHigh
+.local reg2
+.local reg3
+.local regdone
+.local skip
 
 lSUFrequencyHigh:
-        cmp #CmdFrequencyHigh
-        bne skip
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    cmp #CmdFrequencyHigh
+    bne skip
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 
-        cpx #0
-        bne reg2
-        sta FREHI1
-        jmp regdone
+    cpx #0
+    bne reg2
+    sta FREHI1
+    jmp regdone
 reg2:
-        cpx #1
-        bne reg3
-        sta FREHI2
-        jmp regdone
+    cpx #1
+    bne reg3
+    sta FREHI2
+    jmp regdone
 reg3:
-        sta FREHI3
+    sta FREHI3
 regdone:
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 skip:
 .endmacro
 
 ;===============================================================================
-
 .macro LIBSOUND_PROCESSFREQUENCYLOW
+.local lSUFrequencyLow
+.local reg2
+.local reg3
+.local regdone
+.local skip
 
 lSUFrequencyLow:
-        cmp #CmdFrequencyLow
-        bne skip
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    cmp #CmdFrequencyLow
+    bne skip
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 
-        cpx #0
-        bne reg2
-        sta FRELO1
-        jmp regdone
+    cpx #0
+    bne reg2
+    sta FRELO1
+    jmp regdone
 reg2:
-        cpx #1
-        bne reg3
-        sta FRELO2
-        jmp regdone
+    cpx #1
+    bne reg3
+    sta FRELO2
+    jmp regdone
 reg3:
-        sta FRELO3
+    sta FRELO3
 regdone:
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 skip:
 .endmacro
 
 ;===============================================================================
-
 .macro LIBSOUND_PROCESSPULSEWIDTHHIGH
+.local lSUPulseWidthHigh
+.local reg2
+.local reg3
+.local regdone
+.local skip
 
 lSUPulseWidthHigh:
-        cmp #CmdPulseWidthHigh
-        bne skip
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    cmp #CmdPulseWidthHigh
+    bne skip
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 
-        cpx #0
-        bne reg2
-        sta PWHI1
-        jmp regdone
+    cpx #0
+    bne reg2
+    sta PWHI1
+    jmp regdone
 reg2:
-        cpx #1
-        bne reg3
-        sta PWHI2
-        jmp regdone
+    cpx #1
+    bne reg3
+    sta PWHI2
+    jmp regdone
 reg3:
-        sta PWHI3
+    sta PWHI3
 regdone:
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 skip:
 .endmacro
 
 ;===============================================================================
-
 .macro LIBSOUND_PROCESSPULSEWIDTHLOW
+.local lSUPulseWidthLow
+.local reg2
+.local reg3
+.local regdone
+.local skip
 
 lSUPulseWidthLow:
-        cmp #CmdPulseWidthLow
-        bne skip
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    cmp #CmdPulseWidthLow
+    bne skip
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 
-        cpx #0
-        bne reg2
-        sta PWLO1
-        jmp regdone
+    cpx #0
+    bne reg2
+    sta PWLO1
+    jmp regdone
 reg2:
-        cpx #1
-        bne reg3
-        sta PWLO2
-        jmp regdone
+    cpx #1
+    bne reg3
+    sta PWLO2
+    jmp regdone
 reg3:
-        sta PWLO3
+    sta PWLO3
 regdone:
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
 skip:
 .endmacro
 
 ;===============================================================================
-
 .macro LIBSOUND_PROCESSDELAY
+.local lSUDelay
+.local skip
 
 lSUDelay:
-        cmp #CmdDelay
-        bne skip
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
-        sta soundVoiceDelay,X
-        inc soundVoiceCmdIndex,X ; move to next byte
-        ldy soundVoiceCmdIndex,X
-        lda (ZeroPageLow),Y
-        jmp lSUDone
+    cmp #CmdDelay
+    bne skip
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
+    sta soundVoiceDelay,X
+    inc soundVoiceCmdIndex,X ; move to next byte
+    ldy soundVoiceCmdIndex,X
+    lda (ZeroPageLow),Y
+    jmp lSUDone
 skip:
 .endmacro
 
 ;===============================================================================
-
 .macro LIBSOUND_PROCESSEND
+.local lSUEnd
+.local skip
 
 lSUEnd:
-        cmp #CmdEnd
-        bne skip
-        lda #False
-        sta soundVoiceActive,X
-        sta soundVoiceCmdIndex,X
-        jmp lSUDone
+    cmp #CmdEnd
+    bne skip
+    lda #False
+    sta soundVoiceActive,X
+    sta soundVoiceCmdIndex,X
+    jmp lSUDone
 skip:
 .endmacro
 
