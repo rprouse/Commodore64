@@ -15,11 +15,12 @@ _LIB_SPRITES_ = 1
 ; Constants
 
 SpriteAnimsMax := 8
+SpriteSize     := 64
 
 ;===============================================================================
 ; Variables
 
-.segment "DATA"
+.data
 
 spriteAnimsActive:       .res SpriteAnimsMax, 0
 spriteAnimsStartFrame:   .res SpriteAnimsMax, 0
@@ -39,7 +40,57 @@ spriteNumberMask:  .byte %00000001, %00000010, %00000100, %00001000, %00010000, 
 ;===============================================================================
 ; Macros/Subroutines
 
-.segment "CODE"
+.code
+
+;===============================================================================
+; Takes the sprites tacked onto the end of the program and moves them to $3000
+; /1 = Number of sprites to copy
+.macro LIBSPRITE_RELOCATESPRITES num
+.local done
+.local spriteloop
+.local byteloop
+    lda #<sprites       ; The source address
+    sta ZeroPageLow
+    lda #>sprites
+    sta ZeroPageHigh
+
+    lda #$00             ; The destination address
+    sta ZeroPageLow2
+    lda #$30
+    sta ZeroPageHigh2
+    ldx #00
+spriteloop:             ; Loop through each sprite
+    cpx #num+1
+    bcs done
+    ldy #00
+byteloop:               ; Loop through each byte in the sprite
+    lda (ZeroPageLow),y
+    sta (ZeroPageLow2),y
+    iny
+    cpy #SpriteSize     ; Sprites are 64 bytes
+    bcc byteloop
+
+    inx
+
+    clc                 ; Add 64 to the source address
+    lda ZeroPageLow
+    adc #SpriteSize
+    sta ZeroPageLow
+    lda ZeroPageHigh
+    adc #00
+    sta ZeroPageHigh
+
+    clc                 ; Add 64 to the destination address
+    lda ZeroPageLow2
+    adc #SpriteSize
+    sta ZeroPageLow2
+    lda ZeroPageHigh2
+    adc #00
+    sta ZeroPageHigh2
+
+    jmp spriteloop
+done:
+.endmacro
 
 ;===============================================================================
 ; /1 = Sprite Number (Address)

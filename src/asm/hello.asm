@@ -1,8 +1,8 @@
-.segment "DATA"
+.data
 
 message: .asciiz "hello, world!"
 
-.segment "CODE"
+.code
    jmp start
 
 ZP_PTR_1 = $7E

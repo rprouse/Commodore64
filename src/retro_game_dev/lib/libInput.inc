@@ -27,7 +27,7 @@ FireDelayMax            := 30
 ;===============================================================================
 ; Variables
 
-.segment "DATA"
+.data
 
 gameportLastFrame:      .byte 0
 gameportThisFrame:      .byte 0
@@ -38,7 +38,7 @@ fireBlip:               .byte 1 ; reversed logic to match other input
 ;===============================================================================
 ; Macros/Subroutines
 
-.segment "CODE"
+.code
 
 ;===============================================================================
 ; /1 (buttonMask)

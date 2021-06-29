@@ -36,7 +36,7 @@ LightGrey       := $0F
 ;===============================================================================
 ; Variables
 
-.segment "DATA"
+.data
 
 ;Operator Calc
 
@@ -92,7 +92,7 @@ screenScrollXValue: .byte 0
 ;===============================================================================
 ; Macros/Subroutines
 
-.segment "CODE"
+.code
 
 .ifdef HASMAP
 ;==============================================================================
@@ -516,7 +516,8 @@ finished:
 .local loop
     lda #num                ; Get number to set
     ldx #250                ; Set loop value
-loop:   dex                     ; Step -1
+loop:
+    dex                     ; Step -1
     sta start,x             ; Set start + x
     sta start+250,x         ; Set start + 250 + x
     sta start+500,x         ; Set start + 500 + x

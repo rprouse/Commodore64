@@ -2,10 +2,12 @@
 ; 2 sprites generated with spritemate on 6/27/2021, 9:39:43 PM
 ; Byte 64 of each sprite contains multicolor (high nibble) & color (low nibble) information
 
-.segment "DATA"
+.data
+
+sprites:
 
 ; sprite 0 / singlecolor / color: $03
-playerSprite:
+sprite_0:
 .byte $00,$00,$00,$00,$18,$00,$00,$18
 .byte $00,$00,$18,$00,$00,$3c,$00,$00
 .byte $24,$00,$00,$24,$00,$00,$24,$00
@@ -16,7 +18,7 @@ playerSprite:
 .byte $3c,$00,$3c,$00,$00,$3c,$00,$03
 
 ; sprite 1 / multicolor / color: $03
-playerSpriteMC:
+sprite_1:
 .byte $00,$00,$00,$00,$20,$00,$00,$20
 .byte $00,$00,$20,$00,$00,$a8,$00,$00
 .byte $b8,$00,$00,$b8,$00,$00,$b8,$00

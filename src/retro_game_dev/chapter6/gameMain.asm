@@ -12,7 +12,7 @@
 ;===============================================================================
 ; Initialize
 
-.segment "CODE"
+.code
 
 gameMainInit:
         ; Turn off interrupts to stop LIBSCREEN_WAIT failing every so

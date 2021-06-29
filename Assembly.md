@@ -215,7 +215,7 @@ ADC $03B0
 STA $03C0
 LDA $03A1
 ADC $03B1
-STB $03C1
+STA $03C1
 BCS overflow
 ```
 
