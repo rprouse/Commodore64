@@ -18,8 +18,8 @@ PlayerYMax              := 229
 
 playerSprite:   .byte 0
 playerXHigh:    .byte 0
-playerXLow:     .byte 175
-playerY:        .byte 229
+playerXLow:     .byte $B0
+playerY:        .byte $E0
 
 .code
 
