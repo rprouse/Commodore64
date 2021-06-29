@@ -38,5 +38,14 @@ gamePlayerUpdate:
 
 ;==============================================================================
 @gamePlayerUpdatePostition:
+    ; Clamp the player x position
+    LIBMATH_MIN16BIT_AAVV playerXHigh, playerXLow, PlayerXMaxHigh, PlayerXMaxLow
+    LIBMATH_MAX16BIT_AAVV playerXHigh, playerXLow, PlayerXMinHigh, PlayerXMinLow
+
+    ; Clamp the player y position
+    LIBMATH_MIN8BIT_AV playerY, PlayerYMax
+    LIBMATH_MAX8BIT_AV playerY, PlayerYMin
+
+    ; Set the sprite position
     LIBSPRITE_SETPOSITION_AAAA playerSprite, playerXHigh, playerXLow, playerY
     rts
