@@ -41,11 +41,11 @@ gameMainInit:
     ; The last 3 parameters are not used yet
     LIBSCREEN_SETCOLORS Blue, Black, Black, Black, Black
 
-    ; Fill 1000 bytes (40x25) of screen memory
-    ;LIBSCREEN_SET1000 SCREENRAM SpaceCharacter
+    ; Fill 1000 .bytes (40x25) of screen memory
+    LIBSCREEN_SET1000 SCREENRAM, SpaceCharacter
 
-    ; Fill 1000 bytes (40x25) of color memory
-    ;LIBSCREEN_SET1000 COLORRAM White
+    ; Fill 1000 .bytes (40x25) of color memory
+    LIBSCREEN_SET1000 COLORRAM, White
 
     ; Set the sprite multicolors
     LIBSPRITE_SETMULTICOLORS_VV Black, Black
