@@ -100,4 +100,46 @@ disable:
 done:
 .endmacro
 
+;===============================================================================
+; /1 = Sprite Number    (Address)
+; /2 = Color            (Value)
+.macro Sprite_SetColor sprite, color
+    ldy #sprite
+    lda #color
+    sta SP0COL,y
+.endmacro
+
+;===============================================================================
+; /1 = Sprite Number    (Address)
+; /2 = XPos High Byte   (Address)
+; /3 = XPos Low Byte    (Address)
+; /4 = YPos             (Address)
+.macro Sprite_SetPosition sprite, xposh, xposl, ypos
+.local end
+    lda sprite              ; get sprite number
+    asl                     ; *2 as registers laid out 2 apart
+    tay                     ; copy accumulator to y register
+
+    lda xposl               ; get XPos Low Byte
+    sta SP0X,y              ; set the XPos sprite register
+    lda ypos                ; get YPos
+    sta SP0Y,y              ; set the YPos sprite register
+
+    ldy sprite
+    lda spriteNumberMask,y  ; get sprite mask
+
+    eor #$FF                ; get compliment
+    and MSIGX               ; clear the bit
+    sta MSIGX               ; and store
+
+    ldy xposh               ; get XPos High Byte
+    beq end                 ; skip if XPos High Byte is zero
+    ldy sprite
+    lda spriteNumberMask,y  ; get sprite mask
+
+    ora MSIGX               ; set the bit
+    sta MSIGX               ; and store
+end:
+.endmacro
+
 .endif ; _LIB_SPRITES_

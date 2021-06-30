@@ -11,6 +11,7 @@
 .include "lib/sprite.inc"
 
 .include "sprites.inc"
+.include "player.asm"
 
 ;===============================================================================
 ; Initialize
@@ -43,40 +44,19 @@ init:
     ; Fill 1000 .bytes (40x25) of color memory
     Screen_FillMemory COLORRAM, White
 
-    ; Set the sprite multicolors
-    ;LIBSPRITE_SETMULTICOLORS_VV Black, Black
-
-    ; Enable sprite 0
-    ;lda #$01
-    ;sta $D015
-    Sprite_Enable 0, True
-
-    ; Set sprite pointer 0 to point to the first sprite
-    lda #$C0    ; $3000 / $40 or 12288 / 64
-    sta $07F8
-
-    ; Set the sprite color to Cyan
-    lda #Cyan
-    sta $D027
-    ;LIBSPRITE_SETCOLOR_AV 0, Cyan
-
-    ; Set the sprite position
-    lda #$B0
-    sta $D000   ; X position
-    lda #$E0
-    sta $D001   ; Y position
-    ;LIBSPRITE_SETPOSITION_AAAA 0, 0, $B0, $E0
+    jsr playerInit
 
 ;===============================================================================
 ; Update
 
-gMLoop:
+gameLoop:
     Screen_Wait 255
 
     ;inc EXTCOL ; start code timer change border color
 
     ; Game update code goes here
-    ;jsr gamePlayerUpdate
+    jsr playerUpdate
 
     ;dec EXTCOL ; end code timer reset border color
-    jmp gMLoop
+
+    jmp gameLoop
