@@ -36,7 +36,7 @@
 - `DCY` - Decrement Y
 - `DEC` - Decrement membory address
 
-## Arithmetic
+### Arithmetic
 
 - `ADC` - Add with carry
 - `SBC` - Subtract with carry
