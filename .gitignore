@@ -1,5 +1,7 @@
 */.vs
 
+.vscode/*.log
+
 bin/
 obj/
 out/
