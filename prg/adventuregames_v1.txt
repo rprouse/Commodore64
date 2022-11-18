@@ -1,0 +1,106 @@
+Bemærkninger:
+=============
+
+Kun spillet i sidste kapitel er indtastet. De andre programlistninger i bogen
+er kun illustrative eksempler på, hvordan man kan kode de ting, som gennemgås
+i kapitlet.
+
+Der er alt for mange fejl i spillet, og flere af dem gør, at visse elementer
+slet ikke virker. Jeg har rettet nedenstående, som er de fejl, der er direkte
+ødelæggende for spillet:
+
+ 7160: Koden håndterer ikke backspace korrekt, da den ikke fjerner et evt.
+       "the"-ord.
+10600: Første ulighed skal være "PL<>4", da man ellers ikke kan bruge nøglen
+       (linje 10620).
+10640: Der mangler "IFR7=1THEN" i starten af sætningen, da denne PRINT-sætning
+       ellers altid udføres, hvilket giver forkert output i mange tilfælde.
+10800-10810: Linje 10800 gør det umuligt at undersøge "Sign". Man er nødt til
+       at ombytte linje 10800 og 10810 samt ændre en del i IF-sætningen for at
+       koden virker korrekt.
+13000: N$-array'et skal dimensioneres til 23 elementer, ellers kan kan
+       programmet slet ikke køre.
+
+Der er dog stadigvæk fejl i programmet, fx kan man læse i "Map" eller bruge
+"Ray Gun", selvom man ikke har fundet dem, men de fejl har jeg ikke rettet.
+
+Gennemgang af spillet (SPOILER):
+
+Det er ikke helt nemt at at gennemføre spillet, og der er nogle ting, som virker
+meget underligt. Men jeg prøver at beskrive dem nedenfor.
+
+- Der er 10 "rum" i spillet og et antal forskellige objekter.
+- I starten af spillet udvælges ét af rummene fra 1 til 9 til at være det rum,
+  spillet slutter i. Hvis man står i dette rum og bærer "Map", "Storyline" og
+  "Key" og laver "Search", slutter spillet.
+- "Map", "Storyline" og "Key" kan man kun finde, hvis man laver "Search" i de
+  rum, som tingene findes i, og de placeres tilfældigt i starten af spillet.
+- Monstret "Bug" bevæger sig rundt i rummene. Hvis man løber ind i denne, skal
+  man slås med den, og hvis man taber kampen, slutter spillet. Om man vinder
+  kampen afhænger af, hvor meget styrke, man har tilbage, og det er formentlig
+  nødvendigt at bære "Flowchart". Man mister styrke, hvis man prøver at dræbe
+  "Gobbet" i rum nr. 7 eller hvis man forsøger at klatre i træet, så de to ting
+  skal man lade være med.
+- Man kan dræbe vampyren i rum nr. 8, hvis man har krucifikset, men det det
+  fører ikke til noget.
+- "Map", "Badge", "Ring" og "Ray gun" lader til at være ting, man ikke kan bruge
+  til noget, så der er ingen grund til at samle dem op.
+- Pengeskabet ("Safe") er bare til forvirring. "Key" passer ikke til det, men
+  man kan prøve at gætte koden (1000 forskellige), men man ryger bare i en
+  fælde, hvis man gætter rigtigt, så det er bare spild af tid.
+- "Gobbet" i rum nr. 7 lyder farlig, men den gør ikke noget. Man kan ikke dræbe
+  den.
+- Rum nr. 3 ("Cavern") er specielt, da de seks udgange hele tiden bytter rundt.
+- For at komme til rum 10 ("Apocalypse") skal man bære "Hatchet". Rummet har
+  dog ingen funktion, og selvom det påstås, at der ikke er nogen vej ud, er vejen
+  ud mod øst.
+- Man kan fælde træet, men det fører ikke til noget afgørende for spillet.
+- Bemærk, at udgangene til "Cavern" fra "Forest" og "Library" er i den modsatte
+  retning end man kom ind fra.
+
+Kort:
+
+  +---------------+   +---------------+
+  |Apocalypse   10|   |Gobbetania    7|
+  |               <#-->               +-+
+  |               |   |(Key,Sign,     | |
+  +---------------+   | Gobbet)       | |
+                      +-------^-------+ |
+                              |         |
+          +-------------------|---------+
+          |                   |
+          |           +-------v-------+
+          |           |Desert Island 6|
+          |           |               |
+          |           |(Hatchet)      |
+          |           +-------^-------+
+          |                   *
++-------------------------+   |   +-------------------------+
+|         |               |   |   |                         |
+| +-------v-------+   +---v---v---v---+   +---------------+ |
+| |Forest        5|   |Cavern        3|   |Library       4| |
++-+               <*--+               +--*>               +-+
+  |(Ring,Tree)    |   |(Sign,Stairs)  |   |(Crucifix,Safe)|
+  +-----^-+-------+   +---^---^---^---+   +---------------+
+        | |           (up)|   |   |(down)
+        +-+   +-----------+   |   +-----------+
+              *(down)         *           (up)*
+  +-----------v---+   +-------v-------+   +---v-----------+
+  |Crypt         8|   |USS           2|   |Cockpit       9|
+  |               |   |               |   |               |
+  |(Vampire,      |   |(Ray gun)      |   |               |
+  | Stairs)       |   +-------^-------+   +---------------+
+  +---------------+           |
+                              |
+                              |
+                      +-------v-------+
+                      |Fantasia      1|
+                      |               |
+                      |(Badge,Sign)   |
+                      +---------------+
+
+(#) Kræver "Hatchet"
+(*) Disse 6 udgange ombyttes hele tiden.
+
+
+Hvis du har rettelser eller kommentarer, så send dem til jan@dubbekarl.dk
