@@ -181,11 +181,11 @@ Zero-page - most of the ZP is used by the ROM. The C64 has four bytes available 
 
 ## Arithmetic
 
-|   | Unsigned  | Signed  |
-|---|---|---|
-| 1 byte  | 0 to 255 | -128 to 127 |
-| 2 bytes | 0 to 65,535 | -32768 to 32767 |
-| 3 bytes | 0 to 16,777,215 | -8,388,608 to 8,388,607 |
+|         | Unsigned          | Signed                  |
+| ------- | ----------------- | ----------------------- |
+| 1 byte  | 0 to 255          | -128 to 127             |
+| 2 bytes | 0 to 65,535       | -32768 to 32767         |
+| 3 bytes | 0 to 16,777,215   | -8,388,608 to 8,388,607 |
 | 4 bytes | to over 4 billion | -2 billion to 2 billion |
 
 ### Addition
