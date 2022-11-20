@@ -14,7 +14,7 @@ $(BUILD_FOLDER):
 invasion : $(BUILD_FOLDER)
 	$(CL65_BINARY) $(CL65_FLAGS) -o $(BUILD_FOLDER)/invasion.prg -l $(BUILD_FOLDER)/invasion.list invasion.asm
 
-default: clean all
+default: all
 
 all: invasion
 
