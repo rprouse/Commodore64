@@ -24,11 +24,19 @@ LightGrey       := $0F
 
 SPRITE13_LOC    := $0340     ; Where we are going to store sprite 0 which is sprite 13
 SCREENRAM       := $0400
+
+SPRITE0         := $07F8
+SP0X            := $D000
+SP0Y            := $D001
+MSIGX           := $D010
+RASTER          := $D012
+SPENA           := $D015
 EXTCOL          := $D020
 BGCOL0          := $D021
 BGCOL1          := $D022
 BGCOL2          := $D023
 BGCOL3          := $D024
+SP0COL          := $D027
 COLORRAM        := $D800
 
 ;===============================================================================
@@ -68,7 +76,22 @@ loop:
     bne loop                ; If x<>0 loop
 .endmacro
 
+;===============================================================================
+; Waits for a given scanline
+; /1 = Scanline (Value)
+.macro Screen_Wait line
+.local loop
+loop:
+    lda #line              ; Scanline -> A
+    cmp RASTER             ; Compare A to current raster line
+    bne loop               ; Loop if raster line not reached 255
+.endmacro
+
 start:
+    ; Turn off interrupts to stop Screen_Wait failing every so
+    ; often when the kernal interrupt syncs up with the scanline test
+    sei
+
     ; Set border and background colors
     ; The last 3 parameters are not used yet
     Screen_SetColors Black, Black, Black, Black, Black
@@ -88,20 +111,46 @@ start:
     bne @load_sprite
 
     lda #$0D    ; Use Sprite 13 for sprite 0
-    sta $07F8
+    sta SPRITE0
 
     lda #$AC
-    sta $D000   ; X 172, center screen (X of 24 is left of screen)
+    sta SP0X    ; X 172, center screen (X of 24 is left of screen)
 
     lda #$E5
-    sta $D001   ; Y 229, bottom of screen (Y of 50 is top of screen)
+    sta SP0Y    ; Y 229, bottom of screen (Y of 50 is top of screen)
 
     lda #$01
-    sta $D015   ; Turn sprite 0 on
+    sta SPENA   ; Turn sprite 0 on
 
     lda #Red    ; sprite color
-    sta $D027
+    sta SP0COL
 
+game_loop:
+    Screen_Wait 255
+
+    ldx SP0X
+    ldy MSIGX
+    inx
+    cpy #$00    ; This only works with one sprite
+    bne @high
+
+@low:           ; X is 0 to 255
+    cpx #00
+    bne @updatex
+    ldy #$01
+    jmp @updatex
+
+@high:          ; X is 256 to 335
+    cpx #$80
+    bne @updatex
+    ldx #$0A
+    ldy #$00
+
+@updatex:
+    stx SP0X
+    sty MSIGX
+
+    jmp game_loop
     rts
 
 .data
