@@ -18,7 +18,7 @@ $(BUILD_FOLDER):
 $(INPUTS) : $(BUILD_FOLDER)
 	$(CL65_BINARY) $(CL65_FLAGS) -o $(patsubst $(DIR)/%.asm,$(BUILD_FOLDER)/%.prg,$(@)) -l $(patsubst $(DIR)/%.asm,$(BUILD_FOLDER)/%.list,$(@)) $@
 
-default: all
+default: clean all
 
 all: $(INPUTS)
 
