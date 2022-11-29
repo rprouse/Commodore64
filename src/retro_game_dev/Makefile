@@ -20,7 +20,7 @@ chapter6 : $(BUILD_FOLDER)
 chapter7 : $(BUILD_FOLDER)
 	$(CL65_BINARY) $(CL65_FLAGS) -o $(BUILD_FOLDER)/chapter7.prg -l $(BUILD_FOLDER)/chapter7.list chapter7/gameMain.asm
 
-default: clean all
+default: all
 
 all: sprites chapter6 chapter7
 

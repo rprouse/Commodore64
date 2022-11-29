@@ -1,3 +1,6 @@
+MAKE=make
+MAKECMDGOALS=
+
 default:
 	$(MAKE) -C asm $(MAKECMDGOALS)
 	$(MAKE) -C retro_game_dev $(MAKECMDGOALS)
